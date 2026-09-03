@@ -1,0 +1,79 @@
+\documentclass[titlepage]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{algorithmicx}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{mdframed}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{mathtools}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=single,
+	language=matlab,
+	aboveskip=3mm,
+	belowskip=3mm,
+	showstringspaces=false,
+	columns=flexible,
+	basicstyle={\small\ttfamily},
+	numbers=none,
+	numberstyle=\tiny\color{gray},
+	keywordstyle=\color{blue},
+	commentstyle=\color{dkgreen},
+	stringstyle=\color{mauve},
+	breaklines=true,
+	breakatwhitespace=true,
+	tabsize=3
+}
+
+\setlength{\parindent}{0pt}
+
+\title{AAE 50700: Principles of Dynamics Problem Set 1 Report}
+\author{Dylan Ashby}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{(1.1) Particle Kinematics}
+
+\subsection*{(a)}
+Let $\boldsymbol{a}$ be a physical vector, and let $\prescript{\mathcal{N}}{}{[\boldsymbol{a}]}$ and $\prescript{\mathcal{B}}{}{[\boldsymbol{b}]}$ denote its matrix-format (columb-vector) representations of two different coordinate systems $\mathcal{N}$ and $\mathcal{B}$.
+
+\subsubsection*{(a.1)}
+Explain why $\prescript{\mathcal{N}}{}{[\boldsymbol{a}]}\ne \prescript{\mathcal{B}}{}{[\boldsymbol{b}]}$ in general even though both represent the same physical vector $\boldsymbol{a}$.\\
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+Fundementally, the two coodinate systems $\prescript{\mathcal{N}}{}{[\boldsymbol{a}]}$ and $\prescript{\mathcal{B}}{}{[\boldsymbol{b}]}$ will have different numerical values when their orientations in physical space are different, meaning if the basis vectors of one system are not perfectly alligned with the other, then the numerical value of the same vector in the two coordiante systems has to be different.\\
+
+However, even if the two coordiante basis are alligned momentarially, we still would consider them not equal in general across all time. This is because $\prescript{\mathcal{B}}{}{[\boldsymbol{b}]}$ is a coordiante system locked to a rigid body. This means that the orinentation of the coordiante basis in physical space changes with the orientation of the rigid body. The only useful application for this would be a rigid body that is expected to move, thus a change of orientation is considered inevitable, and $\prescript{\mathcal{N}}{}{[\boldsymbol{a}]}\ne \prescript{\mathcal{B}}{}{[\boldsymbol{b}]}$ is expected to be true at some point if not most of the systems time span.
+\end{mdframed}
+
+
+\subsubsection*{(a.2)}
+A classmate writes $\boldsymbol{\dot{r}}$ to mean "the time derivative of $\boldsymbol{r}$" without specifying an observing frame. Explain why this is ambiguous, and state the convention this course uses for what $\boldsymbol{\dot{r}}$ means.\\
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+This notation is ambiguous because the derivative of the vector $\boldsymbol{r}$ could be refering to the derivative with respect to any sort of reference frame. This matters for rotating and body frames who could be themselves moving with respect to the inertial frame either translationally and/or rotationally. This means the equations of motion with respect a rotating/body frame differ and will have a completely different geometic meaning, not just a numerical one.\\
+
+This course will use this convention of $\boldsymbol{\dot{r}}$ to refer to the intertial frame derivative of a vector.
+\end{mdframed}
+
+\subsection*{(b)}
+$\mathcal{B}$-frame with basis vectors $\{\boldsymbol{\hat{b}}_1,\boldsymbol{\hat{b}}_2,\boldsymbol{\hat{b}}_3\}$ rotates relative to the inertial frame $\mathcal{N}:\{\boldsymbol{\hat{n}}_1,\boldsymbol{\hat{n}}_2,\boldsymbol{\hat{n}}_3\}$ with angular velocity $\boldsymbol{\omega}_{B/N}=\omega_0\boldsymbol{\hat{b}}_3$, where $\omega_0$ is constant. $\mathcal{B}$-frame and $\mathcal{N}$-frame are aligned at $t=0$.
+
+\subsubsection*{(b.1)}
+There is a point whose location is given by $\boldsymbol{r}=r_0\boldsymbol{\hat{b}}_1$, where $r_0$ is constant. Derive $\boldsymbol{\dot{r}}$ in vector format first, and then express it in $\mathcal{B}$-frame and $\mathcal{N}$-frame as a function of $t$.\\
+
+
+
+
+
+\end{document}

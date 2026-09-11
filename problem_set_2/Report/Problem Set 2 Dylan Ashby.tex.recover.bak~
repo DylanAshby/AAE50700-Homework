@@ -1,0 +1,319 @@
+\documentclass[titlepage]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{algorithmicx}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{mdframed}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{mathtools}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=single,
+	language=matlab,
+	aboveskip=3mm,
+	belowskip=3mm,
+	showstringspaces=false,
+	columns=flexible,
+	basicstyle={\small\ttfamily},
+	numbers=none,
+	numberstyle=\tiny\color{gray},
+	keywordstyle=\color{blue},
+	commentstyle=\color{dkgreen},
+	stringstyle=\color{mauve},
+	breaklines=true,
+	breakatwhitespace=true,
+	tabsize=3
+}
+
+\setlength{\parindent}{0pt}
+
+\title{AAE 50700: Principles of Dynamics Problem Set 2 Report}
+\author{Dylan Ashby}
+\date{\today}
+
+\begin{document}
+	
+\maketitle
+	
+\section*{(2.1) Rigid-body Kinematics and Dynamics}
+	
+\subsection*{(a): Given}
+The following three matrices:
+\begin{equation}
+	A=
+	\begin{bmatrix}
+		0 & 1 & 0 \\
+		-1 & 0 & 0 \\
+		0 & 0 & 1 \\
+	\end{bmatrix},\quad B=
+	\begin{bmatrix}
+		1 & 0 & 0 \\
+		0 & 1 & 0 \\
+		0 & 0 & -1 \\
+	\end{bmatrix},\quad C=
+	\begin{bmatrix}
+		0 & 1 & 0 \\
+		-1 & 0.1 & 0 \\
+		0 & 0 & 1 \\
+	\end{bmatrix}
+\end{equation} 
+	
+\textbf{Find:}
+Check whether each matrix is a valid DCM.\\
+
+\textbf{Analysis/Conclusions:}
+
+It is known that a Direction Cosine Matrix (DCM) must be both an orthogonal matrix and have a determinant equal to $\det=1$ (a DCM could be valid with $\det=\pm 1$, but a $-1$ determinant would result in a reflection to a left-handed frame basis which is an improper frame basis) \cite{schaub_analytical_2018}. The former can be proven by showing that the candidate DCM multiplied by its transpose is equal to the identity matrix ($AA^T=I$), and the latter can of course just be proved by taking the determinant.\\
+
+We see the results of these tests on each matrix below. The determinants were found using the det() function in Matlab:
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	We see that \textbf{$A$ passes} both tests and \textbf{is a DCM}.
+	\begin{equation}
+		\begin{gathered}
+			AA^T=
+			\begin{bmatrix}
+				0 & 1 & 0 \\
+				-1 & 0 & 0 \\
+				0 & 0 & 1 \\
+			\end{bmatrix}
+			\begin{bmatrix}
+				0 & -1 & 0 \\
+				1 & 0 & 0 \\
+				0 & 0 & 1 \\
+			\end{bmatrix}=
+			\begin{bmatrix}
+				1 & 0 & 0 \\
+				0 & 1 & 0 \\
+				0 & 0 & 1 \\
+			\end{bmatrix}=I\\
+			\det(A)=1
+		\end{gathered}
+	\end{equation}
+	We see that \textbf{$B$ fails} the $\det=1$ requirement and \textbf{is NOT a DCM}.
+	\begin{equation}
+		\begin{gathered}
+			BB^T=
+			\begin{bmatrix}
+				1 & 0 & 0 \\
+				0 & 1 & 0 \\
+				0 & 0 & -1 \\
+			\end{bmatrix}
+			\begin{bmatrix}
+				1 & 0 & 0 \\
+				0 & 1 & 0 \\
+				0 & 0 & -1 \\
+			\end{bmatrix}=
+			\begin{bmatrix}
+				1 & 0 & 0 \\
+				0 & 1 & 0 \\
+				0 & 0 & 1 \\
+			\end{bmatrix}=I\\
+			\det(B)=-1
+		\end{gathered}
+	\end{equation}
+	We see that \textbf{$C$ fails} the orthogonality requirement ($CC^T=I$) and \textbf{is NOT a DCM}.
+	\begin{equation}
+		\begin{gathered}
+			CC^T=
+			\begin{bmatrix}
+				0 & 1 & 0 \\
+				-1 & 0.1 & 0 \\
+				0 & 0 & 1 \\
+			\end{bmatrix}
+			\begin{bmatrix}
+				0 & -1 & 0 \\
+				1 & 0.1 & 0 \\
+				0 & 0 & 1 \\
+			\end{bmatrix}=
+			\begin{bmatrix}
+				1 & 0.1 & 0 \\
+				0.1 & 1.1 & 0 \\
+				0 & 0 & 1 \\
+			\end{bmatrix}\ne I\\
+			\det(C)=1
+		\end{gathered}
+	\end{equation}
+\end{mdframed}
+
+\subsection*{(b): Given}
+Consider a principal rotation of angle $\theta=120\deg$ about the axis $\hat{\boldsymbol{\lambda}}=\frac{1}{\sqrt{3}}[1,1,1]^T$.
+
+\subsubsection*{(b.1): Find}
+Compute the corresponding Euler parameters $\boldsymbol{\epsilon}$. Confirm $\|\boldsymbol{\epsilon}\|=1$.\\
+
+\textbf{Analysis/Conclusions:}
+An Euler parameter vector $\boldsymbol{\epsilon}$ can be found simply using:
+\begin{equation}
+	\boldsymbol{\epsilon}=
+	\begin{bmatrix}
+		\hat{\boldsymbol{\lambda}}\sin(\theta/2) \\
+		\cos(\theta/2)
+	\end{bmatrix}\in\mathbb{R}^4
+\end{equation}
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	Thus we can compute this Euler parameter as:
+	\begin{equation}
+		\begin{split}
+			\boldsymbol{\epsilon}&=
+			\begin{bmatrix}
+				\hat{\boldsymbol{\lambda}}\sin(\theta/2) \\
+				\cos(\theta/2)
+			\end{bmatrix}=
+			\begin{bmatrix}
+				\frac{1}{\sqrt{3}}\sin(120\deg/2) \\
+				\frac{1}{\sqrt{3}}\sin(120\deg/2) \\
+				\frac{1}{\sqrt{3}}\sin(120\deg/2) \\
+				\cos(120\deg/2) \\
+			\end{bmatrix}=
+			\begin{bmatrix}
+				0.5 \\
+				0.5 \\
+				0.5 \\
+				0.5 \\
+			\end{bmatrix}
+		\end{split}
+	\end{equation}
+	
+	Then to verify $\|\boldsymbol{\epsilon}\|=1$:
+	\begin{equation}
+		\|\boldsymbol{\epsilon}\|=\sqrt{0.5^2+0.5^2+0.5^2+0.5^2}=1
+	\end{equation}
+\end{mdframed}
+
+\subsubsection*{(b.2): Find}
+Compute the corresponding DCM $[BN]$. Verify it is a valid DCM.\\
+
+\textbf{Analysis/Conclusions:}
+An inertial frame to body frame DCM $[BN]$ is defined from Euler parameters as:
+\begin{equation}
+	[BN]=
+	\begin{bmatrix}
+		1-2\epsilon_2^2-2\epsilon_3^2 & 2(\epsilon_1\epsilon_2+\epsilon_3\epsilon_4) & 2(\epsilon_1\epsilon_3-\epsilon_2\epsilon_4) \\
+		2(\epsilon_1\epsilon_2-\epsilon_3\epsilon_4) & 1-2\epsilon_1^2-2\epsilon_3^2 & 2(\epsilon_2\epsilon_3+\epsilon_1\epsilon_4) \\
+		2(\epsilon_1\epsilon_3+\epsilon_2\epsilon_4) & 2(\epsilon_2\epsilon_3-\epsilon_1\epsilon_4) & 1-2\epsilon_1^2-2\epsilon_2^2 \\
+	\end{bmatrix}
+\end{equation}
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+We then simply plug in the Euler parameter vector from (b.1):
+\footnotesize
+\begin{equation}
+	\begin{split}
+		[BN]&=
+		\begin{bmatrix}
+			1-2(0.5)^2-2(0.5)^2 & 2((0.5)(0.5)+(0.5)(0.5)) & 2((0.5)(0.5)-(0.5)(0.5)) \\
+			2((0.5)(0.5)-(0.5)(0.5)) & 1-2(0.5)^2-2(0.5)^2 & 2((0.5)(0.5)+(0.5)(0.5)) \\
+			2((0.5)(0.5)+(0.5)(0.5)) & 2((0.5)(0.5)-(0.5)(0.5)) & 1-2(0.5)^2-2(0.5)^2 \\
+		\end{bmatrix}\\
+		&=
+		\begin{bmatrix}
+			0 & 1 & 0 \\
+			0 & 0 & 1 \\
+			1 & 0 & 0 \\
+		\end{bmatrix}
+	\end{split}	
+\end{equation}
+\normalsize
+\end{mdframed}
+
+Then we can run the same tests as done in part (a) to verify the DCM is valid. So, the DCM must be orthogonal (proved by $[BN][BN]^T=I$) and must have a determinant of $\det=1$ which is once again computed using Matlab det() function.\\
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	We see that \textbf{$[BN]$ passes} both tests and \textbf{is a DCM}.
+	\begin{equation}
+		\begin{gathered}
+			[BN][BN]^T=
+			\begin{bmatrix}
+				0 & 1 & 0 \\
+				0 & 0 & 1 \\
+				1 & 0 & 0 \\
+			\end{bmatrix}
+			\begin{bmatrix}
+				0 & 0 & 1 \\
+				1 & 0 & 0 \\
+				0 & 1 & 0 \\
+			\end{bmatrix}=
+			\begin{bmatrix}
+				1 & 0 & 0 \\
+				0 & 1 & 0 \\
+				0 & 0 & 1 \\
+			\end{bmatrix}=I\\
+			\det([BN])=1
+		\end{gathered}
+	\end{equation}
+\end{mdframed}
+
+\subsubsection*{(b.3): Find}
+Recompute $[BN]$ using $-\boldsymbol{\epsilon}$ instead of $\boldsymbol{\epsilon}$, and confirm I get the same DCM.\\
+
+\textbf{Analysis/Conclusions:}
+The Euler parameter $-\boldsymbol{\epsilon}$ would simply be:
+\begin{equation}
+	-\boldsymbol{\epsilon}=-
+	\begin{bmatrix}
+		0.5 \\
+		0.5 \\
+		0.5 \\
+		0.5 \\
+	\end{bmatrix}=
+	\begin{bmatrix}
+		-0.5 \\
+		-0.5 \\
+		-0.5 \\
+		-0.5 \\
+	\end{bmatrix}
+\end{equation}
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	Thus when we plug the values of this negated Euler parameter $-\boldsymbol{\epsilon}$ into the DCM in equation (8), we get:
+	\tiny
+	\begin{equation}
+		\begin{split}
+			&=
+			\begin{bmatrix}
+				1-2(-0.5)^2-2(-0.5)^2 & 2((-0.5)(-0.5)+(-0.5)(-0.5)) & 2((-0.5)(-0.5)-(-0.5)(-0.5)) \\
+				2((-0.5)(-0.5)-(-0.5)(-0.5)) & 1-2(-0.5)^2-2(-0.5)^2 & 2((-0.5)(-0.5)+(-0.5)(-0.5)) \\
+				2((-0.5)(-0.5)+(-0.5)(-0.5)) & 2((-0.5)(-0.5)-(-0.5)(-0.5)) & 1-2(-0.5)^2-2(-0.5)^2 \\
+			\end{bmatrix}\\
+			&=
+			\begin{bmatrix}
+				0 & 1 & 0 \\
+				0 & 0 & 1 \\
+				1 & 0 & 0 \\
+			\end{bmatrix}=[BN]
+		\end{split}	
+	\end{equation}
+	\normalsize
+	Which is an identical DCM to part (b.2).
+\end{mdframed}
+
+\subsection*{(c): Given}
+The starting point $\dot{\boldsymbol{H}}_c = \boldsymbol{\tau}_c$, where $\boldsymbol{H}_c$ is the angular momentum of the rigid body about its center of mass, $\boldsymbol{\tau}_c$ is the net external torque about the same point, and the overdot denotes differentiation with respect to time in an inertial frame.
+
+\subsubsection*{(c.1): Find}
+Show the Euler's rotational equations of motion $I_c\dot{\boldsymbol{\omega}}_c+\boldsymbol{\omega}\times(I_c\boldsymbol{\omega})=\boldsymbol{\tau}_c$. In the process, justify why:
+\begin{itemize}
+	\item $\frac{\prescript{\mathcal{B}}{}{d}}{dt}\boldsymbol{\omega}=\dot{\boldsymbol{\omega}}$
+	\item $\frac{\prescript{\mathcal{B}}{}{d}}{dt}I_c=\boldsymbol{0}$
+\end{itemize}
+Where $I_c$ is the inertia tensor of the rigid body.\\
+
+\textbf{Analysis/Conclusions:}
+To show that $I_c\dot{\boldsymbol{\omega}}_c+\boldsymbol{\omega}\times(I_c\boldsymbol{\omega})=\boldsymbol{\tau}_c$, we can first represent $\dot{\boldsymbol{H}}_c$ using the transport theorem:
+\begin{equation}
+	\dot{\boldsymbol{H}}_c=\frac{\prescript{\mathcal{B}}{}{d}}{dt}\boldsymbol{H}_c+\boldsymbol{\omega}\times\boldsymbol{H}_c
+\end{equation}
+\newpage	
+\bibliographystyle{ieeetr}
+\bibliography{AAE507HW}
+	
+\end{document}

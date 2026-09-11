@@ -44,36 +44,1144 @@
 
 \section*{(1.1) Particle Kinematics}
 
-\subsection*{(a)}
-Let $\boldsymbol{a}$ be a physical vector, and let $\prescript{\mathcal{N}}{}{[\boldsymbol{a}]}$ and $\prescript{\mathcal{B}}{}{[\boldsymbol{b}]}$ denote its matrix-format (columb-vector) representations of two different coordinate systems $\mathcal{N}$ and $\mathcal{B}$.
+\subsection*{(a): Given} 
+Let $\boldsymbol{a}$ be a physical vector, and let $\prescript{\mathcal{N}}{}{[\boldsymbol{a}]}$ and $\prescript{\mathcal{B}}{}{[\boldsymbol{a}]}$ denote its matrix-format (columb-vector) representations of two different coordinate systems $\mathcal{N}$ and $\mathcal{B}$.
 
-\subsubsection*{(a.1)}
-Explain why $\prescript{\mathcal{N}}{}{[\boldsymbol{a}]}\ne \prescript{\mathcal{B}}{}{[\boldsymbol{b}]}$ in general even though both represent the same physical vector $\boldsymbol{a}$.\\
+\subsubsection*{(a.1): Find}
+Explain why $\prescript{\mathcal{N}}{}{[\boldsymbol{a}]}\ne \prescript{\mathcal{B}}{}{[\boldsymbol{a}]}$ in general even though both represent the same physical vector $\boldsymbol{a}$.\\
 
+\textbf{Analysis/Conclusions:}
 \begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
-Fundementally, the two coodinate systems $\prescript{\mathcal{N}}{}{[\boldsymbol{a}]}$ and $\prescript{\mathcal{B}}{}{[\boldsymbol{b}]}$ will have different numerical values when their orientations in physical space are different, meaning if the basis vectors of one system are not perfectly alligned with the other, then the numerical value of the same vector in the two coordiante systems has to be different.\\
+Fundamentally $\prescript{\mathcal{N}}{}{[\boldsymbol{a}]}$ and $\prescript{\mathcal{B}}{}{[\boldsymbol{a}]}$ will have different numerical values when their bases orientations in physical space are different, meaning if the basis vectors of one system are not perfectly aligned with the other, then the numerical value of the same vector in the two coordinate systems is not guaranteed to be the same.\\
 
-However, even if the two coordiante basis are alligned momentarially, we still would consider them not equal in general across all time. This is because $\prescript{\mathcal{B}}{}{[\boldsymbol{b}]}$ is a coordiante system locked to a rigid body. This means that the orinentation of the coordiante basis in physical space changes with the orientation of the rigid body. The only useful application for this would be a rigid body that is expected to move, thus a change of orientation is considered inevitable, and $\prescript{\mathcal{N}}{}{[\boldsymbol{a}]}\ne \prescript{\mathcal{B}}{}{[\boldsymbol{b}]}$ is expected to be true at some point if not most of the systems time span.
+However, even if the two coordinate bases are aligned momentarily, we still would consider them not equal in general across all time. This is because $\prescript{\mathcal{B}}{}{[\boldsymbol{a}]}$ is a coordinate system locked to a rigid body. This means that the orientation of the coordinate basis in physical space changes with the orientation of the rigid body. The only useful application for this would be a rigid body that is expected to move, thus a change of orientation is considered inevitable, and $\prescript{\mathcal{N}}{}{[\boldsymbol{a}]}\ne \prescript{\mathcal{B}}{}{[\boldsymbol{a}]}$ is expected to be true at some point if not most of the systems time span.
 \end{mdframed}
 
 
-\subsubsection*{(a.2)}
+\subsubsection*{(a.2): Find}
 A classmate writes $\boldsymbol{\dot{r}}$ to mean "the time derivative of $\boldsymbol{r}$" without specifying an observing frame. Explain why this is ambiguous, and state the convention this course uses for what $\boldsymbol{\dot{r}}$ means.\\
 
+\textbf{Analysis/Conclusions:}
 \begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
-This notation is ambiguous because the derivative of the vector $\boldsymbol{r}$ could be refering to the derivative with respect to any sort of reference frame. This matters for rotating and body frames who could be themselves moving with respect to the inertial frame either translationally and/or rotationally. This means the equations of motion with respect a rotating/body frame differ and will have a completely different geometic meaning, not just a numerical one.\\
+This notation is ambiguous because the derivative of the vector $\boldsymbol{r}$ could be referring to the derivative with respect to any sort of reference frame. This matters for rotating and body frames who could be themselves moving with respect to the inertial frame either translationally and/or rotationally. This means the equations of motion with respect a rotating/body frame differ and will have a completely different geometic meaning, not just a numerical one.\\
 
-This course will use this convention of $\boldsymbol{\dot{r}}$ to refer to the intertial frame derivative of a vector.
+This course will use this convention of $\boldsymbol{\dot{r}}$ to refer to the time derivative of a vector as seen by inertial frame.
 \end{mdframed}
 
-\subsection*{(b)}
+\subsection*{(b): Given}
 $\mathcal{B}$-frame with basis vectors $\{\boldsymbol{\hat{b}}_1,\boldsymbol{\hat{b}}_2,\boldsymbol{\hat{b}}_3\}$ rotates relative to the inertial frame $\mathcal{N}:\{\boldsymbol{\hat{n}}_1,\boldsymbol{\hat{n}}_2,\boldsymbol{\hat{n}}_3\}$ with angular velocity $\boldsymbol{\omega}_{B/N}=\omega_0\boldsymbol{\hat{b}}_3$, where $\omega_0$ is constant. $\mathcal{B}$-frame and $\mathcal{N}$-frame are aligned at $t=0$.
 
-\subsubsection*{(b.1)}
+\subsubsection*{(b.1): Find}
 There is a point whose location is given by $\boldsymbol{r}=r_0\boldsymbol{\hat{b}}_1$, where $r_0$ is constant. Derive $\boldsymbol{\dot{r}}$ in vector format first, and then express it in $\mathcal{B}$-frame and $\mathcal{N}$-frame as a function of $t$.\\
 
+\textbf{Analysis/Conclusions:}
+To derive $\dot{\boldsymbol{r}}$ in vector format, we must apply the Transport Theorem:
+\begin{equation}
+	\dot{\boldsymbol{r}}=\frac{\prescript{\mathcal{B}}{}{d}\boldsymbol{r}}{dt}+\boldsymbol{\omega}_{B/N}\times\boldsymbol{r}
+\end{equation}
+
+When looking for what to substitute, we see the value of $\boldsymbol{\omega}_{B/N}$ is already given by the problem as $\omega_0\hat{\boldsymbol{b}}_3$, and the definition of $\boldsymbol{r}$ is given as $r_0\hat{\boldsymbol{b_1}}$. Thus the only other thing needed is the derivative of $\boldsymbol{r}$ as seen by the $\mathcal{B}$-frame. Since the position of $\boldsymbol{r}$ is by definition locked to one of the basis vectors of the $\mathcal{B}$-frame, its position should never change with respect to that frame and its derivative will always be zero:
+\begin{equation}
+	\frac{\prescript{\mathcal{B}}{}{d}\boldsymbol{r}}{dt}=0
+\end{equation}
+
+So then we write the vector form of $\dot{\boldsymbol{r}}$ as:
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	\begin{equation}
+		\begin{split}
+			\dot{\boldsymbol{r}}&=\frac{\prescript{\mathcal{B}}{}{d}\boldsymbol{r}}{dt}+\boldsymbol{\omega}_{B/N}\times\boldsymbol{r}\\
+			\dot{\boldsymbol{r}}&=0+\omega_0\hat{\boldsymbol{b}}_3\times r_0\hat{\boldsymbol{b}}_1\\
+			\dot{\boldsymbol{r}}&=\omega_0 r_0(\hat{\boldsymbol{b}}_3\times\hat{\boldsymbol{b}}_1)\\
+			\dot{\boldsymbol{r}}&=\omega_0 r_0\hat{\boldsymbol{b}}_2
+		\end{split}
+	\end{equation}
+\end{mdframed}
+
+Since this is already an expression using $\mathcal{B}$-frame basis vectors, it is already expressed in that frame's coordinates:
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	\begin{equation}
+		\dot{\boldsymbol{r}}_{\mathcal{B}}(t)=\omega_0 r_0\hat{\boldsymbol{b}}_2
+	\end{equation}
+\end{mdframed}
+
+Then since the $\mathcal{N}$ and $\mathcal{B}$ frames are aligned at $t=0$, we can simply use a Direction Cosine Matrix (DCM) rotating about the $\hat{\boldsymbol{n}}_3$ axis (as the third axes of both frames are aligned and we are rotating at the $\mathcal{B}$-frame third axis) to define the function of $\boldsymbol{r}$ over time in the $\mathcal{N}$-frame. This works because the frame rotation $\omega_0$ is constant in radians per second, and the initial rotation should be considered zero radians when the frames are aligned. Thus we simply need to multiply $\omega_0$ by time $t$ to get the rotation of the frame in radians at any time.\\
+
+Likewise, we define our third axis DCM mapping $\mathcal{B}$-frame to $\mathcal{N}$-frame as:
+\begin{equation}
+	[NB]=
+	\begin{bmatrix}
+		\cos\theta & -\sin\theta & 0 \\
+		\sin\theta & \cos\theta & 0 \\
+		0 & 0 & 1 \\
+	\end{bmatrix}
+\end{equation} 
+Where $\theta=\omega_0t$ as previously discussed.\\
+
+Then we calculate the function of $\dot{\boldsymbol{r}}_{\mathcal{N}}$ over time as tracking the rotation of $\dot{\boldsymbol{r}}_{\mathcal{B}}$ with respect to $\mathcal{N}$ using the DCM:
+\begin{equation}
+	\begin{split}
+		\dot{\boldsymbol{r}}_{\mathcal{N}}(t)&=[NB]\dot{\boldsymbol{r}}_{\mathcal{B}}(t) \\
+		&=
+		\begin{bmatrix}
+			\cos\theta & -\sin\theta & 0 \\
+			\sin\theta & \cos\theta & 0 \\
+			0 & 0 & 1 \\
+		\end{bmatrix}\left(\omega_0 r_0\hat{\boldsymbol{b}}_2\right)\\
+		&=
+		\begin{bmatrix}
+			\cos\theta & -\sin\theta & 0 \\
+			\sin\theta & \cos\theta & 0 \\
+			0 & 0 & 1 \\
+		\end{bmatrix}
+		\begin{bmatrix}
+			0 \\
+			\omega_0r_0 \\
+			0 \\
+		\end{bmatrix}\\
+		&= 
+		\begin{bmatrix}
+			-\sin(\theta)\omega_0r_0 \\
+			\cos(\theta)\omega_0r_0 \\
+			0 \\
+		\end{bmatrix}\\
+	\end{split}
+\end{equation}
+The result of the matrix multiplication is the $\mathcal{N}$-frame component vector, thus it can be rewritten in component form as:
+\begin{equation}
+	\begin{split}
+		\dot{\boldsymbol{r}}_{\mathcal{N}}(t)&=-\sin(\theta)\omega_0 r_0\hat{\boldsymbol{n}}_1+\cos(\theta)\omega_0 r_0\hat{\boldsymbol{n}}_2
+	\end{split}
+\end{equation}
+Then factoring in our earlier finding that $\theta=\omega_0t$, the $\mathcal{N}$-frame coordinate representation of  $\boldsymbol{\dot{r}}$ over time is:
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	\begin{equation}
+		\dot{\boldsymbol{r}}_{\mathcal{N}}(t)=-\sin(\omega_0t)\omega_0 r_0\hat{\boldsymbol{n}}_1+\cos(\omega_0t)\omega_0 r_0\hat{\boldsymbol{n}}_2
+	\end{equation}
+\end{mdframed}
+
+\subsubsection*{(b.2): Find}
+Now suppose the point is moving w.r.t. $\mathcal{B}$-frame at constant rate, expressed as $\boldsymbol{r}(t)=r_0\hat{\boldsymbol{b}}_1+\dot{r}_0t\hat{\boldsymbol{b}}_1$, where $\dot{r}_0$ is constant. Derive $\dot{\boldsymbol{r}}$ in vector format, and discuss which term is new relative to the case with $\boldsymbol{r}=r_0\hat{\boldsymbol{b}}_1$ and physically why it appears.\\
+
+\textbf{Analysis/Conclusions:}
+Once again, we can derive $\dot{\boldsymbol{r}}$ by using the transport theorem. The value of $\boldsymbol{\omega}_{B/N}$ is the same, and the new value of $\boldsymbol{r}$ is given in the problem description. The new derivative of $\frac{\prescript{\mathcal{B}}{}{d}\boldsymbol{r}}{dt}$ can be found as:
+\begin{equation}
+	\begin{split}
+		\frac{\prescript{\mathcal{B}}{}{d}\boldsymbol{r}}{dt}&=\frac{\prescript{\mathcal{B}}{}{d}}{dt}\left(r_0\hat{\boldsymbol{b}}_1+\dot{r}_0t\hat{\boldsymbol{b}}_1\right)\\
+		&=\frac{\prescript{\mathcal{B}}{}{d}}{dt}\left(r_0\hat{\boldsymbol{b}}_1\right)+\frac{\prescript{\mathcal{B}}{}{d}}{dt}\left(\dot{r}_0t\hat{\boldsymbol{b}}_1\right)\\
+		&=0+\dot{r}_0\hat{\boldsymbol{b}}_1=\dot{r}_0\hat{\boldsymbol{b}}_1\\
+	\end{split}
+\end{equation}
+The $r_0\hat{\boldsymbol{b}}_1$ term is still constant with respect to the $\mathcal{B}$-frame, and the $\dot{r}_0\hat{\boldsymbol{b}}_1$ term changes linearly with time. So, then when we substitute these terms into the transport theorem:
+\begin{equation}
+	\begin{split}
+		\dot{\boldsymbol{r}}&=\frac{\prescript{\mathcal{B}}{}{d}\boldsymbol{r}}{dt}+\boldsymbol{\omega}_{B/N}\times\boldsymbol{r}\\
+		&=\dot{r}_0\hat{\boldsymbol{b}}_1+\omega_0\hat{\boldsymbol{b}}_3\times\left(r_0\hat{\boldsymbol{b}}_1+\dot{r}_0t\hat{\boldsymbol{b}}_1\right)\\
+		&=\dot{r}_0\hat{\boldsymbol{b}}_1+\omega_0\hat{\boldsymbol{b}}_3\times r_0\hat{\boldsymbol{b}}_1+ \omega_0\hat{\boldsymbol{b}}_3\times\dot{r}_0t\hat{\boldsymbol{b}}_1\\
+		&=\dot{r}_0\hat{\boldsymbol{b}}_1+\omega_0 r_0\hat{\boldsymbol{b}}_2+\omega_0\dot{r}_0t\hat{\boldsymbol{b}}_2
+	\end{split}
+\end{equation}
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	Which makes the vector format of $\dot{\boldsymbol{r}}$
+	\begin{equation}
+		\dot{\boldsymbol{r}}=\dot{r}_0\hat{\boldsymbol{b}}_1+\omega_0\left(r_0+\dot{r}_0t\right)\hat{\boldsymbol{b}}_2
+	\end{equation}
+	
+	The new term which has appeared here relative to the $\boldsymbol{r}=r_0\hat{\boldsymbol{b}}_1$ case is:
+	\begin{equation}
+		\dot{r}_0\hat{\boldsymbol{b}}_1+\omega_0\dot{r}_0t\hat{\boldsymbol{b}}_2
+	\end{equation}
+	
+	The $\omega_0\dot{r}_0t\hat{\boldsymbol{b}}_2$ term is the new time scaling $\dot{r}_0$ dependent term added to $\boldsymbol{r}$ and the $\dot{r}_0\hat{\boldsymbol{b}}_1$ results from the $\mathcal{B}$-frame respective time derivative when the transport theorem interacts with this new term.\\
+	
+	The $\dot{r}_0\hat{\boldsymbol{b}}_1$ physically appears because while $\boldsymbol{r}$ is still locked to the $\hat{\boldsymbol{b}}_1$ basis vector, its no longer scaled by a constant value, and its position now moves outward radially at the constant rate $\dot{r}_0$ (as measured relative to the $\mathcal{B}$-frame), so its distance from the origin grows linearly with time. Likewise, $\dot{\boldsymbol{r}}$ is going to be the sum of the scaling change of $\dot{r}_0$ on $\hat{\boldsymbol{b}}_1$ from the $\mathcal{B}$-frame derivative, and the $\omega_0\dot{r}_0 t$ scaling along the $\hat{\boldsymbol{b}}_2$ that comes from the cross product.
+\end{mdframed}
+
+\subsection*{(c): Given}
+In lecture we derived velocity and acceleration in spherical coordinates. Here we consider cylindrical coordinates. Let $\mathcal{C}:{\hat{\boldsymbol{e}}_{\rho},\hat{\boldsymbol{e}}_{\phi},\hat{\boldsymbol{e}}_{z}}$, where $\rho$ is the radial distance from a fixed z-axis, $\phi$ is the azimuth about $\hat{\boldsymbol{e}}_z$ measured from a fixed reference direction $\hat{\boldsymbol{e}}_x$ and z is the axial coordinate.
+
+\subsubsection*{(c.1): Find}
+Draw a sketch showing $\boldsymbol{r}$ (position of a point) and ${{\hat{\boldsymbol{e}}_{\rho},\hat{\boldsymbol{e}}_{\phi},\hat{\boldsymbol{e}}_{z}}}$. Express $\boldsymbol{r}$ in terms of ${\hat{\boldsymbol{e}}_{\rho},\hat{\boldsymbol{e}}_{\phi},\hat{\boldsymbol{e}}_{z}}$.\\
+
+\textbf{Analysis/Conclusions:}
+The sketch of $\boldsymbol{r}$ in this cylindrical basis can be seen below:
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{fig1.png}
+	\caption{Sketch of $\boldsymbol{r}$ using a cylindrical coordinate basis.}
+	\label{fig:partb1.png}
+\end{figure}
+
+Since $\phi$ has units of angle rather than length, it cannot appear as a coefficient in $\boldsymbol{r}$; instead, $\phi$ determines the orientation of $\hat{\boldsymbol{e}}_{\rho}$, and by extension the coordinate basis. Only $\rho$ and $z$, which carry units of length, appear as scalar coefficients.
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	Thus $\boldsymbol{r}$ can be represented as:
+	\begin{equation}
+		\boldsymbol{r}=\rho\hat{\boldsymbol{e}}_{\rho}+z\hat{\boldsymbol{e}}_z
+	\end{equation}
+\end{mdframed}
+
+\subsubsection*{(c.2): Find}
+Determine the value of $\boldsymbol{\omega}_{C/N}$, $\boldsymbol{v}(=\dot{\boldsymbol{r}})$, and $\boldsymbol{a}(=\ddot{\boldsymbol{r}})$ in terms of ${{\hat{\boldsymbol{e}}_{\rho},\hat{\boldsymbol{e}}_{\phi},\hat{\boldsymbol{e}}_{z}}}$.\\
+
+\textbf{Analysis/Conclusions:}
+Finding the value of $\boldsymbol{\omega}_{C/N}$ in terms of the cylindrical basis is trivial as the cylindrical basis rotates about the $\hat{\boldsymbol{e}}_z$ basis vector in both the cylindrical and Cartesian reference basis (as they're both aligned on that axis), and this rate of change is exactly equal to the rate of change of the angle $\phi$ as it defines the orientation of the cylindrical basis:
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	Thus we say:
+	\begin{equation}
+		\boldsymbol{\omega}_{C/N}=\dot{\phi}\hat{\boldsymbol{e}}_z
+	\end{equation}
+\end{mdframed}
+
+Then, to find the value of the first inertial derivative of $\boldsymbol{r}$ in terms of the cylindrical basis, we use the transport theorem:
+\begin{equation}
+	\begin{split}
+			\dot{\boldsymbol{r}}&=\frac{\prescript{\mathcal{C}}{}{d}}{dt}\boldsymbol{r}+\boldsymbol{\omega}_{C/N}\times\boldsymbol{r}\\
+	\end{split}
+\end{equation}
+
+We know the position of $\boldsymbol{r}$ with respect to the cylindrical basis only changes on two axes (since the orientation of the basis is always locked to the rotation $\phi$ of the point being observed), thus the time derivative of $\boldsymbol{r}$ with respect to the cylindrical basis is simply the time derivative of the two scaling points $\rho$ and $z$:
+\begin{equation}
+	\frac{\prescript{\mathcal{C}}{}{d}}{dt}\boldsymbol{r}=\dot{\rho}\hat{\boldsymbol{e}}_{\rho}+\dot{z}\hat{\boldsymbol{e}}_z
+\end{equation}
+
+Then we substitute these terms into the transport theorem ($\boldsymbol{r}$ was defined in (c.1)):
+\begin{equation}
+	\begin{split}
+		\dot{\boldsymbol{r}}&=\frac{\prescript{\mathcal{C}}{}{d}}{dt}\boldsymbol{r}+\boldsymbol{\omega}_{C/N}\times\boldsymbol{r}\\
+		&=\dot{\rho}\hat{\boldsymbol{e}}_{\rho}+\dot{z}\hat{\boldsymbol{e}}_z+\dot{\phi}\hat{\boldsymbol{e}}_z\times(\rho\hat{\boldsymbol{e}}_{\rho}+z\hat{\boldsymbol{e}}_z)\\
+		&=\dot{\rho}\hat{\boldsymbol{e}}_{\rho}+\dot{z}\hat{\boldsymbol{e}}_z+(\dot{\phi}\hat{\boldsymbol{e}}_z\times\rho\hat{\boldsymbol{e}}_{\rho})+(\dot{\phi}\hat{\boldsymbol{e}}_z\times z\hat{\boldsymbol{e}}_z)\\
+		&=\dot{\rho}\hat{\boldsymbol{e}}_{\rho}+\dot{z}\hat{\boldsymbol{e}}_z+\dot{\phi}\rho\hat{\boldsymbol{e}}_{\phi}+\dot{\phi}z\boldsymbol{0}\\
+	\end{split}
+\end{equation}
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	This means that:
+	\begin{equation}
+			\dot{\boldsymbol{r}}=\dot{\rho}\hat{\boldsymbol{e}}_{\rho}+\dot{\phi}\rho\hat{\boldsymbol{e}}_{\phi}+\dot{z}\hat{\boldsymbol{e}}_z
+	\end{equation}
+\end{mdframed}
+
+Then to find the second inertial derivative of $\boldsymbol{r}$ in terms of the cylindrical basis, we simply use the transport theorem again:
+\begin{equation}
+	\ddot{\boldsymbol{r}}=\frac{\prescript{\mathcal{C}}{}{d}}{dt}\dot{\boldsymbol{r}}+\boldsymbol{\omega}_{C/N}\times\dot{\boldsymbol{r}}
+\end{equation}
+
+The term $\boldsymbol{\omega}_{C/N}$ does not change as its fundamental to the relationship between the cylindrical basis and the reference Cartesian basis. The derivative of $\dot{\boldsymbol{r}}$ found from the perspective of the cylindrical basis is:
+\begin{equation}
+	\begin{split}
+		\frac{\prescript{\mathcal{C}}{}{d}}{dt}\dot{\boldsymbol{r}}&=\frac{\prescript{\mathcal{C}}{}{d}}{dt}\left(\dot{\rho}\hat{\boldsymbol{e}}_{\rho}\right)+\frac{\prescript{\mathcal{C}}{}{d}}{dt}(\dot{\phi}\rho\hat{\boldsymbol{e}}_{\phi})+\frac{\prescript{\mathcal{C}}{}{d}}{dt}\left(\dot{z}\hat{\boldsymbol{e}}_z\right)\\
+		&=\ddot{\rho}\hat{\boldsymbol{e}}_{\rho}+\ddot{\phi}\rho\hat{\boldsymbol{e}}_{\phi}+\dot{\phi}\dot{\rho}\hat{\boldsymbol{e}}_{\phi}+\ddot{z}\hat{\boldsymbol{e}}_z\\
+	\end{split}
+\end{equation}
+
+Then we simply plug in the terms into the Transport theorem once again:
+\begin{equation}
+	\begin{split}
+		\ddot{\boldsymbol{r}}&=\frac{\prescript{\mathcal{C}}{}{d}}{dt}\dot{\boldsymbol{r}}+\boldsymbol{\omega}_{C/N}\times\dot{\boldsymbol{r}}\\
+		&=\left(\ddot{\rho}\hat{\boldsymbol{e}}_{\rho}+\ddot{\phi}\rho\hat{\boldsymbol{e}}_{\phi}+\dot{\phi}\dot{\rho}\hat{\boldsymbol{e}}_{\phi}+\ddot{z}\hat{\boldsymbol{e}}_z\right)+\dot{\phi}\hat{\boldsymbol{e}}_z\times\left(\dot{\rho}\hat{\boldsymbol{e}}_{\rho}+\dot{\phi}\rho\hat{\boldsymbol{e}}_{\phi}+\dot{z}\hat{\boldsymbol{e}}_z\right)\\
+		&=\ddot{\rho}\hat{\boldsymbol{e}}_{\rho}+\ddot{\phi}\rho\hat{\boldsymbol{e}}_{\phi}+\dot{\phi}\dot{\rho}\hat{\boldsymbol{e}}_{\phi}+\ddot{z}\hat{\boldsymbol{e}}_z+\dot{\phi}\dot{\rho}\left(\hat{\boldsymbol{e}}_z\times\hat{\boldsymbol{e}}_{\rho}\right)+\rho\dot{\phi}^2\left(\hat{\boldsymbol{e}}_z\times\hat{\boldsymbol{e}}_{\phi}\right)+\dot{\phi}\dot{z}\left(\hat{\boldsymbol{e}}_z\times\hat{\boldsymbol{e}}_{z}\right)\\
+		&=\ddot{\rho}\hat{\boldsymbol{e}}_{\rho}+\ddot{\phi}\rho\hat{\boldsymbol{e}}_{\phi}+\dot{\phi}\dot{\rho}\hat{\boldsymbol{e}}_{\phi}+\ddot{z}\hat{\boldsymbol{e}}_z+\dot{\phi}\dot{\rho}\hat{\boldsymbol{e}}_{\phi}-\rho\dot{\phi}^2\hat{\boldsymbol{e}}_{\rho}+\dot{\phi}\dot{z}\boldsymbol{0}
+	\end{split}
+\end{equation}
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	This means that:
+	\begin{equation}
+		\ddot{\boldsymbol{r}}=\left(\ddot{\rho}-\rho\dot{\phi}^2\right)\hat{\boldsymbol{e}}_{\rho}+\left(\rho\ddot{\phi}+2\dot{\phi}\dot{\rho}\right)\hat{\boldsymbol{e}}_{\phi}+\ddot{z}\hat{\boldsymbol{e}}_z
+	\end{equation}
+\end{mdframed}
+
+\subsubsection*{(c.3): Find}
+Confirm that $\hat{\boldsymbol{e}}_{\rho}$,$\hat{\boldsymbol{e}}_{\phi}$ components of your $\boldsymbol{a}$ reduce to the planar polar-coordinate result ($\ddot{\rho}-\rho\dot{\phi}^2$ and $\rho\ddot{\phi}+2\dot{\rho}\dot{\phi}$, respectively) when z=0.\\
+
+\textbf{Analysis/Conclusions:}
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	If we consider $z(t)=0$ for all $t$, then $\dot{z}(t)$ and $\ddot{z}(t)$ will also equal $0$ for all $t$. Thus to confirm $\boldsymbol{a}$ reduces to a planar-planar coordinate result, we simply substitute $z(t)$ and its derivatives in $\boldsymbol{a}$ for $0$:
+	\begin{equation}
+		\begin{split}
+			\boldsymbol{a}&=\left(\ddot{\rho}-\rho\dot{\phi}^2\right)\hat{\boldsymbol{e}}_{\rho}+\left(\rho\ddot{\phi}+2\dot{\phi}\dot{\rho}\right)\hat{\boldsymbol{e}}_{\phi}+\ddot{z}\hat{\boldsymbol{e}}_z\\
+			&=\left(\ddot{\rho}-\rho\dot{\phi}^2\right)\hat{\boldsymbol{e}}_{\rho}+\left(\rho\ddot{\phi}+2\dot{\phi}\dot{\rho}\right)\hat{\boldsymbol{e}}_{\phi}+0\hat{\boldsymbol{e}}_z\\
+			&=\left(\ddot{\rho}-\rho\dot{\phi}^2\right)\hat{\boldsymbol{e}}_{\rho}+\left(\rho\ddot{\phi}+2\dot{\phi}\dot{\rho}\right)\hat{\boldsymbol{e}}_{\phi}\\
+		\end{split}
+	\end{equation}
+	Which proves that all that remains are the $\ddot{\rho}-\rho\dot{\phi}^2$ and $\rho\ddot{\phi}+2\dot{\rho}\dot{\phi}$ terms when $z(t)=0$. 
+\end{mdframed}
+
+\newpage
+\section*{(1.2) Orbital Dynamics}
+\subsection*{(d): Given}
+Using $\ddot{\boldsymbol{r}}=-\mu\boldsymbol{r}/r^3$.\\
+
+\textbf{Find:}
+Prove that the specific angular momentum $\boldsymbol{h}=\boldsymbol{r}\times\boldsymbol{v}$ and the eccentricity vector $\boldsymbol{e}=\frac{\boldsymbol{v}\times\boldsymbol{h}}{\mu}-\frac{\boldsymbol{r}}{r}$ are both constant.\\
+
+\textbf{Analysis/Conclusions:}
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	First, we run through the process of proving $\boldsymbol{h}$ is constant by differentiating the definition of $\boldsymbol{h}$:
+	\begin{equation}
+		\begin{split}
+			\frac{\partial\boldsymbol{h}}{\partial t}&=\frac{\partial}{\partial t}\left(\boldsymbol{r}\times\boldsymbol{v}\right)\\
+			&=\frac{\partial\boldsymbol{r}}{\partial t}\times\boldsymbol{v}+\boldsymbol{r}\times\frac{\partial\boldsymbol{v}}{\partial t}\\
+			&=\boldsymbol{v}\times\boldsymbol{v}+\boldsymbol{r}\times\boldsymbol{a}\\
+			&=\boldsymbol{0}+\boldsymbol{r}\times\boldsymbol{a}\\
+			&=\boldsymbol{r}\times\boldsymbol{r}\left(\frac{-\mu}{r^3}\right)\\
+			&=\boldsymbol{0}\left(\frac{-\mu}{r^3}\right)=\boldsymbol{0}
+		\end{split}
+	\end{equation}
+	Which shows the derivative of $\boldsymbol{h}$ is zero, which means $\boldsymbol{h}$ is constant.
+\end{mdframed}
+
+Then we run through the process of proving $\boldsymbol{e}$ is constant by differentiating its own definition:
+\begin{equation}
+	\begin{split}
+		\frac{\partial\boldsymbol{e}}{\partial t}&=\frac{\partial}{\partial t}\left(\boldsymbol{v}\times\boldsymbol{h}\right)\frac{1}{\mu}-\frac{\partial}{\partial t}\frac{\boldsymbol{r}}{r}\\
+		&=\left(\frac{\partial\boldsymbol{v}}{\partial t}\times\boldsymbol{h}+\boldsymbol{v}\times\frac{\partial\boldsymbol{h}}{\partial t}\right)\frac{1}{\mu}-\left(\frac{\partial \boldsymbol{r}}{\partial t}\frac{1}{r}+\boldsymbol{r}\frac{\partial r^{-1}}{\partial t}\right)\\
+	\end{split}
+\end{equation}
+In the proof of $\boldsymbol{h}$ being constant, it was established its derivative is zero, thus we substitute the derivative of $\boldsymbol{h}$ for zero:
+\begin{equation}
+	\begin{split}
+		\frac{\partial\boldsymbol{e}}{\partial t}&=\left(\boldsymbol{a}\times\boldsymbol{h}+\boldsymbol{v}\times\boldsymbol{0}\right)\frac{1}{\mu}-\boldsymbol{v}\frac{1}{r}-\boldsymbol{r}\frac{\partial r^{-1}}{\partial t} \\
+		&=\left(\frac{-\mu}{r^3}\boldsymbol{r}\times\boldsymbol{h}\right)\frac{1}{\mu}-\boldsymbol{v}\frac{1}{r}-\boldsymbol{r}\frac{\partial r^{-1}}{\partial t} \\
+		&=\left(\boldsymbol{r}\times\boldsymbol{h}\right)\frac{-\mu}{r^3\mu}-\boldsymbol{v}\frac{1}{r}-\boldsymbol{r}\frac{\partial r^{-1}}{\partial t} \\
+		&=\left(\boldsymbol{r}\times\left(\boldsymbol{r}\times\boldsymbol{v}\right)\right)\frac{-1}{r^3}-\boldsymbol{v}\frac{1}{r}-\boldsymbol{r}\frac{\partial r^{-1}}{\partial t} \\
+		&=\left(\left(\boldsymbol{r}\cdot\boldsymbol{v}\right)\boldsymbol{r}-\left(\boldsymbol{r}\cdot\boldsymbol{r}\right)\boldsymbol{v}\right)\frac{-1}{r^3}-\boldsymbol{v}\frac{1}{r}-\boldsymbol{r}\frac{\partial r^{-1}}{\partial t} \\
+		&=\frac{-\left(\boldsymbol{r}\cdot\boldsymbol{v}\right)\boldsymbol{r}}{r^3}+\frac{\left(\boldsymbol{r}\cdot\boldsymbol{r}\right)\boldsymbol{v}}{r^3}-\frac{\boldsymbol{v}}{r}-\boldsymbol{r}\frac{\partial r^{-1}}{\partial t} \\
+		&=\frac{-\left(\boldsymbol{r}\cdot\boldsymbol{v}\right)\boldsymbol{r}}{r^3}+\frac{r^2\boldsymbol{v}}{r^3}-\frac{\boldsymbol{v}}{r}-\boldsymbol{r}\frac{\partial r^{-1}}{\partial t} \\
+		&=\frac{-\left(\boldsymbol{r}\cdot\boldsymbol{v}\right)\boldsymbol{r}}{r^3}+\frac{\boldsymbol{v}}{r}-\frac{\boldsymbol{v}}{r}-\boldsymbol{r}\frac{\partial r^{-1}}{\partial t} \\
+		&=\frac{-\left(\boldsymbol{r}\cdot\boldsymbol{v}\right)\boldsymbol{r}}{r^3}-\boldsymbol{r}\frac{\partial r^{-1}}{\partial t} \\
+	\end{split}
+\end{equation}
+
+To save room, the $-\boldsymbol{r}\dfrac{\partial r^{-1}}{\partial t}$ derivation was left separately. Below the derivative is found using the chain rule and $u$-substitution:
+\begin{equation}
+	\begin{split}
+		&\text{Let }\, u=\left(\boldsymbol{r}\cdot\boldsymbol{r}\right)\\
+		&\text{Then } r = |\boldsymbol{r}| = \sqrt{\boldsymbol{r}\cdot\boldsymbol{r}} = u^{1/2}, \quad\text{so}\quad r^{-1}=u^{-1/2}\\
+		&\text{By the chain rule:}\\
+		&\frac{\partial r^{-1}}{\partial t}=\frac{\partial u^{-1/2}}{\partial t}=\frac{\partial u^{-1/2}}{\partial u}\frac{\partial u}{\partial t}\\
+	\end{split}
+\end{equation}
+
+Thus:
+\begin{equation}
+	\begin{split}
+		-\boldsymbol{r}\frac{\partial r^{-1}}{\partial t}&=-\boldsymbol{r}\frac{\partial u^{-1/2}}{\partial u}\frac{\partial u}{\partial t}\\
+		&=-\boldsymbol{r}\left(-\frac{1}{2}\left(\boldsymbol{r}\cdot\boldsymbol{r}\right)^{-3/2}\right)\left(\frac{\partial\boldsymbol{r}}{\partial t}\cdot\boldsymbol{r}+\boldsymbol{r}\cdot\frac{\partial\boldsymbol{r}}{\partial t}\right)\\
+		&=-\boldsymbol{r}\left(-\frac{1}{2}\left(r^2\right)^{-3/2}\right)\left(\boldsymbol{v}\cdot\boldsymbol{r}+\boldsymbol{r}\cdot\boldsymbol{v}\right)\\
+		&=-\boldsymbol{r}\left(-\frac{1}{2}r^{-3}\right)\left(2\boldsymbol{r}\cdot\boldsymbol{v}\right)\\
+		&=-2\frac{-1}{2}r^{-3}\boldsymbol{r}\left(\boldsymbol{r}\cdot\boldsymbol{v}\right)\\
+		&=\frac{\boldsymbol{r}\left(\boldsymbol{r}\cdot\boldsymbol{v}\right)}{r^{3}}
+	\end{split}
+\end{equation}
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	So then substituting the derivative of $r^{-1}$ back with the main expression:
+	\begin{equation}
+		\begin{split}
+			\frac{\partial\boldsymbol{e}}{\partial t}&=\frac{-\boldsymbol{r}\left(\boldsymbol{r}\cdot\boldsymbol{v}\right)}{r^3}-\boldsymbol{r}\frac{\partial r^{-1}}{\partial t}\\
+			&=\frac{-\boldsymbol{r}\left(\boldsymbol{r}\cdot\boldsymbol{v}\right)}{r^3}+\frac{\boldsymbol{r}\left(\boldsymbol{r}\cdot\boldsymbol{v}\right)}{r^{3}}\\
+			&=\boldsymbol{0}\\
+		\end{split}
+	\end{equation}
+	Which completes the proof that the derivative of $\boldsymbol{e}$ is zero, and thus the value of $\boldsymbol{e}$ is constant.
+\end{mdframed}
+
+\subsection*{(e): Given}
+Kepler's equation $M=E-e\sin E$ does not have a closed form solution and requires an iterative method to obtain $E$ for a given $e, M$. Let us solve Kepler's equation using Newton's method,
+
+\subsubsection*{(e.1): Find}
+The scalar equation we need to solve is $f(E)=E-e\sin E-M=0$. Verify that the update rule for Newton's method is $E_{k+1}=E_k-f(E_k)/(1-e\cos E_k)$.\\
+
+\textbf{Analysis/Conclusions:}
+We know the general form of the Newton-Raphson method is:
+\begin{equation}
+	x_{k+1}=x_k-\frac{f(x_k)}{\frac{d}{dx}f(x_k)}
+\end{equation}
+Where $x_n$ is the value we are iterating to solve, and $f(x)$ is some function of $x$ equal to zero.\\
+
+To use Newton-Raphson for Kepler's equation to obtain eccentric anomaly $E$, we would iterate on $E$ like:
+\begin{equation}
+	E_{k+1}=E_k-\frac{f(E_k)}{\frac{d}{dE}f(E_k)}
+\end{equation}
+Then we need to rewrite Kepler's equation where it equates to zero:
+\begin{equation}
+	\begin{split}
+		M&=E-e\sin E\\
+		f(E)&=E-e\sin E-M=0\\
+	\end{split}
+\end{equation}
+
+Then the last thing we need to do is find the first derivative of $f(E)$ with respect to $E$:
+\begin{equation}
+	\begin{split}
+		\frac{\partial}{\partial E}f(E)&=\frac{\partial}{\partial E}\left(E-e\sin E-M\right)\\
+		&=\frac{\partial E}{ \partial E}-\frac{\partial}{\partial E}\left(e\sin E\right)-\frac{\partial M}{\partial E}\\
+		&=1-e\cos E-0\\
+		&=1-e\cos E\\
+	\end{split}
+\end{equation}
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	Thus, when we plug the values of $f(E_k)$ and its derivative into the Newton-Raphson setup in (31), we get:
+	\begin{equation}
+		E_{k+1}=E_k-\frac{E_k-e\sin E_k-M}{1-e\cos E_k}
+	\end{equation}
+	Which verifies the given update rule is correct.
+\end{mdframed}
+
+\subsubsection*{(e.2): Find}
+Implement Netwon's method for Kepler's equation, and report the code snippet you implemented.\\
+
+\textbf{Analysis/Conclusions:}
+The implementation of the above Newton-Raphson update rule in Matlab is:
+\begin{lstlisting}[label=lst:b.m,caption=Implementation of Newton-Raphson solution to inverting Kepler's Equation.]
+	% Define the mean anomaly and eccentricity
+	M = deg2rad(60);
+	e = 0.4;
+	
+	% Define a function handle for the kepler equation and its gradient
+	f = @(E) E - e*sin(E) - M;
+	namblaf = @(E) 1 - e*cos(E);
+	
+	% Define vectors for the iteration values to be stored in
+	E = zeros(1,10001);
+	fE = zeros(1,10001);
+	namblafE = zeros(1,10001);
+	deltaE = zeros(1,10001);
+	
+	% Define some initial values
+	E(1) = M;              % Set the initial guess as mean anomaly
+	targetDE = 10^(-8);    % Set the target change in iteration
+	
+	% Loop until change in iteration meets target
+	for n = 1:10000
+	
+		% Calculate this iteration of Kepler's equation and its gradient
+		fE(n) = f(E(n));
+		namblafE(n) = namblaf(E(n));
+		
+		% Find the next iteration of eccentric anomaly
+		E(n+1) = E(n) - fE(n)/namblafE(n);
+		
+		% Calculate the difference in iteration
+		deltaE(n) = abs(E(n+1) - E(n));
+		
+		% Break the loop if the difference meets the target
+		if (deltaE(n) <= targetDE)
+			break
+		end
+	end
+\end{lstlisting}
+
+\subsubsection*{(e.3): Find}
+Assuming a satellite is in orbit with $e=0.4$ and $M=60\text{deg}$, solve Kepler's equation using Newton's method. Use $E_0=M$ to initialize. Iterate until$\|\Delta E_k\|$ is below $10^{-8}\text{rad}$. Report the values of $E_k,f(E_k),\nabla_E f(E_k),\text{and}\,\Delta E_k$ for every iteration k.\\
+
+\textbf{Analysis/Conclusions:}
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	After running the above Matlab code, the following are the resulting values:
+	\begin{table}[H]
+		\centering
+		\resizebox{\textwidth}{!}{%
+			\begin{tabular}{|c|c|c|c|c|}
+				\hline
+				$k$ & $E_k$ [rad] & $f(E_k)$ [rad] & $\nabla_E f(E_k)$ [--] & $\Delta E_k$ [rad] \\
+				\hline
+				0 & 1.047197551196598 & $-0.346410161513775$ & 0.800000000000000 & 0.433012701892219 \\
+				\hline
+				1 & 1.480210253088817 & $\phantom{-}0.034652747286428$ & 0.963815105824775 & 0.035953729171712 \\
+				\hline
+				2 & 1.444256523917105 & $\phantom{-}0.000257166102366$ & 0.949519050478636 & 0.000270838275689 \\
+				\hline
+				3 & 1.443985685641416 & $\phantom{-}0.000000014553208$ & 0.949411583214329 & 0.000000015328660 \\
+				\hline
+				4 & 1.443985670312756 & $\phantom{-}0.000000000000000$ & 0.949411577132098 & 0.000000000000000 \\
+				\hline
+				5 & 1.443985670312756 & -- & -- & -- \\
+				\hline
+			\end{tabular}%
+		}
+		\caption{Newton's method iterations for Kepler's equation ($e = 0.4$, $M = 60^\circ$).}
+		\label{tab:kepler_newton}
+	\end{table}
+	
+\end{mdframed}
+
+\subsection*{(f): Given}
+Let us calculate and compare the magnitude of different perturbations.\\
+
+\textbf{Define Reference Frames}:
+\begin{itemize}
+	\item \textbf{$\mathcal{N}$:\{$\mathcal{O}$,$\hat{\boldsymbol{x}}$,$\hat{\boldsymbol{y}}$,$\hat{\boldsymbol{z}}$\}: Earth-centered inertial reference frame (ECI)\\}An Earth-centered inertial reference frame with its origin at Earth center having $\hat{\boldsymbol{z}}$ aligned with the Earth's rotational axis pointing towards the north pole.
+	\item \textbf{$\mathcal{B}$:\{$\mathcal{O}$,$\hat{\boldsymbol{r}}$,$\hat{\boldsymbol{\theta}}$,$\hat{\boldsymbol{h}}$\}: Radial Transverse Normal frame (RTN)\\}A body frame with its origin at Earth center where $\hat{\boldsymbol{r}}$ is aligned with the spacecraft's current position vector, $\hat{\boldsymbol{\theta}}$ is aligned with the spacecraft's local horizon, and $\hat{\boldsymbol{h}}$ is aligned with the orbit's specific angular momentum vector.
+\end{itemize}
+
+\begin{table}[H]
+	\centering
+	\caption{Reference orbit}
+	\label{tab:reference_orbit}
+	\resizebox{\textwidth}{!}{%
+		\begin{tabular}{|c|c|c|c|c|c|c|}
+			\hline
+			\multicolumn{3}{|c|}{Constants} & \multicolumn{4}{c|}{Classical orbital elements at epoch} \\
+			\hline
+			$\mu_{\text{earth}}$ & $R_{\text{earth}}$ & $J_2$ & $a$ & $e$ & $i$ & $\Omega_0,\ \omega_0,\ \nu_0$ \\
+			\hline
+			398600 km$^3$/s$^2$ & 6378.137 km & $1.08263\times10^{-3}$ & 6978 km & 0.01 & 45 deg & 0 deg \\
+			\hline
+		\end{tabular}%
+	}
+\end{table}
+
+\subsubsection*{(f.1): Find}
+Report the Cartesian state vector at epoch $t=0$ using the orbit information given in Table 2.\\
+
+\textbf{Analysis/Conclusions:}
+Converting from Keplerian orbital elements to Cartesian states is fairly simple.\\
+
+The first step was to use the Kepler solving algorithm from part (e) to obtain eccentric anomaly $E$ from mean anomaly $M$. Using this value, true anomaly $\nu$ can be calculated from equation (35). This is configured to take advantage of atan2 and resolve the quadrant ambiguity.
+\begin{equation*}
+	\sin{\nu}=\frac{\sqrt{1-e^2}\sin{E}}{1-e\cos{E}},\quad \cos{\nu}=\frac{\cos{E}-e}{1-e\cos{E}}
+\end{equation*}
+\begin{equation}
+	\tan{\nu}=\frac{\sin{\nu}}{\cos{\nu}}=\frac{\frac{\sqrt{1-e^2}\sin{E}}{1-e\cos{E}}}{\frac{\cos{E}-e}{1-e\cos{E}}}=\frac{\sqrt{1-e^2}\sin{E}}{\cos{E}-e}
+\end{equation}
+\begin{equation*}
+	\nu = \tan^{-1}\left(\frac{\sqrt{1-e^2}\sin{E}}{\cos{E}-e}\right)
+\end{equation*}
+
+With a known value of $\nu$, the magnitudes of spacecraft position $\boldsymbol{r}$ and velocity $\boldsymbol{v}$ can be calculated using the equations in (36) and (37), which include semi-major axis $a$, semi-latus rectum $p$, eccentricity $e$, and gravitational parameter of the system $\mu$.
+\begin{equation}
+	r=\frac{p}{1+e\cos{\nu}},\quad p=a(1-e^2)
+\end{equation}
+\begin{equation}
+	v=\sqrt{\frac{2\mu}{r}-\frac{\mu}{a}}
+\end{equation}
+
+Utilizing the RTN frame, with the magnitude of $\boldsymbol{r}$ found, it can be expressed as Cartesian coordinates as $\boldsymbol{r}=r\hat{\boldsymbol{r}}+0\hat{\boldsymbol{\theta}}+0\hat{\boldsymbol{h}}$.\\ 
+
+Then the value of flight path angle $\gamma$ can be used to find the value of $\boldsymbol{v}$ in the rtn frame using the equations outlined in (38). Because $\gamma$ spans 180 degrees, there is no need to resolve the quadrant ambiguity.
+\begin{equation}
+	h = \sqrt{\mu p},\quad \gamma = \cos^{-1}\left({\frac{h}{rv}}\right)
+\end{equation}
+\begin{equation*}
+	\boldsymbol{r}=v*\sin{\gamma}\hat{\boldsymbol{r}}+v*\cos{\gamma}\hat{\boldsymbol{\theta}}+0\hat{\boldsymbol{h}}
+\end{equation*}
+
+Then the RTN frame $\boldsymbol{r}$ and $\boldsymbol{v}$ vectors can be converted to ECI frame using the DCM described below, which includes right ascension of the ascending node $\Omega$, inclination $i$, and true longitude $\theta$:
+\begin{equation}
+	\left[
+	\begin{matrix}
+		\cos{\Omega}\cos{\theta}-\sin{\Omega}\cos{i}\sin{\theta} & -\cos{\Omega}\sin{\theta}-\sin{\Omega}\cos{i}\cos{\theta} & \sin{\Omega}\sin{i}\\
+		\sin{\Omega}\cos{\theta}+\cos{\Omega}\cos{i}\sin{\theta} & -\sin{\Omega}\sin{\theta}+\cos{\Omega}\cos{i}\cos{\theta} & -\cos{\Omega}\sin{i}\\
+		\sin{i}\sin{\theta} & \sin{i}\cos{\theta} & \cos{i}
+	\end{matrix}
+	\right]
+\end{equation}
+
+The implementation of this algorithm into code can be seen below:
+
+\begin{lstlisting}[label=lst:e.m,caption=Implementation of Newton-Raphson solution to inverting Kepler's Equation.]
+	% Convert Keplerian orbital elements to Cartesian states
+	% Pass:
+	%      x = Keplerian state vector
+	%     mu = gravitational parameter of the orbited body
+	% Return
+	%      r = xyz position
+	%      v = xyz velocity
+	function xcart = kep2cart(xkep, mu)
+		% Define orbital elements from state vector input
+		a=xkep(1); e=xkep(2); i=xkep(3); O=xkep(4); w=xkep(5); M=xkep(6);
+		
+		% Calculate Eccentric Anomaly and True Anomaly from Mean Anomaly
+		E = kepler_E(e, M);
+		nu = wrapTo2Pi(atan2(sqrt(1-(e^2))*sin(E),cos(E)-e));
+		
+		% Calculate orbital radius
+		rmag = (a*(1-(e^2)))/(1+(e*cos(nu)));
+		
+		% Calculate velocity
+		vmag = sqrt(((2*mu)/rmag)-(mu/a));
+		
+		% Calculate flightpath angle
+		h = sqrt(mu*a*(1-(e^2)));       % Angular momentum
+		fpaFind = h/(rmag*vmag);        % Accounting for numerical drift
+		if fpaFind > 1
+		fpaFind = 1;
+		elseif fpaFind < -1
+		fpaFind = -1;
+		end
+		gamma = acos(fpaFind);         % FPA
+		if nu > pi                      % Resolve quadrant ambiguity
+		gamma = -gamma;
+		end
+		
+		% Define the position and velocity vectors in the rtn frame
+		r = [rmag; 0; 0];
+		v = [vmag*sin(gamma); vmag*cos(gamma); 0];
+		
+		% Define the Argument of Latitude using the Argument of Periapsis and
+		% True Anomaly
+		u = (w + nu); 
+		
+		% Convert position and velocity from RTN frame to ECI frame
+		r = rtn2xyz(r,O,i,u);
+		v = rtn2xyz(v,O,i,u);
+		
+		% Define Cartesian state vector
+		xcart = [r;v];
+	end
+\end{lstlisting}
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	Because the true anomaly $\nu$ given in Table 2 is zero radians at $t=0$, the mean anomaly $M$ is also zero at the same time and this code can be run without modification. Running this code with the Keplerian elements and gravitational parameter given in Table 2 results in the following Cartesian state vector at $t=0$:
+	\begin{table}[H]
+		\centering
+		\caption{Cartesian state vector at epoch ($t=0$)}
+		\label{tab:cartesian_state}
+		\begin{tabular}{|c|c|}
+			\hline
+			Component & Value \\
+			\hline
+			$x$ [km] & 6908.22 \\
+			\hline
+			$y$ [km] & 0 \\
+			\hline
+			$z$ [km] & 0 \\
+			\hline
+			$\dot{x}$ [km/s] & 0 \\
+			\hline
+			$\dot{y}$ [km/s] & 5.397979816832630 \\
+			\hline
+			$\dot{z}$ [km/s] & 5.397979816832631 \\
+			\hline
+		\end{tabular}
+	\end{table}
+\end{mdframed}
+
+\subsubsection*{(f.2): Find}
+Report the magnitude of each of the four perturbing accelerations below at the epoch:
+\begin{itemize}
+	\item $J_2$: use Eq. (40), where $\boldsymbol{r} = (x,y,z)$ and $r_o = R_{\text{earth}}$.
+	\small
+	\begin{equation}
+		\boldsymbol{a}_{J2} = -\frac{3\mu J_2 r_o^2}{2r^5}\left[\left(1-5\frac{z^2}{r^2}\right)x\hat{\boldsymbol{n}}_1 + \left(1-5\frac{z^2}{r^2}\right)y\hat{\boldsymbol{n}}_2 + \left(3-5\frac{z^2}{r^2}\right)z\hat{\boldsymbol{n}}_3\right]
+	\end{equation}
+	\normalsize
+	
+	\item Third body (Sun \textit{and} Moon, computed separately): See the lecture slides. Use $\mu_{\text{Moon}} = 4902.8$ km$^3$/s$^2$, $d_{\text{Moon}} = 384{,}400$ km, $\mu_{\text{Sun}} = 1.327\times10^{11}$ km$^3$/s$^2$, $d_{\text{Sun}} = 1.496\times10^8$ km.
+	Note: You have some flexibility to define the Sun and Moon directions at the epoch. Report the directions you assumed.
+	
+	\item SRP: use the cannon-ball model from the slides. Use $A/m = 0.01$ m$^2$/kg and $C_R = 1.3$, which is representative of some small satellites. Be careful about the unit.
+	
+	\item Atmospheric drag: Use a simplified model (Be careful about the unit)
+	\begin{equation}
+		\boldsymbol{a}_{\text{drag}} = -\frac{1}{2}C_D\frac{A}{m}\rho v^2\,\hat{\boldsymbol{v}}, \quad v := \|\boldsymbol{v}\|_2, \quad \hat{\boldsymbol{v}} := \frac{\boldsymbol{v}}{v}
+	\end{equation}
+	
+	with $C_D = 2.2$, $A/m = 0.01$ m$^2$/kg (same as SRP), and a representative atmospheric density at 600 km altitude, $\rho = 1.454\times10^{-13}$ kg/m$^3$.
+\end{itemize}
+
+\textbf{Assume:}
+\begin{itemize}
+	\item The position of the Moon and the Sun are both purely in the direction of the $\hat{\boldsymbol{x}}$ basis vector in the ECI frame.
+\end{itemize}
+
+\textbf{Analysis/Conclusions:}
+To find the value of the $J_2$ perturbing acceleration at epoch $t=0$, simply plug in the table values and the Cartesian state vector calculated in the previous part. Likewise, I split the terms in equation (40) into four parts. But before computing these parts, we take the norm of the position vector computed in (f.1).\\
+
+From the position vector, the vector components are:
+\begin{equation}
+	\begin{split}
+		\boldsymbol{r} = 
+		\begin{bmatrix}
+			6908.22 \\
+			0 \\
+			0 \\
+		\end{bmatrix}km=
+		\begin{bmatrix}
+			x \\
+			y \\
+			z \\
+		\end{bmatrix}km
+	\end{split}
+\end{equation}
+Which we can see by observation that only one of the vector components is nonzero, thus we can say the norm of this vector is equal to the value of that component:
+\begin{equation}
+	\|\boldsymbol{r}\|_2 = r = 6908.22km \\
+\end{equation}
+
+First the scalar all three vector components are multiplied by (recall $r_o=R_{\text{Earth}})$:
+\begin{equation}
+	\begin{split}
+		-\frac{3\mu J_2 r_o^2}{2r^5}&=-\frac{3(398600km^3/s^2)  (1.08263\times10^{-3}) (6378.137km)^2}{2(6908.22km)^5} \\
+		&=-\frac{3(398600)  (1.08263\times10^{-3}) (6378.137)^2}{2(6908.22)^5}s^{-2} \\
+		&=-1.673653303997461\times 10^{-09 }s^{-2}
+	\end{split}
+\end{equation}
+
+Second find the $\boldsymbol{\hat{n}}_1$ vector component of the perturbation:
+\begin{equation}
+	\begin{split}
+		\left(1-5\frac{z^2}{r^2}\right)x\hat{\boldsymbol{n}}_1&=\left(1-5\frac{(0km)^2}{(6908.22km)^2}\right)(6908.22km)\hat{\boldsymbol{n}}_1=6908.22km\hat{\boldsymbol{n}}_1\\
+	\end{split}
+\end{equation}
+
+Third find the $\boldsymbol{\hat{n}}_2$ vector component of the perturbation:
+\begin{equation}
+	\begin{split}
+		\left(1-5\frac{z^2}{r^2}\right)y\hat{\boldsymbol{n}}_2&=\left(1-5\frac{(0km)^2}{(6908.22km)^2}\right)(0km)\hat{\boldsymbol{n}}_2=0km\hat{\boldsymbol{n}}_2\\
+	\end{split}
+\end{equation}
+
+Finally find the $\boldsymbol{\hat{n}}_3$ vector component of the perturbation:
+\begin{equation}
+	\begin{split}
+		\left(3-5\frac{z^2}{r^2}\right)z\hat{\boldsymbol{n}}_3&=\left(3-5\frac{(0km)^2}{(6908.22km)^2}\right)(0km)\hat{\boldsymbol{n}}_3=0km\hat{\boldsymbol{n}}_3\\
+	\end{split}
+\end{equation}
+
+Then we plug these components into the complete equation:
+\begin{equation}
+	\begin{split}
+		\boldsymbol{a}_{J2} &= -\frac{3\mu J_2 r_o^2}{2r^5}\left[\left(1-5\frac{z^2}{r^2}\right)x\hat{\boldsymbol{n}}_1 + \left(1-5\frac{z^2}{r^2}\right)y\hat{\boldsymbol{n}}_2 + \left(3-5\frac{z^2}{r^2}\right)z\hat{\boldsymbol{n}}_3\right]\\
+		&=-1.673653303997461\times 10^{-09 }s^{-2}\left[6908.22km\hat{\boldsymbol{n}}_1+0km\hat{\boldsymbol{n}}_2+0km\hat{\boldsymbol{n}}_3\right]\\
+		&=\begin{bmatrix}
+			-1.156196522774134\times10^{-5} \\
+			0 \\
+			0 \\
+		\end{bmatrix}km/s^2
+	\end{split}
+\end{equation}
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	We see that the vector $\boldsymbol{a}_{J2}$ also has only one non-zero component so the magnitude can be found simply by taking the absolute value of the one non-zero component:
+	\begin{equation}
+		a_{J2} = \|\boldsymbol{a}_{J2}\|_2=1.156196522774134\times10^{-5}km/s^2
+	\end{equation}
+\end{mdframed}
+
+To find the value of the Moon and Sun separately acting as third-body acceleration perturbations, we can use the following vector formula discussed in the class notes:
+\begin{equation}
+	\boldsymbol{a}_i=-\mu_i\left(\frac{\boldsymbol{r}-\boldsymbol{r}_i}{\|\boldsymbol{r}-\boldsymbol{r}_i\|_2^3}+\frac{\boldsymbol{r}_i}{\|\boldsymbol{r}_i\|_2^3}\right)
+\end{equation}
+Were $\boldsymbol{a}_i$ is the perturbing acceleration of the third body, $\boldsymbol{r}_i$ is the position of the third body, and $\boldsymbol{r}$ is the position of the spacecraft.\\
+
+In the problem assumptions, I made the assumption that the Moon and Sun's positions both scale directly on $\hat{\boldsymbol{x}}$ in the ECI frame at Epoch. As found in part (e.1), the position of the spacecraft is also scaled completely with $\hat{\boldsymbol{x}}$ in the ECI frame at Epoch, which makes the written form of the calculation collapse down to only require $\hat{\boldsymbol{x}}$ terms. Likewise we can calculate the Moon's perturbing acceleration as:
+\small
+\begin{equation}
+	\begin{split}
+		\boldsymbol{a}_\text{Moon}&=-\mu_\text{Moon}\left(\frac{\boldsymbol{r}-\boldsymbol{r}_\text{Moon}}{\|\boldsymbol{r}-\boldsymbol{r}_\text{Moon}\|_2^3}+\frac{\boldsymbol{r}_\text{Moon}}{\|\boldsymbol{r}_\text{Moon}\|_2^3}\right)\\
+		&=-\left(4902.8km^3/s^2\right)\left(\frac{\boldsymbol{r}-\boldsymbol{r}_\text{Moon}}{\|\boldsymbol{r}-\boldsymbol{r}_\text{Moon}\|_2^3}+\frac{\boldsymbol{r}_\text{Moon}}{\|\boldsymbol{r}_\text{Moon}\|_2^3}\right)\\
+		&=-\left(4902.8km^3/s^2\right)\left(\frac{(6908.22km-384400km)\hat{\boldsymbol{x}}}{\|6908.22km-384400km\|_2^3}+\frac{384400km\hat{\boldsymbol{x}}}{(384400km)^3}\right)\\
+		&=\begin{bmatrix}
+			1.225524135908843\times10^{-9} \\
+			0 \\
+			0 \\
+		\end{bmatrix}km/s^2
+	\end{split}
+\end{equation}
+\normalsize
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	We see that the vector $\boldsymbol{a}_\text{Moon}$ also has only one non-zero component so the magnitude can be found simply by taking the absolute value of the one non-zero component:
+	\begin{equation}
+		a_\text{Moon} = \|\boldsymbol{a}_\text{Moon}\|_2=1.225524135908843\times10^{-9}km/s^2
+	\end{equation}
+\end{mdframed}
+And it can be done the same way for the Sun as:
+\footnotesize
+\begin{equation}
+	\begin{split}
+		\boldsymbol{a}_\text{Sun}&=-\mu_\text{Sun}\left(\frac{\boldsymbol{r}-\boldsymbol{r}_\text{Sun}}{\|\boldsymbol{r}-\boldsymbol{r}_\text{Sun}\|_2^3}+\frac{\boldsymbol{r}_\text{Sun}}{\|\boldsymbol{r}_\text{Sun}\|_2^3}\right)\\
+		&=-\left(1.327\times10^{11}km^3/s^2\right)\left(\frac{\boldsymbol{r}-\boldsymbol{r}_\text{Sun}}{\|\boldsymbol{r}-\boldsymbol{r}_\text{Sun}\|_2^3}+\frac{\boldsymbol{r}_\text{Sun}}{\|\boldsymbol{r}_\text{Sun}\|_2^3}\right)\\
+		&=-\left(1.327\times10^{11}km^3/s^2\right)\left(\frac{(6908.22km-1.496\times10^8km)\hat{\boldsymbol{x}}}{\|6908.22km-1.496\times10^8km\|_2^3}+\frac{1.496\times10^8km\hat{\boldsymbol{x}}}{(1.496\times10^8km)^3}\right)\\
+		&=\begin{bmatrix}
+			5.476491030373367\times10^{-10} \\
+			0 \\
+			0 \\
+		\end{bmatrix}km/s^2
+	\end{split}
+\end{equation}
+\normalsize
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	We see that the vector $\boldsymbol{a}_\text{Sun}$ also has only one non-zero component so the magnitude can be found simply by taking the absolute value of the one non-zero component:
+	\begin{equation}
+		a_\text{Sun} = \|\boldsymbol{a}_\text{Sun}\|_2=5.476491030373367\times10^{-10}km/s^2
+	\end{equation}
+\end{mdframed}
+
+To find solar radiation pressure (SRP) perturbation using the cannon-ball model, the following expression is given in the class slides:
+\begin{equation}
+	\boldsymbol{a}_{\text{SRP}}=\frac{G_0}{d^2}\frac{A}{m}C_R\hat{\boldsymbol{s}}
+\end{equation}
+Where $G_0$ is a term simplifying solar flux constant distance and speed of light terms, $d$ is the distance between the Earth and the Sun, $A/m$ is the area-to-mass ratio, $C_R$ is the cannon-ball reflectivity constant, and $\hat{\boldsymbol{s}}$ is the unit vector direction away from the Sun.\\
+
+In this problem, the Sun was previously defined to be in the positive direction aligned with the $\hat{\boldsymbol{x}}$ vector in the ECI frame. Likewise, the $\hat{\boldsymbol{s}}$ vector will point opposite of that since it is the direction away from the Sun:
+\begin{equation}
+	\hat{\boldsymbol{s}}=-\hat{\boldsymbol{x}}
+\end{equation}
+
+The $G_0$ term at 1AU is given by the class lecture slides as $1.02\times10^{14}kg\cdot km/s^2$.\\
+
+Next, the sun/spacecraft distance is approximately $1AU$ which is converted to $149,597,870.66 km$ (source: https://science.nasa.gov/learn/basics-of-space-flight/units/).\\
+
+The $A/m$ term is given by the problem as $0.01m^2/kg$, which is converted to $km^2/kg$ as:
+\begin{equation}
+	\frac{A}{m}=0.01m^2/kg\left(\frac{1km}{1000m}\right)^2=1\times10^{-8}km^2/kg
+\end{equation}
+
+Finally, the $C_R$ term is given by the problem as $1.3$ with no units.\\
+
+These can all be put together into the SRP equation to get $\boldsymbol{a}_{\text{SRP}}$ in the ECI frame:
+\begin{equation}
+	\begin{split}
+		\boldsymbol{a}_{\text{SRP}}&=\frac{G_0}{d^2}\frac{A}{m}C_R\hat{\boldsymbol{s}}\\
+		&=-\frac{1.02\times10^{14}kg\cdot km/s^2}{(149597870.66 km)^2}(1\times10^{-8}km^2/kg)1.3\hat{\boldsymbol{x}}\\
+		&=-\frac{(1.02\times10^{14})(1\times10^{-8})(1.3)}{(149597870.66)^2}\cdot\frac{kg\cdot km/s^2\cdot km^2/kg}{km^2}\hat{\boldsymbol{x}}\\
+		&=-\frac{(1.02\times10^{14})(1\times10^{-8})(1.3)}{(149597870.66)^2}\cdot\frac{km}{s^2}\hat{\boldsymbol{x}}\\
+		&=-5.925059285531666\times10^{-11}\hat{\boldsymbol{x}}km/s^2\\
+	\end{split}
+\end{equation}
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	We see that the vector $\boldsymbol{a}_\text{SRP}$ also has only one non-zero component so the magnitude can be found simply by taking the absolute value of the one non-zero component:
+	\begin{equation}
+		a_\text{SRP} = \|\boldsymbol{a}_\text{SRP}\|_2=5.925059285531666\times10^{-11}km/s^2
+	\end{equation}
+\end{mdframed}
+
+To find the atmospheric drag perturbing acceleration, a simplified model was provided:
+\begin{equation}
+	\boldsymbol{a}_{\text{drag}} = -\frac{1}{2}C_D\frac{A}{m}\rho v^2\,\hat{\boldsymbol{v}}, \quad v := \|\boldsymbol{v}\|_2, \quad \hat{\boldsymbol{v}} := \frac{\boldsymbol{v}}{v}
+\end{equation}
+
+$C_D$ is provided as $2.2$. $A/m$ is the same as the SRP computation, $\rho$ is given as $1.454\times10^{-13}kg/m^3$, and velocity is the velocity magnitude at epoch found in (f.1).\\
+
+Since $\rho$ is given in $kg/m^3$ while the rest of the problem uses $km$-based units, it must first be converted to $kg/km^3$:
+\begin{equation}
+	\rho=1.454\times10^{-13}kg/m^3\left(\frac{1000m}{1km}\right)^3=1.454\times10^{-4}kg/km^3
+\end{equation}
+
+That velocity magnitude can be found by taking the norm of the velocity vector:
+\begin{equation}
+	v=\|\boldsymbol{v}\|_2=\sqrt{5.3979...^2km/s+5.3979...^2km/s}=7.633...km/s
+\end{equation}
+
+The acceleration is always in the direction of velocity, modeled by the $\hat{\boldsymbol{v}}$ unit vector. This can be found by normalizing $\boldsymbol{v}$ by its magnitude:
+\begin{equation}
+	\hat{\boldsymbol{v}}=\boldsymbol{v}/v=\frac{5.3979...\hat{\boldsymbol{y}}km/s+5.3979...\hat{\boldsymbol{z}}km/s}{7.633...km/s}=0.7071...\hat{\boldsymbol{y}}+0.7071...\hat{\boldsymbol{z}}
+\end{equation}
+
+These can all be put together into the drag equation to get $\boldsymbol{a}_{\text{drag}}$ in the ECI frame:
+\small
+\begin{equation}
+	\begin{split}
+		\boldsymbol{a}_{\text{drag}}&=-\frac{1}{2}C_D\frac{A}{m}\rho v^2\,\hat{\boldsymbol{v}}\\
+		&=-\frac{1}{2}(2.2)(1\times10^{-8}km^2/kg)(1.454\times10^{-4}kg/km^3)(7.633...km/s)^2\hat{\boldsymbol{v}}\\
+		&=-\frac{1}{2}(2.2)(1\times10^{-8})(1.454\times10^{-4})(7.633...)^2\cdot\frac{km^2/kg\cdot kg/km^3\cdot km^2/s^2}{1}\hat{\boldsymbol{v}}\\
+		&=-\frac{1}{2}(2.2)(1\times10^{-8})(1.454\times10^{-4})(7.633...)^2\cdot\frac{km}{s^2}\hat{\boldsymbol{v}}\\
+		&=-9.320...\times10^{-11}\frac{km}{s^2}\hat{\boldsymbol{v}}\\
+		&=-9.320...\times10^{-11}\left(0.7071...\hat{\boldsymbol{y}}+0.7071...\hat{\boldsymbol{z}}\right)km/s^2\\
+		&=\begin{bmatrix}
+			0\\
+			-6.590746418076745\times10^{-11}\\
+			-6.590746418076747\times10^{-11}\\
+		\end{bmatrix}km/s^2
+	\end{split}
+\end{equation}
+\normalsize
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	Unlike $\boldsymbol{a}_{J2}$, $\boldsymbol{a}_\text{Moon}$, $\boldsymbol{a}_\text{Sun}$, and $\boldsymbol{a}_\text{SRP}$, the vector $\boldsymbol{a}_\text{drag}$ has two non-zero components rather than one, since $\hat{\boldsymbol{v}}$ itself has both a $\hat{\boldsymbol{y}}$ and a $\hat{\boldsymbol{z}}$ component at epoch. This means the magnitude cannot be found simply by taking the absolute value of a single component as in the previous cases, and instead requires taking the full $L_2$ norm across both non-zero components:
+	\small
+	\begin{equation}
+		\begin{split}
+			a_\text{drag} = \|\boldsymbol{a}_\text{drag}\|_2&=\sqrt{\left(-6.590...\times10^{-11}\right)^2+\left(-6.590...\times10^{-11}\right)^2}\,km/s^2\\
+			&=9.320722970606031\times10^{-11}km/s^2
+		\end{split}
+	\end{equation}
+	\normalsize
+\end{mdframed}
+
+\subsubsection*{(f.3): Find}
+Discuss now these perturbations compare (what is the largest/smallest, how much speed they have, why does it make sense?, ect)\\
+
+\textbf{Analysis/Conclusions:}
+Below is a table restating the accelerations found in (f.2) sorted by magnitude:
+\begin{table}[H]
+	\centering
+	\caption{Comparison of perturbing acceleration magnitudes at epoch, sorted largest to smallest.}
+	\label{tab:f3_comparison}
+	\begin{tabular}{|l|c|}
+		\hline
+		Perturbation & Magnitude [km/s$^2$] \\
+		\hline
+		$J_2$ & $1.156196522774134\times10^{-5}$ \\
+		\hline
+		Moon (third body) & $1.225524135908843\times10^{-9}$ \\
+		\hline
+		Sun (third body) & $5.476491030373367\times10^{-10}$ \\
+		\hline
+		Atmospheric drag & $9.320722970606031\times10^{-11}$ \\
+		\hline
+		SRP & $5.925059285531666\times10^{-11}$ \\
+		\hline
+	\end{tabular}
+\end{table}
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	Overall from the table, we see a six order of magnitude spread of the largest perturbing acceleration from the smallest, and the largest is four orders of magnitude larger than the second largest.\\
+	
+	We see the $J_2$ perturbation has the largest acceleration by far. This makes sense because the satellite is orbiting very close to the Earth and it would be much more sensitive to fluctuations in the Earths gravity field versus other gravitational forces.\\
+	
+	The Moon gravitational perturbation is the second largest and the Sun is the third largest. This also makes sense because even though the Sun is considerably more massive than the Moon, the Sun is also considerably further away from the spacecraft than the Moon, and the Moon is the next closest body after the Earth. Mass in the gravity equation scales linearly, but the distance component has a third power relationship decreasing as distance increases, so the larger distance can easily outweigh the impact of the increased mass of the Sun.\\
+	
+	Finally, the drag and SRP accelerations are the fourth and fifth largest respectively, although they are quite close. This makes sense because the force of photons reflecting off a surface would be minute because they have so little mass. The drag is also expected to be small because the satellite is high in the exosphere and atmospheric density is extremely small.\\
+\end{mdframed}
+
+\subsection*{(g): Given}
+Using the Cartesian state from above as the initial condition, numerically propagate the unperturbed two-body EoMs for at least 10 orbits.
+
+\textbf{Define Reference Frames}:
+\begin{itemize}
+	\item \textbf{$\mathcal{N}$:\{$\mathcal{O}$,$\hat{\boldsymbol{x}}$,$\hat{\boldsymbol{y}}$,$\hat{\boldsymbol{z}}$\}: Earth-centered inertial reference frame (ECI)\\}An Earth-centered inertial reference frame with its origin at Earth center having $\hat{\boldsymbol{z}}$ aligned with the Earth's rotational axis pointing towards the north pole.
+\end{itemize}
 
 
+\subsubsection*{(g.1): Find}
+Plot the resulting trajectory in 3D.\\
 
+\textbf{Analysis/Conclusions:}
+To plot the trajectory, we first must define the two-body EoMs as a set of first order ODE's. Two body gravitational acceleration is given as the below second order ODE where $\boldsymbol{r}$ is the position of the spacecraft with respect to the attractive center and $\mu$ is the gravitational parameter fo the system:
+\begin{equation}
+	\ddot{\boldsymbol{r}}=-\mu\boldsymbol{r}/r^3
+\end{equation}
+
+So then we simply need to include the Cartesian state $\boldsymbol{x}=[\boldsymbol{r}^T, \boldsymbol{v}^T]$ where $\boldsymbol{v}$ is velocity and $\boldsymbol{a}$ is acceleration, to define the state space system using the first derivative of position to make a system of first order ODEs:
+\begin{equation}
+	\dot{\boldsymbol{x}}=
+	\begin{bmatrix}
+		\dot{\boldsymbol{r}} \\
+		\dot{\boldsymbol{v}} \\
+	\end{bmatrix}=
+	\begin{bmatrix}
+		\boldsymbol{v} \\
+		\boldsymbol{a} \\
+	\end{bmatrix}=
+	\begin{bmatrix}
+		\boldsymbol{v} \\
+		\boldsymbol{r}\frac{-\mu}{r^3}
+	\end{bmatrix}
+\end{equation} 
+
+Then we simply need to numerically integrate $\dot{\boldsymbol{x}}(t)$ given some initial condition over a defined time span to get an approximation in the state history over time. For this problem's simulation, I will be using ODE113 in Matlab. The initial condition is the state vector found in (f.1). The time span the orbit must run for can be found by computing the orbital period $P$ from the Keplerian elements in table 2.
+\begin{equation}
+	\begin{split}
+		P&=2\pi\sqrt{\frac{a^3}{\mu}}\\
+		&=2\pi\sqrt{\frac{(6978km)^3}{398600km^3/s^2}}\\
+		&=5,801.0641...s\left(\frac{1min}{60s}\right)\left(\frac{1hr}{60min}\right)=1.6114...hr
+	\end{split}
+\end{equation}
+
+Which since the total simulation should be for at least 10 orbits, then the simulation should run for $58,010.641...s$ or $16.114...hr$.\\
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	So, using the methods described above, the following plots show the given orbit propagated for 10 periods:
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}[b]{0.48\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{problemg1a.png}
+			\caption{3D view of the trajectory.}
+			\label{fig:g1_3d}
+		\end{subfigure}
+		\hfill
+		\begin{subfigure}[b]{0.48\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{problemg1b.png}
+			\caption{Edge-on view of the trajectory.}
+			\label{fig:g1_xz}
+		\end{subfigure}
+		\vspace{0.5em}
+		\begin{subfigure}[b]{0.48\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{problemg1c.png}
+			\caption{Side-on view of the trajectory.}
+			\label{fig:g1_xy}
+		\end{subfigure}
+		\hfill
+		\begin{subfigure}[b]{0.48\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{problemg1d.png}
+			\caption{Trajectory with Earth shown for scale.}
+			\label{fig:g1_earth}
+		\end{subfigure}
+		\caption{Unperturbed two-body trajectory over 10 orbital periods, shown from multiple viewing angles.}
+		\label{fig:g1_quad}
+	\end{figure}
+\end{mdframed}
+
+\subsubsection*{(g.2): Find}
+Compute the specific energy $\mathcal{E}(t)$, specific angular momentum $\boldsymbol{h}(t)$ and eccentricity vector $\boldsymbol{e}(t)$ and plot their time histories. Discuss the results.\\
+
+\textbf{Analysis/Conclusions:}
+To compute these three values over time, I will simply use the following expressions and enter in the state value histories computed in (g.1)\\
+
+Specific energy (taken from slides page 18):
+\begin{equation}
+	\mathcal{E}(t)=\frac{v^2}{2}-\frac{\mu}{r}
+\end{equation}
+
+Specific angular momentum (taken from part (d)):
+\begin{equation}
+	\boldsymbol{h}(t)=\boldsymbol{r}\times\boldsymbol{v}
+\end{equation}
+
+Eccentricity vector (taken from part (d)):
+\begin{equation}
+	\boldsymbol{e}=\frac{\boldsymbol{v}\times\boldsymbol{h}}{\mu}-\frac{\boldsymbol{r}}{r}
+\end{equation}
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	These values are expected to be constant, so likewise we can compute that single value over time, which can be seen in the table below:
+	\begin{table}[H]
+		\centering
+		\caption{Conserved quantities computed at $t=0$ for the unperturbed two-body orbit.}
+		\label{tab:g2_conserved}
+		\begin{tabular}{|l|l|}
+			\hline
+			Quantity & Value \\
+			\hline
+			Specific energy, $\mathcal{E}$ [km$^2$/s$^2$] & $-28.561192318715968$ \\
+			\hline
+			Specific angular momentum, $\boldsymbol{h}$ [km$^2$/s] &
+			$\begin{bmatrix} 0 \\ -3.729043213023952\times10^{4} \\ 3.729043213023951\times10^{4} \end{bmatrix}$ \\
+			\hline
+			Eccentricity vector, $\boldsymbol{e}$ [--] &
+			$\begin{bmatrix} 0.010000000000000 \\ 0 \\ 0 \end{bmatrix}$ \\
+			\hline
+		\end{tabular}
+	\end{table}
+	
+	We see from this table that the computed values are consistent with what is expected for a few different reasons.\\
+	
+	First, we see the specific energy is a negative value, which is exactly what is expected because specific energy has energy normalized to the energy required to escape the gravity well. Likewise, if the spacecraft were escaping (hyperbolic trajectory) the value would be positive, and if the spacecraft had exactly enough energy to escape Earth's gravity well with zero velocity remaining at infinite distance (the parabolic, marginal-escape trajectory) the value would be zero. Since this is a stable orbit about the Earth (elliptical orbit), the value should be negative to reflect the spacecraft is not escaping the Earth system.\\
+	
+	Furthermore, we know the specific angular momentum vector looks correct because $\boldsymbol{h}=\boldsymbol{r}\times\boldsymbol{v}$, and a cross product is, by definition, always orthogonal to both of the vectors used to construct it. This means $\boldsymbol{h}$ must be perpendicular to both $\boldsymbol{r}$ and $\boldsymbol{v}$ at every instant, which makes physical sense since $\boldsymbol{h}$ is normal to the orbital plane, while $\boldsymbol{r}$ and $\boldsymbol{v}$ both lie within that plane. This was confirmed numerically, with $\boldsymbol{h}\cdot\boldsymbol{r}\approx0$ and $\boldsymbol{h}\cdot\boldsymbol{v}\approx0$.\\
+	
+	Finally, we know the eccentricity vector looks correct because its magnitude, $\|\boldsymbol{e}\|_2=0.01$, matches the eccentricity specified for the orbit in the initial Keplerian elements. We also know $\boldsymbol{e}$ must be orthogonal to $\boldsymbol{h}$, since $\boldsymbol{e}$ is built from $\boldsymbol{v}\times\boldsymbol{h}$, another cross product, meaning it is necessarily perpendicular to $\boldsymbol{h}$. Physically, this reflects that the eccentricity vector lies in the orbital plane, pointing toward periapsis, while $\boldsymbol{h}$ is normal to that same plane. This was likewise confirmed numerically, with $\boldsymbol{e}\cdot\boldsymbol{h}\approx0$.\\
+	
+	Lastly, as shown in Figures~\ref{fig:g2_energy}, \ref{fig:g2_h}, and \ref{fig:g2_e}, we see that all three quantities were confirmed to remain constant across the full 10-orbit simulation, with the numerical drift scaling depending on the magnitude of the value itself, ranging from around $10^{-13}$ for the eccentricity vector components (which are on the order of $10^{-2}$) up to around $10^{-7}$ for the angular momentum components (which are on the order of $10^{4}$).
+\end{mdframed}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\textwidth]{problemg2a.png}
+	\caption{Specific energy $\mathcal{E}(t)$ time history over the 10-orbit simulation.}
+	\label{fig:g2_energy}
+\end{figure}
+	
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\textwidth]{problemg2b.png}
+	\caption{Specific angular momentum components $h_x(t)$, $h_y(t)$, $h_z(t)$ over the 10-orbit simulation.}
+	\label{fig:g2_h}
+\end{figure}
+	
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\textwidth]{problemg2c.png}
+	\caption{Eccentricity vector components $e_x(t)$, $e_y(t)$, $e_z(t)$ over the 10-orbit simulation.}
+	\label{fig:g2_e}
+\end{figure}
+
+\subsubsection*{(g.3): Find}
+Repeat (g.1)-(g.2), but new add the $J_2$ acceleration to the EoMs. Plot the resulting trajectory, and compare it against the unperturbed result.\\
+
+\textbf{Analysis/Conclusions:}
+To plot the same orbit with the $J_2$ perturbing acceleration, we can simply add its acceleration vector to the acceleration component of the state space representation of the 2-body orbit system of equations, where the $J_2$ constant is also provided in table 2.
+\begin{equation}
+	\begin{split}
+		\dot{\boldsymbol{x}}&=
+		\
+		\begin{bmatrix}
+			\boldsymbol{v} \\
+			\boldsymbol{a} \\
+		\end{bmatrix}=
+		\begin{bmatrix}
+			\boldsymbol{v} \\
+			\boldsymbol{r}\frac{-\mu}{r^3}
+		\end{bmatrix}+
+		\begin{bmatrix}
+			\boldsymbol{0}_{3\times1} \\
+			\boldsymbol{a}_{J2}
+		\end{bmatrix} \\
+		\boldsymbol{a}_{J2} &= -\frac{3\mu J_2 r_o^2}{2r^5}\left[\left(1-5\frac{z^2}{r^2}\right)x\hat{\boldsymbol{n}}_1 + \left(1-5\frac{z^2}{r^2}\right)y\hat{\boldsymbol{n}}_2 + \left(3-5\frac{z^2}{r^2}\right)z\hat{\boldsymbol{n}}_3\right]
+	\end{split}
+\end{equation}
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	So, using the methods described above, the following plots show the given J2 perturbed orbit propagated for 10 periods:
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}[b]{0.48\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{problemg3a.png}
+			\caption{3D view of the trajectory.}
+			\label{fig:g3_3d}
+		\end{subfigure}
+		\hfill
+		\begin{subfigure}[b]{0.48\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{problemg3b.png}
+			\caption{Edge-on view of the trajectory.}
+			\label{fig:g3_xz}
+		\end{subfigure}
+		\vspace{0.5em}
+		\begin{subfigure}[b]{0.48\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{problemg3c.png}
+			\caption{Side-on view of the trajectory.}
+			\label{fig:g3_xy}
+		\end{subfigure}
+		\hfill
+		\begin{subfigure}[b]{0.48\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{problemg3d.png}
+			\caption{Trajectory with Earth shown for scale.}
+			\label{fig:g3_earth}
+		\end{subfigure}
+		\caption{J2 perturbed two-body trajectory over 10 orbital periods, shown from multiple viewing angles.}
+		\label{fig:g3_quad}
+	\end{figure}
+	
+	We can see in this perturbed orbit a clear divergence from the pure 2-body orbit. All 10 revolutions of the pure 2-body orbit were effectively exactly aligned, while with this perturbed orbit, there is some clear variation in the orbital path with the path appearing to resonate at one set of opposite ends, and pinch back together at the others.
+\end{mdframed}
+
+The initial specific energy, specific angular momentum, and eccentricity vector of course is identical here because there are identical conditions. However, there are major differences in the time histories of these three values over time as seen in the figures below:
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.85\textwidth]{problemg3e.png}
+		\caption{Specific energy $\mathcal{E}(t)$ time history over the J2 perturbed 10-orbit simulation.}
+		\label{fig:g3_energy}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.85\textwidth]{problemg3f.png}
+		\caption{Specific angular momentum components $h_x(t)$, $h_y(t)$, $h_z(t)$ over the J2 perturbed 10-orbit simulation.}
+		\label{fig:g3_h}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.85\textwidth]{problemg3g.png}
+		\caption{Eccentricity vector components $e_x(t)$, $e_y(t)$, $e_z(t)$ over the J2 perturbed 10-orbit simulation.}
+		\label{fig:g3_e}
+	\end{figure}
+	
+	Unlike the unperturbed simulation where all specific energy, specific angular momentum, and eccentricity vector values appeared to have most of their variation from numerical drift, there is a clears oscillating pattern here for some, and a direct trend upwards or downwards for others. These oscillations and trends range orders of magnitude between $10^{-2}$ and $10^{4}$.
+\end{mdframed}
 
 \end{document}

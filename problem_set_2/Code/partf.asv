@@ -1,0 +1,56 @@
+% Define simulation initial condition
+w0 = [0.2; 0.1; 1.0];
+
+% Run the simulation for P
+tol = 10^(-12);
+opt = odeset('RelTol', tol, 'AbsTol', tol);
+[simtime, w] = ode113(@(t,w) eulerRot(w), [0 120], w0, opt);
+
+w = rad2deg(w);
+
+% Set LaTeX as default interpreter for all text
+set(groot, 'defaultTextInterpreter', 'latex');
+set(groot, 'defaultLegendInterpreter', 'latex');
+set(groot, 'defaultAxesTickLabelInterpreter', 'latex');
+set(groot, 'defaultLineLineWidth', 1.5);
+
+% Find the analytic expression's history over time
+IT = 10;
+J = 5;
+K = (IT-J)/(IT);
+
+w1 = w0(1)*cos(K*w0(3).*simtime)+w0(2)*sin(K*w0(3).*simtime);
+w2 = w0(2)*cos(K*w0(3).*simtime)-w0(1)*sin(K*w0(3).*simtime);
+w3 = w0(3);
+
+% Plot the angular rate over time
+figure
+ax1 = subplot(3,1,1);
+plot(simtime, w(:,1))
+ylabel('$\omega_1$ [deg/s]')
+title('Angular Rate Time History of a Torque-Free Rotating Object')
+grid on
+
+ax2 = subplot(3,1,2);
+plot(simtime, w(:,2))
+ylabel('$\omega_2$ [deg/s]')
+grid on
+
+ax3 = subplot(3,1,3);
+plot(simtime, w(:,3))
+xlabel('Time [s]')
+ylabel('$\omega_3$ [deg/s]')
+grid on
+
+set([ax1 ax2 ax3], 'YLimitMethod', 'padded');
+arrayfun(@(a) set(a.YAxis, 'TickLabelFormat', '%.2f'), [ax1 ax2 ax3]);
+
+function wdot = eulerRot(w)
+    IT = 10;
+    J = 5;
+    Ic = diag([IT; IT; J]); % Inertia tensor
+    Icinv = pinv(Ic);
+
+    wdot = Icinv*(cross(-w,Ic*w));
+end
+

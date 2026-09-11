@@ -1,0 +1,11 @@
+% Define the euler param unit vector and rotation
+theta = 120;
+lambda = [1;1;1]*(1/sqrt(3));
+
+% Compute the euler parameter and verify it is unit length
+euler = [lambda*sind(theta/2); cosd(theta/2)]
+norm(euler)
+
+% Define the DCM for this euler parameter from inertial to body frame
+BN = [1-euler(2)^2-2]
+

@@ -618,6 +618,60 @@ Solve the coupled linear ODEs to show that, with initial condition $\boldsymbol{
 	\end{split}
 \end{equation}
 
+\textbf{Analysis/Conclusions:}
+The two equations found in (d.1) are coupled, so neither can be integrated on its own. However, since the coefficient $K\omega_{3_0}$ was shown to be constant, the pair can be decoupled by differentiating one of them and substituting the other in. To shorten the expressions, let $\lambda=K\omega_{3_0}$, so the system from (d.1) is written as:
+\begin{equation}
+	\begin{split}
+		\dot{\omega}_1&=\lambda\omega_2 \\
+		\dot{\omega}_2&=-\lambda\omega_1 \\
+	\end{split}
+\end{equation}
+Differentiating the first equation with respect to time and substituting the second one in for $\dot{\omega}_2$ removes $\omega_2$ entirely:
+\begin{equation}
+	\begin{split}
+		\ddot{\omega}_1&=\lambda\dot{\omega}_2 \\
+		&=\lambda\left(-\lambda\omega_1\right) \\
+		\ddot{\omega}_1+\lambda^2\omega_1&=0 \\
+	\end{split}
+\end{equation}
+This is the standard undamped harmonic oscillator equation, whose general solution is a sinusoid of frequency $\lambda$ with two unknown coefficients:
+\begin{equation}
+	\omega_1(t)=A\cos\left(\lambda t\right)+B\sin\left(\lambda t\right)
+\end{equation}
+The two coefficients are found from the initial conditions. Evaluating $\omega_1(t)$ at $t=0$ immediately gives $A$:
+\begin{equation}
+	\omega_1(0)=A\cos\left(0\right)+B\sin\left(0\right)=A=\omega_{1_0}
+\end{equation}
+Then $B$ is found by differentiating the general solution and evaluating it at $t=0$, where the value of $\dot{\omega}_1(0)$ comes from the first ODE of the system:
+\begin{equation}
+	\begin{split}
+		\dot{\omega}_1(t)&=-A\lambda\sin\left(\lambda t\right)+B\lambda\cos\left(\lambda t\right) \\
+		\dot{\omega}_1(0)&=B\lambda \\
+		\dot{\omega}_1(0)&=\lambda\omega_2(0)=\lambda\omega_{2_0} \\
+		B\lambda&=\lambda\omega_{2_0} \\
+		B&=\omega_{2_0} \\
+	\end{split}
+\end{equation}
+With both coefficients known, $\omega_2(t)$ follows without solving a second differential equation, since the first ODE already relates it directly to $\dot{\omega}_1$:
+\begin{equation}
+	\begin{split}
+		\omega_2(t)&=\frac{\dot{\omega}_1(t)}{\lambda} \\
+		&=\frac{-\omega_{1_0}\lambda\sin\left(\lambda t\right)+\omega_{2_0}\lambda\cos\left(\lambda t\right)}{\lambda} \\
+		&=\omega_{2_0}\cos\left(\lambda t\right)-\omega_{1_0}\sin\left(\lambda t\right) \\
+	\end{split}
+\end{equation}
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	Substituting $\lambda=K\omega_{3_0}$ back in gives the solutions stated in the problem definition, which completes the derivation:
+	\begin{equation}
+		\begin{split}
+			\omega_1(t)&=\omega_{1_0}\cos(K\omega_{3_0}t)+\omega_{2_0}\sin(K\omega_{3_0}t) \\
+			\omega_2(t)&=\omega_{2_0}\cos(K\omega_{3_0}t)-\omega_{1_0}\sin(K\omega_{3_0}t) \\
+			\omega_3(t)&=\omega_{3_0} \\
+		\end{split}
+	\end{equation}
+\end{mdframed}
+
 \newpage
 
 \section*{(2.2) Spacecraft Attitude Dynamics}
@@ -782,7 +836,625 @@ Extending the numerical integration code written for (f.2) to also plot the abov
 	When plotting the error of the two methods over time, it can be seen that the difference of $\omega_3$ is exceptionally small with some variance, which is expected because we are effectively comparing the small fluctuations in numerical drift to a true constant. The difference in $\omega_1$ and $\omega_2$ are both three orders of magnitude higher, but still an acceptably low order of magnitude ($10^{-11}$). It is interesting that once the numerical integration gets past the first few oscillations in $\omega_1$ and $\omega_2$, the difference graphs themselves follow a similar oscillation pattern out of phase with the main graphs.
 \end{mdframed}
 
-\newpage	
+\subsection*{(g): Given}
+Consider a satellite made of a bus plus two identical solar panels.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\textwidth]{partg.png}
+	\caption{Bus-plus-panels satellite configuration.}
+	\label{fig:g}
+\end{figure}
+\begin{itemize}
+	\item Bus: mass $50kg$, size $0.6m(\hat(x))\times0.6m(\hat(y))\times0.8m(\hat(z))$, centered at the $\mathcal{B}$-frame origin.
+	\item Panels: two identical rectangular panels, $1.0m$(along $\hat{y}$)$\times1.5m$(along $\hat{z}$), negligible thickness, $5kg$ each, mounted symmetrically with their inner edge at $y=0.3m$ from the origin.
+	\item The following equations can be used without derivation. For a box-shaped object of mass $m$ with side lengths $L_x, L_y, L_z,$ the moment of inertia about its own center of mass (CoM) is given by:
+	\begin{equation}
+		I_{xx}=\frac{m}{12}\left(L_y^2+L_z^2\right),\quad I_{yy}=\frac{m}{12}\left(L_x^2+L_z^2\right),\quad I_{zz}=\frac{m}{12}\left(L_x^2+L_y^2\right)
+	\end{equation}
+	Where $m$ is the box's mass, $I_i$ represents the moment of inertia component of that axis, and $L_i$ is the length of that side of the box parallel to that axis. 
+\end{itemize}
+	\textbf{Parallel Axis Theorem:}\\
+For a rigid body of mass $m$ with inertia tensor $I_c$ about its own center of mass, its inertia tensor about a parallel reference point $P$ displaced fromt he CoM by $\boldsymbol{d}\in\mathbb{R}^3$ is
+\begin{equation}
+	I_P=I_c+m\left(\|\boldsymbol{d}\|^2I_3-\boldsymbol{d}\boldsymbol{d}^T\right)
+\end{equation}
+For a composite body, sum each component's own-centroid inertia tensor plus its own parallel-axis correction to assemble the inertia tensor about one common point.\\
+
+\textbf{Define Reference Frames}:
+\begin{itemize}
+	\item \textbf{$\mathcal{N}$:\{$\mathcal{O}$,$\hat{\boldsymbol{n}}_1$,$\hat{\boldsymbol{n}}_2$,$\hat{\boldsymbol{n}}_3$\}: Inertial reference frame\\}A generic inertial reference frame with its origin at $\mathcal{O}$.
+	\item \textbf{$\mathcal{B}$:\{$\mathcal{C}$,$\hat{\boldsymbol{x}}$,$\hat{\boldsymbol{y}}$,$\hat{\boldsymbol{z}}$\}: Body-fixed reference frame\\}A frame fixed in the rigid body with its origin at the body's center of mass $\mathcal{C}$, rotating with respect to $\mathcal{N}$ at $\boldsymbol{\omega}_{\mathcal{B}/\mathcal{N}}$ (angular rate).
+\end{itemize}
+
+\subsubsection*{(g.1): Find}
+Explain why the system's CoM is exactly at the $\mathcal{B}$-frame origin.
+
+\textbf{Analysis/Conclusions:}
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	We know from the problem definition that the bus is centered at the $\mathcal{B}$-frame origin. This means that depending on what other rigid bodies are affixed to the bus, the CoM of the entire combined body could be at different place than the $\mathcal{B}$-frame origin.\\
+	
+	It is known that the CoM of a system of multiple bodies is the sum of the CoM of each of the component bodies weighted by respective masses of the components. Likewise, when affixing a panel to the bus, the new center of mass between the two bodies will be somewhere on the line drawn between the original two CoM's. However, since we are affixing two identical panels symmetrically on either side of the bus, the three CoM's of the components can have a single line drawn through them. And since the equally massed panels are equidistant from the bus's CoM exactly at the center of that line, the displacement each panel would've caused in the unified CoM is canceled out by the other.\\
+	
+	This means the CoM will still be where the bus's original CoM was and by extension the $\mathcal{B}$-frame origin is still aligned with it.
+\end{mdframed}
+
+\subsubsection*{(g.2): Find}
+Compute the inertia tensor of each component about the origin. \\
+
+\textbf{Analysis/Conclusions:}
+In this problem, we once again assume that the $\mathcal{B}$-frame axes are the principal axes of inertia. This means that the inertia tensor of each component will be $\diag(I_{xx}, I_{yy}, I_{zz})$ (which is a diagonal of the moment of inertia components) with the appropriate offset given by the parallel axis theorem. Below we compute each component's inertia tensor this way:\\
+
+Given the parameters in the problem definition, the inertia tensor for the bus has the following moment of inertia components:
+\begin{equation}
+	\begin{split}
+		I_{xx}&=\frac{m}{12}\left(L_y^2+L_z^2\right) \\
+		&=\frac{50kg}{12}\left((0.6m)^2+(0.8m)^2\right) \\
+		&=4.1666... kg\cdot m^2
+		\\
+		I_{yy}&=\frac{m}{12}\left(L_x^2+L_z^2\right) \\
+		&=\frac{50kg}{12}\left((0.6m)^2+(0.8m)^2\right) \\
+		&=4.1666... kg\cdot m^2
+		\\
+		I_{zz}&=\frac{m}{12}\left(L_x^2+L_y^2\right) \\
+		&=\frac{50kg}{12}\left((0.6m)^2+(0.6m)^2\right) \\
+		&=3 kg\cdot m^2
+	\end{split}
+\end{equation}
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	Since the bus already has its geometric center and center of mass at the frame origin, there is no need to use the parallel axis theorem to compute an offset inertia tensor, and the bus's inertia tensor is:
+	\begin{equation}
+		I_{\text{bus}}=
+		\begin{bmatrix}
+			I_{xx} & 0 & 0 \\
+			0 & I_{yy} & 0 \\
+			0 & 0 & I_{zz} \\
+		\end{bmatrix}=
+		\begin{bmatrix}
+			4.1666... & 0 & 0 \\
+			0 & 4.1666... & 0 \\
+			0 & 0 & 3 \\
+		\end{bmatrix}kg\cdot m^2
+	\end{equation}
+\end{mdframed}
+
+Given the parameters in the problem definition, the inertia tensor for the both panels have the following moment of inertia components:
+\begin{equation}
+	\begin{split}
+		I_{xx}&=\frac{m}{12}\left(L_y^2+L_z^2\right) \\
+		&=\frac{5kg}{12}\left((1.0m)^2+(1.5m)^2\right) \\
+		&=1.3541... kg\cdot m^2
+		\\
+		I_{yy}&=\frac{m}{12}\left(L_x^2+L_z^2\right) \\
+		&=\frac{5kg}{12}\left((0m)^2+(1.5m)^2\right) \\
+		&=0.9375 kg\cdot m^2
+		\\
+		I_{zz}&=\frac{m}{12}\left(L_x^2+L_y^2\right) \\
+		&=\frac{5kg}{12}\left((0m)^2+(1.0m)^2\right) \\
+		&=0.4166... kg\cdot m^2
+	\end{split}
+\end{equation}
+
+Then the inertia tensor of both panels without the appropriate offset applied will be:
+\begin{equation}
+	I_{\text{pan}}=
+	\begin{bmatrix}
+		I_{xx} & 0 & 0 \\
+		0 & I_{yy} & 0 \\
+		0 & 0 & I_{zz} \\
+	\end{bmatrix}=
+	\begin{bmatrix}
+		1.3541... & 0 & 0 \\
+		0 & 0.9375 & 0 \\
+		0 & 0 & 0.4166... \\
+	\end{bmatrix}kg\cdot m^2
+\end{equation}
+
+Then we apply the offset for the first panel (which we will call the one in the positive $\hat{y}$ direction from the origin). Since the first panel is in the positive $\hat{y}$ direction, the displacement vector $\boldsymbol{d}$ is found by multiplying the distance from the bus's center of mass to the first panel's center of mass by the $\hat{y}$ basis vector. The distance is simply equal to half the $\hat{y}$ axis length of both objects added together:
+\begin{equation}
+	\begin{split}
+		\boldsymbol{d}=\frac{\left(L_{y_{\text{bus}}}+L_{y_{\text{panel1}}}\right)}{2}\hat{\boldsymbol{y}}=\frac{\left(0.6m+1.0m\right)}{2}\hat{\boldsymbol{y}}=0.8m\hat{\boldsymbol{y}}
+	\end{split}
+\end{equation}
+Then to find the true inertia tensor of the first panel by applying the appropriate offset by the parallel axis theorem:
+\tiny
+\begin{equation}
+	\begin{split}
+		I_{\text{panel1}}&=I_{\text{pan}}+m\left(\|\boldsymbol{d}\|^2I_3-\boldsymbol{d}\boldsymbol{d}^T\right) \\
+		&=
+		\begin{bmatrix}
+			1.3541... & 0 & 0 \\
+			0 & 0.9375 & 0 \\
+			0 & 0 & 0.4166... \\
+		\end{bmatrix}kg\cdot m^2+5kg\left(\|0.8m\hat{\boldsymbol{y}}\|^2
+		\begin{bmatrix}
+			1 & 0 & 0 \\
+			0 & 1 & 0 \\
+			0 & 0 & 1 \\
+		\end{bmatrix}-(0.8m)^2\hat{\boldsymbol{y}}\hat{\boldsymbol{y}}^T\right)
+	\end{split}
+\end{equation}
+\normalsize
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	Which then in Matlab compute together as:
+	\begin{equation}
+		I_{\text{panel1}}=
+		\begin{bmatrix}
+			4.5541... & 0 & 0 \\
+			0 & 0.9375 & 0 \\
+			0 & 0 & 3.6166... \\
+		\end{bmatrix}kg\cdot m^2
+	\end{equation}
+	Which is the first panel's component inertia tensor about the origin.
+\end{mdframed}
+
+Then to find the second panel, since it is in the exact same location mirrored about the $\hat{z}$ axis, the exact same steps are repeated but with the $\boldsymbol{d}$ vector negated:
+\tiny
+\begin{equation}
+	\begin{split}
+		I_{\text{panel2}}&=I_{\text{pan}}+m\left(\|\boldsymbol{d}\|^2I_3-\boldsymbol{d}\boldsymbol{d}^T\right) \\
+		&=
+		\begin{bmatrix}
+			1.3541... & 0 & 0 \\
+			0 & 0.9375 & 0 \\
+			0 & 0 & 0.4166... \\
+		\end{bmatrix}kg\cdot m^2+5kg\left(\|-0.8m\hat{\boldsymbol{y}}\|^2
+		\begin{bmatrix}
+			1 & 0 & 0 \\
+			0 & 1 & 0 \\
+			0 & 0 & 1 \\
+		\end{bmatrix}-(-0.8m)^2\hat{\boldsymbol{y}}\hat{\boldsymbol{y}}^T\right)
+	\end{split}
+\end{equation}
+\normalsize
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	Which then in Matlab compute together as:
+	\begin{equation}
+		I_{\text{panel2}}=
+		\begin{bmatrix}
+			4.5541... & 0 & 0 \\
+			0 & 0.9375 & 0 \\
+			0 & 0 & 3.6166... \\ 
+		\end{bmatrix}  kg\cdot m^2
+	\end{equation}
+	Which, as can be seen, results in an identical tensor about the origin to that of the first panel.
+\end{mdframed}
+
+\subsubsection*{(g.3): Find}
+Compute the assembled inertia tensor $I_c$ about the system origin by summing the three contributions. Verify that very product of inertia $(I_{xy},I_{xz},I_{yz})$ is exactly zero.\\
+
+\textbf{Analysis/Conclusions:}
+As stated in the problem, the assembled inertia tensor $I_c$ is simply the sum of the three contributions:
+\tiny
+\begin{equation}
+	\begin{split}
+		I_c&=I_{\text{bus}}+I_{\text{panel1}}+I_{\text{panel2}} \\
+		&=\left(
+		\begin{bmatrix}
+			4.1666... & 0 & 0 \\
+			0 & 4.1666... & 0 \\
+			0 & 0 & 3 \\
+		\end{bmatrix}+
+		\begin{bmatrix}
+			4.5541... & 0 & 0 \\
+			0 & 0.9375 & 0 \\
+			0 & 0 & 3.6166... \\ 
+		\end{bmatrix} +
+		\begin{bmatrix}
+			4.5541... & 0 & 0 \\
+			0 & 0.9375 & 0 \\
+			0 & 0 & 3.6166... \\ 
+		\end{bmatrix}\right)kg\cdot m^2
+	\end{split}
+\end{equation}
+\normalsize
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	Which are summed together in Matlab as:
+	\begin{equation}
+		I_c=
+		\begin{bmatrix}
+			13.2750... & 0 & 0 \\
+			0 & 6.0416... & 0 \\
+			0 & 0 & 10.2333... \\ 
+		\end{bmatrix}  kg\cdot m^2
+	\end{equation}
+	Which makes the assembled tensor $I_c$.\\
+	
+	The values in the above matrix are copied exactly from the output of my Matlab code. Likewise, it can be seen that \textbf{all product of inertia} terms (non-diagonal terms) are \textbf{exactly zero}.
+\end{mdframed}
+
+\subsection*{(h): Given}
+Consider the satellite in part (g) in the orbit characterized in the following table:
+\begin{table}[H]
+	\centering
+	\caption{Reference orbit}
+	\label{tab:reference_orbit}
+	\resizebox{\textwidth}{!}{%
+		\begin{tabular}{|c|c|c|c|c|c|c|}
+			\hline
+			\multicolumn{3}{|c|}{Constants} & \multicolumn{4}{c|}{Classical orbital elements at epoch} \\
+			\hline
+			$\mu_{\text{earth}}$ & $R_{\text{earth}}$ & $J_2$ & $a$ & $e$ & $i$ & $\Omega_0,\ \omega_0,\ \nu_0$ \\
+			\hline
+			398600 km$^3$/s$^2$ & 6378.137 km & $1.08263\times10^{-3}$ & 6978 km & 0 & 45 deg & 0 deg \\
+			\hline
+		\end{tabular}%
+	}
+\end{table}
+
+\textbf{Define Reference Frames}:
+\begin{itemize}
+	\item \textbf{$\mathcal{N}$:\{$\mathcal{O}$,$\hat{\boldsymbol{n}}_1$,$\hat{\boldsymbol{n}}_2$,$\hat{\boldsymbol{n}}_3$\}: Inertial reference frame\\}A generic inertial reference frame with its origin at $\mathcal{O}$.
+	\item \textbf{$\mathcal{B}$:\{$\mathcal{C}$,$\hat{\boldsymbol{x}}$,$\hat{\boldsymbol{y}}$,$\hat{\boldsymbol{z}}$\}: Body-fixed reference frame\\}A frame fixed in the rigid body with its origin at the body's center of mass $\mathcal{C}$, rotating with respect to $\mathcal{N}$ at $\boldsymbol{\omega}_{\mathcal{B}/\mathcal{N}}$ (angular rate).
+	\item \textbf{$\mathcal{P}$:\{$\mathcal{O}$,$\hat{\boldsymbol{e}}$,$\hat{\boldsymbol{p}}$,$\hat{\boldsymbol{h}}$\}: Perifocal reference frame\\}A frame fixed in the orbit plane with its origin at the attracting center $\mathcal{O}$, where $\hat{\boldsymbol{e}}$ points toward periapsis along the eccentricity vector, $\hat{\boldsymbol{h}}$ is along the angular momentum vector, and $\hat{\boldsymbol{p}}=\hat{\boldsymbol{h}}\times\hat{\boldsymbol{e}}$ completes the right-handed set.
+\end{itemize}
+
+\subsubsection*{(h.1): Find}
+Derive the attitude equations of motion: Euler's equations with the gravity-gradient torque, together with a kinematic differential equation (KDEs) for my choice of attitude representation (DCM, Euler parameters, or Euler angles).\\
+
+\textbf{Analysis/Conclusions:}
+It was already established in part (c) that the vector form of the Euler's equations of rotational motion can be represented as:
+\begin{equation}
+	\boldsymbol{\tau}=I_c\dot{\boldsymbol{\omega}}+\boldsymbol{\omega}\times\left(I_c\boldsymbol{\omega}\right)
+\end{equation}
+Where $\boldsymbol{\tau}$ is some torque applied on a rigid body, $I_c$ is the inertia tensor of the rigid body about the center of mass, and $\boldsymbol{\omega}$ is the angular rate of the rigid body's rotation (which just like before is the same as $\boldsymbol{\omega}_{B/N}$).\\
+
+Likewise, since this differential equation provides a generic torque term, we can simply substitute in the vector equation of gravity gradient torque:
+\begin{equation}
+	\boldsymbol{\tau}_G=\frac{3\mu}{r^5}\boldsymbol{r}\times\left(I_c\boldsymbol{r}\right)
+\end{equation}
+Where $\mu$ is the gravitational parameter of the orbited body and $\boldsymbol{r}$ is the position vector of the rigid body with respect to the attractive center of the orbited body.\\
+
+The substitution, and derivation of the Euler's equations including gravity gradient torque goes as follows:
+\begin{equation}
+	\begin{split}
+		\boldsymbol{\tau}_g&=I_c\dot{\boldsymbol{\omega}}+\boldsymbol{\omega}\times\left(I_c\boldsymbol{\omega}\right) \\
+		\frac{3\mu}{r^5}\boldsymbol{r}\times\left(I_c\boldsymbol{r}\right)&=I_c\dot{\boldsymbol{\omega}}+\boldsymbol{\omega}\times\left(I_c\boldsymbol{\omega}\right) \\
+	\end{split}
+\end{equation} 
+To simplify the terms in this expression, we can factor out the scalar of the $\boldsymbol{r}$ terms from its unit vector $\boldsymbol{r}=r\cdot\hat{\boldsymbol{r}}$:
+\begin{equation}
+	\begin{split}
+		\frac{3\mu}{r^5}\left(r^2\right)\hat{\boldsymbol{r}}\times\left(I_c\hat{\boldsymbol{r}}\right)&=I_c\dot{\boldsymbol{\omega}}+\boldsymbol{\omega}\times\left(I_c\boldsymbol{\omega}\right) \\
+		\frac{3\mu}{r^3}\hat{\boldsymbol{r}}\times\left(I_c\hat{\boldsymbol{r}}\right)&=I_c\dot{\boldsymbol{\omega}}+\boldsymbol{\omega}\times\left(I_c\boldsymbol{\omega}\right) \\
+	\end{split}
+\end{equation}
+Using the definition of mean motion $n$, which is equal to $n=\sqrt{\mu/a^3}$ where $a$ is the orbit semi-major axis, since this is a circular orbit ($e=0$), the orbital radius is constant and equal to the semi-major axis ($r=a$). Thus the following substitution can be made in the above expression: 
+\begin{equation}
+	\begin{split}
+		3\frac{\mu}{a^3}\hat{\boldsymbol{r}}\times\left(I_c\hat{\boldsymbol{r}}\right)&=I_c\dot{\boldsymbol{\omega}}+\boldsymbol{\omega}\times\left(I_c\boldsymbol{\omega}\right) \\
+		3n^2\hat{\boldsymbol{r}}\times\left(I_c\hat{\boldsymbol{r}}\right)&=I_c\dot{\boldsymbol{\omega}}+\boldsymbol{\omega}\times\left(I_c\boldsymbol{\omega}\right) \\
+	\end{split}
+\end{equation}
+
+Which collapses the $\mu$ and $r$ dependence into the single constant $n^2$. On an eccentric orbit $r$ would vary with true anomaly and this coefficient would have to be recomputed at every integration step because the orbit is circular it is evaluated once. Then for the sake of numerical integration, the $\dot{\boldsymbol{\omega}}$ is isolated on one side of the equation:
+\begin{equation}
+	\begin{split}
+		3n^2\hat{\boldsymbol{r}}\times\left(I_c\hat{\boldsymbol{r}}\right)&=I_c\dot{\boldsymbol{\omega}}+\boldsymbol{\omega}\times\left(I_c\boldsymbol{\omega}\right) \\
+		I_c\dot{\boldsymbol{\omega}}&=3n^2\hat{\boldsymbol{r}}\times\left(I_c\hat{\boldsymbol{r}}\right)-\boldsymbol{\omega}\times\left(I_c\boldsymbol{\omega}\right) \\
+		\dot{\boldsymbol{\omega}}&=I_c^{-1}\left(3n^2\hat{\boldsymbol{r}}\times\left(I_c\hat{\boldsymbol{r}}\right)-\boldsymbol{\omega}\times\left(I_c\boldsymbol{\omega}\right)\right) \\
+	\end{split}
+\end{equation}
+
+It should be noted that this equation is a vector relation, and thus it holds true in any reference frame we choose. However, for the sake of numerical integration it needs to be resolved into $\mathcal{B}$-frame components, since $I_c$ is only constant in the body frame. This means the unit position vector $\hat{\boldsymbol{r}}$ also needs to be expressed in body components. However, $\hat{\boldsymbol{r}}$ is not one of the integrated states, and is instead computed at each step from the orbit geometry and whatever the current attitude happens to be. Since we know this is a circular orbit, the true anomaly $\nu(t)$ simply advances linearly with time as a function of $n\cdot t$, so $\hat{\boldsymbol{r}}$ can be written in the $\mathcal{P}$-frame as a unit circle on the $\hat{e}-\hat{p}$ plane, and then mapped through $\mathcal{N}$ into $\mathcal{B}$:
+\begin{equation}
+	\begin{split}
+		\nu(t)&=\nu_0+nt \\
+		{}^{\mathcal{P}}\hat{\boldsymbol{r}}&=\left[\cos\nu(t),\ \sin\nu(t),\ 0\right]^T \\
+		{}^{\mathcal{N}}\hat{\boldsymbol{r}}&=\left[NP\right]{}^{\mathcal{P}}\hat{\boldsymbol{r}} \\
+		{}^{\mathcal{B}}\hat{\boldsymbol{r}}&=\left[BN(\boldsymbol{q})\right]{}^{\mathcal{N}}\hat{\boldsymbol{r}}
+	\end{split}
+\end{equation}
+Where $\left[NP\right]$ is a DCM used in problem set 1 to map from the Perifocal frame to the $\mathcal{N}$ frame, evaluated at the periapsis direction, meaning the true longitude $\theta$ replaced by the argument of periapsis $\omega_0$. Note that this DCM is the transpose of a 3-1-3 Euler sequence rotated through $\Omega_0$, $i$, and $\omega_0$, since it maps out of the perifocal frame rather than into it:
+\tiny
+\begin{equation}
+	\left[NP\right]=
+	\left[
+	\begin{matrix}
+		\cos{\Omega_0}\cos{\omega_0}-\sin{\Omega_0}\cos{i}\sin{\omega_0} & -\cos{\Omega_0}\sin{\omega_0}-\sin{\Omega_0}\cos{i}\cos{\omega_0} & \sin{\Omega_0}\sin{i}\\
+		\sin{\Omega_0}\cos{\omega_0}+\cos{\Omega_0}\cos{i}\sin{\omega_0} & -\sin{\Omega_0}\sin{\omega_0}+\cos{\Omega_0}\cos{i}\cos{\omega_0} & -\cos{\Omega_0}\sin{i}\\
+		\sin{i}\sin{\omega_0} & \sin{i}\cos{\omega_0} & \cos{i}
+	\end{matrix}
+	\right]
+\end{equation}
+\normalsize
+Since the orbital elements are constant for an unperturbed circular orbit, $\left[NP\right]$ is built a single time from the values given in Table \ref{tab:reference_orbit} rather than recomputed at each step.\\
+
+And $\left[BN(\boldsymbol{q})\right]$ (given by the lecture slides) is the DCM mapping the ECI frame to the body frame, built from the current satellite attitude represented as an euler parameter, which is given as as:
+\begin{equation}
+	\left[BN(\boldsymbol{q})\right]=
+	\begin{bmatrix}
+		1-2q_2^2-2q_3^2 & 2\left(q_1q_2+q_3q_4\right) & 2\left(q_1q_3-q_2q_4\right)\\
+		2\left(q_1q_2-q_3q_4\right) & 1-2q_1^2-2q_3^2 & 2\left(q_2q_3+q_1q_4\right)\\
+		2\left(q_1q_3+q_2q_4\right) & 2\left(q_2q_3-q_1q_4\right) & 1-2q_1^2-2q_2^2
+	\end{bmatrix}
+\end{equation}
+Unlike $\left[NP\right]$, this DCM must be rebuilt at every integration step, since $\boldsymbol{q}$ is one of the propagated states. Likewise, we must define the KDE to propagate the euler parameters over time as a function of angular rate $\boldsymbol{\omega}$ which is also given by the lecture slides as:
+\begin{equation}
+	\dot{\boldsymbol{q}}=\frac{1}{2}
+	\begin{bmatrix}
+		0 & \omega_3 & -\omega_2 & \omega_1 \\
+		-\omega_3 & 0 & \omega_1 & \omega_2 \\
+		\omega_2 & -\omega_1 & 0 & \omega_3 \\
+		-\omega_1 & -\omega_2 & -\omega_3 & 0 \\
+	\end{bmatrix}\boldsymbol{q}
+\end{equation}
+Where $\boldsymbol{\omega}=[\omega_1, \omega_2, \omega_3]^T$ is propagated from the gravity-gradient Euler's EoM, and $\boldsymbol{q}=[q_1,q_2,q_3,q_4]^T$.\\
+
+Then the complete set of rotational EoM's and KDE's can be listed as:
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	\begin{equation}
+		\begin{split}
+			\dot{\boldsymbol{\omega}}&=I_c^{-1}\left(3n^2\,{}^{\mathcal{B}}\hat{\boldsymbol{r}}\times\left(I_c\,{}^{\mathcal{B}}\hat{\boldsymbol{r}}\right)-\boldsymbol{\omega}\times\left(I_c\boldsymbol{\omega}\right)\right) \\
+			\dot{\boldsymbol{q}}&=\frac{1}{2}
+			\begin{bmatrix}
+				0 & \omega_3 & -\omega_2 & \omega_1 \\
+				-\omega_3 & 0 & \omega_1 & \omega_2 \\
+				\omega_2 & -\omega_1 & 0 & \omega_3 \\
+				-\omega_1 & -\omega_2 & -\omega_3 & 0 \\
+			\end{bmatrix}\boldsymbol{q} \\
+			{}^{\mathcal{B}}\hat{\boldsymbol{r}}&=\left[BN(\boldsymbol{q})\right]\left[NP\right]\left[\cos\nu(t),\ \sin\nu(t),\ 0\right]^T,\qquad \nu(t)=\nu_0+nt \\
+		\end{split}
+	\end{equation}
+	\footnotesize
+	\begin{equation}
+		\left[BN(\boldsymbol{q})\right]=
+		\begin{bmatrix}
+			1-2q_2^2-2q_3^2 & 2\left(q_1q_2+q_3q_4\right) & 2\left(q_1q_3-q_2q_4\right)\\
+			2\left(q_1q_2-q_3q_4\right) & 1-2q_1^2-2q_3^2 & 2\left(q_2q_3+q_1q_4\right)\\
+			2\left(q_1q_3+q_2q_4\right) & 2\left(q_2q_3-q_1q_4\right) & 1-2q_1^2-2q_2^2
+		\end{bmatrix}
+	\end{equation}
+	\tiny
+	\begin{equation}
+		\left[NP\right]==
+		\begin{bmatrix}
+			\cos{\Omega_0}\cos{\omega_0}-\sin{\Omega_0}\cos{i}\sin{\omega_0} & -\cos{\Omega_0}\sin{\omega_0}-\sin{\Omega_0}\cos{i}\cos{\omega_0} & \sin{\Omega_0}\sin{i}\\
+			\sin{\Omega_0}\cos{\omega_0}+\cos{\Omega_0}\cos{i}\sin{\omega_0} & -\sin{\Omega_0}\sin{\omega_0}+\cos{\Omega_0}\cos{i}\cos{\omega_0} & -\cos{\Omega_0}\sin{i}\\
+			\sin{i}\sin{\omega_0} & \sin{i}\cos{\omega_0} & \cos{i}
+		\end{bmatrix}
+	\end{equation}
+	\normalsize
+	
+	Where $\left[NP\right]$ is constant and $\left[BN(\boldsymbol{q})\right]$ is rebuilt from $\boldsymbol{q}$ at each step, making this a coupled seven state system $\boldsymbol{x}=[\boldsymbol{q}^T,\ \boldsymbol{\omega}^T]^T$.
+\end{mdframed}
+
+\subsubsection*{(h.2): Find}
+Choose the initial attitude to be "nadir-pointing," where one body axis is aligned with $-\boldsymbol{r}_c$, while another aligned with the orbit-normal direction $\boldsymbol{r}_c\times\boldsymbol{v}_c$. There is some freedom in how I define "nadir-pointing"; state my convention and report the attitude initial condition.\\
+
+\textbf{Analysis/Conclusions:}
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	For this part I define "nadir-pointing" as the $\mathcal{B}$-frame vector $\hat{\boldsymbol{y}}$ being aligned with $-\boldsymbol{r}_c$ while the $\hat{\boldsymbol{x}}$ vector is aligned with $\boldsymbol{r}_c\times\boldsymbol{v}_c$.
+\end{mdframed}
+To report the attitude initial condition (which would be the attitude in $\mathcal{N}$-frame), I need to first define $\hat{\boldsymbol{r}}$ in the same frame.\\
+
+We know from the initial conditions given in table 1, that the true anomaly starts at $0\deg$ which means it starts at periapsis. This also means that $\hat{\boldsymbol{r}}$ starts aligned with the $\hat{\boldsymbol{e}}$ vector in the $\mathcal{P}$-frame and we can use the $[NP]$ DCM defined in the previous part:
+\tiny
+\begin{equation}
+	\begin{split}
+		\left[NP\right]&=
+		\begin{bmatrix}
+			\cos{\Omega_0}\cos{\omega_0}-\sin{\Omega_0}\cos{i}\sin{\omega_0} & -\cos{\Omega_0}\sin{\omega_0}-\sin{\Omega_0}\cos{i}\cos{\omega_0} & \sin{\Omega_0}\sin{i}\\
+			\sin{\Omega_0}\cos{\omega_0}+\cos{\Omega_0}\cos{i}\sin{\omega_0} & -\sin{\Omega_0}\sin{\omega_0}+\cos{\Omega_0}\cos{i}\cos{\omega_0} & -\cos{\Omega_0}\sin{i}\\
+			\sin{i}\sin{\omega_0} & \sin{i}\cos{\omega_0} & \cos{i}
+		\end{bmatrix}\\
+		&=
+		\begin{bmatrix}
+			\cos{0}\cos{0}-\sin{0}\cos{45}\sin{0} & -\cos{0}\sin{0}-\sin{0}\cos{45}\cos{0} & \sin{0}\sin{45}\\
+			\sin{0}\cos{0}+\cos{0}\cos{45}\sin{0} & -\sin{0}\sin{0}+\cos{0}\cos{45}\cos{0} & -\cos{0}\sin{45}\\
+			\sin{45}\sin{0} & \sin{45}\cos{0} & \cos{45}
+		\end{bmatrix}\\
+		&=
+		\begin{bmatrix}
+			1 & 0 & 0\\
+			0 & 0.7071... & -0.7071... \\
+			0 & 0.7071... & 0.7071...
+		\end{bmatrix}
+	\end{split}
+\end{equation}
+\normalsize
+
+So, using this DCM, we can simply take the $\mathcal{P}$-frame unit vector at periapsis (defined as $\prescript{\mathcal{P}}{}{\hat{\boldsymbol{r}}}=[1,0,0]^t$) and transform it to $\mathcal{N}$-frame. Recall we established $\hat{\boldsymbol{e}}=\prescript{\mathcal{P}}{}{\hat{\boldsymbol{r}}}$ at epoch:
+\begin{equation}
+	\begin{split}
+		\prescript{\mathcal{N}}{}{\hat{\boldsymbol{r}}}&=[NP]\prescript{\mathcal{P}}{}{\hat{\boldsymbol{r}}} \\
+		\prescript{\mathcal{N}}{}{\hat{\boldsymbol{r}}}&=
+		\begin{bmatrix}
+			1 & 0 & 0\\
+			0 & 0.7071... & -0.7071... \\
+			0 & 0.7071... & 0.7071...
+		\end{bmatrix}\hat{\boldsymbol{e}} \\
+		\begin{bmatrix}
+			1 \\
+			0 \\
+			0 \\
+		\end{bmatrix}&=
+		\begin{bmatrix}
+			1 & 0 & 0\\
+			0 & 0.7071... & -0.7071... \\
+			0 & 0.7071... & 0.7071...
+		\end{bmatrix}
+		\begin{bmatrix}
+			1 \\
+			0 \\
+			0 \\
+		\end{bmatrix}\\
+		\prescript{\mathcal{N}}{}{\hat{\boldsymbol{r}}}&=
+		\begin{bmatrix}
+			1 \\
+			0 \\
+			0 \\
+		\end{bmatrix}=\hat{\boldsymbol{e}}=\prescript{\mathcal{P}}{}{\hat{\boldsymbol{r}}} \\
+	\end{split}
+\end{equation}
+
+So, with the $\mathcal{N}$-frame value of $\hat{\boldsymbol{r}}$ defined, we also need to understand the alignment of the rigid body with $\hat{\boldsymbol{r}}\times\hat{\boldsymbol{v}}$, which would also be equivalent to the specific angular momentum unit vector $\hat{\boldsymbol{h}}$. This requires the velocity direction at epoch. Since the orbit is circular, the flight path angle is zero everywhere, meaning the velocity is always purely transverse and therefore lies along the $\hat{\boldsymbol{p}}$ basis vector of the $\mathcal{P}$-frame at periapsis. Mapping it into the $\mathcal{N}$-frame the same way as before:
+\begin{equation}
+	\begin{split}
+		\prescript{\mathcal{N}}{}{\hat{\boldsymbol{v}}}&=[NP]\prescript{\mathcal{P}}{}{\hat{\boldsymbol{v}}} \\
+		&=
+		\begin{bmatrix}
+			1 & 0 & 0\\
+			0 & 0.7071... & -0.7071... \\
+			0 & 0.7071... & 0.7071...
+		\end{bmatrix}
+		\begin{bmatrix}
+			0 \\ 1 \\ 0 \\
+		\end{bmatrix}
+		=
+		\begin{bmatrix}
+			0 \\ 0.7071... \\ 0.7071... \\
+		\end{bmatrix}
+	\end{split}
+\end{equation}
+Then the orbit-normal direction follows from the cross product of the two:
+\begin{equation}
+	\begin{split}
+		\prescript{\mathcal{N}}{}{\hat{\boldsymbol{h}}}&=\prescript{\mathcal{N}}{}{\hat{\boldsymbol{r}}}\times\prescript{\mathcal{N}}{}{\hat{\boldsymbol{v}}} \\
+		&=
+		\begin{bmatrix}
+			1 \\ 0 \\ 0 \\
+		\end{bmatrix}\times
+		\begin{bmatrix}
+			0 \\ 0.7071... \\ 0.7071... \\
+		\end{bmatrix} =
+		\begin{bmatrix}
+			0 \\ -0.7071... \\ 0.7071... \\
+		\end{bmatrix}
+	\end{split}
+\end{equation}
+
+With both named directions now expressed in the $\mathcal{N}$-frame, the orientation of the $\mathcal{B}$-frame at epoch follows directly from the convention. The $\hat{\boldsymbol{y}}$ axis points along $-\hat{\boldsymbol{r}}$, the $\hat{\boldsymbol{x}}$ axis points along $\hat{\boldsymbol{h}}$, and the $\hat{\boldsymbol{z}}$ axis is whatever completes the right handed set:
+\begin{equation}
+	\begin{split}
+		\prescript{\mathcal{N}}{}{\hat{\boldsymbol{x}}}&=\prescript{\mathcal{N}}{}{\hat{\boldsymbol{h}}}=\left[0,\ -0.7071...,\ 0.7071...\right]^T \\
+		\prescript{\mathcal{N}}{}{\hat{\boldsymbol{y}}}&=-\prescript{\mathcal{N}}{}{\hat{\boldsymbol{r}}}=\left[-1,\ 0,\ 0\right]^T \\
+		\prescript{\mathcal{N}}{}{\hat{\boldsymbol{z}}}&=\prescript{\mathcal{N}}{}{\hat{\boldsymbol{x}}}\times\prescript{\mathcal{N}}{}{\hat{\boldsymbol{y}}}=\left[0,\ -0.7071...,\ -0.7071...\right]^T \\
+	\end{split}
+\end{equation}
+
+These three unit vectors are the $\mathcal{B}$-frame basis expressed in $\mathcal{N}$-frame components, which is exactly the definition of the rows of the DCM $[BN]$. So the attitude at epoch requires no further computation and can simply be assembled by stacking them:
+\begin{equation}
+	\left[BN(t_0)\right]=
+	\begin{bmatrix}
+		\prescript{\mathcal{N}}{}{\hat{\boldsymbol{x}}}^T \\
+		\prescript{\mathcal{N}}{}{\hat{\boldsymbol{y}}}^T \\
+		\prescript{\mathcal{N}}{}{\hat{\boldsymbol{z}}}^T \\
+	\end{bmatrix}=
+	\begin{bmatrix}
+		0 & -0.7071... & 0.7071... \\
+		-1 & 0 & 0 \\
+		0 & -0.7071... & -0.7071... \\
+	\end{bmatrix}
+\end{equation}
+Since the KDE derived in part (h.1) propagates Euler parameters rather than a DCM, this attitude must be converted into that representation. A method to directly compute the Euler parameter components from a DCM like $[BN] $ is given by \cite{schaub_analytical_2018}:
+\begin{equation}
+	\begin{split}
+		q_4&=\pm\frac{1}{2}\sqrt{\text{tr}\left[BN\right]+1},\quad
+		q_1=\frac{BN_{23}-BN_{32}}{4q_4}\\
+		q_2&=\frac{BN_{31}-BN_{13}}{4q_4},\quad
+		q_3=\frac{BN_{12}-BN_{21}}{4q_4}
+	\end{split}
+\end{equation}
+The positive root is taken here for $q_4$. The trace of $[BN(t_0)]$ is $0+0-0.7071...=-0.7071...$, so the scalar parameter is:
+\begin{equation}
+	q_4=\frac{1}{2}\sqrt{-0.7071...+1}=\frac{1}{2}\sqrt{0.2928...}=0.2705...
+\end{equation}
+And with $4q_4=1.0823...$, the three vector parameters are:
+\begin{equation}
+	\begin{split}
+		q_1&=\frac{0-\left(-0.7071...\right)}{1.0823...}=\frac{0.7071...}{1.0823...}=0.6532... \\
+		q_2&=\frac{0-0.7071...}{1.0823...}=\frac{-0.7071...}{1.0823...}=-0.6532... \\
+		q_3&=\frac{-0.7071...-\left(-1\right)}{1.0823...}=\frac{0.2928...}{1.0823...}=0.2705... \\
+	\end{split}
+\end{equation}
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	Which gives the attitude initial condition as the Euler parameter set:
+	\begin{equation}
+		\boldsymbol{q}(t_0)=
+		\begin{bmatrix}
+			q_1 \\ q_2 \\ q_3 \\ q_4 \\
+		\end{bmatrix}=
+		\begin{bmatrix}
+			0.6532... \\ -0.6532... \\ 0.2705... \\ 0.2705... \\
+		\end{bmatrix}
+	\end{equation}
+\end{mdframed}
+
+\subsubsection*{(h.3): Find}
+Perturb your initial attitude by a small offset (a few degrees) with a small initial body rate (report the values), integrate the attitude motion for several orbits, and plot the resulting attitude/rate time history. Describe what your observe empirically (does the small perturbation stay bounded, grow, oscillate?)\\
+
+\textbf{Analysis/Conclusions:}
+To perturb the initial attitude $\boldsymbol{q}_0$ by a few degrees, we can simply take some angular rate equal to about $3\deg/s$ and numerically integrate the Euler parameter for 1 second using the KDE defined for Euler parameter propagation in (h.3).\\
+
+So using a perturbation by integrating in the method described above using:
+\begin{equation}
+	\boldsymbol{\omega}_{\text{pert}}=[3\deg/s, 0, 0]^T=[0.0523...\text{rad}/s,0,0]^T
+\end{equation}
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	We get an initial perturbed attitude as an Euler parameter of:
+	\begin{equation}
+		\boldsymbol{q}(t_0)=
+		\begin{bmatrix}
+			q_1 \\ q_2 \\ q_3 \\ q_4 \\
+		\end{bmatrix}=
+		\begin{bmatrix}
+			0.6601... \\ -0.6459... \\ 0.2876... \\ 0.2534... \\
+		\end{bmatrix}
+	\end{equation}
+	And for this simulation I use an initial body rate with each axis at positive $0.01\deg/s$:
+	\begin{equation}
+		\boldsymbol{\omega}_{\text{pert}}=
+		\begin{bmatrix}
+			1.74532...\times10^{-4}\text{rad}/s \\
+			1.74532...\times10^{-4}\text{rad}/s \\
+			1.74532...\times10^{-4}\text{rad}/s \\
+		\end{bmatrix}
+	\end{equation}
+\end{mdframed}
+
+The time span for this simulation was requested for several orbits, which I arbitrarily picked to be $5$ orbits. The orbital period can be found by:
+\begin{equation}
+	\begin{split}
+		P&=2\pi\sqrt{\frac{a^3}{\mu}}\\
+		&=2\pi\sqrt{\frac{(6978km)^3}{398600km^3/s^2}}\\
+		&=5,801.0641...s\left(\frac{1min}{60s}\right)\left(\frac{1hr}{60min}\right)=1.6114...hr
+		\\
+		t_f&=5\cdot P=5\cdot5,801.0641\approx29,000s
+	\end{split}
+\end{equation}
+So the simulation will run for $29,000s$ to get approximately $5$ orbits of data.\\
+
+\newpage
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	After running the requested simulation, the following is the requested attitude time history represented as Euler parameters:
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.85\textwidth]{parth31.png}
+		\caption{Time history of Euler parameters over five orbits.}
+		\label{fig:g31}
+	\end{figure}
+	And the time history of the angular rate:
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.85\textwidth]{parth32.png}
+		\caption{Time history of angular rate over five orbits.}
+		\label{fig:g32}
+	\end{figure}
+\end{mdframed}
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	From the observations of the plots above, we see that despite fluctuation in both the attitude and angular rate, the initial perturbation state combining angular rate and attitude remains bounded. There is no shrinkage or growth that seem to fit any distinguishable pattern.\\
+	
+	Likewise, the four states of the Euler parameter seems to not relate to each other in any meaningful way and they appear to take somewhat of a random walk across the time history. The order of magnitude of these histories stay consistent which is expected because the Euler parameter is constrained to be unit length.\\
+	
+	The angular rate plot follows a similar behavior where there is no noticeable relation between the changes of the three. The order of magnitude of the three angular rates stays consistent and they are within the same range of each other on the three axes.
+\end{mdframed}
+
 \bibliographystyle{ieeetr}
 \bibliography{AAE507HW}
 	

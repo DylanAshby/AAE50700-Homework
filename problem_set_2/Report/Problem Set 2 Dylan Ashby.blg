@@ -3,9 +3,10 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: Problem Set 2 Dylan Ashby.aux
 The style file: ieeetr.bst
 Database file #1: AAE507HW.bib
+Warning--I didn't find a database entry for "schaub_attitude_2010"
 You've used 1 entry,
             1876 wiz_defined-function locations,
-            483 strings with 3701 characters,
+            484 strings with 3721 characters,
 and the built_in function-call counts, 189 in all, are:
 = -- 15
 > -- 8
@@ -44,3 +45,4 @@ warning$ -- 0
 while$ -- 1
 width$ -- 2
 write$ -- 11
+(There was 1 warning)

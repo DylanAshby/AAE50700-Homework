@@ -254,6 +254,7 @@ Then we can simply use the $\mathcal{S}$-frame representation of $\boldsymbol{v}
 		&=\frac{m}{2}\left(\dot{r}^2+(r\cos\theta\,\dot{\phi})^2+(r\dot{\theta})^2\right) \\
 		&=\frac{m}{2}\left(\dot{r}^2+r^2\cos^2\theta\,\dot{\phi}^2+r^2\dot{\theta}^2\right) \\
 	\end{split}
+	\label{eq:kineticeval}
 \end{equation}
 
 So, the Lagrangian can be written as:
@@ -332,7 +333,12 @@ So when we compute the generalized force using $Q_j=\boldsymbol{F}_D\cdot\frac{\
 \begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
 	Which makes the generalized force:
 	\begin{equation}
-		\boldsymbol{Q}=-\frac{1}{2}C_DA\rho(r)v\left(\dot{r}\,\hat{\boldsymbol{e}}_r+r^2\cos^2\theta\,\dot{\phi}\,\hat{\boldsymbol{e}}_\phi+r^2\dot{\theta}\,\hat{\boldsymbol{e}}_\theta\right)
+		\begin{split}
+			Q_r&=-\frac{1}{2}C_DA\rho(r)v\,\dot{r} \\
+			Q_\phi&=-\frac{1}{2}C_DA\rho(r)v\,r^2\cos^2\theta\,\dot{\phi} \\
+			Q_\theta&=-\frac{1}{2}C_DA\rho(r)v\,r^2\dot{\theta}
+		\end{split}
+		\label{eq:forcenc}
 	\end{equation}
 \end{mdframed}
 
@@ -354,6 +360,7 @@ First, we evaluate the generalized momentum terms:
 		\frac{\partial L}{\partial\dot{\phi}}&=\frac{\partial}{\partial\dot{\phi}}\left(\frac{m\dot{r}^2}{2}+\frac{mr^2\cos^2\theta\,\dot{\phi}^2}{2}+\frac{mr^2\dot{\theta}^2}{2}+\frac{m\mu}{r}-\frac{3m\mu J_2r_o^2}{2r^3}\sin^2\theta+\frac{m\mu J_2r_o^2}{2r^3}\right) \\
 		&=0+\frac{mr^2\cos^2\theta}{2}\frac{\partial\dot{\phi}^2}{\partial\dot{\phi}}+0+0-0+0=mr^2\dot{\phi}\cos^2\theta \\
 	\end{split}
+	\label{eq:phimomentum}
 \end{equation}
 
 And the $\theta$ momentum:
@@ -362,6 +369,7 @@ And the $\theta$ momentum:
 		\frac{\partial L}{\partial\dot{\theta}}&=\frac{\partial}{\partial\dot{\theta}}\left(\frac{m\dot{r}^2}{2}+\frac{mr^2\cos^2\theta\,\dot{\phi}^2}{2}+\frac{mr^2\dot{\theta}^2}{2}+\frac{m\mu}{r}-\frac{3m\mu J_2r_o^2}{2r^3}\sin^2\theta+\frac{m\mu J_2r_o^2}{2r^3}\right) \\
 		&=0+0+\frac{mr^2}{2}\frac{\partial\dot{\theta}^2}{\partial\dot{\theta}}+0-0+0=mr^2\dot{\theta} \\
 	\end{split}
+	\label{eq:thetamomentum}
 \end{equation}
 
 And the $r$ momentum:
@@ -370,6 +378,7 @@ And the $r$ momentum:
 		\frac{\partial L}{\partial\dot{r}}&=\frac{\partial}{\partial\dot{r}}\left(\frac{m\dot{r}^2}{2}+\frac{mr^2\cos^2\theta\,\dot{\phi}^2}{2}+\frac{mr^2\dot{\theta}^2}{2}+\frac{m\mu}{r}-\frac{3m\mu J_2r_o^2}{2r^3}\sin^2\theta+\frac{m\mu J_2r_o^2}{2r^3}\right) \\
 		&=\frac{m}{2}\frac{\partial\dot{r}^2}{\partial\dot{r}}+0+0+0-0+0=m\dot{r}
 	\end{split}
+	\label{eq:rmomentum}
 \end{equation}
 
 Then we compute their time derivatives:
@@ -381,6 +390,7 @@ Then we compute their time derivatives:
 		&=m\left(2r\dot{r}\dot{\phi}\cos^2\theta+r^2\ddot{\phi}\cos^2\theta-2r^2\dot{\phi}\dot{\theta}\cos\theta\sin\theta\right) \\
 		&=mr\cos\theta\left(2\dot{r}\dot{\phi}\cos\theta+r\ddot{\phi}\cos\theta-2r\dot{\phi}\dot{\theta}\sin\theta\right)
 	\end{split}
+	\label{eq:phimomentumdt}
 \end{equation}
 
 And the $\theta$ time derivative:
@@ -502,13 +512,129 @@ For zero drag, identify the cyclic coordinate and the associated conserved gener
 	\end{equation}
 	Because $\frac{\partial L}{\partial\phi}=0$ as determined in (b.3), the generalized momentum $p_\phi$ is constant over time.\\
 	
-	Likewise, the equation for this constant momentum was also found in (b.3):
+	Likewise, the equation for this constant momentum was also found in (b.3) Eq.~(\ref{eq:phimomentum}):
 	\begin{equation}
 		p_{\phi}=\frac{\partial L}{\partial\dot{\phi}}=mr^2\dot{\phi}\cos^2\theta
 	\end{equation}
 	Which can be evaluated from $\theta$ and $\dot{\phi}$ at any time.\\
 	
-	THEN SOMETHING SOMETHING $H_Z$ IDK
+	Because the angle $\phi$ is the rotation of the spacecraft around the $\hat{\boldsymbol{e}}_z$ axis, we can say that \textbf{$p_\phi$ is equivalent to the angular momentum about the $\hat{\boldsymbol{e}}_z$ axis $H_Z$}.
+\end{mdframed}
+
+\subsubsection*{(b.5): Find}
+
+For zero drag, show that the Jacobi energy integral
+\begin{equation}
+	\mathcal{J}\coloneqq\dot{\boldsymbol{q}}^T\frac{\partial L}{\partial\dot{\boldsymbol{q}}}-L
+\end{equation}
+is identical to the total energy $E=T+V$. Discuss if $\mathcal{J}$ is conserved under no drag, and why.\\
+
+\textbf{Analysis/Conclusions:}\\
+
+The total energy $E$ computes just like the Lagrangian in Eq.~(\ref{eq:lagrangianb}), but the potential is added instead of subtracted. Likewise, the expression ends up looking quite similar:
+\begin{equation}
+	\begin{split}
+		E&=T+V \\
+		&=\frac{m}{2}\left(\dot{r}^2+r^2\cos^2\theta\,\dot{\phi}^2+r^2\dot{\theta}^2\right)-\frac{m\mu}{r}\left(1-J_2\left(\frac{r_o}{r}\right)^2\left(\frac{3}{2}\sin^2\theta-\frac{1}{2}\right)\right) \\
+		&=\frac{m\dot{r}^2}{2}+\frac{mr^2\cos^2\theta\,\dot{\phi}^2}{2}+\frac{mr^2\dot{\theta}^2}{2}-\frac{m\mu}{r}+\frac{m\mu J_2r_o^2}{r^3}\left(\frac{3}{2}\sin^2\theta-\frac{1}{2}\right) \\
+		&=\frac{m\dot{r}^2}{2}+\frac{mr^2\cos^2\theta\,\dot{\phi}^2}{2}+\frac{mr^2\dot{\theta}^2}{2}-\frac{m\mu}{r}+\frac{3m\mu J_2r_o^2}{2r^3}\sin^2\theta-\frac{m\mu J_2r_o^2}{2r^3}
+	\end{split}
+\end{equation}
+
+Then to find the Jacobi integral, first we compute $\dot{\boldsymbol{q}}^T\frac{\partial L}{\partial\dot{\boldsymbol{q}}}$. This is a dot product between the coordinate rates and the generalized momentum found in (b.3) in equations (\ref{eq:phimomentum}), (\ref{eq:thetamomentum}), and (\ref{eq:rmomentum}):
+\begin{equation}
+	\begin{split}
+		\dot{\boldsymbol{q}}^T\frac{\partial L}{\partial\dot{\boldsymbol{q}}}&=\dot{r}\frac{\partial L}{\partial\dot{r}}+\dot{\theta}\frac{\partial L}{\partial\dot{\theta}}+\dot{\phi}\frac{\partial L}{\partial\dot{\phi}} \\
+		&=\dot{r}\left(m\dot{r}\right)+\dot{\theta}\left(mr^2\dot{\theta}\right)+\dot{\phi}\left(mr^2\dot{\phi}\cos^2\theta\right) \\
+		&=m\dot{r}^2+mr^2\dot{\theta}^2+mr^2\cos^2\theta\,\dot{\phi}^2
+	\end{split}
+\end{equation}
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	Then simply subtract the Lagrangian. We see below that this ends up flipping all the signs that were different between the Lagrangian and the total energy, and this ends up showing that the Jacobi integral is equal to the total energy:
+	\small
+	\begin{equation}
+		\begin{split}
+			\mathcal{J}&=\dot{\boldsymbol{q}}^T\frac{\partial L}{\partial\dot{\boldsymbol{q}}}-L \\
+			&=\left(m\dot{r}^2+mr^2\dot{\theta}^2+mr^2\cos^2\theta\,\dot{\phi}^2\right) \\
+			&\quad-\left(\frac{m\dot{r}^2}{2}+\frac{mr^2\cos^2\theta\,\dot{\phi}^2}{2}+\frac{mr^2\dot{\theta}^2}{2}+\frac{m\mu}{r}-\frac{3m\mu J_2r_o^2}{2r^3}\sin^2\theta+\frac{m\mu J_2r_o^2}{2r^3}\right) \\
+			&=\frac{m\dot{r}^2}{2}+\frac{mr^2\cos^2\theta\,\dot{\phi}^2}{2}+\frac{mr^2\dot{\theta}^2}{2}-\frac{m\mu}{r}+\frac{3m\mu J_2r_o^2}{2r^3}\sin^2\theta-\frac{m\mu J_2r_o^2}{2r^3}=E
+		\end{split}
+	\end{equation}
+	\normalsize
+	In our zero drag system, \textbf{the Jacobi integral is conserved}. This is because the Jacobi integral represents generalized total energy, and for it to be conserved it must not change over time. It will change over time if: there are non-conservative forces breaking conservation of energy in the system, or there is time variance in the Lagrangian, since $\mathcal{J}$ is purely a function of $L$. There are no non-conservative forces, and we see from (b.3) Eq.~(\ref{eq:lagrangianb}) that $L$ has no explicit dependence on time so $\mathcal{J}$ is conserved.
+\end{mdframed}
+
+\newpage
+
+\subsubsection*{(b.6): Find}
+
+Under drag, derive the time derivative of $H_z$ and $\mathcal{J}$. Discuss if they are conserved and why.\\
+
+\textbf{Analysis/Conclusions:}\\
+
+As discussed in (b.4), $H_z=p_\phi=\frac{\partial L}{\partial\dot{\phi}}$, thus the time derivative $\frac{d}{dt}(\frac{\partial L}{\partial\dot{\phi}})$ found in Eq.~(\ref{eq:phimomentumdt}) is equivalent to the time derivative of $H_z$:
+\begin{equation}
+	\frac{d}{dt}H_z=\frac{d}{dt}\left(\frac{\partial L}{\partial\dot{\phi}}\right)=mr\cos\theta\left(2\dot{r}\dot{\phi}\cos\theta+r\ddot{\phi}\cos\theta-2r\dot{\phi}\dot{\theta}\sin\theta\right)
+\end{equation}
+
+The time rate of the Jacobi integral $\mathcal{J}$ is given by:
+\begin{equation}
+	\frac{d\mathcal{J}}{dt}=\boldsymbol{Q}_{\text{nc}}\cdot\dot{\boldsymbol{q}}-\frac{\partial L}{\partial t}
+	\label{eq:jacobirate}
+\end{equation}
+
+The dot product portion of Eq.~(\ref{eq:jacobirate}) is between non-conservative forces found in Eq.~(\ref{eq:forcenc}) and the generalized coordinate rate, and it evaluates to:
+\begin{equation}
+	\begin{split}
+		\boldsymbol{Q}_{\text{nc}}\cdot\dot{\boldsymbol{q}}&=
+		\begin{bmatrix}
+			Q_r & Q_\phi & Q_\theta \\
+		\end{bmatrix}
+		\begin{bmatrix}
+			\dot{r} \\
+			\dot{\phi} \\
+			\dot{\theta} \\
+		\end{bmatrix} \\
+		&=
+		\begin{bmatrix}
+			-\frac{1}{2}C_DA\rho(r)v\,\dot{r} & -\frac{1}{2}C_DA\rho(r)v\,r^2\cos^2\theta\,\dot{\phi} & -\frac{1}{2}C_DA\rho(r)v\,r^2\dot{\theta} \\
+		\end{bmatrix}
+		\begin{bmatrix}
+			\dot{r} \\
+			\dot{\phi} \\
+			\dot{\theta} \\
+		\end{bmatrix} \\
+		&=-\frac{1}{2}C_DA\rho(r)v\,\dot{r}^2-\frac{1}{2}C_DA\rho(r)v\,r^2\cos^2\theta\,\dot{\phi}^2-\frac{1}{2}C_DA\rho(r)v\,r^2\dot{\theta}^2 \\
+		&=-\frac{1}{2}C_DA\rho(r)v\left(\dot{r}^2+r^2\cos^2\theta\,\dot{\phi}^2+r^2\dot{\theta}^2\right) \\
+		&=-\frac{1}{2}C_DA\rho(r)v^3
+	\end{split}
+\end{equation}
+The portion in the parenthesis ends up being equivalent to $\|\boldsymbol{v}\|_2^2$, so it simplifies to a fairly compact scalar function.\\
+
+Looking at the Lagrangian $L$:
+\begin{equation}
+	L=\frac{m\dot{r}^2}{2}+\frac{mr^2\cos^2\theta\,\dot{\phi}^2}{2}+\frac{mr^2\dot{\theta}^2}{2}+\frac{m\mu}{r}-\frac{3m\mu J_2r_o^2}{2r^3}\sin^2\theta+\frac{m\mu J_2r_o^2}{2r^3}
+\end{equation}
+As discussed in (b.5), there are no explicit time $t$ terms, so the partial $\frac{\partial L}{\partial t}=0$.\\
+
+Which makes the time derivative of $\mathcal{J}$ equal to:
+\begin{equation}
+	\frac{d\mathcal{J}}{dt}=\boldsymbol{Q}_{\text{nc}}\cdot\dot{\boldsymbol{q}}-\frac{\partial L}{\partial t}=-\frac{1}{2}C_DA\rho(r)v^3-0=-\frac{1}{2}C_DA\rho(r)v^3
+\end{equation}
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	So, to reiterate, the time derivatives of $H_Z$ and $\mathcal{J}$ are:
+	\begin{equation}
+		\begin{split}
+			\frac{d}{dt}H_z&=mr\cos\theta\left(2\dot{r}\dot{\phi}\cos\theta+r\ddot{\phi}\cos\theta-2r\dot{\phi}\dot{\theta}\sin\theta\right) \\
+			\frac{d}{dt}\mathcal{J}&=-\frac{1}{2}C_DA\rho(r)v^3 \\
+		\end{split}
+	\end{equation}
+	
+	We see that under drag $H_z$ is not conserved because... idk \\
+	
+	Then, we see that $\mathcal{J}$ is not conserved because its rate of change is a constant decrease scaling with position and velocity. Since neither term can be negative themselves, the sign never flips and energy always decreases under drag. \\
 \end{mdframed}
 
 \end{document}

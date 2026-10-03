@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.9.24)  2 OCT 2026 00:32
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.9.24)  3 OCT 2026 03:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -662,121 +662,332 @@ Package mdframed Info: mdframed detected package amsthm
  changed the theorem header of amsthm
 (mdframed)              on input line 488.
 
-Underfull \hbox (badness 10000) in paragraph at lines 502--503
+Underfull \hbox (badness 10000) in paragraph at lines 503--504
 
  []
 
 [12]
-Underfull \hbox (badness 10000) in paragraph at lines 504--505
+Underfull \hbox (badness 10000) in paragraph at lines 505--506
 
  []
 
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 506.
+(mdframed)              on input line 507.
 
-Underfull \hbox (badness 10000) in paragraph at lines 507--508
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 512--514
+Underfull \hbox (badness 10000) in paragraph at lines 508--509
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 518--520
+Underfull \hbox (badness 10000) in paragraph at lines 513--515
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 529--531
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 532--533
-
- []
-
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 527.
 [13]
+Underfull \hbox (badness 10000) in paragraph at lines 547--549
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 550--551
+
+ []
+
+[14]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 553.
- [14]
-Underfull \hbox (badness 10000) in paragraph at lines 572--573
+(mdframed)              on input line 573.
+Package mdframed Info: Not enough space on this page on input line 587.
+ [15]
+Underfull \hbox (badness 10000) in paragraph at lines 593--594
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 574--575
+Underfull \hbox (badness 10000) in paragraph at lines 595--596
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 612--614
+Overfull \hbox (31.04854pt too wide) detected at line 611
+[]
+ []
+
+[16]
+Underfull \hbox (badness 10000) in paragraph at lines 644--646
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 618--620
+Underfull \hbox (badness 10000) in paragraph at lines 650--652
 
  []
 
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 626.
+(mdframed)              on input line 658.
+[17]
+Underfull \hbox (badness 10000) in paragraph at lines 671--672
 
-Underfull \hbox (badness 10000) in paragraph at lines 635--636
+ []
+
+LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 7
+05.
+(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2024/11/19 v2.5n Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/bx/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/b/n' tried instead on input line 705.
+
+Underfull \hbox (badness 10000) in paragraph at lines 712--713
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 637--638
+Underfull \hbox (badness 10000) in paragraph at lines 714--715
 
  []
 
-[15]
-Package mdframed Info: Not enough space on this page on input line 638.
- [16] (./Problem Set 5 Dylan Ashby.aux)
+[18{/usr/share/texlive/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 75
+4.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 775.
+
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 776--778
+
+ []
+
+
+Overfull \hbox (7.0638pt too wide) detected at line 807
+[]
+ []
+
+[19]
+Underfull \hbox (badness 10000) in paragraph at lines 807--809
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 826--828
+
+ []
+
+[20]
+Overfull \hbox (22.39764pt too wide) detected at line 878
+[]
+ []
+
+[21]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 880.
+
+Underfull \hbox (badness 10000) in paragraph at lines 929--930
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 931--932
+
+ []
+
+[22]
+Underfull \hbox (badness 10000) in paragraph at lines 986--988
+
+ []
+
+[23]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 1004.
+<c2_J2only_3d.png, id=108, 639.3486pt x 567.3195pt>
+File: c2_J2only_3d.png Graphic file (type png)
+<use c2_J2only_3d.png>
+Package pdftex.def Info: c2_J2only_3d.png  used on input line 1010.
+(pdftex.def)             Requested size: 155.03862pt x 137.57048pt.
+<c2_J2only_edgeon.png, id=109, 668.7384pt x 598.3956pt>
+File: c2_J2only_edgeon.png Graphic file (type png)
+<use c2_J2only_edgeon.png>
+Package pdftex.def Info: c2_J2only_edgeon.png  used on input line 1017.
+(pdftex.def)             Requested size: 155.03862pt x 138.72379pt.
+<c2_J2only_sideon.png, id=110, 731.3724pt x 597.1911pt>
+File: c2_J2only_sideon.png Graphic file (type png)
+<use c2_J2only_sideon.png>
+Package pdftex.def Info: c2_J2only_sideon.png  used on input line 1024.
+(pdftex.def)             Requested size: 155.03862pt x 126.58932pt.
+<c2_J2only_earth.png, id=111, 577.1964pt x 571.4148pt>
+File: c2_J2only_earth.png Graphic file (type png)
+<use c2_J2only_earth.png>
+Package pdftex.def Info: c2_J2only_earth.png  used on input line 1031.
+(pdftex.def)             Requested size: 155.03862pt x 153.48189pt.
+Package mdframed Info: Not enough space on this page on input line 1038.
+ [24 <./c2_J2only_3d.png (PNG copy)> <./c2_J2only_edgeon.png (PNG copy)> <./c2_
+J2only_sideon.png (PNG copy)> <./c2_J2only_earth.png (PNG copy)>]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 1042.
+<c2_J2drag_3d.png, id=116, 639.5895pt x 567.3195pt>
+File: c2_J2drag_3d.png Graphic file (type png)
+<use c2_J2drag_3d.png>
+Package pdftex.def Info: c2_J2drag_3d.png  used on input line 1048.
+(pdftex.def)             Requested size: 155.03862pt x 137.51854pt.
+<c2_J2drag_edgeon.png, id=117, 668.2566pt x 598.3956pt>
+File: c2_J2drag_edgeon.png Graphic file (type png)
+<use c2_J2drag_edgeon.png>
+Package pdftex.def Info: c2_J2drag_edgeon.png  used on input line 1055.
+(pdftex.def)             Requested size: 155.03862pt x 138.82422pt.
+<c2_J2drag_sideon.png, id=118, 734.2632pt x 597.1911pt>
+File: c2_J2drag_sideon.png Graphic file (type png)
+<use c2_J2drag_sideon.png>
+Package pdftex.def Info: c2_J2drag_sideon.png  used on input line 1062.
+(pdftex.def)             Requested size: 155.03862pt x 126.09726pt.
+<c2_J2drag_earth.png, id=119, 577.1964pt x 571.4148pt>
+File: c2_J2drag_earth.png Graphic file (type png)
+<use c2_J2drag_earth.png>
+Package pdftex.def Info: c2_J2drag_earth.png  used on input line 1069.
+(pdftex.def)             Requested size: 155.03862pt x 153.48189pt.
+Package mdframed Info: Not enough space on this page on input line 1076.
+ [25 <./c2_J2drag_3d.png (PNG copy)> <./c2_J2drag_edgeon.png (PNG copy)> <./c2_
+J2drag_sideon.png (PNG copy)> <./c2_J2drag_earth.png (PNG copy)>]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 1080.
+<c2_difference.png, id=123, 868.9263pt x 590.6868pt>
+File: c2_difference.png Graphic file (type png)
+<use c2_difference.png>
+Package pdftex.def Info: c2_difference.png  used on input line 1084.
+(pdftex.def)             Requested size: 274.55197pt x 186.63515pt.
+Package mdframed Info: Not enough space on this page on input line 1088.
+ [26 <./c2_difference.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 1098--1100
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1101--1102
+
+ []
+
+[27]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 1127.
+<c3_J2only_normalized.png, id=130, 900.7251pt x 598.1547pt>
+File: c3_J2only_normalized.png Graphic file (type png)
+<use c3_J2only_normalized.png>
+Package pdftex.def Info: c3_J2only_normalized.png  used on input line 1131.
+(pdftex.def)             Requested size: 274.55197pt x 182.32281pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 1135--1136
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1137--1138
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1139--1140
+
+ []
+
+Package mdframed Info: Not enough space on this page on input line 1142.
+[28 <./c3_J2only_normalized.png (PNG copy)>]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 1146.
+<c3_J2drag_normalized.png, id=134, 900.7251pt x 598.1547pt>
+File: c3_J2drag_normalized.png Graphic file (type png)
+<use c3_J2drag_normalized.png>
+Package pdftex.def Info: c3_J2drag_normalized.png  used on input line 1150.
+(pdftex.def)             Requested size: 274.55197pt x 182.32281pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 1160--1161
+
+ []
+
+Package mdframed Info: Not enough space on this page on input line 1163.
+[29 <./c3_J2drag_normalized.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 1177--1179
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1180--1181
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1207--1209
+
+ []
+
+[30]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 1212.
+<c4_residual.png, id=142, 913.011pt x 595.5048pt>
+File: c4_residual.png Graphic file (type png)
+<use c4_residual.png>
+Package pdftex.def Info: c4_residual.png  used on input line 1216.
+(pdftex.def)             Requested size: 274.55197pt x 179.0708pt.
+Package mdframed Info: Not enough space on this page on input line 1222.
+ [31 <./c4_residual.png (PNG copy)>] (./Problem Set 5 Dylan Ashby.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-03-20>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 8550 strings out of 469263
- 141120 string characters out of 5464811
+ 8720 strings out of 469263
+ 144946 string characters out of 5464811
  773456 words of memory out of 6000000
- 37242 multiletter control sequences out of 15000+600000
- 642671 words of font info for 96 fonts, out of 8000000 for 9000
+ 37407 multiletter control sequences out of 15000+600000
+ 643006 words of font info for 97 fonts, out of 8000000 for 9000
  56 hyphenation exceptions out of 8191
- 84i,22n,93p,976b,444s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmex
-tra/cmmib7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmext
-ra/cmmib9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
-10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb>
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/s
-hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmsy9.pfb>
-Output written on "Problem Set 5 Dylan Ashby.pdf" (17 pages, 285455 bytes).
+ 84i,26n,93p,976b,679s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb></usr/share/texlive/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmm
+i9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib7.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib9.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
+Output written on "Problem Set 5 Dylan Ashby.pdf" (32 pages, 5306676 bytes).
 PDF statistics:
- 170 PDF objects out of 1000 (max. 8388607)
- 105 compressed objects within 2 object streams
+ 271 PDF objects out of 1000 (max. 8388607)
+ 163 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 61 words of extra memory for PDF output out of 10000 (max. 10000000)
 

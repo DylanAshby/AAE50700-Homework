@@ -494,6 +494,7 @@ And we then isolate the $\ddot{r}$ term:
 			\ddot{\phi}&=-\frac{C_DA\rho(r)v\dot{\phi}}{2m}-\frac{2\dot{r}\dot{\phi}}{r}+2\dot{\phi}\dot{\theta}\tan\theta \\
 			&\text{Where:  }v=\sqrt{\dot{r}^2+r^2\cos^2\theta\,\dot{\phi}^2+r^2\dot{\theta}^2}
 		\end{split}
+		\label{eq:eom}
 	\end{equation}
 \end{mdframed}
 
@@ -512,13 +513,30 @@ For zero drag, identify the cyclic coordinate and the associated conserved gener
 	\end{equation}
 	Because $\frac{\partial L}{\partial\phi}=0$ as determined in (b.3), the generalized momentum $p_\phi$ is constant over time.\\
 	
-	Likewise, the equation for this constant momentum was also found in (b.3) Eq.~(\ref{eq:phimomentum}):
+	Likewise, the equation for this constant generalized momentum was also found in (b.3) Eq.~(\ref{eq:phimomentum}):
 	\begin{equation}
 		p_{\phi}=\frac{\partial L}{\partial\dot{\phi}}=mr^2\dot{\phi}\cos^2\theta
 	\end{equation}
-	Which can be evaluated from $\theta$ and $\dot{\phi}$ at any time.\\
-	
-	Because the angle $\phi$ is the rotation of the spacecraft around the $\hat{\boldsymbol{e}}_z$ axis, we can say that \textbf{$p_\phi$ is equivalent to the angular momentum about the $\hat{\boldsymbol{e}}_z$ axis $H_Z$}.
+\end{mdframed}
+
+To compare $p_\phi$ to $H_z$, we take the $z$ component of $\boldsymbol{r}\times\boldsymbol{p}$, using the same relation between the spherical and Cartesian bases used to derive $\boldsymbol{v}$:
+\begin{equation}
+	\hat{\boldsymbol{e}}_z=\sin\theta\hat{\boldsymbol{e}}_r+\cos\theta\hat{\boldsymbol{e}}_\theta
+\end{equation}
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	So using this, with the previously found values (b.1) for $\boldsymbol{r}$ and $\boldsymbol{v}$ we get:
+	\begin{equation}
+		\begin{split}
+			H_z&=\hat{\boldsymbol{e}}_z\cdot(\boldsymbol{r}\times\boldsymbol{p})=\hat{\boldsymbol{e}}_z\cdot(\boldsymbol{r}\times m\boldsymbol{v}) \\
+			&=(\sin\theta\hat{\boldsymbol{e}}_r+\cos\theta\hat{\boldsymbol{e}}_\theta)\cdot(r\hat{\boldsymbol{e}}_r\times(m\dot{r}\hat{\boldsymbol{e}}_r+mr\cos\theta\,\dot{\phi}\,\hat{\boldsymbol{e}}_\phi+mr\dot{\theta}\,\hat{\boldsymbol{e}}_\theta)) \\
+			&=(\sin\theta\hat{\boldsymbol{e}}_r+\cos\theta\hat{\boldsymbol{e}}_\theta)\cdot(mr\dot{r}(\boldsymbol{0})+mr^2\cos\theta\,\dot{\phi}\,\hat{\boldsymbol{e}}_\theta+mr^2\dot{\theta}(-\hat{\boldsymbol{e}}_\phi)) \\
+			&=\sin\theta(0)+\cos\theta\left(mr^2\cos\theta\,\dot{\phi}\right)+0 \\
+			&=mr^2\dot{\phi}\cos^2\theta=p_\phi
+		\end{split}
+		\label{eq:zmomentum}
+	\end{equation}
+	So from this derivation we see that \textbf{$p_\phi$ is equivalent to the angular momentum about the $\hat{\boldsymbol{e}}_z$ axis $H_z$}.
 \end{mdframed}
 
 \subsubsection*{(b.5): Find}
@@ -550,6 +568,8 @@ Then to find the Jacobi integral, first we compute $\dot{\boldsymbol{q}}^T\frac{
 	\end{split}
 \end{equation}
 
+\newpage
+
 \begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
 	Then simply subtract the Lagrangian. We see below that this ends up flipping all the signs that were different between the Lagrangian and the total energy, and this ends up showing that the Jacobi integral is equal to the total energy:
 	\small
@@ -560,6 +580,7 @@ Then to find the Jacobi integral, first we compute $\dot{\boldsymbol{q}}^T\frac{
 			&\quad-\left(\frac{m\dot{r}^2}{2}+\frac{mr^2\cos^2\theta\,\dot{\phi}^2}{2}+\frac{mr^2\dot{\theta}^2}{2}+\frac{m\mu}{r}-\frac{3m\mu J_2r_o^2}{2r^3}\sin^2\theta+\frac{m\mu J_2r_o^2}{2r^3}\right) \\
 			&=\frac{m\dot{r}^2}{2}+\frac{mr^2\cos^2\theta\,\dot{\phi}^2}{2}+\frac{mr^2\dot{\theta}^2}{2}-\frac{m\mu}{r}+\frac{3m\mu J_2r_o^2}{2r^3}\sin^2\theta-\frac{m\mu J_2r_o^2}{2r^3}=E
 		\end{split}
+		\label{eq:jacobiintegral}
 	\end{equation}
 	\normalsize
 	In our zero drag system, \textbf{the Jacobi integral is conserved}. This is because the Jacobi integral represents generalized total energy, and for it to be conserved it must not change over time. It will change over time if: there are non-conservative forces breaking conservation of energy in the system, or there is time variance in the Lagrangian, since $\mathcal{J}$ is purely a function of $L$. There are no non-conservative forces, and we see from (b.3) Eq.~(\ref{eq:lagrangianb}) that $L$ has no explicit dependence on time so $\mathcal{J}$ is conserved.
@@ -576,6 +597,17 @@ Under drag, derive the time derivative of $H_z$ and $\mathcal{J}$. Discuss if th
 As discussed in (b.4), $H_z=p_\phi=\frac{\partial L}{\partial\dot{\phi}}$, thus the time derivative $\frac{d}{dt}(\frac{\partial L}{\partial\dot{\phi}})$ found in Eq.~(\ref{eq:phimomentumdt}) is equivalent to the time derivative of $H_z$:
 \begin{equation}
 	\frac{d}{dt}H_z=\frac{d}{dt}\left(\frac{\partial L}{\partial\dot{\phi}}\right)=mr\cos\theta\left(2\dot{r}\dot{\phi}\cos\theta+r\ddot{\phi}\cos\theta-2r\dot{\phi}\dot{\theta}\sin\theta\right)
+\end{equation}
+
+Then, when substituting the derived EoM for $\ddot{\phi}$ from Eq.~(\ref{eq:eom}) into the time derivative of $H_z$, we see the equation reduce to:
+\begin{equation}
+	\begin{split}
+		\frac{dH_z}{dt}&=mr\cos\theta\left(2\dot{r}\dot{\phi}\cos\theta+r\ddot{\phi}\cos\theta-2r\dot{\phi}\dot{\theta}\sin\theta\right) \\
+		&=mr\cos\theta\left(2\dot{r}\dot{\phi}\cos\theta+r\cos\theta\left(-\frac{C_DA\rho(r)v\dot{\phi}}{2m}-\frac{2\dot{r}\dot{\phi}}{r}+2\dot{\phi}\dot{\theta}\tan\theta\right)-2r\dot{\phi}\dot{\theta}\sin\theta\right) \\
+		&=mr\cos\theta\left(2\dot{r}\dot{\phi}\cos\theta-\frac{C_DA\rho(r)vr\dot{\phi}\cos\theta}{2m}-2\dot{r}\dot{\phi}\cos\theta+2r\dot{\phi}\dot{\theta}\sin\theta-2r\dot{\phi}\dot{\theta}\sin\theta\right) \\
+		&=mr\cos\theta\left(-\frac{C_DA\rho(r)vr\dot{\phi}\cos\theta}{2m}\right) \\
+		&=-\frac{C_DA\rho(r)v}{2m}\left(mr^2\dot{\phi}\cos^2\theta\right)=-\frac{C_DA\rho(r)v}{2m}H_z
+	\end{split}
 \end{equation}
 
 The time rate of the Jacobi integral $\mathcal{J}$ is given by:
@@ -624,17 +656,569 @@ Which makes the time derivative of $\mathcal{J}$ equal to:
 \end{equation}
 
 \begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
-	So, to reiterate, the time derivatives of $H_Z$ and $\mathcal{J}$ are:
+	So, to reiterate, the time derivatives of $H_z$ and $\mathcal{J}$ are:
 	\begin{equation}
-		\begin{split}
-			\frac{d}{dt}H_z&=mr\cos\theta\left(2\dot{r}\dot{\phi}\cos\theta+r\ddot{\phi}\cos\theta-2r\dot{\phi}\dot{\theta}\sin\theta\right) \\
-			\frac{d}{dt}\mathcal{J}&=-\frac{1}{2}C_DA\rho(r)v^3 \\
-		\end{split}
+		\frac{d}{dt}H_z=-\frac{C_DA\rho(r)v}{2m}H_z,\quad\frac{d}{dt}\mathcal{J}=-\frac{1}{2}C_DA\rho(r)v^3
 	\end{equation}
 	
-	We see that under drag $H_z$ is not conserved because... idk \\
+	We see that \textbf{$H_z$ and $\mathcal{J}$ are not conserved} because their rates of change are continuously negative scaling with air density and speed. Since $\rho(r)>0$ and $v\geq0$, the sign never flips, and both $\mathcal{J}$ and the magnitude of $H_z$ always decrease under drag.
+\end{mdframed}
+
+\newpage
+
+\subsection*{(c): Given}
+
+Let us now numerically simulate the orbital dynamics. For the physical parameters and initial condition, use the same values as defined in PS1, except for the initial semi-major axis, for which use 6628km (instead of 6978km).\\
+
+\begin{table}[H]
+	\centering
+	\caption{Reference orbit}
+	\label{tab:reference_orbit}
+	\resizebox{\textwidth}{!}{%
+		\begin{tabular}{|c|c|c|c|c|c|c|}
+			\hline
+			\multicolumn{3}{|c|}{Constants} & \multicolumn{4}{c|}{Classical orbital elements at epoch} \\
+			\hline
+			$\mu_{\text{earth}}$ & $R_{\text{earth}}$ & $J_2$ & $a$ & $e$ & $i$ & $\Omega_0,\ \omega_0,\ \nu_0$ \\
+			\hline
+			398600 km$^3$/s$^2$ & 6378.137 km & $1.08263\times10^{-3}$ & 6628 km & 0.01 & 45 deg & 0 deg \\
+			\hline
+		\end{tabular}%
+	}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\caption{Drag model parameters}
+	\label{tab:drag_parameters}
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		$C_D$ & $A/m$ & $\rho_0$ & $H$ \\
+		\hline
+		2.2 & 0.01 m$^2$/kg & $1.454\times10^{-13}$ kg/m$^3$ & 60 km \\
+		\hline
+	\end{tabular}
+\end{table}
+
+\textbf{Define Reference Frames}:
+\begin{itemize}
+	\item \textbf{$\mathcal{N}$:\{$\mathcal{O}$,$\hat{\boldsymbol{e}}_x$,$\hat{\boldsymbol{e}}_y$,$\hat{\boldsymbol{e}}_z$\}: Earth-centered inertial reference frame (ECI)\\}An Earth-centered inertial reference frame with its origin at Earth center having $\hat{\boldsymbol{e}}_z$ aligned with the Earth's rotational axis pointing towards the north pole.
+	\item \textbf{$\mathcal{S}$:\{$\mathcal{O}$,$\hat{\boldsymbol{e}}_r$,$\hat{\boldsymbol{e}}_\phi$,$\hat{\boldsymbol{e}}_\theta$\}: Spherical frame\\}A frame with its origin at Earth center where $\hat{\boldsymbol{e}}_r$ is aligned with the spacecraft's current position vector, $\hat{\boldsymbol{e}}_\phi$ points in the direction of increasing azimuth $\phi$ about $\hat{\boldsymbol{e}}_z$ (measured from $\hat{\boldsymbol{e}}_x$), and $\hat{\boldsymbol{e}}_\theta$ points in the direction of increasing elevation $\theta$ (measured from the equatorial $\hat{\boldsymbol{e}}_x$-$\hat{\boldsymbol{e}}_y$ plane toward the north pole).
+	\item \textbf{$\mathcal{B}$:\{$\mathcal{O}$,$\hat{\boldsymbol{e}}_r$,$\hat{\boldsymbol{e}}_u$,$\hat{\boldsymbol{e}}_h$\}: Radial Transverse Normal frame (RTN)\\}A body frame with its origin at Earth center where $\hat{\boldsymbol{e}}_r$ is aligned with the spacecraft's current position vector, $\hat{\boldsymbol{e}}_u$ is aligned with the spacecraft's local horizon in the direction of increasing argument of latitude $u=\omega+\nu$, and $\hat{\boldsymbol{e}}_h$ is aligned with the orbit's specific angular momentum vector.
+\end{itemize}
+
+\subsubsection*{(c.1): Find}
+
+Express the initial conditions in the Cartesian state $(x,y,z,\dot{x},\dot{y},\dot{z})$ and spherical state $(r,\phi,\theta,\dot{r},\dot{\phi},\dot{\theta})$.\\
+
+\textbf{Analysis/Conclusions:}\\
+
+Converting from Keplerian orbital elements to Cartesian states in this context is fairly simple. The initial true anomaly is given as $\nu_0=0$, so the magnitudes of spacecraft position $\boldsymbol{r}$ and velocity $\boldsymbol{v}$ can be calculated directly using the below equations, which include semi-major axis $a$, semi-latus rectum $p$, eccentricity $e$, and gravitational parameter $\mu$.
+\begin{equation}
+	\begin{split}
+		r=\frac{p}{1+e\cos{\nu}},\quad p=a(1-e^2),\quad v=\sqrt{\frac{2\mu}{r}-\frac{\mu}{a}} \\
+	\end{split}
+\end{equation}
+
+Which evaluate to:
+\begin{equation}
+	\begin{split}
+		p&=(6628\text{ km})(1-0.01^2)=6627.3372\text{ km} \\
+		r&=\frac{6627.3372\text{ km}}{1+0.01\cos(0\text{ rad})}=6561.72\text{ km} \\
+		v&=\sqrt{\frac{2(398600\text{ km}^3\text{/s}^2)}{6561.72\text{ km}}-\frac{398600\text{ km}^3\text{/s}^2}{6628\text{ km}}}\approx7.8329\text{ km/s}
+	\end{split}
+\end{equation}
+
+Since $\nu_0=0$, the spacecraft starts at periapsis, where the velocity is perpendicular to the position vector. So in the RTN frame, $\boldsymbol{r}$ lies entirely along $\hat{\boldsymbol{e}}_r$ and $\boldsymbol{v}$ lies entirely along $\hat{\boldsymbol{e}}_u$:
+\begin{equation}
+	\begin{split}
+		\boldsymbol{r}&=r\hat{\boldsymbol{e}}_r+0\hat{\boldsymbol{e}}_u+0\hat{\boldsymbol{e}}_h=6561.72\,\hat{\boldsymbol{e}}_r\text{ km} \\
+		\boldsymbol{v}&=0\hat{\boldsymbol{e}}_r+v\hat{\boldsymbol{e}}_u+0\hat{\boldsymbol{e}}_h\approx7.8329\,\hat{\boldsymbol{e}}_u\text{ km/s}
+	\end{split}
+	\label{eq:rtnrv}
+\end{equation}
+
+Then the RTN frame $\boldsymbol{r}$ and $\boldsymbol{v}$ vectors can be converted to ECI frame using the DCM described below, which includes right ascension of the ascending node $\Omega$, inclination $i$, and argument of latitude $u=\omega+\nu$. This DCM represents a 3-1-3 euler sequence that converts RTN to ECI coordinates.
+\begin{equation}
+	\left[
+	\begin{matrix}
+		\cos{\Omega}\cos{u}-\sin{\Omega}\cos{i}\sin{u} & -\cos{\Omega}\sin{u}-\sin{\Omega}\cos{i}\cos{u} & \sin{\Omega}\sin{i}\\
+		\sin{\Omega}\cos{u}+\cos{\Omega}\cos{i}\sin{u} & -\sin{\Omega}\sin{u}+\cos{\Omega}\cos{i}\cos{u} & -\cos{\Omega}\sin{i}\\
+		\sin{i}\sin{u} & \sin{i}\cos{u} & \cos{i}
+	\end{matrix}
+	\right]
+\end{equation}
+
+We see from table (\ref*{tab:reference_orbit}) that the initial right ascension $\Omega_0$, argument of periapsis $\omega_0$, and true anomaly $\nu_0$ are all zero, and the initial inclination $i_0$ is $45$ degrees. This makes the DCM evaluate to:
+\begin{equation}
+	\footnotesize
+	\begin{split}
+		[NB]&=
+		\begin{bmatrix}
+			\cos{0}\cos{0}-\sin{0}\cos{45^\circ}\sin{0} & -\cos{0}\sin{0}-\sin{0}\cos{45^\circ}\cos{0} & \sin{0}\sin{45^\circ}\\
+			\sin{0}\cos{0}+\cos{0}\cos{45^\circ}\sin{0} & -\sin{0}\sin{0}+\cos{0}\cos{45^\circ}\cos{0} & -\cos{0}\sin{45^\circ}\\
+			\sin{45^\circ}\sin{0} & \sin{45^\circ}\cos{0} & \cos{45^\circ}
+		\end{bmatrix} \\
+		&=
+		\begin{bmatrix}
+			1 & 0 & 0 \\
+			0 & \cos 45^\circ & -\sin 45^\circ \\
+			0 & \sin 45^\circ & \cos 45^\circ
+		\end{bmatrix}
+		=
+		\begin{bmatrix}
+			1 & 0 & 0 \\
+			0 & \frac{\sqrt{2}}{2} & -\frac{\sqrt{2}}{2} \\
+			0 & \frac{\sqrt{2}}{2} & \frac{\sqrt{2}}{2}
+		\end{bmatrix}
+	\end{split}
+	\normalsize
+\end{equation}
+Which is effectively just a 45 degree rotation about the $\hat{\boldsymbol{e}}_x$ axis.\\
+
+Likewise we see this rotation applied to the RTN frame values of $\boldsymbol{r}$ and $\boldsymbol{v}$ in Eq.~(\ref{eq:rtnrv}):
+\begin{equation}
+	\begin{split}
+		\prescript{\mathcal{N}}{}{\boldsymbol{r}}&=[NB]\,\prescript{\mathcal{B}}{}{\boldsymbol{r}}=
+		\begin{bmatrix}
+			1 & 0 & 0 \\
+			0 & \frac{\sqrt{2}}{2} & -\frac{\sqrt{2}}{2} \\
+			0 & \frac{\sqrt{2}}{2} & \frac{\sqrt{2}}{2}
+		\end{bmatrix}
+		\begin{bmatrix}
+			6561.72 \\
+			0 \\
+			0
+		\end{bmatrix}\text{ km}
+		=6561.72\,\hat{\boldsymbol{e}}_x\text{ km} \\
+		\prescript{\mathcal{N}}{}{\boldsymbol{v}}&=[NB]\,\prescript{\mathcal{B}}{}{\boldsymbol{v}}\approx
+		\begin{bmatrix}
+			1 & 0 & 0 \\
+			0 & \frac{\sqrt{2}}{2} & -\frac{\sqrt{2}}{2} \\
+			0 & \frac{\sqrt{2}}{2} & \frac{\sqrt{2}}{2}
+		\end{bmatrix}
+		\begin{bmatrix}
+			0 \\
+			7.8329 \\
+			0
+		\end{bmatrix}\text{ km/s}
+		\approx5.5387\,\hat{\boldsymbol{e}}_y+5.5387\,\hat{\boldsymbol{e}}_z\text{ km/s}
+	\end{split}
+\end{equation}
+which gives the Cartesian state initial conditions.\\
+
+Then to convert to spherical coordinates, we use the following relationships between Cartesian and spherical coordinates, where $r$ is the norm of $\boldsymbol{r}$ and $\rho$ is the length of the projection of $\boldsymbol{r}$ onto the $\hat{\boldsymbol{e}}_x$-$\hat{\boldsymbol{e}}_y$ plane:
+\begin{equation}
+	\begin{split}
+		\rho&=r\cos\theta,\quad x=\rho\cos\phi=r\cos\theta\cos\phi,\\
+		z&=r\sin\theta,\quad y=\rho\sin\phi=r\cos\theta\sin\phi,\\
+		r&=\sqrt{x^2+y^2+z^2}=\sqrt{\rho^2+z^2} \\
+	\end{split}
+	\label{eq:cartsphere}
+\end{equation}
+
+In Eq.~(\ref{eq:cartsphere}), the conversion for the $r$ coordinate is already found (which is just the norm of $\boldsymbol{r}$). Then we can derive expressions for $\phi$ and $\theta$ by dividing $y$ by $x$ and $z$ by $\rho$:
+\begin{equation}
+	\begin{split}
+		\frac{y}{x}&=\frac{\rho\sin\phi}{\rho\cos\phi}=\frac{\sin\phi}{\cos\phi}=\tan\phi\quad\Rightarrow\quad\phi=\tan^{-1}\left(\frac{y}{x}\right) \\
+		\frac{z}{\rho}&=\frac{r\sin\theta}{r\cos\theta}=\frac{\sin\theta}{\cos\theta}=\tan\theta\quad\Rightarrow\quad\theta=\tan^{-1}\left(\frac{z}{\rho}\right)=\tan^{-1}\left(\frac{z}{\sqrt{x^2+y^2}}\right) \\
+	\end{split}
+\end{equation}
+And by utilizing the atan2 algorithm in Matlab, these derived expressions can be used to compute these angles while resolving the quadrant ambiguity.\\
+
+Finding the derivative components $\dot{r}$, $\dot{\phi}$, and $\dot{\theta}$ then requires a derivative of the expressions used to convert from Cartesian to spherical:
+\begin{equation}
+	\begin{split}
+		&\text{Let: }u=x^2+y^2+z^2 \\
+		\\
+		\dot{r}&=\frac{d}{dt}r=\frac{d}{du}\left(u^{1/2}\right)\frac{du}{dt} \\
+		&=\frac{1}{2}u^{-1/2}\frac{d}{dt}\left(x^2+y^2+z^2\right) \\
+		&=\frac{1}{2}u^{-1/2}\left(\frac{d(x^2)}{dx}\frac{dx}{dt}+\frac{d(y^2)}{dy}\frac{dy}{dt}+\frac{d(z^2)}{dz}\frac{dz}{dt}\right) \\
+		&=\frac{1}{2}u^{-1/2}\left(2x\dot{x}+2y\dot{y}+2z\dot{z}\right) \\
+		&=\frac{x\dot{x}+y\dot{y}+z\dot{z}}{\sqrt{x^2+y^2+z^2}}=\frac{x\dot{x}+y\dot{y}+z\dot{z}}{r}
+	\end{split}
+\end{equation}
+
+And the derivative to get $\dot{\phi}$:
+\begin{equation}
+	\begin{split}
+		&\text{Let: }u=\frac{y}{x} \\
+		\\
+		\dot{\phi}&=\frac{d}{dt}\phi=\frac{d}{du}\left(\tan^{-1}u\right)\frac{du}{dt}=\frac{1}{1+u^2}\frac{d}{dt}\left(\frac{y}{x}\right)=\frac{1}{1+u^2}\left(\frac{x\frac{dy}{dt}-y\frac{dx}{dt}}{x^2}\right)= \\
+		&=\frac{1}{1+\left(\frac{y}{x}\right)^2}\left(\frac{x\dot{y}-y\dot{x}}{x^2}\right)=\frac{x^2}{x^2+y^2}\left(\frac{x\dot{y}-y\dot{x}}{x^2}\right)=\frac{x\dot{y}-y\dot{x}}{x^2+y^2}
+	\end{split}
+\end{equation}
+
+And the derivative to get $\dot{\theta}$:
+\begin{equation}
+	\begin{split}
+		&\text{Let: }u=\frac{z}{\rho},\quad\rho=\sqrt{x^2+y^2},\quad w=x^2+y^2 \\
+		\\
+		\dot{\rho}&=\frac{d}{dt}\rho=\frac{d}{dw}\left(w^{1/2}\right)\frac{dw}{dt}=\frac{1}{2}w^{-1/2}\left(\frac{d(x^2)}{dx}\frac{dx}{dt}+\frac{d(y^2)}{dy}\frac{dy}{dt}\right)= \\
+		&=\frac{1}{2}w^{-1/2}\left(2x\dot{x}+2y\dot{y}\right)=\frac{x\dot{x}+y\dot{y}}{\sqrt{x^2+y^2}}=\frac{x\dot{x}+y\dot{y}}{\rho} \\
+		\\
+		\dot{\theta}&=\frac{d}{dt}\theta=\frac{d}{du}\left(\tan^{-1}u\right)\frac{du}{dt}=\frac{1}{1+u^2}\frac{d}{dt}\left(\frac{z}{\rho}\right)=\frac{1}{1+u^2}\left(\frac{\rho\frac{dz}{dt}-z\frac{d\rho}{dt}}{\rho^2}\right)= \\
+		&=\frac{1}{1+\left(\frac{z}{\rho}\right)^2}\left(\frac{\rho\dot{z}-z\dot{\rho}}{\rho^2}\right)=\frac{\rho^2}{\rho^2+z^2}\left(\frac{\rho\dot{z}-z\dot{\rho}}{\rho^2}\right)=\frac{\rho\dot{z}-z\dot{\rho}}{\rho^2+z^2}=\frac{\rho\dot{z}-z\dot{\rho}}{r^2}= \\
+				&=\frac{\rho\dot{z}-z\left(\frac{x\dot{x}+y\dot{y}}{\rho}\right)}{r^2}=\frac{\rho^2\dot{z}-z\left(x\dot{x}+y\dot{y}\right)}{\rho r^2} \\
+	\end{split}
+\end{equation}
+
+So, we then find spherical states $r$, $\phi$, $\theta$, $\dot{r}$, $\dot{\phi}$, and $\dot{\theta}$:
+\begin{equation}
+	\begin{split}
+		r&=\sqrt{x^2+y^2+z^2}=\sqrt{(6561.72)^2+(0)^2+(0)^2}=6561.72\text{ km} \\
+		\phi&=\operatorname{atan2}(y,x)=\operatorname{atan2}(0,6561.72)=0^\circ \\
+		\theta&=\operatorname{atan2}\left(z,\sqrt{x^2+y^2}\right)=\operatorname{atan2}\left(0,\sqrt{(6561.72)^2+(0)^2}\right)=0^\circ \\
+		\dot{r}&=\frac{x\dot{x}+y\dot{y}+z\dot{z}}{r}=\frac{(6561.72)(0)+(0)(5.5387)+(0)(5.5387)}{6561.72}=0\text{ km/s} \\
+		\dot{\phi}&=\frac{x\dot{y}-y\dot{x}}{x^2+y^2}=\frac{(6561.72)(5.5387)-(0)(0)}{(6561.72)^2+(0)^2}\left(\frac{180^\circ}{\pi}\right)\approx0.048363\text{ deg/s} \\
+		\rho&=\sqrt{x^2+y^2}=\sqrt{(6561.72)^2+(0)^2}=6561.72\text{ km} \\
+		\dot{\theta}&=\frac{\rho^2\dot{z}-z\left(x\dot{x}+y\dot{y}\right)}{\rho r^2} \\
+		&=\frac{(6561.72)^2(5.5387)-(0)\left((6561.72)(0)+(0)(5.5387)\right)}{(6561.72)(6561.72)^2}\left(\frac{180^\circ}{\pi}\right)\approx0.048363\text{ deg/s}
+	\end{split}
+\end{equation}
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	So to reiterate, the found initial Cartesian and spherical states are:
+	\begin{equation}
+		\begin{bmatrix}
+			x \\
+			y \\
+			z \\
+			\dot{x} \\
+			\dot{y} \\
+			\dot{z} \\
+		\end{bmatrix}
+		\approx
+		\begin{bmatrix}
+			6561.72\text{ km} \\
+			0\text{ km} \\
+			0\text{ km} \\
+			0\text{ km/s} \\
+			5.5387\text{ km/s} \\
+			5.5387\text{ km/s} \\
+		\end{bmatrix}
+		\quad\text{and}\quad
+		\begin{bmatrix}
+			r \\
+			\phi \\
+			\theta \\
+			\dot{r} \\
+			\dot{\phi} \\
+			\dot{\theta} \\
+		\end{bmatrix}
+		\approx
+		\begin{bmatrix}
+			6561.72\text{ km} \\
+			0^\circ \\
+			0^\circ \\
+			0\text{ km/s} \\
+			0.048363\text{ deg/s} \\
+			0.048363\text{ deg/s} \\
+		\end{bmatrix}
+		\label{eq:initialcons}
+	\end{equation}
+\end{mdframed}
+
+\subsubsection*{(c.2): Find}
+
+Propagate the orbit for 5 days using the EOM derived for spherical coordinates, with the following two models:
+\begin{itemize}
+	\item $J_2$ gravity only
+	\item $J_2$ gravity with drag.
+\end{itemize}
+Plot each inertial trajectory in Cartesian coordinates separately. Also, plot time history of the difference between the two models.\\
+
+\textbf{Analysis/Conclusions:}\\
+
+The models are propagated for 5 days, which converts to seconds as:
+\begin{equation}
+	t_f=5\text{ days}\left(\frac{24\text{ hr}}{1\text{ day}}\right)\left(\frac{60\text{ min}}{1\text{ hr}}\right)\left(\frac{60\text{ s}}{1\text{ min}}\right)=432{,}000\text{ s}
+\end{equation}
+
+Then, the EoM in Eq.~(\ref{eq:eom}) must be put in a form compatible with the numerical integrator. This works simply if we integrate an orbital spherical coordinate state of $\boldsymbol{x}=[r,\phi,\theta,\dot{r},\dot{\phi},\dot{\theta}]^T$, whose time derivative is:
+\begin{equation}
+	\begin{split}
+		\dot{\boldsymbol{x}}&=
+		\begin{bmatrix}
+			\dot{r} \\
+			\dot{\phi} \\
+			\dot{\theta} \\
+			\ddot{r} \\
+			\ddot{\phi} \\
+			\ddot{\theta} \\
+		\end{bmatrix}
+		=
+		\begin{bmatrix}
+			\dot{r} \\
+			\dot{\phi} \\
+			\dot{\theta} \\
+			-\frac{C_DA\rho(r)v\dot{r}}{2m}+r\dot{\phi}^2\cos^2\theta+r\dot{\theta}^2-\frac{\mu}{r^2}+\frac{3\mu J_2r_o^2}{2r^4}\left(3\sin^2\theta-1\right) \\
+			-\frac{C_DA\rho(r)v\dot{\phi}}{2m}-\frac{2\dot{r}\dot{\phi}}{r}+2\dot{\phi}\dot{\theta}\tan\theta \\
+			-\frac{C_DA\rho(r)v\dot{\theta}}{2m}-\frac{2\dot{r}\dot{\theta}}{r}-\cos\theta\sin\theta\left(\dot{\phi}^2+\frac{3\mu J_2r_o^2}{r^5}\right) \\
+		\end{bmatrix} \\
+		&\text{Where:  }v=\sqrt{\dot{r}^2+r^2\cos^2\theta\,\dot{\phi}^2+r^2\dot{\theta}^2}
+	\end{split}
+	\label{eq:stateomdrag}
+\end{equation}
+
+Eq.~(\ref{eq:stateomdrag}) works as is for the model that includes drag force. For the model that does not include drag, we can simply set the drag coefficient to zero which gives the equations:
+\begin{equation}
+	\begin{split}
+		\dot{\boldsymbol{x}}&=
+		\begin{bmatrix}
+			\dot{r} \\
+			\dot{\phi} \\
+			\dot{\theta} \\
+			-\frac{(0)A\rho(r)v\dot{r}}{2m}+r\dot{\phi}^2\cos^2\theta+r\dot{\theta}^2-\frac{\mu}{r^2}+\frac{3\mu J_2r_o^2}{2r^4}\left(3\sin^2\theta-1\right) \\
+			-\frac{(0)A\rho(r)v\dot{\phi}}{2m}-\frac{2\dot{r}\dot{\phi}}{r}+2\dot{\phi}\dot{\theta}\tan\theta \\
+			-\frac{(0)A\rho(r)v\dot{\theta}}{2m}-\frac{2\dot{r}\dot{\theta}}{r}-\cos\theta\sin\theta\left(\dot{\phi}^2+\frac{3\mu J_2r_o^2}{r^5}\right) \\
+		\end{bmatrix} \\
+		&=
+		\begin{bmatrix}
+			\dot{r} \\
+			\dot{\phi} \\
+			\dot{\theta} \\
+			r\dot{\phi}^2\cos^2\theta+r\dot{\theta}^2-\frac{\mu}{r^2}+\frac{3\mu J_2r_o^2}{2r^4}\left(3\sin^2\theta-1\right) \\
+			-\frac{2\dot{r}\dot{\phi}}{r}+2\dot{\phi}\dot{\theta}\tan\theta \\
+			-\frac{2\dot{r}\dot{\theta}}{r}-\cos\theta\sin\theta\left(\dot{\phi}^2+\frac{3\mu J_2r_o^2}{r^5}\right) \\
+		\end{bmatrix}
+	\end{split}
+\end{equation}
+Which is effectively just the EoM with the drag term removed.\\
+
+Then the only other things we need to do are convert the units in the $A/m$ and $\rho_0$ terms in table (\ref{tab:drag_parameters}) to use km-based units and include an expression to convert to Cartesian coordinates for plotting. The unit conversions result in:
+\begin{equation}
+	\begin{split}
+		\frac{A}{m}&=0.01\text{ m}^2\text{/kg}\left(\frac{1\text{ km}}{1000\text{ m}}\right)^2=1\times10^{-8}\text{ km}^2\text{/kg} \\
+		\rho_0&=1.454\times10^{-13}\text{ kg/m}^3\left(\frac{1000\text{ m}}{1\text{ km}}\right)^3=1.454\times10^{-4}\text{ kg/km}^3
+	\end{split}
+\end{equation}
+
+And a standard expression to map spherical coordinates to Cartesian coordinates is:
+\begin{equation}
+	\boldsymbol{r}=r\cos\theta\cos\phi\,\hat{\boldsymbol{e}}_x+r\cos\theta\sin\phi\,\hat{\boldsymbol{e}}_y+r\sin\theta\,\hat{\boldsymbol{e}}_z
+\end{equation}
+
+\newpage
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	So, using the methods described above, the following plots show the $J_2$ only model propagated for 5 days:
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}[b]{0.48\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{c2_J2only_3d.png}
+			\caption{3D view of the trajectory.}
+			\label{fig:c2_nodrag_3d}
+		\end{subfigure}
+		\hfill
+		\begin{subfigure}[b]{0.48\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{c2_J2only_edgeon.png}
+			\caption{Edge-on view of the trajectory.}
+			\label{fig:c2_nodrag_xz}
+		\end{subfigure}
+		\vspace{0.5em}
+		\begin{subfigure}[b]{0.48\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{c2_J2only_sideon.png}
+			\caption{Side-on view of the trajectory.}
+			\label{fig:c2_nodrag_xy}
+		\end{subfigure}
+		\hfill
+		\begin{subfigure}[b]{0.48\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{c2_J2only_earth.png}
+			\caption{Trajectory with Earth shown.}
+			\label{fig:c2_nodrag_earth}
+		\end{subfigure}
+		\caption{$J_2$ only trajectory over 5 days, shown from multiple viewing angles.}
+		\label{fig:c2_nodrag_quad}
+	\end{figure}
+\end{mdframed}
+
+\newpage
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	And the following plots show the $J_2$ with drag model propagated for 5 days:
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}[b]{0.48\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{c2_J2drag_3d.png}
+			\caption{3D view of the trajectory.}
+			\label{fig:c2_drag_3d}
+		\end{subfigure}
+		\hfill
+		\begin{subfigure}[b]{0.48\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{c2_J2drag_edgeon.png}
+			\caption{Edge-on view of the trajectory.}
+			\label{fig:c2_drag_xz}
+		\end{subfigure}
+		\vspace{0.5em}
+		\begin{subfigure}[b]{0.48\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{c2_J2drag_sideon.png}
+			\caption{Side-on view of the trajectory.}
+			\label{fig:c2_drag_xy}
+		\end{subfigure}
+		\hfill
+		\begin{subfigure}[b]{0.48\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{c2_J2drag_earth.png}
+			\caption{Trajectory with Earth shown.}
+			\label{fig:c2_drag_earth}
+		\end{subfigure}
+		\caption{$J_2$ with drag trajectory over 5 days, shown from multiple viewing angles.}
+		\label{fig:c2_drag_quad}
+	\end{figure}
+\end{mdframed}
+
+\newpage
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	Then, to plot the time history of the position difference between the two models, we simply find the difference between the $x$, $y$, and $z$ positions of the models over time, $\Delta\boldsymbol{r}(t)=\boldsymbol{r}_{\text{drag}}(t)-\boldsymbol{r}_{J_2}(t)$:
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.85\textwidth]{c2_difference.png}
+		\caption{Time history of the position difference between the $J_2$ with drag and $J_2$ only models over 5 days.}
+		\label{fig:c2_difference}
+	\end{figure}
+\end{mdframed}
+
+\newpage
+
+\subsubsection*{(c.3): Find}
+
+For both models, plot the normalized changes in $H_z$, $\mathcal{J}$:
+\begin{equation}
+	\frac{\mathcal{J}(t)-\mathcal{J}(0)}{|\mathcal{J}(0)|},\quad\frac{H_z(t)-H_z(0)}{|H_z(0)|}
+	\label{eq:normalizedchange}
+\end{equation}
+Discuss why the $J_2$-only result makes sense using the symmetry of the potential. For the drag result, compare the signs and wualitative behavior against $dH_z/dt$ and $d\mathcal{J}/dt$ derived above.\\
+
+\textbf{Analysis/Conclusions:}\\
+
+From part (b.5) in Eq.~(\ref{eq:jacobiintegral}), the Jacobi integral for both models was found:
+\begin{equation}
+	\mathcal{J}=\frac{m\dot{r}^2}{2}+\frac{mr^2\cos^2\theta\,\dot{\phi}^2}{2}+\frac{mr^2\dot{\theta}^2}{2}-\frac{m\mu}{r}+\frac{3m\mu J_2r_o^2}{2r^3}\sin^2\theta-\frac{m\mu J_2r_o^2}{2r^3}
+\end{equation}
+
+And in part (b.4) in Eq.~(\ref{eq:zmomentum}), the function for $H_z$ for both models was found:
+\begin{equation}
+	H_z=mr^2\dot{\phi}\cos^2\theta
+\end{equation}
+
+Since the spacecraft mass $m$ is not specified, we instead evaluate both quantities per unit mass:
+\begin{equation}
+	\begin{split}
+		\frac{\mathcal{J}}{m}&=\frac{\dot{r}^2}{2}+\frac{r^2\cos^2\theta\,\dot{\phi}^2}{2}+\frac{r^2\dot{\theta}^2}{2}-\frac{\mu}{r}+\frac{3\mu J_2r_o^2}{2r^3}\sin^2\theta-\frac{\mu J_2r_o^2}{2r^3} \\
+		\\
+		\frac{H_z}{m}&=r^2\dot{\phi}\cos^2\theta
+	\end{split}
+	\label{eq:massnorm}
+\end{equation}
+
+Utilizing the initial conditions found in (c.1) Eq.~(\ref{eq:initialcons}) and the values defined in table (\ref{tab:reference_orbit}), the values of $\mathcal{J}(t)$ and $H_z(t)$ are computed over the simulation time of both models using the expressions above, starting from their initial values $\mathcal{J}(0)$ and $H_z(0)$. As requested by the problem, the differences $\mathcal{J}(t)-\mathcal{J}(0)$ and $H_z(t)-H_z(0)$ are plotted over time, normalized by the absolute value of their initial values.
+
+\newpage
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	The normalized changes for the $J_2$ only model are:
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.85\textwidth]{c3_J2only_normalized.png}
+		\caption{Normalized changes in $\mathcal{J}$ and $H_z$ for the $J_2$ only model over 5 days.}
+		\label{fig:c3_J2only_normalized}
+	\end{figure}
+	We see in the results above, that the values of $\mathcal{J}$ and $H_z$ (when normalized to their initial values) do not vary further than the range of $10^{-12}$ from their initial values, which is in the range of numeric drift. This can be interpreted to mean that in the no-drag model, $\mathcal{J}$ and $H_z$ do not change over time.\\
 	
-	Then, we see that $\mathcal{J}$ is not conserved because its rate of change is a constant decrease scaling with position and velocity. Since neither term can be negative themselves, the sign never flips and energy always decreases under drag. \\
+	The $J_2$-only result makes sense here because of the symmetries of the potential.\\
+	
+	First, for the angular momentum about $\hat{\boldsymbol{e}}_z$ $H_z$, the $J_2$ potential seen in Eq.~(\ref{eq:gravpotential}) depends only on $r$ and $\theta$, so it is symmetric about the $\hat{\boldsymbol{e}}_z$ axis. This means $\phi$ is a cyclic coordinate, $\frac{\partial L}{\partial\phi}=0$, and with no drag the Lagrange equation for $\phi$ reduces to $\frac{d}{dt}\left(\frac{\partial L}{\partial\dot{\phi}}\right)=0$. As established in (b.4), the generalized momentum $\frac{\partial L}{\partial\dot{\phi}}$ is equal to $H_z$, so $H_z$ cannot change over time in this model.\\
+	
+	Second, for the Jacobi integral, the $J_2$ potential Eq.~(\ref{eq:gravpotential}) is also symmetric in time, since it has no explicit dependence on $t$, so $\frac{\partial L}{\partial t}=0$. With no non-conservative forces, Eq.~(\ref{eq:jacobirate}) then becomes $\frac{d\mathcal{J}}{dt}=0$, so $\mathcal{J}$ cannot change over time either. Both results are consistent with the plots above, where the only variation is numerical drift.
+\end{mdframed}
+
+\newpage
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	And the normalized changes for the $J_2$ with drag model are:
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.85\textwidth]{c3_J2drag_normalized.png}
+		\caption{Normalized changes in $\mathcal{J}$ and $H_z$ for the $J_2$ with drag model over 5 days.}
+		\label{fig:c3_J2drag_normalized}
+	\end{figure}
+	
+	Recall from part (b.6) the equations for $dH_z/dt$ and $d\mathcal{J}/dt$ were derived to be:
+	\begin{equation}
+		\frac{d}{dt}H_z=-\frac{C_DA\rho(r)v}{2m}H_z,\quad\frac{d}{dt}\mathcal{J}=-\frac{1}{2}C_DA\rho(r)v^3
+	\end{equation}
+	
+	In the analysis in part (b.6), it was identified that the quantities used in these expressions would never cause the sign to flip, meaning we should expect to see $H_z$ and $\mathcal{J}$ to continuously decrease due to the negative sign in both time derivative expressions. This is consistent with the figure above which shows the two quantities continuously deviating in the negative direction from their initial values with a smooth curve and at an order of magnitude that would rule out numeric drift.\\
+	
+	We also see both curves steepen over time, which is consistent with the time derivative expressions. If angular momentum and generalized total energy (aka Jacobi integral) are decreasing, then we should expect the orbit to decay, lowering the average altitude of the spacecraft along its orbit. Since the rates of $H_z$ and $\mathcal{J}$ both scale with $\rho(r)$, which grows exponentially as altitude decreases, and with $v$, which increases as the orbit decays, the decay of the orbit quickens the rate at which $H_z$ and $\mathcal{J}$ decrease. For $H_z$, this growth in $\rho(r)$ appears to outpace the slowing effect of its rate being proportional to $H_z$ itself.
+\end{mdframed}
+
+\newpage
+
+\subsubsection*{(c.4): Find}
+
+Augment the state vector by the work state ($\boldsymbol{Q}_D$: drag-derived generalized force)
+\begin{equation}
+	\dot{W}_D=\boldsymbol{Q}_D^T\dot{\boldsymbol{q}},\quad W_D(0)=0
+\end{equation}
+and propagate the orbit under drag again. Plot the normalized work-balance residual
+\begin{equation}
+	\frac{\mathcal{J}(t)-\mathcal{J}(0)-W_D(t)}{|\mathcal{J}(0)|}
+	\label{eq:residual}
+\end{equation}
+Discuss whether it is consistent with your integrator tolerance.\\
+
+\textbf{Analysis/Conclusions:}\\
+
+Recall from part (b.2) the generalized drag force $\boldsymbol{Q}_D$ was found to be:
+\begin{equation}
+	\begin{split}
+		Q_r&=-\frac{1}{2}C_DA\rho(r)v\,\dot{r} \\
+		Q_\phi&=-\frac{1}{2}C_DA\rho(r)v\,r^2\cos^2\theta\,\dot{\phi} \\
+		Q_\theta&=-\frac{1}{2}C_DA\rho(r)v\,r^2\dot{\theta}
+	\end{split}
+\end{equation}
+
+When performing the dot product with the generalized coordinate derivative $\dot{\boldsymbol{q}}$ to get the work state derivative $\dot{W}_D$, we get:
+\begin{equation}
+	\begin{split}
+		\dot{W}_D&=\boldsymbol{Q}_D^T\dot{\boldsymbol{q}}=
+		\begin{bmatrix}
+			Q_r & Q_\phi & Q_\theta \\
+		\end{bmatrix}
+		\begin{bmatrix}
+			\dot{r} \\
+			\dot{\phi} \\
+			\dot{\theta} \\
+		\end{bmatrix} \\
+		&=-\frac{1}{2}C_DA\rho(r)v\,\dot{r}^2-\frac{1}{2}C_DA\rho(r)v\,r^2\cos^2\theta\,\dot{\phi}^2-\frac{1}{2}C_DA\rho(r)v\,r^2\dot{\theta}^2 \\
+		&=-\frac{1}{2}C_DA\rho(r)v\left(\dot{r}^2+r^2\cos^2\theta\,\dot{\phi}^2+r^2\dot{\theta}^2\right) \\
+		&=-\frac{1}{2}C_DA\rho(r)v^3
+	\end{split}
+\end{equation}
+Which is the same expression derived for $\frac{d}{dt}\mathcal{J}$, which means the residual in Eq.~(\ref{eq:residual}) should stay near zero within the expected range from the integration tolerance. Note that since $A$ and $m$ are not individually specified, only their ratio $A/m$, the work state is evaluated per unit mass, the same as $\mathcal{J}$ and $H_z$ were in (c.3).\\
+
+\newpage
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	So, after running the simulation with the augmented state, the normalized work-balance residual for the $J_2$ with drag model is:
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.85\textwidth]{c4_residual.png}
+		\caption{Normalized work-balance residual for the $J_2$ with drag model over 5 days.}
+		\label{fig:c4_residual}
+	\end{figure}
+	
+		The above results \textbf{are consistent with my integrator tolerance} of $10^{-12}$ because we see in the plot above the residual stays within the range of about $-3.5\times10^{-12}$ and $1.25\times10^{-12}$, which means the residual effectively did not vary between steps within tolerance. Since $\dot{W}_D$ is equivalent to $\frac{d\mathcal{J}}{dt}$, integrating it analytically should reproduce $\mathcal{J}(t)-\mathcal{J}(0)$ exactly, so the residual would be zero if formed from analytic integration. The small nonzero residual is therefore purely numerical integration error and is within tolerance.
 \end{mdframed}
 
 \end{document}

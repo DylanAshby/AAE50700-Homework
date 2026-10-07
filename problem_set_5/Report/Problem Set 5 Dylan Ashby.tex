@@ -245,6 +245,7 @@ Which we then find $\boldsymbol{v}$ via the transport theorem as:
 		&=\dot{r}\hat{\boldsymbol{e}}_r+r(0)+r\left(\dot{\phi}\sin\theta\,(\boldsymbol{0})+\dot{\phi}\cos\theta\,\hat{\boldsymbol{e}}_\phi-\dot{\theta}\left(-\hat{\boldsymbol{e}}_\theta\right)\right) \\
 		&=\dot{r}\hat{\boldsymbol{e}}_r+r\cos\theta\,\dot{\phi}\,\hat{\boldsymbol{e}}_\phi+r\dot{\theta}\,\hat{\boldsymbol{e}}_\theta
 	\end{split}
+	\label{eq:velocity}
 \end{equation}
 
 Then we can simply use the $\mathcal{S}$-frame representation of $\boldsymbol{v}$ to find an expression for the kinetic energy $T$:
@@ -1219,6 +1220,232 @@ Which is the same expression derived for $\frac{d}{dt}\mathcal{J}$, which means 
 	\end{figure}
 	
 		The above results \textbf{are consistent with my integrator tolerance} of $10^{-12}$ because we see in the plot above the residual stays within the range of about $-3.5\times10^{-12}$ and $1.25\times10^{-12}$, which means the residual effectively did not vary between steps within tolerance. Since $\dot{W}_D$ is equivalent to $\frac{d\mathcal{J}}{dt}$, integrating it analytically should reproduce $\mathcal{J}(t)-\mathcal{J}(0)$ exactly, so the residual would be zero if formed from analytic integration. The small nonzero residual is therefore purely numerical integration error and is within tolerance.
+\end{mdframed}
+
+\newpage
+
+\subsection*{(d): Given}
+
+The expressions found from previous parts.\\
+
+\subsubsection*{(d.1): Find}
+
+Derive the same spherical-coordinate EoMs from the Newton's second law.\\
+
+\textbf{Analysis/Conclusions:}\\
+
+Newton's second law is that mass $m$ times acceleration $\boldsymbol{a}$ is equal to the sum of the forces acting on an object:
+\begin{equation}
+	m\boldsymbol{a}=\sum\boldsymbol{F}
+\end{equation}
+
+From part (b.1) Eq.~(\ref{eq:velocity}), the spherical coordinate representation of velocity was found by the transport theorem. The acceleration can be found by using the transport theorem again on the velocity:
+\begin{equation}
+	\begin{split}
+		\boldsymbol{a}&=\frac{\prescript{\mathcal{S}}{}{d}}{dt}\boldsymbol{v}+\boldsymbol{\omega}_{\mathcal{S}/\mathcal{N}}\times\boldsymbol{v} \\
+		&=\frac{\prescript{\mathcal{S}}{}{d}}{dt}\left(\dot{r}\hat{\boldsymbol{e}}_r+r\cos\theta\,\dot{\phi}\,\hat{\boldsymbol{e}}_\phi+r\dot{\theta}\,\hat{\boldsymbol{e}}_\theta\right) \\
+		&\quad+\left(\dot{\phi}\sin\theta\,\hat{\boldsymbol{e}}_r-\dot{\theta}\hat{\boldsymbol{e}}_\phi+\dot{\phi}\cos\theta\,\hat{\boldsymbol{e}}_\theta\right)\times\left(\dot{r}\hat{\boldsymbol{e}}_r+r\cos\theta\,\dot{\phi}\,\hat{\boldsymbol{e}}_\phi+r\dot{\theta}\,\hat{\boldsymbol{e}}_\theta\right)
+	\end{split}
+\end{equation}
+
+Then we evaluate the $\mathcal{S}$-frame derivative:
+\begin{equation}
+	\begin{split}
+		\frac{\prescript{\mathcal{S}}{}{d}}{dt}\boldsymbol{v}&=\frac{d\dot{r}}{dt}\hat{\boldsymbol{e}}_r+\frac{d}{dt}\left(r\cos\theta\,\dot{\phi}\right)\hat{\boldsymbol{e}}_\phi+\frac{d}{dt}\left(r\dot{\theta}\right)\hat{\boldsymbol{e}}_\theta \\
+		&=\frac{d\dot{r}}{dt}\hat{\boldsymbol{e}}_r+\left(\frac{dr}{dt}\cos\theta\,\dot{\phi}+r\frac{d}{d\theta}(\cos\theta)\frac{d\theta}{dt}\dot{\phi}+r\cos\theta\frac{d\dot{\phi}}{dt}\right)\hat{\boldsymbol{e}}_\phi+\left(\frac{dr}{dt}\dot{\theta}+r\frac{d\dot{\theta}}{dt}\right)\hat{\boldsymbol{e}}_\theta \\
+		&=\ddot{r}\hat{\boldsymbol{e}}_r+\left(\dot{r}\cos\theta\,\dot{\phi}+r(-\sin\theta)\dot{\theta}\dot{\phi}+r\cos\theta\,\ddot{\phi}\right)\hat{\boldsymbol{e}}_\phi+\left(\dot{r}\dot{\theta}+r\ddot{\theta}\right)\hat{\boldsymbol{e}}_\theta \\
+		&=\ddot{r}\hat{\boldsymbol{e}}_r+\left(\dot{r}\dot{\phi}\cos\theta-r\dot{\phi}\dot{\theta}\sin\theta+r\ddot{\phi}\cos\theta\right)\hat{\boldsymbol{e}}_\phi+\left(\dot{r}\dot{\theta}+r\ddot{\theta}\right)\hat{\boldsymbol{e}}_\theta
+	\end{split}
+\end{equation}
+
+And the cross product:
+\begin{equation}
+	\begin{split}
+		\boldsymbol{\omega}_{\mathcal{S}/\mathcal{N}}\times\boldsymbol{v}&=\left(\dot{\phi}\sin\theta\,\hat{\boldsymbol{e}}_r-\dot{\theta}\hat{\boldsymbol{e}}_\phi+\dot{\phi}\cos\theta\,\hat{\boldsymbol{e}}_\theta\right)\times\left(\dot{r}\hat{\boldsymbol{e}}_r+r\cos\theta\,\dot{\phi}\,\hat{\boldsymbol{e}}_\phi+r\dot{\theta}\,\hat{\boldsymbol{e}}_\theta\right) \\
+		&=\left(-r\dot{\theta}^2-r\dot{\phi}^2\cos^2\theta\right)\hat{\boldsymbol{e}}_r+\left(\dot{r}\dot{\phi}\cos\theta-r\dot{\phi}\dot{\theta}\sin\theta\right)\hat{\boldsymbol{e}}_\phi+\left(\dot{r}\dot{\theta}+r\dot{\phi}^2\sin\theta\cos\theta\right)\hat{\boldsymbol{e}}_\theta
+	\end{split}
+\end{equation}
+
+Then recombining the two terms gives the acceleration:
+\begin{equation}
+	\begin{split}
+		\boldsymbol{a}&=\ddot{r}\hat{\boldsymbol{e}}_r+\left(\dot{r}\dot{\phi}\cos\theta-r\dot{\phi}\dot{\theta}\sin\theta+r\ddot{\phi}\cos\theta\right)\hat{\boldsymbol{e}}_\phi+\left(\dot{r}\dot{\theta}+r\ddot{\theta}\right)\hat{\boldsymbol{e}}_\theta \\
+		&\quad+\left(-r\dot{\theta}^2-r\dot{\phi}^2\cos^2\theta\right)\hat{\boldsymbol{e}}_r+\left(\dot{r}\dot{\phi}\cos\theta-r\dot{\phi}\dot{\theta}\sin\theta\right)\hat{\boldsymbol{e}}_\phi+\left(\dot{r}\dot{\theta}+r\dot{\phi}^2\sin\theta\cos\theta\right)\hat{\boldsymbol{e}}_\theta \\
+		&=\left(\ddot{r}-r\dot{\theta}^2-r\dot{\phi}^2\cos^2\theta\right)\hat{\boldsymbol{e}}_r+\left(r\ddot{\phi}\cos\theta+2\dot{r}\dot{\phi}\cos\theta-2r\dot{\phi}\dot{\theta}\sin\theta\right)\hat{\boldsymbol{e}}_\phi \\
+		&\quad+\left(r\ddot{\theta}+2\dot{r}\dot{\theta}+r\dot{\phi}^2\sin\theta\cos\theta\right)\hat{\boldsymbol{e}}_\theta
+	\end{split}
+\end{equation}
+
+Then when considering the sum of the forces, we are given the drag force:
+\begin{equation}
+	\boldsymbol{F}_D=-\frac{1}{2}C_DA\rho(r)v\boldsymbol{v},\quad\rho(r)\approx\rho_0\exp\left[-\frac{r-6978km}{H}\right]
+\end{equation}
+
+Which, by substituting the spherical basis velocity, has the following components:
+\begin{equation}
+	\begin{split}
+		\boldsymbol{F}_D&=-\frac{1}{2}C_DA\rho(r)v\left(\dot{r}\hat{\boldsymbol{e}}_r+r\cos\theta\,\dot{\phi}\,\hat{\boldsymbol{e}}_\phi+r\dot{\theta}\,\hat{\boldsymbol{e}}_\theta\right) \\
+		&=-\frac{1}{2}C_DA\rho(r)v\dot{r}\,\hat{\boldsymbol{e}}_r-\frac{1}{2}C_DA\rho(r)vr\cos\theta\,\dot{\phi}\,\hat{\boldsymbol{e}}_\phi-\frac{1}{2}C_DA\rho(r)vr\dot{\theta}\,\hat{\boldsymbol{e}}_\theta
+	\end{split}
+\end{equation}
+
+And the remaining forces are all conservative, which can be found by taking the negative fo the gradient of potential $V$ with respect to position $\boldsymbol{r}$. The potential purely comes from the $J_2$ gravity potential which was given as:
+\begin{equation}
+	\begin{split}
+		V&=-\frac{m\mu}{r}\left(1-J_2\left(\frac{r_o}{r}\right)^2\left(\frac{3}{2}\sin^2\theta-\frac{1}{2}\right)\right) \\
+		&=-\frac{m\mu}{r}+\frac{m\mu J_2r_o^2}{r^3}\left(\frac{3}{2}\sin^2\theta-\frac{1}{2}\right) \\
+		&=-\frac{m\mu}{r}+\frac{3m\mu J_2r_o^2}{2r^3}\sin^2\theta-\frac{m\mu J_2r_o^2}{2r^3}
+	\end{split}
+\end{equation}
+
+However, since two of our coordinates in a spherical basis are angles, we cannot find $-\nabla_{\boldsymbol{r}}V$ by taking the partial of $V$ with respect to each of the coordinates, because for the angle coordinates that would give a torque instead:
+\begin{equation}
+	\boldsymbol{F}_g=-\nabla_{\boldsymbol{r}}V\neq-\left(\frac{\partial V}{\partial r}\hat{\boldsymbol{e}}_r+\frac{\partial V}{\partial\phi}\hat{\boldsymbol{e}}_\phi+\frac{\partial V}{\partial\theta}\hat{\boldsymbol{e}}_\theta\right)
+\end{equation}
+
+So, we can find the gradient by first considering the total derivative of $V$:
+\begin{equation}
+	dV=\frac{\partial V}{\partial r}dr+\frac{\partial V}{\partial\phi}d\phi+\frac{\partial V}{\partial\theta}d\theta
+	\label{eq:totalV1}
+\end{equation}
+
+And comparing it to an alternate form of the same derivative:
+\begin{equation}
+	dV=\nabla_{\boldsymbol{r}}V\cdot d\boldsymbol{r}
+	\label{eq:totalV2}
+\end{equation}
+
+So we must find the differential $d\boldsymbol{r}$ which can be derived from the previously found function for $\boldsymbol{v}$:
+\begin{equation}
+	\begin{split}
+		\boldsymbol{v}&=\dot{r}\hat{\boldsymbol{e}}_r+r\cos\theta\,\dot{\phi}\,\hat{\boldsymbol{e}}_\phi+r\dot{\theta}\,\hat{\boldsymbol{e}}_\theta \\
+		\frac{d\boldsymbol{r}}{dt}&=\frac{dr}{dt}\hat{\boldsymbol{e}}_r+\frac{d\phi}{dt}r\cos\theta\,\hat{\boldsymbol{e}}_\phi+\frac{d\theta}{dt}r\,\hat{\boldsymbol{e}}_\theta \\
+		d\boldsymbol{r}&=dr\hat{\boldsymbol{e}}_r+d\phi\,r\cos\theta\,\hat{\boldsymbol{e}}_\phi+d\theta\,r\,\hat{\boldsymbol{e}}_\theta \\
+	\end{split}
+\end{equation}
+
+So then when substituting $d\boldsymbol{r}$ into Eq.~(\ref{eq:totalV2}) we get:
+\begin{equation}
+	\begin{split}
+		dV&=\nabla_{\boldsymbol{r}}V\cdot\left(dr\hat{\boldsymbol{e}}_r+d\phi\,r\cos\theta\,\hat{\boldsymbol{e}}_\phi+d\theta\,r\,\hat{\boldsymbol{e}}_\theta\right) \\
+		&=\left(\nabla_{\boldsymbol{r}}V\cdot\hat{\boldsymbol{e}}_r\right)dr+\left(\nabla_{\boldsymbol{r}}V\cdot\hat{\boldsymbol{e}}_\phi\right)r\cos\theta\,d\phi+\left(\nabla_{\boldsymbol{r}}V\cdot\hat{\boldsymbol{e}}_\theta\right)r\,d\theta
+	\end{split}
+	\label{eq:totalV3}
+\end{equation}
+
+Then we can compare the terms of Eq.~(\ref{eq:totalV3}) to the terms in Eq.~(\ref{eq:totalV1}) and we see that:
+\begin{equation}
+	\frac{\partial V}{\partial r}=\nabla_{\boldsymbol{r}}V\cdot\hat{\boldsymbol{e}}_r,\quad\frac{\partial V}{\partial\phi}=\left(\nabla_{\boldsymbol{r}}V\cdot\hat{\boldsymbol{e}}_\phi\right)r\cos\theta,\quad\frac{\partial V}{\partial\theta}=\left(\nabla_{\boldsymbol{r}}V\cdot\hat{\boldsymbol{e}}_\theta\right)r
+\end{equation}
+
+And since $\boldsymbol{F}_g=-\nabla_{\boldsymbol{r}}V$, each component of the gravity force is found by solving for $-\nabla_{\boldsymbol{r}}V$ dotted with its respective basis vector:
+\begin{equation}
+	F_{g,r}=-\frac{\partial V}{\partial r},\quad F_{g,\phi}=-\frac{1}{r\cos\theta}\frac{\partial V}{\partial\phi},\quad F_{g,\theta}=-\frac{1}{r}\frac{\partial V}{\partial\theta}
+\end{equation}
+
+Then we compute each of the forces:
+\begin{equation}
+	\begin{split}
+		F_{g,r}&=-\frac{\partial V}{\partial r}=-\frac{\partial}{\partial r}\left(-\frac{m\mu}{r}+\frac{3m\mu J_2r_o^2}{2r^3}\sin^2\theta-\frac{m\mu J_2r_o^2}{2r^3}\right) \\
+		&=m\mu\frac{dr^{-1}}{dr}-\frac{3m\mu J_2r_o^2}{2}\sin^2\theta\frac{dr^{-3}}{dr}+\frac{m\mu J_2r_o^2}{2}\frac{dr^{-3}}{dr} \\
+		&=-m\mu r^{-2}+\frac{9}{2}m\mu J_2r_o^2r^{-4}\sin^2\theta-\frac{3}{2}m\mu J_2r_o^2r^{-4} \\
+		&=-\frac{m\mu}{r^2}+\frac{3m\mu J_2r_o^2}{2r^4}\left(3\sin^2\theta-1\right)
+	\end{split}
+\end{equation}
+
+Just like the Lagrangian, potential is not a function of $\phi$, so the partial is simple:
+\begin{equation}
+	F_{g,\phi}=-\frac{1}{r\cos\theta}\frac{\partial V}{\partial\phi}=-\frac{1}{r\cos\theta}(0)=0
+\end{equation}
+
+Then for $\theta$:
+\begin{equation}
+	\begin{split}
+		F_{g,\theta}&=-\frac{1}{r}\frac{\partial V}{\partial\theta}=-\frac{1}{r}\frac{\partial}{\partial\theta}\left(-\frac{m\mu}{r}+\frac{3m\mu J_2r_o^2}{2r^3}\sin^2\theta-\frac{m\mu J_2r_o^2}{2r^3}\right) \\
+		&=-\frac{1}{r}\left(0+\frac{3m\mu J_2r_o^2}{2r^3}\frac{\partial}{\partial\theta}\left(\sin^2\theta\right)-0\right) \\
+		&=-\frac{1}{r}\left(\frac{3m\mu J_2r_o^2}{2r^3}\left(2\sin\theta\cos\theta\right)\right) \\
+		&=-\frac{3m\mu J_2r_o^2}{r^4}\cos\theta\sin\theta
+	\end{split}
+\end{equation}
+
+If we plug all of the force and acceleration terms derived here back into Newton's second law we get the following equations:
+\begin{equation}
+	\begin{split}
+		ma_r&=F_{g,r}+F_{D,r} \\
+		m\left(\ddot{r}-r\dot{\theta}^2-r\dot{\phi}^2\cos^2\theta\right)&=-\frac{m\mu}{r^2}+\frac{3m\mu J_2r_o^2}{2r^4}\left(3\sin^2\theta-1\right)-\frac{1}{2}C_DA\rho(r)v\dot{r} \\
+		\ddot{r}-r\dot{\theta}^2-r\dot{\phi}^2\cos^2\theta&=-\frac{m\mu}{r^2m}+\frac{3m\mu J_2r_o^2}{2r^4m}\left(3\sin^2\theta-1\right)-\frac{C_DA\rho(r)v\dot{r}}{2m} \\
+		\ddot{r}-r\dot{\theta}^2-r\dot{\phi}^2\cos^2\theta&=-\frac{\mu}{r^2}+\frac{3\mu J_2r_o^2}{2r^4}\left(3\sin^2\theta-1\right)-\frac{C_DA\rho(r)v\dot{r}}{2m} \\
+	\end{split}
+\end{equation}
+\begin{equation}
+	\ddot{r}=-\frac{C_DA\rho(r)v\dot{r}}{2m}+r\dot{\phi}^2\cos^2\theta+r\dot{\theta}^2-\frac{\mu}{r^2}+\frac{3\mu J_2r_o^2}{2r^4}\left(3\sin^2\theta-1\right)
+\end{equation}
+
+Then for $\phi$:
+\begin{equation}
+	\begin{split}
+		ma_\phi&=F_{g,\phi}+F_{D,\phi} \\
+		m\left(r\ddot{\phi}\cos\theta+2\dot{r}\dot{\phi}\cos\theta-2r\dot{\phi}\dot{\theta}\sin\theta\right)&=0-\frac{1}{2}C_DA\rho(r)vr\cos\theta\,\dot{\phi} \\
+		r\ddot{\phi}\cos\theta+2\dot{r}\dot{\phi}\cos\theta-2r\dot{\phi}\dot{\theta}\sin\theta&=-\frac{C_DA\rho(r)vr\cos\theta\,\dot{\phi}}{2m} \\
+		\frac{r\ddot{\phi}\cos\theta}{r\cos\theta}+\frac{2\dot{r}\dot{\phi}\cos\theta}{r\cos\theta}-\frac{2r\dot{\phi}\dot{\theta}\sin\theta}{r\cos\theta}&=-\frac{C_DA\rho(r)vr\cos\theta\,\dot{\phi}}{2mr\cos\theta} \\
+		\ddot{\phi}+\frac{2\dot{r}\dot{\phi}}{r}-2\dot{\phi}\dot{\theta}\tan\theta&=-\frac{C_DA\rho(r)v\dot{\phi}}{2m}
+	\end{split}
+\end{equation}
+\begin{equation}
+	\ddot{\phi}=-\frac{C_DA\rho(r)v\dot{\phi}}{2m}-\frac{2\dot{r}\dot{\phi}}{r}+2\dot{\phi}\dot{\theta}\tan\theta
+\end{equation}
+
+Then for $\theta$:
+\begin{equation}
+	\begin{split}
+		ma_\theta&=F_{g,\theta}+F_{D,\theta} \\
+		m\left(r\ddot{\theta}+2\dot{r}\dot{\theta}+r\dot{\phi}^2\sin\theta\cos\theta\right)&=-\frac{3m\mu J_2r_o^2}{r^4}\cos\theta\sin\theta-\frac{1}{2}C_DA\rho(r)vr\dot{\theta} \\
+		r\ddot{\theta}+2\dot{r}\dot{\theta}+r\dot{\phi}^2\sin\theta\cos\theta&=-\frac{3m\mu J_2r_o^2}{r^4m}\cos\theta\sin\theta-\frac{C_DA\rho(r)vr\dot{\theta}}{2m} \\
+		\frac{r\ddot{\theta}}{r}+\frac{2\dot{r}\dot{\theta}}{r}+\frac{r\dot{\phi}^2\sin\theta\cos\theta}{r}&=-\frac{3\mu J_2r_o^2}{r^4r}\cos\theta\sin\theta-\frac{C_DA\rho(r)vr\dot{\theta}}{2mr} \\
+		\ddot{\theta}+\frac{2\dot{r}\dot{\theta}}{r}+\dot{\phi}^2\sin\theta\cos\theta&=-\frac{3\mu J_2r_o^2}{r^5}\cos\theta\sin\theta-\frac{C_DA\rho(r)v\dot{\theta}}{2m}
+	\end{split}
+\end{equation}
+\begin{equation}
+	\ddot{\theta}=-\frac{C_DA\rho(r)v\dot{\theta}}{2m}-\frac{2\dot{r}\dot{\theta}}{r}-\cos\theta\sin\theta\left(\dot{\phi}^2+\frac{3\mu J_2r_o^2}{r^5}\right)
+\end{equation}
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	Thus we derived the spherical-coordinate EoMs from Newton's second law as;
+	\begin{equation}
+		\begin{split}
+			\ddot{r}&=-\frac{C_DA\rho(r)v\dot{r}}{2m}+r\dot{\phi}^2\cos^2\theta+r\dot{\theta}^2-\frac{\mu}{r^2}+\frac{3\mu J_2r_o^2}{2r^4}\left(3\sin^2\theta-1\right) \\
+			\ddot{\phi}&=-\frac{C_DA\rho(r)v\dot{\phi}}{2m}-\frac{2\dot{r}\dot{\phi}}{r}+2\dot{\phi}\dot{\theta}\tan\theta \\
+			\ddot{\theta}&=-\frac{C_DA\rho(r)v\dot{\theta}}{2m}-\frac{2\dot{r}\dot{\theta}}{r}-\cos\theta\sin\theta\left(\dot{\phi}^2+\frac{3\mu J_2r_o^2}{r^5}\right) \\
+			&\text{Where:  }v=\sqrt{\dot{r}^2+r^2\cos^2\theta\,\dot{\phi}^2+r^2\dot{\theta}^2}
+		\end{split}
+		\label{eq:eom2}
+	\end{equation}
+\end{mdframed}
+
+\subsubsection*{(d.2): Find}
+
+Show that the result is identical to the EoM derived using Lagrange's equations.\\
+
+\textbf{Analysis/Conclusions:}\\
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	The EoMs derived for part (d.1) in Eq.~(\ref{eq:eom2}) have already been arranged in a form where they are identical term by term to the EoMs derived for part (b.3) in Eq.~(\ref{eq:eom}).
+\end{mdframed}
+
+\subsubsection*{(d.3): Find}
+
+Discuss the advantages of each of the two approaches: Lagrangian and Newtonian approaches.\\
+
+\textbf{Analysis/Conclusions:}\\
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	The \textbf{advantages of the Lagrangian approach} are that we only need to find two scalar quantities, the kinetic energy $T$ and potential energy $V$, to form the Lagrangian. We never need to find the acceleration vector with a second transport theorem, since the derivatives in Lagrange's equations account for it on their own. Likewise, the conservative forces are already accounted for by the potential in the Lagrangian, so we did not need to break the gravity force into its spherical components like we had to in (d.1).\\
+	
+	We also saw in (b.4) that conserved quantities are easy to identify, since $\phi$ being cyclic immediately told us that $H_z$ is conserved. This is because the Lagrangian approach explicitly gives the generalized momentum $\frac{\partial L}{\partial\dot{q}_j}$ for each coordinate as part of deriving the EoM, while the Newtonian approach never produces these momentum terms directly. \\
+	
+	The \textbf{advantages of the Newtonian approach} are that every force is explicit, so it is clear what physically causes each term in the EoM. The Newtonian approach also does not need a potential to exist at all, so any force can be added the same way.\\
+	
+	So, for this problem, the Lagrangian approach was more systematic and revealed the conservation of $H_z$, while the Newtonian approach required more vector work but made every force term easier to interpret physically.
 \end{mdframed}
 
 \end{document}

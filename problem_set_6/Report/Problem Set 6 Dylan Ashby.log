@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.10.3)  16 OCT 2026 10:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.10.3)  16 OCT 2026 23:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -639,128 +639,2441 @@ Underfull \hbox (badness 10000) in paragraph at lines 585--587
 
  []
 
-[13] [14]
+[13]
+Underfull \hbox (badness 10000) in paragraph at lines 662--663
+
+ []
+
+[14]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 664.
-Package mdframed Info: Not enough space on this page on input line 718.
+(mdframed)              on input line 719.
  [15]
-Underfull \hbox (badness 10000) in paragraph at lines 724--725
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 745.
+Package mdframed Info: Not enough space on this page on input line 811.
+ [16]
+Underfull \hbox (badness 10000) in paragraph at lines 817--818
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 726--727
+Underfull \hbox (badness 10000) in paragraph at lines 819--820
 
  []
 
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 728.
+(mdframed)              on input line 821.
 
-Underfull \hbox (badness 10000) in paragraph at lines 743--745
-
- []
-
-[16]
-Underfull \hbox (badness 10000) in paragraph at lines 756--757
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 758--759
-
- []
-
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 760.
-
-Underfull \hbox (badness 10000) in paragraph at lines 778--779
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 780--781
+Underfull \hbox (badness 10000) in paragraph at lines 836--838
 
  []
 
 [17]
-Overfull \hbox (6.24179pt too wide) detected at line 810
-[]
+Underfull \hbox (badness 10000) in paragraph at lines 849--850
+
  []
 
 
-Overfull \hbox (92.28262pt too wide) detected at line 838
-[]
+Underfull \hbox (badness 10000) in paragraph at lines 851--852
+
  []
 
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 841.
+(mdframed)              on input line 853.
 
-Underfull \hbox (badness 10000) in paragraph at lines 851--853
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 854--855
+Underfull \hbox (badness 10000) in paragraph at lines 871--872
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 856--857
+Underfull \hbox (badness 10000) in paragraph at lines 873--874
 
  []
 
-Package mdframed Info: Not enough space on this page on input line 859.
 [18]
-Package mdframed Info: Not enough space on this page on input line 859.
- [19]
-Underfull \hbox (badness 10000) in paragraph at lines 885--886
+Overfull \hbox (6.24179pt too wide) detected at line 903
+[]
+ []
+
+
+Overfull \hbox (92.28262pt too wide) detected at line 931
+[]
+ []
+
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 934.
+Package mdframed Info: Not enough space on this page on input line 940.
+[19]
+Package mdframed Info: Not enough space on this page on input line 940.
+
+Underfull \hbox (badness 10000) in paragraph at lines 945--947
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 887--888
+Overfull \hbox (78.66951pt too wide) detected at line 965
+[]
+ []
+
+[20]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 970.
+
+Underfull \hbox (badness 10000) in paragraph at lines 976--977
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 978--979
+
+ []
+
+Package mdframed Info: Not enough space on this page on input line 981.
+[21]
+Underfull \hbox (badness 10000) in paragraph at lines 1007--1008
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1009--1010
 
  []
 
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 922.
-<b1_beta.png, id=101, 893.2572pt x 594.0594pt>
+(mdframed)              on input line 1013.
+<b1_beta.png, id=107, 893.2572pt x 594.0594pt>
 File: b1_beta.png Graphic file (type png)
 <use b1_beta.png>
-Package pdftex.def Info: b1_beta.png  used on input line 924.
+Package pdftex.def Info: b1_beta.png  used on input line 1015.
 (pdftex.def)             Requested size: 259.361pt x 172.4813pt.
-Package mdframed Info: Not enough space on this page on input line 928.
-[20]
-Package mdframed Info: Not enough space on this page on input line 928.
 
-Underfull \hbox (badness 10000) in paragraph at lines 932--933
+Underfull \hbox (badness 10000) in paragraph at lines 1023--1024
+
+ []
+
+[22 <./b1_beta.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 1025--1026
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 934--935
+Underfull \hbox (badness 10000) in paragraph at lines 1044--1046
 
  []
 
-[21 <./b1_beta.png (PNG copy)>] (./Problem Set 6 Dylan Ashby.aux)
+
+Underfull \hbox (badness 10000) in paragraph at lines 1047--1048
+
+ []
+
+[23] [24]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 1143.
+<b2_theta.png, id=119, 886.0302pt x 593.8185pt>
+File: b2_theta.png Graphic file (type png)
+<use b2_theta.png>
+Package pdftex.def Info: b2_theta.png  used on input line 1145.
+(pdftex.def)             Requested size: 259.361pt x 173.82486pt.
+
+Overfull \vbox (118.4408pt too high) detected at line 1149
+ []
+
+Package mdframed Info: Box was splittet wrong
+ starting loop to iterate the splitting point
+(mdframed)              on input line 1149.
+
+Overfull \vbox (119.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (120.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (121.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (122.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (123.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (124.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (125.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (126.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (127.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (128.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (129.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (130.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (131.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (132.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (133.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (134.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (135.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (136.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (137.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (138.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (139.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (140.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (141.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (142.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (143.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (144.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (145.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (146.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (147.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (148.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (149.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (150.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (151.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (152.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (153.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (154.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (155.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (156.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (157.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (158.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (159.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (160.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (161.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (162.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (163.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (164.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (165.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (166.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (167.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (168.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (169.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (170.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (171.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (172.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (173.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (174.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (175.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (176.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (177.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (178.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (179.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (180.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (181.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (182.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (183.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (184.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (185.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (186.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (187.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (188.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (189.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (190.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (191.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (192.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (193.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (194.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (195.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (196.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (197.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (198.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (199.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (200.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (201.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (202.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (203.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (204.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (205.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (206.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (207.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (208.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (209.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (210.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (211.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (212.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (213.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (214.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (215.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (216.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (217.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (218.4408pt too high) detected at line 1149
+ []
+
+
+Overfull \vbox (219.4408pt too high) detected at line 1149
+ []
+
+
+Package mdframed Warning: correct box splittet fails
+ It seems you are using a non splittable contents
+(mdframed)                 on input line 1149.
+
+Package mdframed Info: You first box width is to small
+ mdframed fixed it
+(mdframed)              on input line 1149.
+[25]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 1152.
+<b2_omega.png, id=123, 882.6576pt x 586.8324pt>
+File: b2_omega.png Graphic file (type png)
+<use b2_omega.png>
+Package pdftex.def Info: b2_omega.png  used on input line 1154.
+(pdftex.def)             Requested size: 259.361pt x 172.43352pt.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 1161.
+<b2_wheelrate.png, id=124, 937.5828pt x 594.0594pt>
+File: b2_wheelrate.png Graphic file (type png)
+<use b2_wheelrate.png>
+Package pdftex.def Info: b2_wheelrate.png  used on input line 1163.
+(pdftex.def)             Requested size: 259.361pt x 164.33221pt.
+
+Overfull \vbox (151.79015pt too high) detected at line 1167
+ []
+
+Package mdframed Info: Box was splittet wrong
+ starting loop to iterate the splitting point
+(mdframed)              on input line 1167.
+
+Overfull \vbox (152.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (153.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (154.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (155.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (156.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (157.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (158.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (159.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (160.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (161.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (162.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (163.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (164.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (165.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (166.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (167.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (168.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (169.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (170.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (171.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (172.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (173.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (174.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (175.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (176.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (177.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (178.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (179.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (180.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (181.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (182.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (183.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (184.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (185.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (186.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (187.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (188.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (189.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (190.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (191.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (192.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (193.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (194.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (195.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (196.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (197.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (198.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (199.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (200.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (201.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (202.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (203.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (204.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (205.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (206.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (207.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (208.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (209.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (210.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (211.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (212.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (213.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (214.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (215.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (216.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (217.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (218.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (219.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (220.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (221.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (222.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (223.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (224.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (225.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (226.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (227.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (228.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (229.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (230.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (231.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (232.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (233.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (234.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (235.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (236.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (237.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (238.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (239.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (240.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (241.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (242.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (243.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (244.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (245.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (246.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (247.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (248.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (249.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (250.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (251.79015pt too high) detected at line 1167
+ []
+
+
+Overfull \vbox (252.79015pt too high) detected at line 1167
+ []
+
+
+Package mdframed Warning: correct box splittet fails
+ It seems you are using a non splittable contents
+(mdframed)                 on input line 1167.
+
+Package mdframed Info: You first box width is to small
+ mdframed fixed it
+(mdframed)              on input line 1167.
+[26 <./b2_theta.png (PNG copy)> <./b2_omega.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 1173--1174
+
+ []
+
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 1182.
+<b3_palpha.png, id=128, 963.8409pt x 594.0594pt>
+File: b3_palpha.png Graphic file (type png)
+<use b3_palpha.png>
+Package pdftex.def Info: b3_palpha.png  used on input line 1184.
+(pdftex.def)             Requested size: 259.361pt x 159.8543pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 1188--1189
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1190--1191
+
+ []
+
+
+Overfull \vbox (41.83777pt too high) detected at line 1193
+ []
+
+Package mdframed Info: Box was splittet wrong
+ starting loop to iterate the splitting point
+(mdframed)              on input line 1193.
+
+Overfull \vbox (42.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (43.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (44.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (45.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (46.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (47.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (48.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (49.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (50.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (51.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (52.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (53.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (54.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (55.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (56.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (57.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (58.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (59.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (60.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (61.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (62.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (63.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (64.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (65.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (66.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (67.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (68.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (69.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (70.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (71.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (72.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (73.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (74.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (75.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (76.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (77.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (78.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (79.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (80.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (81.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (82.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (83.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (84.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (85.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (86.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (87.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (88.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (89.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (90.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (91.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (92.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (93.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (94.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (95.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (96.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (97.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (98.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (99.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (100.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (101.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (102.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (103.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (104.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (105.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (106.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (107.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (108.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (109.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (110.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (111.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (112.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (113.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (114.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (115.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (116.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (117.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (118.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (119.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (120.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (121.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (122.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (123.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (124.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (125.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (126.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (127.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (128.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (129.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (130.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (131.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (132.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (133.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (134.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (135.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (136.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (137.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (138.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (139.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (140.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (141.83777pt too high) detected at line 1193
+ []
+
+
+Overfull \vbox (142.83777pt too high) detected at line 1193
+ []
+
+
+Package mdframed Warning: correct box splittet fails
+ It seems you are using a non splittable contents
+(mdframed)                 on input line 1193.
+
+Package mdframed Info: You first box width is to small
+ mdframed fixed it
+(mdframed)              on input line 1193.
+[27 <./b2_wheelrate.png (PNG copy)>] [28 <./b3_palpha.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 1199--1200
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1201--1202
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1215--1217
+
+ []
+
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 1228.
+[29]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 1239.
+<b4_check.png, id=138, 892.5345pt x 586.8324pt>
+File: b4_check.png Graphic file (type png)
+<use b4_check.png>
+Package pdftex.def Info: b4_check.png  used on input line 1242.
+(pdftex.def)             Requested size: 259.361pt x 170.52625pt.
+Package mdframed Info: Not enough space on this page on input line 1247.
+ [30 <./b4_check.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 1257--1258
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1259--1260
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1261--1262
+
+ []
+
+[31]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 1290.
+<c1_torque.png, id=146, 885.5484pt x 594.0594pt>
+File: c1_torque.png Graphic file (type png)
+<use c1_torque.png>
+Package pdftex.def Info: c1_torque.png  used on input line 1293.
+(pdftex.def)             Requested size: 259.361pt x 173.98602pt.
+Package mdframed Info: Not enough space on this page on input line 1297.
+
+Underfull \hbox (badness 10000) in paragraph at lines 1301--1302
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1303--1304
+
+ []
+
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 1307.
+<c2_theta.png, id=147, 897.5934pt x 594.0594pt>
+File: c2_theta.png Graphic file (type png)
+<use c2_theta.png>
+Package pdftex.def Info: c2_theta.png  used on input line 1309.
+(pdftex.def)             Requested size: 259.361pt x 171.65642pt.
+
+Overfull \vbox (64.13799pt too high) detected at line 1313
+ []
+
+Package mdframed Info: Box was splittet wrong
+ starting loop to iterate the splitting point
+(mdframed)              on input line 1313.
+
+Overfull \vbox (65.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (66.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (67.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (68.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (69.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (70.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (71.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (72.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (73.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (74.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (75.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (76.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (77.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (78.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (79.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (80.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (81.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (82.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (83.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (84.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (85.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (86.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (87.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (88.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (89.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (90.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (91.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (92.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (93.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (94.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (95.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (96.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (97.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (98.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (99.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (100.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (101.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (102.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (103.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (104.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (105.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (106.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (107.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (108.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (109.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (110.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (111.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (112.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (113.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (114.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (115.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (116.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (117.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (118.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (119.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (120.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (121.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (122.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (123.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (124.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (125.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (126.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (127.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (128.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (129.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (130.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (131.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (132.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (133.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (134.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (135.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (136.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (137.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (138.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (139.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (140.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (141.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (142.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (143.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (144.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (145.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (146.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (147.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (148.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (149.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (150.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (151.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (152.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (153.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (154.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (155.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (156.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (157.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (158.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (159.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (160.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (161.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (162.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (163.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (164.13799pt too high) detected at line 1313
+ []
+
+
+Overfull \vbox (165.13799pt too high) detected at line 1313
+ []
+
+
+Package mdframed Warning: correct box splittet fails
+ It seems you are using a non splittable contents
+(mdframed)                 on input line 1313.
+
+Package mdframed Info: You first box width is to small
+ mdframed fixed it
+(mdframed)              on input line 1313.
+[32 <./c1_torque.png (PNG copy)>]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 1316.
+<c2_omega.png, id=151, 902.6523pt x 594.0594pt>
+File: c2_omega.png Graphic file (type png)
+<use c2_omega.png>
+Package pdftex.def Info: c2_omega.png  used on input line 1318.
+(pdftex.def)             Requested size: 259.361pt x 170.69557pt.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 1325.
+<c2_wheelrate.png, id=152, 922.647pt x 594.0594pt>
+File: c2_wheelrate.png Graphic file (type png)
+<use c2_wheelrate.png>
+Package pdftex.def Info: c2_wheelrate.png  used on input line 1327.
+(pdftex.def)             Requested size: 259.361pt x 166.98814pt.
+
+Overfull \vbox (150.53969pt too high) detected at line 1331
+ []
+
+Package mdframed Info: Box was splittet wrong
+ starting loop to iterate the splitting point
+(mdframed)              on input line 1331.
+
+Overfull \vbox (151.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (152.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (153.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (154.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (155.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (156.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (157.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (158.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (159.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (160.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (161.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (162.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (163.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (164.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (165.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (166.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (167.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (168.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (169.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (170.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (171.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (172.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (173.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (174.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (175.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (176.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (177.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (178.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (179.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (180.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (181.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (182.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (183.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (184.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (185.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (186.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (187.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (188.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (189.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (190.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (191.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (192.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (193.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (194.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (195.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (196.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (197.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (198.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (199.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (200.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (201.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (202.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (203.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (204.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (205.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (206.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (207.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (208.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (209.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (210.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (211.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (212.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (213.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (214.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (215.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (216.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (217.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (218.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (219.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (220.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (221.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (222.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (223.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (224.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (225.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (226.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (227.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (228.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (229.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (230.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (231.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (232.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (233.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (234.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (235.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (236.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (237.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (238.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (239.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (240.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (241.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (242.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (243.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (244.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (245.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (246.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (247.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (248.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (249.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (250.53969pt too high) detected at line 1331
+ []
+
+
+Overfull \vbox (251.53969pt too high) detected at line 1331
+ []
+
+
+Package mdframed Warning: correct box splittet fails
+ It seems you are using a non splittable contents
+(mdframed)                 on input line 1331.
+
+Package mdframed Info: You first box width is to small
+ mdframed fixed it
+(mdframed)              on input line 1331.
+[33 <./c2_theta.png (PNG copy)> <./c2_omega.png (PNG copy)>]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 1334.
+<c2_palpha.png, id=156, 958.782pt x 594.0594pt>
+File: c2_palpha.png Graphic file (type png)
+<use c2_palpha.png>
+Package pdftex.def Info: c2_palpha.png  used on input line 1336.
+(pdftex.def)             Requested size: 259.361pt x 160.69731pt.
+ [34 <./c2_wheelrate.png (PNG copy)> <./c2_palpha.png (PNG copy)>]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 1345.
+
+Underfull \hbox (badness 10000) in paragraph at lines 1351--1353
+
+ []
+
+Package mdframed Info: Not enough space on this page on input line 1355.
+[35]
+Underfull \hbox (badness 10000) in paragraph at lines 1361--1362
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1363--1364
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1404--1405
+
+ []
+
+[36{/usr/share/texlive/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
+Underfull \hbox (badness 10000) in paragraph at lines 1417--1418
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1419--1420
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1421--1422
+
+ []
+
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 1426.
+Package mdframed Info: Box was splittet wrong
+ starting loop to iterate the splitting point
+(mdframed)              on input line 1434.
+[37] [38] (./Problem Set 6 Dylan Ashby.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-03-20>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 8591 strings out of 469263
- 141665 string characters out of 5464811
- 778456 words of memory out of 6000000
- 37280 multiletter control sequences out of 15000+600000
- 642348 words of font info for 94 fonts, out of 8000000 for 9000
+ 9559 strings out of 469263
+ 152157 string characters out of 5464811
+ 859456 words of memory out of 6000000
+ 38245 multiletter control sequences out of 15000+600000
+ 642850 words of font info for 96 fonts, out of 8000000 for 9000
  56 hyphenation exceptions out of 8191
- 84i,28n,93p,758b,497s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,28n,93p,993b,2237s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texli
@@ -786,15 +3099,18 @@ ts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1
 /public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
 amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
-10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb>
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/s
-hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on "Problem Set 6 Dylan Ashby.pdf" (22 pages, 605481 bytes).
+10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/public/cm-super/sfrm1000.pfb>
+Output written on "Problem Set 6 Dylan Ashby.pdf" (39 pages, 3438657 bytes).
 PDF statistics:
- 240 PDF objects out of 1000 (max. 8388607)
- 147 compressed objects within 2 object streams
+ 322 PDF objects out of 1000 (max. 8388607)
+ 196 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 61 words of extra memory for PDF output out of 10000 (max. 10000000)
 

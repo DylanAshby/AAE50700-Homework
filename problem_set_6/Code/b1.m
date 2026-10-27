@@ -24,7 +24,7 @@ figure
 subplot(2,1,1)
 plot(t, b)
 ylabel('$\beta$ [deg]')
-title('Solar array angle time history')
+title('Solar Array Angle Time History')
 grid on
 subplot(2,1,2)
 plot(t, bd)

@@ -659,16 +659,97 @@ And the right sides of Eq.~(\ref{eq:thetaEOM}) and Eq.~(\ref{eq:alphaEOM}) make 
 \end{equation}
 \endgroup
 
+We see in some of the equations derived in this section, there are first and second derivative terms of the $\beta$ angle. We can derive those terms as follows.\\
+
+In Eq.~(\ref{eq:beta}), we see that $\tau$ is directly a function of $t$ divided by a constant, thus the function for $\dot{\beta}$ can be found easily:
+\begin{equation}
+	\begin{split}
+		\dot{\beta}(t)&=
+		\begin{cases}
+			\beta_m\left(10\frac{d}{dt}\left(\frac{t}{t_m}\right)^3-15\frac{d}{dt}\left(\frac{t}{t_m}\right)^4+6\frac{d}{dt}\left(\frac{t}{t_m}\right)^5\right), & 0\leq t\leq t_m,\\
+			\frac{d}{dt}\left(\beta_m\right), & t>t_m,
+		\end{cases} \\
+		&= 
+		\begin{cases}
+			\beta_m\left(\frac{30}{t_m}\left(\frac{t}{t_m}\right)^2-\frac{60}{t_m}\left(\frac{t}{t_m}\right)^3+\frac{30}{t_m}\left(\frac{t}{t_m}\right)^4\right), & 0\leq t\leq t_m,\\
+			0, & t>t_m,
+		\end{cases}  \\
+		&=
+		\begin{cases}
+			\frac{\beta_m}{t_m}\left(30\tau^2-60\tau^3+30\tau^4\right), & 0\leq t\leq t_m,\\
+			0, & t>t_m,
+		\end{cases}
+	\end{split}
+\end{equation}
+
+Then we perform the next derivative:
+\begin{equation}
+	\begin{split}
+		\ddot{\beta}(t)&=
+		\begin{cases}
+			\frac{\beta_m}{t_m}\left(30\frac{d}{dt}\left(\frac{t}{t_m}\right)^2-60\frac{d}{dt}\left(\frac{t}{t_m}\right)^3+30\frac{d}{dt}\left(\frac{t}{t_m}\right)^4\right), & 0\leq t\leq t_m,\\
+			\frac{d}{dt}\left(0\right), & t>t_m,
+		\end{cases} \\
+		&= 
+		\begin{cases}
+			\frac{\beta_m}{t_m}\left(\frac{60}{t_m}\left(\frac{t}{t_m}\right)-\frac{180}{t_m}\left(\frac{t}{t_m}\right)^2+\frac{120}{t_m}\left(\frac{t}{t_m}\right)^3\right), & 0\leq t\leq t_m,\\
+			0, & t>t_m,
+		\end{cases}  \\
+		&=
+		\begin{cases}
+			\frac{\beta_m}{t_m^2}\left(60\tau-180\tau^2+120\tau^3\right), & 0\leq t\leq t_m,\\
+			0, & t>t_m,
+		\end{cases}
+	\end{split}
+\end{equation}
+
+Then, recall for the given function for the $\boldsymbol{I}_A(\beta)$ matrix, we need the rotation matrix $\boldsymbol{R}_2(\beta)$ which is simply a second-axis rotation in the body frame since all above derived equations maintain body frame components. As seen in the notation, this rotation matrix is a function of the $\beta$ angle representing the current orientation of the solar array's rotation:
+\begin{equation}
+	\boldsymbol{R}_2(\beta)=
+	\begin{bmatrix}
+		\cos\beta & 0 & \sin\beta \\
+		0 & 1 & 0 \\
+		-\sin\beta & 0 & \cos\beta
+	\end{bmatrix}
+	\label{eq:R2}
+\end{equation}
+
+So, below the functions for $\beta$ and its derivatives used in the EoM's are restated for reporting:
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	\begin{equation}
+		\begin{split}
+			\beta(t)&=
+			\begin{cases}
+				\beta_m\left(10\tau^3-15\tau^4+6\tau^5\right), & 0\leq t\leq t_m,\\
+				\beta_m, & t>t_m,
+			\end{cases}
+			\qquad\tau\coloneqq\frac{t}{t_m} \\[6pt]
+			\dot{\beta}(t)&=
+			\begin{cases}
+				\frac{\beta_m}{t_m}\left(30\tau^2-60\tau^3+30\tau^4\right), & 0\leq t\leq t_m,\\
+				0, & t>t_m,
+			\end{cases} \\[6pt]
+			\ddot{\beta}(t)&=
+			\begin{cases}
+				\frac{\beta_m}{t_m^2}\left(60\tau-180\tau^2+120\tau^3\right), & 0\leq t\leq t_m,\\
+				0, & t>t_m,
+			\end{cases}
+		\end{split}
+		\label{eq:betas}
+	\end{equation}
+\end{mdframed}
+
 \newpage
 
 \begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
-	Which makes the final EoM:
+	And the the final EoM are represented as:
 	\begin{equation}
 		\begin{split}
 			\boldsymbol{M}(\boldsymbol{q},t)\ddot{\boldsymbol{q}}=\boldsymbol{f}(\boldsymbol{q},\dot{\boldsymbol{q}},t,u)
 		\end{split}
 	\end{equation}
-	where:
+	Where:
 	\begingroup
 	\footnotesize
 	\begin{equation}
@@ -686,6 +767,14 @@ And the right sides of Eq.~(\ref{eq:thetaEOM}) and Eq.~(\ref{eq:alphaEOM}) make 
 			\end{bmatrix} \\[6pt]
 			\boldsymbol{H}_S&=\boldsymbol{I}_B\boldsymbol{E}\dot{\boldsymbol{\theta}}+\boldsymbol{I}_{A/C}\left(\boldsymbol{E}\dot{\boldsymbol{\theta}}+\dot{\beta}\hat{\boldsymbol{b}}_2\right)+\boldsymbol{J}_w\left(\boldsymbol{E}\dot{\boldsymbol{\theta}}+\dot{\boldsymbol{\alpha}}\right) \\[6pt]
 			\boldsymbol{I}_S&=\boldsymbol{I}_B+\boldsymbol{I}_{A/C}+\boldsymbol{J}_w \\[6pt]
+			\boldsymbol{I}_{A/C}(\beta)&=2\boldsymbol{I}_A(\beta)+2m_Ad^2\left(\boldsymbol{I}_3-\hat{\boldsymbol{b}}_2\hat{\boldsymbol{b}}_2^\top\right) \\[6pt]
+			\boldsymbol{I}_A(\beta)&=\boldsymbol{R}_2(\beta)\boldsymbol{I}_{A0}\boldsymbol{R}_2^\top(\beta) \\[6pt]
+			\boldsymbol{R}_2(\beta)&=
+			\begin{bmatrix}
+				\cos\beta & 0 & \sin\beta \\
+				0 & 1 & 0 \\
+				-\sin\beta & 0 & \cos\beta
+			\end{bmatrix} \\[6pt]
 			\boldsymbol{E}(\boldsymbol{\theta})&=
 			\begin{bmatrix}
 				\sin\theta_3\sin\theta_2 & \cos\theta_3 & 0 \\
@@ -698,7 +787,10 @@ And the right sides of Eq.~(\ref{eq:thetaEOM}) and Eq.~(\ref{eq:alphaEOM}) make 
 				\cos\theta_2\cos\theta_3\,\dot{\theta}_2-\sin\theta_2\sin\theta_3\,\dot{\theta}_3 & -\cos\theta_3\,\dot{\theta}_3 & 0 \\
 				-\sin\theta_2\,\dot{\theta}_2 & 0 & 0
 			\end{bmatrix} \\[6pt]
-			\frac{\partial\boldsymbol{E}}{\partial\boldsymbol{\theta}}&=\left\{\frac{\partial\boldsymbol{E}}{\partial\theta_1},\ \frac{\partial\boldsymbol{E}}{\partial\theta_2},\ \frac{\partial\boldsymbol{E}}{\partial\theta_3}\right\} \\[6pt]
+			\frac{\partial\boldsymbol{E}}{\partial\boldsymbol{\theta}}\dot{\boldsymbol{\theta}}&=
+			\begin{bmatrix}
+				\frac{\partial\boldsymbol{E}}{\partial\theta_1}\dot{\boldsymbol{\theta}} & \frac{\partial\boldsymbol{E}}{\partial\theta_2}\dot{\boldsymbol{\theta}} & \frac{\partial\boldsymbol{E}}{\partial\theta_3}\dot{\boldsymbol{\theta}}
+			\end{bmatrix},\qquad\frac{\partial\boldsymbol{E}}{\partial\boldsymbol{\theta}}=\left\{\frac{\partial\boldsymbol{E}}{\partial\theta_1},\ \frac{\partial\boldsymbol{E}}{\partial\theta_2},\ \frac{\partial\boldsymbol{E}}{\partial\theta_3}\right\} \\[6pt]
 			\frac{\partial\boldsymbol{E}}{\partial\theta_1}&=\boldsymbol{0}_{3\times 3} \\[6pt]
 			\frac{\partial\boldsymbol{E}}{\partial\theta_2}&=
 			\begin{bmatrix}
@@ -713,6 +805,7 @@ And the right sides of Eq.~(\ref{eq:thetaEOM}) and Eq.~(\ref{eq:alphaEOM}) make 
 				0 & 0 & 0
 			\end{bmatrix}
 		\end{split}
+		\label{eq:EOMS}
 	\end{equation}
 	\endgroup
 \end{mdframed}
@@ -759,7 +852,7 @@ Derive the time derivative of $\boldsymbol{p}_{\boldsymbol{\alpha}}$, and discus
 
 \begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
 	The time derivative $\frac{d}{dt}\boldsymbol{p}_{\boldsymbol{\alpha}}$ is equal to the time derivative $\frac{d}{dt}(\frac{\partial L}{\partial\dot{\boldsymbol{\alpha}}})$ which was also found in (a.4) as part of the Lagrange equation for $\boldsymbol{\alpha}$:
-		\begin{equation}
+	\begin{equation}
 		\dot{\boldsymbol{p}}_{\boldsymbol{\alpha}}=\frac{d}{dt}\left(\frac{\partial L}{\partial\dot{\boldsymbol{\alpha}}}\right)=\boldsymbol{J}_w\left(\dot{\boldsymbol{E}}(\boldsymbol{\theta})\dot{\boldsymbol{\theta}}+\boldsymbol{E}(\boldsymbol{\theta})\ddot{\boldsymbol{\theta}}+\ddot{\boldsymbol{\alpha}}\right)
 	\end{equation}
 	Since $\boldsymbol{\alpha}$ is cyclic, we see from the Lagrange equation that the $\frac{\partial L}{\partial\boldsymbol{\alpha}}$ term equals zero making the time derivative of generalized momentum $\boldsymbol{p}_{\boldsymbol{\alpha}}$ equal the motor torques $\boldsymbol{u}$: 
@@ -844,12 +937,41 @@ Which then simplifies to get the Jacobi integral:
 		\mathcal{J}=\frac{1}{2}\left(\boldsymbol{\omega}^\top\boldsymbol{I}_B\boldsymbol{\omega}+\boldsymbol{\omega}^\top\boldsymbol{I}_{A/C}(\beta)\boldsymbol{\omega}+\left(\boldsymbol{\omega}+\boldsymbol{\Omega}\right)^\top\boldsymbol{J}_w\left(\boldsymbol{\omega}+\boldsymbol{\Omega}\right)-\dot{\beta}^2\hat{\boldsymbol{b}}_2^\top\boldsymbol{I}_{A/C}(\beta)\hat{\boldsymbol{b}}_2\right)
 	\end{equation}
 	\endgroup
-	
-	We know the time derivative of the Jacobi integral can be written as:
+\end{mdframed}
+
+We then know the time derivative of the Jacobi integral can be written as:
+\begin{equation}
+	\dot{\mathcal{J}}=\sum_{j=1}^{n}Q_{nc,j}\dot{q}_j-\frac{\partial L}{\partial t}
+\end{equation}
+Where $Q_{nc,j}$ are the non-conservative forces. \\
+
+For this system, $\boldsymbol{Q}_\theta=\boldsymbol{0}$ and $\boldsymbol{Q}_\alpha=\boldsymbol{u}$ as found in (a.4), so the non-conservative term becomes:
+\begin{equation}
+	\sum_{j=1}^{n}Q_{nc,j}\dot{q}_j=\dot{\boldsymbol{\theta}}^\top\boldsymbol{Q}_\theta+\dot{\boldsymbol{\alpha}}^\top\boldsymbol{Q}_\alpha=\dot{\boldsymbol{\theta}}^\top\boldsymbol{0}+\dot{\boldsymbol{\alpha}}^\top\boldsymbol{u}=\boldsymbol{u}^\top\boldsymbol{\Omega}
+\end{equation}
+
+Then, the Lagrangian depends explicitly on $t$ through $\beta(t)$ and $\dot{\beta}(t)$, so the time partial is non-zero:
+\begin{equation}
+	\begin{split}
+		\frac{\partial L}{\partial t}&=\frac{\partial}{\partial t}\left(\frac{1}{2}\left(\boldsymbol{\omega}^\top\boldsymbol{I}_B\boldsymbol{\omega}+\left(\boldsymbol{\omega}+\dot{\beta}\hat{\boldsymbol{b}}_2\right)^\top\boldsymbol{I}_{A/C}(\beta)\left(\boldsymbol{\omega}+\dot{\beta}\hat{\boldsymbol{b}}_2\right)+\left(\boldsymbol{\omega}+\boldsymbol{\Omega}\right)^\top\boldsymbol{J}_w\left(\boldsymbol{\omega}+\boldsymbol{\Omega}\right)\right)\right) \\
+		&=\frac{1}{2}\frac{\partial}{\partial t}\left(\boldsymbol{\omega}^\top\boldsymbol{I}_B\boldsymbol{\omega}\right)+\frac{1}{2}\frac{\partial}{\partial t}\left(\left(\boldsymbol{\omega}+\dot{\beta}\hat{\boldsymbol{b}}_2\right)^\top\boldsymbol{I}_{A/C}(\beta)\left(\boldsymbol{\omega}+\dot{\beta}\hat{\boldsymbol{b}}_2\right)\right)+\frac{1}{2}\frac{\partial}{\partial t}\left(\left(\boldsymbol{\omega}+\boldsymbol{\Omega}\right)^\top\boldsymbol{J}_w\left(\boldsymbol{\omega}+\boldsymbol{\Omega}\right)\right) \\
+		&=0+\frac{1}{2}\frac{\partial}{\partial t}\left(\left(\boldsymbol{\omega}+\dot{\beta}\hat{\boldsymbol{b}}_2\right)^\top\boldsymbol{I}_{A/C}(\beta)\left(\boldsymbol{\omega}+\dot{\beta}\hat{\boldsymbol{b}}_2\right)\right)+0 \\
+		&=\frac{1}{2}\left(\frac{\partial\boldsymbol{\omega}}{\partial t}+\frac{d\dot{\beta}}{dt}\hat{\boldsymbol{b}}_2\right)^\top\boldsymbol{I}_{A/C}(\beta)\left(\boldsymbol{\omega}+\dot{\beta}\hat{\boldsymbol{b}}_2\right)+\frac{1}{2}\left(\boldsymbol{\omega}+\dot{\beta}\hat{\boldsymbol{b}}_2\right)^\top\frac{\partial\boldsymbol{I}_{A/C}(\beta)}{\partial\beta}\frac{d\beta}{dt}\left(\boldsymbol{\omega}+\dot{\beta}\hat{\boldsymbol{b}}_2\right) \\
+		&\quad+\frac{1}{2}\left(\boldsymbol{\omega}+\dot{\beta}\hat{\boldsymbol{b}}_2\right)^\top\boldsymbol{I}_{A/C}(\beta)\left(\frac{\partial\boldsymbol{\omega}}{\partial t}+\frac{d\dot{\beta}}{dt}\hat{\boldsymbol{b}}_2\right) \\
+		&=\frac{1}{2}\left(\ddot{\beta}\hat{\boldsymbol{b}}_2\right)^\top\boldsymbol{I}_{A/C}(\beta)\left(\boldsymbol{\omega}+\dot{\beta}\hat{\boldsymbol{b}}_2\right)+\frac{1}{2}\left(\boldsymbol{\omega}+\dot{\beta}\hat{\boldsymbol{b}}_2\right)^\top\dot{\boldsymbol{I}}_{A/C}(\beta)\left(\boldsymbol{\omega}+\dot{\beta}\hat{\boldsymbol{b}}_2\right) \\
+		&\quad+\frac{1}{2}\left(\boldsymbol{\omega}+\dot{\beta}\hat{\boldsymbol{b}}_2\right)^\top\boldsymbol{I}_{A/C}(\beta)\left(\ddot{\beta}\hat{\boldsymbol{b}}_2\right) \\
+		&=\frac{1}{2}\left(\boldsymbol{\omega}+\dot{\beta}\hat{\boldsymbol{b}}_2\right)^\top\dot{\boldsymbol{I}}_{A/C}(\beta)\left(\boldsymbol{\omega}+\dot{\beta}\hat{\boldsymbol{b}}_2\right)+\ddot{\beta}\,\hat{\boldsymbol{b}}_2^\top\boldsymbol{I}_{A/C}(\beta)\left(\boldsymbol{\omega}+\dot{\beta}\hat{\boldsymbol{b}}_2\right)
+	\end{split}
+\end{equation}
+
+\newpage
+
+\begin{mdframed}
+	Substituting both back in gives the time derivative of the Jacobi integral:
 	\begin{equation}
-		\dot{\mathcal{J}}=\sum_{j=1}^{n}Q_{nc,j}\dot{q}_j-\frac{\partial L}{\partial t}
+		\dot{\mathcal{J}}=\boldsymbol{u}^\top\boldsymbol{\Omega}-\frac{1}{2}\left(\boldsymbol{\omega}+\dot{\beta}\hat{\boldsymbol{b}}_2\right)^\top\dot{\boldsymbol{I}}_{A/C}(\beta)\left(\boldsymbol{\omega}+\dot{\beta}\hat{\boldsymbol{b}}_2\right)-\ddot{\beta}\,\hat{\boldsymbol{b}}_2^\top\boldsymbol{I}_{A/C}(\beta)\left(\boldsymbol{\omega}+\dot{\beta}\hat{\boldsymbol{b}}_2\right)
+		\label{eq:jacobidot}
 	\end{equation}
-	Where $Q_{nc,j}$ are the non-conservative forces. \\
 	
 	We know that the angle $\beta$ in the Lagrangian is prescribed explicitly by time through $\tau\coloneqq\frac{t}{t_m}$. We also know that there are non-conservative forces given by the motor torques $\boldsymbol{u}$. This means that for both these reasons $\mathcal{J}$ \textbf{is not conserved}.\\
 	
@@ -886,38 +1008,7 @@ Plot the time history of $\beta$ and $\dot{\beta}$ based on Eq.~(\ref{eq:beta}).
 
 \textbf{Analysis/Conclusions:}\\
 
-For reference, Eq.~(\ref{eq:beta}) defines $\beta$ as:
-\begin{equation}
-	\beta(t)=
-	\begin{cases}
-		\beta_m\left(10\tau^3-15\tau^4+6\tau^5\right), & 0\leq t\leq t_m,\\
-		\beta_m, & t>t_m,
-	\end{cases}
-	\qquad\tau\coloneqq\frac{t}{t_m}.
-\end{equation}
-
-We see that $\tau$ is directly a function of $t$ divided by a constant, thus the function for $\dot{\beta}$ can be found easily:
-\begin{equation}
-	\begin{split}
-		\dot{\beta}(t)&=
-		\begin{cases}
-			\beta_m\left(10\frac{d}{dt}\left(\frac{t}{t_m}\right)^3-15\frac{d}{dt}\left(\frac{t}{t_m}\right)^4+6\frac{d}{dt}\left(\frac{t}{t_m}\right)^5\right), & 0\leq t\leq t_m,\\
-			\frac{d}{dt}\left(\beta_m\right), & t>t_m,
-		\end{cases} \\
-		&= 
-		\begin{cases}
-			\beta_m\left(\frac{30}{t_m}\left(\frac{t}{t_m}\right)^2-\frac{60}{t_m}\left(\frac{t}{t_m}\right)^3+\frac{30}{t_m}\left(\frac{t}{t_m}\right)^4\right), & 0\leq t\leq t_m,\\
-			0, & t>t_m,
-		\end{cases}  \\
-		&=
-		\begin{cases}
-			\frac{\beta_m}{t_m}\left(30\tau^2-60\tau^3+30\tau^4\right), & 0\leq t\leq t_m,\\
-			0, & t>t_m,
-		\end{cases}
-	\end{split}
-\end{equation}
-
-Then, the results of both equations plotted from $0$ seconds to $100$ seconds is seen in Fig.~(\ref{fig:b1beta}):
+In (a.4) the equations for $\beta$ and $\dot{\beta}$ were found in Eq.~(\ref{eq:betas}). Likewise, the results of both equations plotted from $0$ seconds to $100$ seconds is seen in Fig.~(\ref{fig:b1beta}):
 \begin{mdframed}
 	\begin{figure}[H]
 		\centering
@@ -932,5 +1023,414 @@ Then, the results of both equations plotted from $0$ seconds to $100$ seconds is
 Implement the EoM derived above, and report the implemented code. Numerically propagate the system for $0\leq t\leq 100$ sec with $\boldsymbol{u}=\boldsymbol{0}$. Plot the time histories $\boldsymbol{\theta}$, $\boldsymbol{\omega}$, and $\boldsymbol{\Omega}$.\\
 
 \textbf{Analysis/Conclusions:}\\
+
+The given term for $\dot{\boldsymbol{I}}_{A/C}(t)$ in the problem setup adds a skew-symmetric matrix for the body frame vector $\hat{\boldsymbol{b}}_2$ which is represented as:
+\begin{equation}
+	\begin{split}
+		\left[\hat{\boldsymbol{b}}_2\right]_\times&=
+		\begin{bmatrix}
+			0 & -b_{2,3} & b_{2,2} \\
+			b_{2,3} & 0 & -b_{2,1} \\
+			-b_{2,2} & b_{2,1} & 0
+		\end{bmatrix},\qquad\hat{\boldsymbol{b}}_2=\begin{bmatrix}0\\1\\0\end{bmatrix} \\
+		&=
+		\begin{bmatrix}
+			0 & 0 & 1 \\
+			0 & 0 & 0 \\
+			-1 & 0 & 0
+		\end{bmatrix}
+	\end{split}
+	\label{eq:b2skew}
+\end{equation}
+Which we are allowed to use the formulation this way because the EoM's in part (a) were derived using body frame coordinate components.\\
+
+Likewise, the implementation of the EoM's between Eq.~(\ref{eq:betas}) Eq.~(\ref{eq:EOMS}), Eq.~(\ref{eq:IACdot}), and Eq.~(\ref{eq:b2skew}) can be seen in the listing blocks below.\\
+
+First, the equations of motion were put into a function block to be ran with a numerical integrator.
+\begin{lstlisting}[label=lst:rwEoM.m,caption=Implementation of the spacecraft EoM.]
+	function xd = rwEoM(x, t, u, bt, bdt, bddt, IB, IA0, Jw, mA, d)
+	
+		% Break the state vector into its components
+		th = x(1:3); thd = x(7:9); ad = x(10:12);
+		
+		% Find the value of the beta angles for this time step
+		b = bt(t); bd = bdt(t); bdd = bddt(t);
+		
+		% Define 2nd axis body frame vector and its skew-symmetric matrix
+		bh2 = [0; 1; 0];
+		bh2x = [0 0 1; 0 0 0; -1 0 0];
+		
+		% Define the 2nd axis rotation about b2 body frame vector
+		R2 = [cos(b)  0  sin(b); 0 1 0; -sin(b)  0  cos(b)];
+		
+		% Find IA matrix, the IAC matrix, and its derivative
+		IA = R2*IA0*R2';
+		IAC = 2*IA + 2*mA*(d^2)*(eye(3) - bh2*bh2');
+		IACd = 2*bd * (bh2x*IA - IA*bh2x);
+		
+		% Find the Euler sequence matrix and its derivative
+		E = [sin(th(3))*sin(th(2)) cos(th(3))  0;
+				sin(th(2))*cos(th(3)) -sin(th(3)) 0;
+				cos(th(2)) 0 1];
+		Ed = [cos(th(3))*sin(th(2))*thd(3) + sin(th(3))*cos(th(2))*thd(2) -sin(th(3))*thd(3) 0;
+				cos(th(2))*cos(th(3))*thd(2) - sin(th(2))*sin(th(3))*thd(3) -cos(th(3))*thd(3) 0;
+				-sin(th(2))*thd(2) 0 0];
+		
+		% Find the partials of E with respect to theta
+		dE1 = zeros(3);
+		dE2 = [sin(th(3))*cos(th(2)) 0 0;
+					cos(th(2))*cos(th(3)) 0 0;
+					-sin(th(2)) 0 0];
+		dE3 = [cos(th(3))*sin(th(2)) -sin(th(3)) 0;
+					-sin(th(2))*sin(th(3)) -cos(th(3)) 0;
+					0 0 0];
+		
+		% Assemble partials times thetadot column by column
+		dEthd = [dE1*thd dE2*thd dE3*thd];
+		
+		% Compute IS and HS matricies
+		IS = IB + IAC + Jw;
+		HS = IB*E*thd + IAC*(E*thd + bd*bh2) + Jw*(E*thd + ad);
+		
+		% Compute the f vector
+		f = [-E' * (IS*Ed*thd + IACd*(E*thd + bd*bh2) + IAC*bdd*bh2) + 	(dEthd - Ed)'*HS; u - Jw*Ed*thd];
+		
+		% Compute the M matrix
+		M = [E'*IS*E E'*Jw; Jw*E Jw];
+		
+		% Find the angle accelerations and pass through the angular rates
+		xd = [thd; ad; M\f];
+	
+	end
+\end{lstlisting}
+
+\newpage
+
+Then the remaining code setup the simulation parameters, and ran the simulation using ode45:
+\begin{lstlisting}[label=lst:b2.m,caption=Running the zero-torque simulation.]
+	% Define the beta angle functions
+	bm   = deg2rad(60);
+	tm   = 60;
+	bt   = @(t)  bm*(10*(t/tm).^3-15*(t/tm).^4+6*(t/tm).^5).*(t<=tm)+bm*(t>tm);
+	bdt  = @(t) (bm/tm)*(30*(t/tm).^2-60*(t/tm).^3 + 30*(t/tm).^4).*(t<=tm);
+	bddt = @(t) (bm/tm^2)*(60*(t/tm)-180*(t/tm).^2+120*(t/tm).^3).*(t<=tm);
+	
+	% Define the system constant parameters
+	IB  = diag([80  100  60]);
+	IA0 = diag([6   30   35]);
+	Jw  = diag([0.1 0.12 0.08]);
+	mA  = 24;
+	d   = 1.5;
+	
+	% Define the initial condition of the simulation and a constant zero torque
+	x0 = [pi/3; pi/3; pi/3; zeros(6,1); 300; -200; 100];
+	u = zeros(3,1);
+	
+	% Run the simulation
+	tspan = [0 100];
+	tol = 10^(-12);
+	opt = odeset('RelTol', tol, 'AbsTol', tol);
+	[simtime, xsim] = ode45(@(t,x) rwEoM(x, t, u, bt, bdt, bddt, IB, IA0, Jw, mA, d), tspan, x0, opt);
+\end{lstlisting}
+
+Then the following plots show the resulting time histories for $\boldsymbol{\theta}$, $\boldsymbol{\omega}$, and $\boldsymbol{\Omega}$. Note that to plot $\boldsymbol{\omega}$, the value $\dot{\boldsymbol{\theta}}$ had to be mapped to $\boldsymbol{\omega}$ by the relation:
+\begin{equation}
+	\boldsymbol{\omega}=\boldsymbol{E}(\boldsymbol{\theta})\dot{\boldsymbol{\theta}}
+\end{equation}
+Which was given by the problem description.
+
+\begin{mdframed}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\textwidth]{b2_theta.png}
+		\caption{Time history of the Euler angles $\boldsymbol{\theta}$ with zero RW motor torque, $\boldsymbol{u}=\boldsymbol{0}$.}
+		\label{fig:b2theta}
+	\end{figure}
+\end{mdframed}
+
+\begin{mdframed}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\textwidth]{b2_omega.png}
+		\caption{Time history of the body angular rate $\boldsymbol{\omega}$ with zero RW motor torque, $\boldsymbol{u}=\boldsymbol{0}$.}
+		\label{fig:b2omega}
+	\end{figure}
+\end{mdframed}
+
+\begin{mdframed}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\textwidth]{b2_wheelrate.png}
+		\caption{Time history of the RW spin rates relative to the bus $\boldsymbol{\Omega}$ with zero RW motor torque, $\boldsymbol{u}=\boldsymbol{0}$.}
+		\label{fig:b2Omega}
+	\end{figure}
+\end{mdframed}
+
+\subsubsection*{(b.3): Find}
+
+Plot the time history of $\boldsymbol{p}_{\boldsymbol{\alpha}}$, and discuss its time variation and why the result makes sense. Also, discuss why $\boldsymbol{\Omega}(t)$ is generally not constant.
+
+\textbf{Analysis/Conclusions:}\\
+
+To plot the time history of $\boldsymbol{p}_{\boldsymbol{\alpha}}$ we can use the analytical expression found for it in (a.5):
+\begin{equation}
+	\boldsymbol{p}_{\alpha}=\boldsymbol{J}_w\left(\boldsymbol{E}(\boldsymbol{\theta})\dot{\boldsymbol{\theta}}+\dot{\boldsymbol{\alpha}}\right)=\boldsymbol{J}_w\left(\boldsymbol{\omega}+\boldsymbol{\Omega}\right)
+\end{equation}
+Then, implementing this expression into code and plotting its three vector values, we get the following result:
+
+\begin{mdframed}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\textwidth]{b3_palpha.png}
+		\caption{Time history of the generalized momentum $\boldsymbol{p}_\alpha$ with zero RW motor torque.}
+		\label{fig:b3palpha}
+	\end{figure}
+	We see in the plot that \textbf{$\boldsymbol{p}_{\boldsymbol{\alpha}}$ does not vary with time}. \\
+	
+	This is the expected result because in (a.6) we found $\dot{\boldsymbol{p}}_{\boldsymbol{\alpha}}=\boldsymbol{u}$, and with $\boldsymbol{u}=\boldsymbol{0}$ there is no torque along the wheel axes to change it. The generalized momentum $\boldsymbol{p}_{\boldsymbol{\alpha}}=\boldsymbol{J}_w\left(\boldsymbol{\omega}+\boldsymbol{\Omega}\right)$ depends on the angular rate of each wheel with respect to the inertial frame, which combines both the body rotation and the wheel rate relative to the body. Likewise, even though $\boldsymbol{\Omega}$ changes over time, it only does so in response to the changes in $\boldsymbol{\omega}$ caused by the array maneuver, such that the sum $\boldsymbol{\omega}+\boldsymbol{\Omega}$, and therefore $\boldsymbol{p}_{\boldsymbol{\alpha}}$, is maintained. \\
+	
+	So, $\boldsymbol{\Omega}$ is generally not constant because any change in the angular rate of the body frame $\boldsymbol{\omega}$ must be offset by an equal and opposite change in the wheel rates, and in our scenario the arrays are usually causing some change in $\boldsymbol{\omega}$.
+\end{mdframed}
+
+\newpage
+
+\subsubsection*{(b.4): Find}
+
+From the symbolic expression of $\boldsymbol{p}_{\boldsymbol{\alpha}}$, derive the relation between $\boldsymbol{\Omega}(t)$ and $\boldsymbol{\omega}(t)$ under $\boldsymbol{u}(t)=0$. Verify that this analytical relation between $\boldsymbol{\Omega}(t)$ and $\boldsymbol{\omega}(t)$ is consistent with the numerical result. \\
+
+\textbf{Analysis/Conclusions:}\\
+
+The symbolic expression for $\boldsymbol{p}_{\boldsymbol{\alpha}}$ was derived in (a.5) as:
+\begin{equation}
+	\boldsymbol{p}_{\alpha}=\boldsymbol{J}_w\left(\boldsymbol{\omega}+\boldsymbol{\Omega}\right)
+\end{equation}
+
+It was then found in (a.6) that the time derivative of $\boldsymbol{p}_{\boldsymbol{\alpha}}$ is:
+\begin{equation}
+	\dot{\boldsymbol{p}}_{\boldsymbol{\alpha}}=\boldsymbol{u}
+\end{equation}
+when considering the fact that $\boldsymbol{\alpha}$ is cyclic. Thus this means that when $\boldsymbol{u}=0$:
+\begin{equation}
+	\dot{\boldsymbol{p}}_{\boldsymbol{\alpha}}=\boldsymbol{u}=0
+\end{equation}
+so the value of $\boldsymbol{p}_{\boldsymbol{\alpha}}$ must be constant.\\
+
+So, for considering the relationship of $\boldsymbol{\omega}$ and $\boldsymbol{\Omega}$, we can move $\boldsymbol{J}_\omega$ to the other side, and consider $\boldsymbol{J}_w^{-1}\boldsymbol{p}_{\boldsymbol{\alpha}}$ as a constant $C$:
+\begin{equation}
+	\begin{split}
+		\boldsymbol{p}_{\alpha}&=\boldsymbol{J}_w\left(\boldsymbol{\omega}+\boldsymbol{\Omega}\right) \\ \boldsymbol{J}_w^{-1}\boldsymbol{p}_{\boldsymbol{\alpha}}&=\left(\boldsymbol{\omega}+\boldsymbol{\Omega}\right) \\
+		C&=\left(\boldsymbol{\omega}+\boldsymbol{\Omega}\right) \\
+		\text{Where: }C&=\boldsymbol{J}_w^{-1}\boldsymbol{p}_{\boldsymbol{\alpha}}
+	\end{split}
+\end{equation}
+
+\begin{mdframed}
+	So, since $C$ is always constant, the sum $\boldsymbol{\omega}+\boldsymbol{\Omega}$ must always be constant for all possible values of one or the other. 
+\end{mdframed}
+
+To find the value of $C$ one simply needs to add the initial conditions, which for the initial conditions in this part evaluates to:
+\begin{equation}
+	C=\boldsymbol{\omega}(0)+\boldsymbol{\Omega}(0)=\boldsymbol{0}+\left[300,-200,100\right]^\top=\left[300,-200,100\right]^\top
+\end{equation}
+
+\newpage
+
+\begin{mdframed}
+	Thus, to verify these values stay constant, we can simply plot the deviation of the sum $\boldsymbol{\omega}+\boldsymbol{\Omega}$ from $\left[300,-200,100\right]^\top$ over the whole simulation. The resulting code plots this numerical verification:
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\textwidth]{b4_check.png}
+		\caption{Deviation of $\boldsymbol{\omega}+\boldsymbol{\Omega}$ from $C=[300,-200,100]^\top$ rad/s with zero RW motor torque.}
+		\label{fig:b4check}
+	\end{figure}
+	We can see in the plots above that the deviation stays within the order of magnitude of about $10^{-13}$ which is well within the range of numerical error, \textbf{thus the analytical relation is consistent with the numerical result}.
+\end{mdframed}
+
+\newpage
+
+\subsection*{(c): Given}
+
+Let us then simulate the spacecraft attitude for an arbitrary RW torque of my choice.
+
+\subsubsection*{(c.1): Find}
+
+First, define and report the RW torque as a smooth function of time $\boldsymbol{u}(t)$, and plot its time history over $0\leq t\leq 60$ sec.\\
+
+\textbf{Analysis/Conclusions:}\\
+
+It is my understanding that the stable axis of this spacecraft at any time should be the axis normal to the solar array. Likewise, I will define my torque profile $\boldsymbol{u}$ to have its vector direction always pointing in the direction of $\hat{\boldsymbol{n}}_A$ scaled by some magnitude $\|\boldsymbol{u}\|_2$ in an attempt to keep the rotation of the spacecraft stable as torque is applied.\\
+
+Recall that the vector normal to the arrays is given by:
+\begin{equation}
+	\hat{\boldsymbol{n}}_A=\boldsymbol{R}_2(\beta)\hat{\boldsymbol{b}}_3=
+	\begin{bmatrix}
+		\cos\beta & 0 & \sin\beta \\
+		0 & 1 & 0 \\
+		-\sin\beta & 0 & \cos\beta
+	\end{bmatrix}
+	\begin{bmatrix}
+		0 \\ 0 \\ 1
+	\end{bmatrix}=
+	\begin{bmatrix}
+		\sin\beta \\ 0 \\ \cos\beta
+	\end{bmatrix}
+\end{equation}
+
+After some testing using the code from part (b) with different torque values, it was decided to have a $\|\boldsymbol{u}\|_2$ value of $1\ \mathrm{N\,m}$. So, the torque profile is defined as:
+\begin{equation}
+	\boldsymbol{u}(t)=\|\boldsymbol{u}\|_2\,\hat{\boldsymbol{n}}_A(t)=\|\boldsymbol{u}\|_2
+	\begin{bmatrix}
+		\sin\beta(t) \\ 0 \\ \cos\beta(t)
+	\end{bmatrix},\quad\text{Where: }\|\boldsymbol{u}\|_2=1\ \mathrm{N\,m}
+\end{equation}
+
+\newpage
+
+\begin{mdframed}
+	Then, after code implementation, the profile plots as follows:
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\textwidth]{c1_torque.png}
+		\caption{Time history of the RW motor torque $\boldsymbol{u}$ applied along the solar panel normal $\hat{\boldsymbol{n}}_A$.}
+		\label{fig:c1torque}
+	\end{figure}
+\end{mdframed}
+
+\subsubsection*{(c.2): Find}
+
+Numerically propagate the system for the same time span using the EoM implemented above. Plot the time histories of $\boldsymbol{\theta}$, $\boldsymbol{\omega}$, $\boldsymbol{\Omega}$, and $\boldsymbol{p}_{\boldsymbol{\alpha}}$. Discuss the result and why it makes sense.\\
+
+\textbf{Analysis/Conclusions:}\\
+
+Using the torque profile of $\boldsymbol{u}$ derived in (c.1), the same code for propagating the results in part (b) was ran with this control profile entered in as the argument for $\boldsymbol{u}$ over time. The resulting plots can be seen below:
+\begin{mdframed}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\textwidth]{c2_theta.png}
+		\caption{Time history of the Euler angles $\boldsymbol{\theta}$ with the RW motor torque applied along the solar panel normal.}
+		\label{fig:c2theta}
+	\end{figure}
+\end{mdframed}
+
+\begin{mdframed}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\textwidth]{c2_omega.png}
+		\caption{Time history of the body angular rate $\boldsymbol{\omega}$ with the RW motor torque applied along the solar panel normal.}
+		\label{fig:c2omega}
+	\end{figure}
+\end{mdframed}
+
+\begin{mdframed}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\textwidth]{c2_wheelrate.png}
+		\caption{Time history of the RW spin rates relative to the bus $\boldsymbol{\Omega}$ with the RW motor torque applied along the solar panel normal.}
+		\label{fig:c2Omega}
+	\end{figure}
+\end{mdframed}
+
+\begin{mdframed}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\textwidth]{c2_palpha.png}
+		\caption{Time history of the generalized momentum $\boldsymbol{p}_\alpha$ with the RW motor torque applied along the solar panel normal.}
+		\label{fig:c2palpha}
+	\end{figure}
+\end{mdframed}
+
+\newpage
+
+\begin{mdframed}
+	The results of the $\boldsymbol{\Omega}$ and $\boldsymbol{p}_{\boldsymbol{\alpha}}$ plots make sense because we see from the torque profile derivation:
+	\begin{equation}
+		\boldsymbol{u}(t)=\|\boldsymbol{u}\|_2\,\hat{\boldsymbol{n}}_A(t)=\|\boldsymbol{u}\|_2
+		\begin{bmatrix}
+			\sin\beta(t) \\ 0 \\ \cos\beta(t)
+		\end{bmatrix},\quad\text{Where: }\|\boldsymbol{u}\|_2=1\ \mathrm{N\,m}
+	\end{equation}
+	that torque is only applied to wheels 1 and 3. Likewise, we see in the $\boldsymbol{\Omega}$ and $\boldsymbol{p}_{\boldsymbol{\alpha}}$ plots a continuous increase in rotor angular rate and generalized momentum on those axes respectively, where the slope of each $p_\alpha$ component matches its motor torque since $\dot{\boldsymbol{p}}_{\boldsymbol{\alpha}}=\boldsymbol{u}$. We see $p_{\alpha_1}$ steepen as $\sin\beta$ grows, while $p_{\alpha_3}$ flattens slightly as $\cos\beta$ decreases. Furthermore, we see the momentum on the second axis is constant, which is consistent with no motor torque applied on that axis since $\dot{p}_{\alpha_2}=u_2=0$. We see an oscillation in the $\Omega_2$ plot despite the constant momentum because the changing $\omega_2$ value forces an equal and opposite change in $\Omega_2$, since the sum $\boldsymbol{\omega}+\boldsymbol{\Omega}$ is maintained as discussed in (b.3). \\
+	
+	Likewise, we see oscillations in $\omega_1$ and $\omega_3$, which would be expected since the spacecraft is not spinning in a symmetric manner, so its rotation couples between the axes. The Euler angles also change relatively slowly, which matches the magnitude of the angular rates in the $\boldsymbol{\omega}$ plots of about $0.1$ rad/s.
+\end{mdframed}
+
+\newpage
+
+\subsection*{(d): Given/Find}
+
+Discuss a high-level sketch of the derivation procedure for the EoMs of this system using the Euler's rotational equations of motion, show the complete derivation, and verify its consistency with the EoM derived above.\\
+
+\textbf{Analysis/Conclusions:}\\
+
+It is known that Euler's rotational equations of motion can be written in tensor form as the following:
+\begin{equation}
+	I_c\dot{\boldsymbol{\omega}}+\boldsymbol{\omega}\times\left(I_c\boldsymbol{\omega}\right)=\boldsymbol{\tau}_c
+	\label{eq:euler}
+\end{equation}
+Where:
+\begin{itemize}
+	\item $I_c$ is the inertial tensor some rigid body.
+	\item $\boldsymbol{\omega}$ is the angular rate of that rigid body with respect to the inertial frame.
+	\item $\dot{\boldsymbol{\omega}}$ is the derivative of said angular rate.
+	\item $\boldsymbol{\tau}_c$ is the external torques acting on the system.
+\end{itemize}
+
+It itself is derived from the following application of the transport theorem:
+\begin{equation}
+	\dot{\boldsymbol{H}}_c=\frac{\prescript{\mathcal{B}}{}{d}}{dt}\boldsymbol{H}_c+\boldsymbol{\omega}\times\boldsymbol{H}_c
+	\label{eq:transportH}
+\end{equation}
+Where:
+\begin{itemize}
+	\item $\boldsymbol{H}_c$ is the total angular momentum of the rigid body.
+	\item $\dot{\boldsymbol{H}}_c$ is the derivative of said angular momentum, which itself equals torque.
+	\item $\frac{\prescript{\mathcal{B}}{}{d}}{dt}\boldsymbol{H}_c$ is the body-frame relative derivative of $\boldsymbol{H}_c$.
+	\item $\boldsymbol{\omega}$ once again is the angular rate of that rigid body with respect to the inertial frame.
+\end{itemize}
+
+From the derivations in part (a), it was already found that the total angular momentum of the spacecraft is:
+\begin{equation}
+	\boldsymbol{H}_S=\boldsymbol{I}_B\boldsymbol{\omega}+\boldsymbol{I}_{A/C}\left(\boldsymbol{\omega}+\dot{\beta}\hat{\boldsymbol{b}}_2\right)+\boldsymbol{J}_w\left(\boldsymbol{\omega}+\boldsymbol{\Omega}\right)
+\end{equation}
+Where:
+\begin{itemize}
+	\item $\boldsymbol{\omega}$ represents the same quantity as in Euler's rotational equations.
+	\item $\boldsymbol{\Omega}$ is the angular rate of the reaction wheel rotors.
+	\item $\boldsymbol{I}_B$, $\boldsymbol{I}_{A/C}(t)$, and $\boldsymbol{J}_w$ are inertial tensor terms of different components.
+	\item $\hat{\boldsymbol{b}}_2$ is the second body frame axis.
+	\item $\dot{\beta}$ models the rate of change of the prescribed motion of the solar arrays.
+\end{itemize}
+
+So, we can leverage the relationships between the three above equations for the full derivation of the equations. Here are some key points:\\
+
+Note all three equations use the same quantity $\boldsymbol{\omega}$ for the same value (angular rate of the body frame WRT inertial frame). This term can be used to introduce the Euler angle coordinates $\boldsymbol{\theta}$ which had their relationship to $\boldsymbol{\omega}$ defined in earlier parts as:
+\begin{equation}
+	\boldsymbol{\omega}=\boldsymbol{E}(\boldsymbol{\theta})\dot{\boldsymbol{\theta}},\qquad
+	\boldsymbol{E}(\boldsymbol{\theta})=
+	\begin{bmatrix}
+		\sin\theta_3\sin\theta_2 & \cos\theta_3 & 0 \\
+		\sin\theta_2\cos\theta_3 & -\sin\theta_3 & 0 \\
+		\cos\theta_2 & 0 & 1
+	\end{bmatrix}
+\end{equation}
+
+Euler's rotational equations introduce an external torque term $\boldsymbol{\tau}_c$. In our model in earlier parts, the external torque came purely from the motor torque $\boldsymbol{u}$ which means we can substitute $\boldsymbol{\tau}_c$ for $\boldsymbol{u}$. As mentioned, the value of $\dot{\boldsymbol{H}}_S$ equals the torque $\boldsymbol{\tau}$ in Euler's equations, so we can say $\dot{\boldsymbol{H}}_S=\boldsymbol{u}$.\\
+
+The usage of the transport theorem in Eq.~(\ref{eq:transportH}), can be used to introduce $\boldsymbol{H}_S$ to the derivation. Likewise, the angular momentum term $\boldsymbol{H}_S$ introduces both the effect of the solar arrays and the reaction wheels and how they relate to Euler's rotational equations. We see that $\boldsymbol{\Omega}=\dot{\boldsymbol{\alpha}}$ is introduced here, and its derivative $\ddot{\boldsymbol{\alpha}}$ will itself will enter the derivation from derivatives of $\boldsymbol{H})_S$. Likewise, second derivative terms of $\boldsymbol{\theta}$ will also enter the equation here through its relationship with $\boldsymbol{\omega}$. \\
+
+In the Lagrangian approach to this derivation, $\boldsymbol{\alpha}$ was never itself included due to it being cyclic, and we see the same thing will occur in this derivation due to $\boldsymbol{\alpha}$ only being introduced by $\boldsymbol{H}_S$ as its higher order derivative $\boldsymbol{\Omega}$.\\
+
+These key points show that this derivation covers the bases and gives a high overview on how the essential terms for the EoM enter the derivation.
+
+\begin{mdframed}
+	Likewise, the high level sketch of the derivation would be as follows:
+	\begin{itemize}
+		\item Use the transport theorem to write Euler's rotational equations in terms of the total spacecraft angular momentum $\boldsymbol{H}_S$, and introduce motor torque $\boldsymbol{u}$ via $\dot{\boldsymbol{H}}_S$.
+		\item Take the body-frame derivative of $\boldsymbol{H}_S$ which importantly brings in $\dot{\boldsymbol{\alpha}}$ and $\ddot{\boldsymbol{\alpha}}$.
+		\item Substitute $\boldsymbol{\omega}=\boldsymbol{E}\dot{\boldsymbol{\theta}}$ and $\dot{\boldsymbol{\omega}}=\dot{\boldsymbol{E}}\dot{\boldsymbol{\theta}}+\boldsymbol{E}\ddot{\boldsymbol{\theta}}$ to also introduce $\boldsymbol{\theta}$, $\dot{\boldsymbol{\theta}}$, and $\ddot{\boldsymbol{\theta}}$.
+		\item Evaluate all remaining terms like the cross product and algebraically separate $\boldsymbol{q}$, $\dot{\boldsymbol{q}}$, and $\ddot{\boldsymbol{q}}$ terms.
+		\item Collect the $\ddot{\boldsymbol{q}}$ terms into matrix form $\boldsymbol{M}$ and the $\dot{\boldsymbol{q}}$ and $\boldsymbol{q}$ terms into the vector function $\boldsymbol{f}$ to finish the derivation.
+	\end{itemize}
+\end{mdframed}
 
 \end{document}

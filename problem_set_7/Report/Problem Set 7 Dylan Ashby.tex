@@ -1,0 +1,828 @@
+\documentclass[titlepage]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{algorithmicx}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{mdframed}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{mathtools}
+
+\newcommand{\diag}{\operatorname{diag}}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=single,
+	language=matlab,
+	aboveskip=3mm,
+	belowskip=3mm,
+	showstringspaces=false,
+	columns=flexible,
+	basicstyle={\small\ttfamily},
+	numbers=none,
+	numberstyle=\tiny\color{gray},
+	keywordstyle=\color{blue},
+	commentstyle=\color{dkgreen},
+	stringstyle=\color{mauve},
+	breaklines=true,
+	breakatwhitespace=true,
+	tabsize=3
+}
+
+\setlength{\parindent}{0pt}
+
+\title{AAE 50700: Principles of Dynamics\\ Problem Set 7 Report}
+\author{Dylan Ashby}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{(a): Given}
+
+Consider a one-dimensional oscillator with generalized coordinate $q$ and a time-varying stiffness:
+\begin{equation}
+	L(q,\dot{q},t)=\frac{1}{2}m\dot{q}^2-\frac{1}{2}k(t)q^2,\qquad k(t)=k_0\left[1+\epsilon\sin\left(\omega t\right)\right]
+	\label{eq:lagrangian}
+\end{equation}
+where $m$, $k_0$, $\omega>0$ and $0\leq\epsilon<1$.
+
+\subsection*{(a.1): Find}
+
+Calculate the conjugate momentum $p$, and invert the result to express $\dot{q}$ in terms of $p$.\\
+
+\textbf{Analysis/Conclusions:}\\
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	The conjugate momentum $p$ is simply defined as the Lagrangian differentiated with respect to the derivative of generalized coordinate $\dot{q}$:
+	\begin{equation}
+		\begin{split}
+			p&=\frac{\partial L}{\partial\dot{q}}=\frac{\partial}{\partial\dot{q}}\left(\frac{1}{2}m\dot{q}^2-\frac{1}{2}k(t)q^2\right) \\
+			p&=\frac{\partial}{\partial\dot{q}}\left(\frac{1}{2}m\dot{q}^2\right)-\frac{\partial}{\partial\dot{q}}\left(\frac{1}{2}k(t)q^2\right) \\
+			p&=m\dot{q}
+		\end{split}
+		\label{eq:momentum}
+	\end{equation}
+	
+	And then inverting the result in terms of $\dot{q}$ is trivial:
+	\begin{equation}
+		\dot{q}=\frac{p}{m}
+		\label{eq:qrate}
+	\end{equation}
+\end{mdframed}
+
+\subsection*{(a.2): Find}
+
+Using a Legendre transformation, construct $H(q,p,t)$. Then derive Hamilton's canonical equations and show that they reproduce the Lagrange's equation obtained from Eq.~(\ref{eq:lagrangian}). \\
+
+\textbf{Analysis/Conclusions:}\\
+
+The Legendre transformation that constructs the Hamiltonian can be simply expressed for this one-dimensional system as:
+\begin{equation}
+	H=\dot{q}p-L
+\end{equation}
+
+Which using the terms defined in (a.1) result in simple substitutions using Eq.~(\ref{eq:lagrangian}), Eq.~(\ref{eq:momentum}), and Eq.~(\ref{eq:qrate}) to construct the Hamiltonian:
+\begin{equation}
+	\begin{split}
+		H&=\dot{q}p-\frac{1}{2}m\dot{q}^2+\frac{1}{2}k(t)q^2 \\
+		&=p\frac{p}{m}-\frac{1}{2}m\frac{p^2}{m^2}+\frac{1}{2}k(t)q^2 \\
+		&=\frac{p^2}{m}-\frac{1}{2}\frac{p^2}{m}+\frac{1}{2}k(t)q^2 \\
+		&=\frac{1}{2}\frac{p^2}{m}+\frac{1}{2}k(t)q^2 \\
+		&=\frac{1}{2}\left(\frac{p^2}{m}+k(t)q^2\right) \\
+	\end{split}
+\end{equation}
+
+Then, Hamilton's canonical equations from this one dimensional system are of the form:
+\begin{equation}
+	\dot{q}=\frac{\partial H}{\partial p}\qquad\dot{p}=-\frac{\partial H}{\partial q}+Q_{nc}
+\end{equation}
+Where $H$ is the Hamiltonian and $Q_{nc}$ are the non-conservative forces and the equations are the time rate of change of generalized coordinate $q$ and momentum $p$ respectively. The given definition of the oscillator defines no damping, external force, or any other possible source of non-conservative force, so we know for this scenario that it is zero:
+\begin{equation}
+	Q_{nc}=0
+\end{equation}
+
+Then we find the equation for $\dot{q}$:
+\begin{equation}
+	\dot{q}=\frac{\partial H}{\partial p}=\frac{\partial}{\partial p}\frac{1}{2}\left(\frac{p^2}{m}+k(t)q^2\right)=\frac{\partial}{\partial p}\frac{p^2}{2m}+\frac{\partial}{\partial p}\frac{1}{2}k(t)q^2=\frac{p}{m}
+\end{equation}
+
+And the equation for $\dot{p}$:
+\begin{equation}
+	\dot{p}=-\frac{\partial H}{\partial q}+Q_{nc}=-\frac{\partial}{\partial q}\frac{1}{2}\left(\frac{p^2}{m}+k(t)q^2\right)=-\frac{\partial}{\partial q}\frac{p^2}{2m}-\frac{\partial}{\partial q}\frac{1}{2}k(t)q^2=-k(t)q
+\end{equation}
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	So, the Hamiltonian and the canonical equations are:
+	\begin{equation}
+		\begin{split}
+			H(q,p,t)&=\frac{1}{2}\left(\frac{p^2}{m}+k(t)q^2\right),\quad k(t)=k_0\left[1+\epsilon\sin\left(\omega t\right)\right] \\
+			\dot{q}&=\frac{p}{m},\quad\dot{p}=-k(t)q
+		\end{split}
+	\end{equation}
+\end{mdframed}
+
+Then, to prove this result is the same as Lagrange's equation, we derive the equations of motion using $L$ in Eq.~(\ref{eq:lagrangian}) and Lagrange's equation for conservative systems:
+\begin{equation}
+	\frac{\mathrm{d}}{\mathrm{d}t}\left(\frac{\partial L}{\partial\dot{q}}\right)-\frac{\partial L}{\partial q}=0
+\end{equation}
+
+The generalized momentum $p=\frac{\partial L}{\partial\dot{q}}$ from the Lagrangian was already found in part (a.1):
+\begin{equation}
+	p=\frac{\partial L}{\partial\dot{q}}=\frac{\partial}{\partial\dot{q}}\left(\frac{1}{2}m\dot{q}^2-\frac{1}{2}k(t)q^2\right)=m\dot{q}
+\end{equation}
+
+And we find its time derivative  $\dot{p}=\frac{\mathrm{d}}{\mathrm{d}t}\left(\frac{\partial L}{\partial\dot{q}}\right)$ as:
+\begin{equation}
+	\dot{p}=\frac{\mathrm{d}}{\mathrm{d}t}\left(\frac{\partial L}{\partial\dot{q}}\right)=\frac{\mathrm{d}}{\mathrm{d}t}\left(m\dot{q}\right)=m\ddot{q}
+\end{equation}
+
+Then we find the $\frac{\partial L}{\partial q}$ term:
+\begin{equation}
+	\frac{\partial L}{\partial q}=\frac{\partial}{\partial q}\left(\frac{1}{2}m\dot{q}^2-\frac{1}{2}k(t)q^2\right)=\frac{\partial}{\partial q}\left(\frac{1}{2}m\dot{q}^2\right)-\frac{\partial}{\partial q}\left(\frac{1}{2}k(t)q^2\right)=-k(t)q
+\end{equation}
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	Then we plug back into Lagrange's equation:
+	\begin{equation}
+		\frac{\mathrm{d}}{\mathrm{d}t}\left(\frac{\partial L}{\partial\dot{q}}\right)-\frac{\partial L}{\partial q}=0\quad\implies\quad m\ddot{q}+k(t)q=0\quad\implies\quad\ddot{q}=-\frac{k(t)q}{m}
+	\end{equation}
+	
+	Then from the canonical equations, we can take the time derivative of $\dot{q}$ and plug $\dot{p}$ into the result:
+	\begin{equation}
+		\ddot{q}=\frac{\mathrm{d}}{\mathrm{d}t}\left(\frac{p}{m}\right)=\frac{\dot{p}}{m}=-\frac{k(t)q}{m}
+	\end{equation}
+	
+	\textbf{Which results in the same equation of motion for $\ddot{q}$ as the Lagrangian approach.}\\
+	
+	Note that in this proof, $\dot{p}$ ended up with two different expressions.
+\end{mdframed}
+
+\subsection*{(a.3): Find}
+
+Show that $\frac{\mathrm{d}H}{\mathrm{d}t}=\frac{\partial H}{\partial t}$. Discuss whether $H$ is conserved, and identify the condition under which it would be conserved. \\
+
+\textbf{Analysis/Conclusions:}\\
+
+First we find the time partial derivative of the Hamiltonian $\frac{\partial H}{\partial t}$:
+\begin{equation}
+	\begin{split}
+		\frac{\partial H}{\partial t}&=\frac{\partial}{\partial t}\frac{1}{2}\left(\frac{p^2}{m}+k_0\left[1+\epsilon\sin\left(\omega t\right)\right]q^2\right) \\
+		&=\frac{\partial}{\partial t}\frac{p^2}{2m}+\frac{\partial}{\partial t}\frac{k_0 q^2}{2}+\frac{\partial}{\partial t}\frac{1}{2}k_0\epsilon\sin(\omega t)q^2 \\
+		&=0+0+\frac{1}{2}k_0\epsilon\omega\cos(\omega t)q^2=\frac{1}{2}k_0\epsilon\omega\cos(\omega t)q^2
+	\end{split}
+	\label{eq:timepartial}
+\end{equation}
+
+Then we find the total derivative $\frac{\mathrm{d}H}{\mathrm{d}t}$:
+\begin{equation}
+	\frac{\mathrm{d}H}{\mathrm{d}t}=\frac{\partial H}{\partial q}\dot{q}+\frac{\partial H}{\partial p}\dot{p}+\frac{\partial H}{\partial t}
+	\label{eq:totalH}
+\end{equation}
+
+Note these terms were all solved between (a.2) and Eq.~(\ref{eq:timepartial}).\\
+
+Solving $\frac{\partial H}{\partial q}$:
+\begin{equation}
+	\frac{\partial H}{\partial q}=\frac{\partial}{\partial q}\frac{1}{2}\left(\frac{p^2}{m}+k(t)q^2\right)=\frac{\partial}{\partial q}\frac{p^2}{2m}+\frac{\partial}{\partial q}\frac{1}{2}k(t)q^2=k(t)q
+\end{equation}
+
+Solving $\frac{\partial H}{\partial p}$:
+\begin{equation}
+	\frac{\partial H}{\partial p}=\frac{\partial}{\partial p}\frac{1}{2}\left(\frac{p^2}{m}+k(t)q^2\right)=\frac{\partial}{\partial p}\frac{p^2}{2m}+\frac{\partial}{\partial p}\frac{1}{2}k(t)q^2=\frac{p}{m}
+\end{equation}
+
+Then recall the $\dot{q}$ and $\dot{p}$ terms were already found from the Hamilton canonical equations from (a.2):
+\begin{equation}
+	\dot{q}=\frac{p}{m},\quad\dot{p}=-k(t)q
+\end{equation}
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	So we substitute the above terms into Eq.~(\ref{eq:totalH}):
+	\begin{equation}
+		\begin{split}
+			\frac{\mathrm{d}H}{\mathrm{d}t}&=\frac{\partial H}{\partial q}\dot{q}+\frac{\partial H}{\partial p}\dot{p}+\frac{\partial H}{\partial t} \\
+			\frac{\mathrm{d}H}{\mathrm{d}t}&= \left(k(t)q\right)\left(\frac{p}{m}\right)+\left(\frac{p}{m}\right)\left(-k(t)q\right)+\frac{\partial H}{\partial t}  \\
+			\frac{\mathrm{d}H}{\mathrm{d}t}&=\left(k(t)q\right)\left(\frac{p}{m}\right)-\left(k(t)q\right)\left(\frac{p}{m}\right)+\frac{\partial H}{\partial t} \\
+			\frac{\mathrm{d}H}{\mathrm{d}t}&=\frac{\partial H}{\partial t}
+		\end{split}
+	\end{equation}
+	Which proves $\frac{\mathrm{d}H}{\mathrm{d}t}=\frac{\partial H}{\partial t}$.\\
+\end{mdframed}
+
+\newpage
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	\textbf{In this situation $H$ is not conserved} because the time derivative of $H$ is non-zero because the time partial of $H$ is also non-zero.\\
+	
+	\textbf{$H$ is conserved when there is no explicit time dependence in $H$, and when there are no non-conservative forces.} The former is because, as we proved $\frac{\mathrm{d}H}{\mathrm{d}t}=\frac{\partial H}{\partial t}$, so if there is no explicit time dependence then the time derivative of $H$ must be zero and it is conserved. The exception to this is the latter because with a non-zero non-conservative force $Q_{nc}$ the equation for $\dot{p}$ from the canonical equations:
+	\begin{equation}
+		\dot{p}=-\frac{\partial H}{\partial q}+Q_{nc}
+	\end{equation}
+	will no longer cancel with the $\frac{\partial H}{\partial q}$ term in the total derivative Eq.~(\ref{eq:totalH}), and the $\frac{\mathrm{d}H}{\mathrm{d}t}$ will fundamentally be non-zero on account of the $Q_{nc}$ showing up directly in the derivative even with no explicit $t$ term.
+	\begin{equation}
+		\frac{\mathrm{d}H}{\mathrm{d}t}=\frac{\partial H}{\partial q}\dot{q}+\frac{\partial H}{\partial p}\dot{p}+\frac{\partial H}{\partial t}=\frac{\partial H}{\partial t}+\frac{\partial H}{\partial p}Q_{nc}
+	\end{equation}
+	
+	\textbf{In the case of this system, $H$ would be conserved when $\epsilon=0$ as it would zero out the time dependence.} Other coefficients can also zero out the $t$ term, but $\epsilon$ is the only one allowed to be zero.
+\end{mdframed}
+
+\subsection*{(a.4): Find}
+
+Introduce the extended phase-space variables:
+\begin{equation}
+	q_0=t-t_0,\quad\hat{H}(q,p,q_0,p_0)=H(q,p,q_0)+p_0,\quad\text{with}\quad p_0(t_0)=-H(t_0)
+\end{equation}
+
+Derive the Hamiltonian's canonical equations. Show that $p_0(t)=-H(t)$ and $\hat{H}(t)=0$ for all $t$.\\
+
+\textbf{Analysis/Conclusions:}\\
+
+The canonical equations for the extended state space can be done the same way as in (a.2) but adding a new coordinate $q_0$ for time and its conjugate momentum $p_0$:
+\begin{equation}
+	\begin{split}
+		\dot{q}=\frac{\partial\hat{H}}{\partial p},\quad&\dot{p}=-\frac{\partial\hat{H}}{\partial q}+Q_{nc,1} \\
+		\dot{q}_0=\frac{\partial\hat{H}}{\partial p_0},\quad&\dot{p}_0=-\frac{\partial \hat{H}}{\partial q_0}+Q_{nc,0}
+	\end{split}
+\end{equation}
+
+From the problem definition, we know that $\dot{q}$ and $\dot{p}$ will exclude the $p_0$ term added on the end of $\hat{H}$ when their respective derivative terms are evaluated so they can be written as:
+\begin{equation}
+	\dot{q}=\frac{\partial H}{\partial p},\quad\dot{p}=-\frac{\partial H}{\partial q}+Q_{nc,1}
+\end{equation}
+
+Which means we can use the canonical equations for these components derived in (a.2):
+\begin{equation}
+	\dot{q}=\frac{p}{m},\quad\dot{p}=-k_0\left[1+\epsilon\sin\left(\omega t\right)\right]q
+\end{equation}
+
+But recall we are changing the system to use $q_0$ to represent time as a coordinate, which we can do so by using the relationship given by the problem definition:
+\begin{equation}
+	q_0=t-t_0\quad\implies\quad t=q_0+t_0
+\end{equation}
+
+And so, we substitute out the value $t$:
+\begin{equation}
+	\dot{q}=\frac{p}{m},\quad\dot{p}=-k_0\left[1+\epsilon\sin\left(\omega q_0+\omega t_0\right)\right]q
+\end{equation}
+
+If we evaluate $\frac{\partial\hat{H}}{\partial p_0}$ we end up with the derivative $\frac{\partial p_0}{\partial p_0}=1$ since $p_0$ does not show up in $H$:
+\begin{equation}
+	\dot{q}_0=\frac{\partial\hat{H}}{\partial p_0}=\frac{\partial H}{\partial p_0}+\frac{\partial p_0}{\partial p_0}=0+1=1
+\end{equation}
+
+Since we want $p_0(t)=-H(t)$ to always be true, we need to then make sure the derivative $\dot{p}_0=-\frac{\mathrm{d}H}{\mathrm{d}t}$ is always true too as this would maintain the inverse relationship over all time. This results in the expression for $\dot{p}_0$ which uses (a.3)'s conclusion that $\frac{\mathrm{d}H}{\mathrm{d}t}=\frac{\partial H}{\partial t}$ for this system, as well as the previously derived expression for $\frac{\partial H}{\partial t}$:
+\begin{equation}
+	\begin{split}
+		\dot{p}_0=-\frac{\mathrm{d}H}{\mathrm{d}t}=-\frac{\partial H}{\partial t}=-\frac{1}{2}k_0\epsilon\omega\cos(\omega t)q^2=-\frac{1}{2}k_0\epsilon\omega\cos(\omega q_0+\omega t_0)q^2
+	\end{split}
+	\label{eq:timemomentumchange}
+\end{equation}
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	This makes the Hamilton's canonical equations for this extended phase space system:
+	\begin{equation}
+		\begin{split}
+			&\dot{q}=\frac{p}{m},\quad\dot{p}=-k_0\left[1+\epsilon\sin\left(\omega q_0+\omega t_0\right)\right]q \\
+			&\dot{q}_0=1,\quad\dot{p}_0=-\frac{1}{2}k_0\epsilon\omega\cos(\omega q_0+\omega t_0)q^2
+		\end{split}
+	\end{equation}
+	
+	We know that $p_0(t)=-H(t)$ for all $t$ since it is the relationship that was maintained in the arbitrary derivation of $\dot{p}_0$. To show this relationship is maintained we would simply need to show that $\dot{p}_0=-\dot{H}$, \textbf{which is exactly the equation used to derive $\dot{p}_0$ in Eq.~(\ref{eq:timemomentumchange})}
+\end{mdframed}
+
+\newpage
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	Then to show $\hat{H}(t)=0$ for all $t$, we similarly must show the rate of change $\dot{\hat{H}}$ is zero, and the initial condition taken from $p_0(t_0)=-H(t_0)$ pins that constant value of $\hat{H}(t)$ at zero.\\
+	
+	Likewise, first we derive $\frac{\mathrm{d}\hat{H}}{\mathrm{d}t}$, which takes advantage of the fact $\hat{H}=H+p_0$:
+	\begin{equation}
+		\frac{\mathrm{d}\hat{H}}{\mathrm{d}t}=\frac{\mathrm{d}H}{\mathrm{d}t}+\dot{p}_0=\frac{\mathrm{d}H}{\mathrm{d}t}-\frac{\mathrm{d}H}{\mathrm{d}t}=0
+	\end{equation}
+	
+	So $\hat{H}$ is constant, and evaluating it at $t_0$ with the initial condition also uses the fact $\hat{H}(t_0)=H(t_0)+p_0(t_0)$:
+	\begin{equation}
+		\hat{H}(t)=\hat{H}(t_0)=H(t_0)+p_0(t_0)=H(t_0)-H(t_0)=0
+	\end{equation}
+	\textbf{Which proves $\hat{H}(t)=0,\,\forall t$}.
+\end{mdframed}
+
+\subsection*{(a.5): Find}
+
+Derive the same Hamilton's equations from $\hat{H}$ using the variational approach, particularly Hamilton's principle. \\
+
+\textbf{Analysis/Conclusions:}\\
+
+To derive the Hamilton's equations, we first consider Hamilton's principle, which says the variation in the path integral $\delta s$ must equal zero. Below we use the modified Hamilton's principle which replaces the Lagrangian $L$ for its relationship to the Hamiltonian $H$. Furthermore, since we want to obtain the equations for the extended phase space, we use the Hamiltonian $\hat{H}$ as requested by the problem definition:
+\begin{equation}
+	\begin{split}
+		&\delta s=\delta\int_{t_1}^{t_2}\left(\boldsymbol{p}\cdot\dot{\boldsymbol{q}}-\hat{H}\right)\mathrm{d}t=0 \\
+		&\text{Where: }\boldsymbol{q}=[q,q_0]^\top,\,\boldsymbol{p}=[p,p_0]^\top
+	\end{split}
+\end{equation}
+
+Then, to apply calculus of variations, we consider the function $f$ which is the integrand of the perturbed path integral:
+\begin{equation}
+	f=p\dot{q}+p_0\dot{q}_0-\hat{H}=p\dot{q}+p_0\dot{q}_0-H-p_0
+\end{equation}
+
+Then we apply the Euler Lagrange Equation on $f$ to observe the effects of perturbing $q$, $p$, $q_0$, and $p_0$:
+\begin{equation}
+	\begin{split}
+		\frac{\partial f}{\partial q}-\frac{\mathrm{d}}{\mathrm{d}t}\frac{\partial f}{\partial\dot{q}}&=0,\quad\frac{\partial f}{\partial p}-\frac{\mathrm{d}}{\mathrm{d}t}\frac{\partial f}{\partial\dot{p}}=0 \\
+		\frac{\partial f}{\partial q_0}-\frac{\mathrm{d}}{\mathrm{d}t}\frac{\partial f}{\partial\dot{q}_0}&=0,\quad\frac{\partial f}{\partial p_0}-\frac{\mathrm{d}}{\mathrm{d}t}\frac{\partial f}{\partial\dot{p}_0}=0
+	\end{split}
+\end{equation}
+
+Evaluate the derivatives terms of the Euler-Lagrange equations individually:
+\begin{equation}
+	\begin{split}
+		\frac{\partial f}{\partial q}&=\frac{\partial}{\partial q}\left(p\dot{q}+p_0\dot{q}_0-H-p_0\right)=-\frac{\partial H}{\partial q} \\
+		\frac{\mathrm{d}}{\mathrm{d}t}\frac{\partial f}{\partial\dot{q}}&=\frac{\mathrm{d}}{\mathrm{d}t}\frac{\partial}{\partial\dot{q}}\left(p\dot{q}+p_0\dot{q}_0-H-p_0\right)=\frac{\mathrm{d}p}{\mathrm{d}t}=\dot{p} \\
+		\\
+		\frac{\partial f}{\partial p}&=\frac{\partial}{\partial p}\left(p\dot{q}+p_0\dot{q}_0-H-p_0\right)=\dot{q}-\frac{\partial H}{\partial p} \\
+		\frac{\mathrm{d}}{\mathrm{d}t}\frac{\partial f}{\partial\dot{p}}&=\frac{\mathrm{d}}{\mathrm{d}t}\frac{\partial}{\partial\dot{p}}\left(p\dot{q}+p_0\dot{q}_0-H-p_0\right)=\frac{\mathrm{d}}{\mathrm{d}t}(0)=0 \\
+		\\
+		\frac{\partial f}{\partial q_0}&=\frac{\partial}{\partial q_0}\left(p\dot{q}+p_0\dot{q}_0-H-p_0\right)=-\frac{\partial H}{\partial q_0} \\
+		\frac{\mathrm{d}}{\mathrm{d}t}\frac{\partial f}{\partial\dot{q}_0}&=\frac{\mathrm{d}}{\mathrm{d}t}\frac{\partial}{\partial\dot{q}_0}\left(p\dot{q}+p_0\dot{q}_0-H-p_0\right)=\frac{\mathrm{d}p_0}{\mathrm{d}t}=\dot{p}_0 \\
+		\\
+		\frac{\partial f}{\partial p_0}&=\frac{\partial}{\partial p_0}\left(p\dot{q}+p_0\dot{q}_0-H-p_0\right)=\dot{q}_0-1 \\
+		\frac{\mathrm{d}}{\mathrm{d}t}\frac{\partial f}{\partial\dot{p}_0}&=\frac{\mathrm{d}}{\mathrm{d}t}\frac{\partial}{\partial\dot{p}_0}\left(p\dot{q}+p_0\dot{q}_0-H-p_0\right)=\frac{\mathrm{d}}{\mathrm{d}t}(0)=0
+	\end{split}
+\end{equation}
+
+And substituting into the Euler-Lagrange equation:
+\begin{equation}
+	\begin{split}
+		\frac{\partial f}{\partial q}-\frac{\mathrm{d}}{\mathrm{d}t}\frac{\partial f}{\partial\dot{q}}&=-\frac{\partial H}{\partial q}-\dot{p}=0\quad\implies\quad\dot{p}=-\frac{\partial H}{\partial q} \\
+		\\
+		\frac{\partial f}{\partial p}-\frac{\mathrm{d}}{\mathrm{d}t}\frac{\partial f}{\partial\dot{p}}&=\dot{q}-\frac{\partial H}{\partial p}-0=0\quad\implies\quad\dot{q}=\frac{\partial H}{\partial p} \\
+		\\
+		\frac{\partial f}{\partial q_0}-\frac{\mathrm{d}}{\mathrm{d}t}\frac{\partial f}{\partial\dot{q}_0}&=-\frac{\partial H}{\partial q_0}-\dot{p}_0=0\quad\implies\quad\dot{p}_0=-\frac{\partial H}{\partial q_0} \\
+		\\
+		\frac{\partial f}{\partial p_0}-\frac{\mathrm{d}}{\mathrm{d}t}\frac{\partial f}{\partial\dot{p}_0}&=\dot{q}_0-1-0=0\quad\implies\quad\dot{q}_0=1
+	\end{split}
+\end{equation}
+
+The gradients $\frac{\partial H}{\partial q}$ and $\frac{\partial H}{\partial p}$ were both solved in (a.2):
+\begin{equation}
+\frac{\partial H}{\partial q}=k_0\left[1+\epsilon\sin\left(\omega q_0+\omega t_0\right)\right]q,\quad\frac{\partial H}{\partial p}=\frac{p}{m}
+\end{equation}
+
+Then, we evaluate $\frac{\partial H}{\partial q_0}$ using the Hamiltonian $H$ and the relationship previously established in (a.4) that $t=q_0+t_0$:
+\begin{equation}
+	\begin{split}
+		\frac{\partial H}{\partial q_0}&=\frac{\partial}{\partial q_0}\left(\frac{1}{2}\left(\frac{p^2}{m}+k_0\left[1+\epsilon\sin\left(\omega t\right)\right]q^2\right)\right) \\
+		&= \frac{\partial}{\partial q_0}\left(\frac{1}{2}\left(\frac{p^2}{m}+k_0\left[1+\epsilon\sin\left(\omega q_0+\omega t_0\right)\right]q^2\right)\right) \\
+		&=\frac{\partial}{\partial q_0}\left(\frac{p^2}{2m}\right)+\frac{\partial}{\partial q_0}\left(\frac{1}{2}k_0q^2\right)+\frac{\partial}{\partial q_0}\left(\frac{1}{2}k_0\epsilon\sin\left(\omega q_0+\omega t_0\right)q^2\right) \\
+		&=0+0+\frac{1}{2}k_0\epsilon\omega\cos\left(\omega q_0+\omega t_0\right)q^2 \\
+		&=\frac{1}{2}k_0\epsilon\omega\cos\left(\omega q_0+\omega t_0\right)q^2
+	\end{split}
+\end{equation}
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	Then we substitute the above gradients back into the results of the Euler-Lagrange equations:
+	\begin{equation}
+		\begin{split}
+			\dot{q}=\frac{\partial H}{\partial p}=\frac{p}{m},\quad& \dot{p}=-\frac{\partial H}{\partial q}=-k_0\left[1+\epsilon\sin\left(\omega q_0+\omega t_0\right)\right]q \\
+			\quad\dot{q}_0=1,\quad& \dot{p}_0=-\frac{\partial H}{\partial q_0}=-\frac{1}{2}k_0\epsilon\omega\cos\left(\omega q_0+\omega t_0\right)q^2
+		\end{split}
+	\end{equation}
+	Which, derived here from Hamilton's principle, recreates the same Hamilton's equations found from the canonical equations in (a.4).
+\end{mdframed}
+
+\newpage
+
+\section*{(b): Given}
+
+Consider a spacecraft of mass $m$ with inertial Cartesian position: $\boldsymbol{r}=x\hat{\boldsymbol{e}}_x+y\hat{\boldsymbol{e}}_y+z\hat{\boldsymbol{e}}_z$ in the perturbed two-body environment due to $J_2$ and atmospheric drag. The potential energy is given by:
+\begin{equation}
+	V(\boldsymbol{r})=-\frac{\mu m}{r}+\frac{\mu mJ_2R_E^2}{2r^5}\left(3z^2-r^2\right)
+	\label{eq:gravpot}
+\end{equation}
+
+Model atmospheric drag using the same approach as in PS1:
+\begin{equation}
+	\boldsymbol{F}_D=-\frac{1}{2}C_dA\rho(r)\|\boldsymbol{v}\|_2\boldsymbol{v},\quad \boldsymbol{v}\coloneqq\dot{\boldsymbol{r}},\quad\rho(r)=\rho_0\exp\left[-\frac{r-r_{\text{ref}}}{H_\rho}\right]
+	\label{eq:drag}
+\end{equation}
+
+All constants in Eqs. (\ref{eq:gravpot}) and (\ref{eq:drag}) are positive. Take $\boldsymbol{r}$ as the generalized coordinate $\boldsymbol{q}$.
+
+\subsection*{(b.1): Find}
+
+Form the Lagrangian $L(\boldsymbol{q},\dot{\boldsymbol{q}})$, and derive the generalized momenta $\boldsymbol{p}$ as a function of $\boldsymbol{q}$, $\dot{\boldsymbol{q}}$. \\
+
+\textbf{Analysis/Conclusions:}\\
+
+To form the Lagrangian, we must have the functions for potential energy $V$ and kinetic energy $T$. $V$ is given by the problem definition, and the kinetic energy can be represented as the following where $\boldsymbol{v}=\dot{\boldsymbol{r}}=\dot{\boldsymbol{q}}$ since the generalized coordinates $\boldsymbol{q}$ are in an inertial reference frame:
+\begin{equation}
+	T=\frac{1}{2}m\boldsymbol{v}\cdot\boldsymbol{v}\quad\implies\quad T=\frac{1}{2}m\dot{\boldsymbol{q}}\cdot\dot{\boldsymbol{q}}
+\end{equation}
+
+So, we then form the Lagrangian as:
+\begin{equation}
+	L=T-V=\frac{1}{2}m\dot{\boldsymbol{q}}\cdot\dot{\boldsymbol{q}}+\frac{\mu m}{r}-\frac{\mu mJ_2R_E^2}{2r^5}\left(3z^2-r^2\right)
+\end{equation}
+
+Then, we can find the generalized momentum by the following expression where $\boldsymbol{p}$ is the vector of generalized momentum for each respective coordinate in $\boldsymbol{q}$:
+\begin{equation}
+	\begin{split}
+		\boldsymbol{p}=\frac{\partial L}{\partial\dot{\boldsymbol{q}}}&=\frac{\partial}{\partial\dot{\boldsymbol{q}}}\left(\frac{1}{2}m\dot{\boldsymbol{q}}\cdot\dot{\boldsymbol{q}}+\frac{\mu m}{r}-\frac{\mu mJ_2R_E^2}{2r^5}\left(3z^2-r^2\right)\right) \\
+		&=\frac{\partial}{\partial\dot{\boldsymbol{q}}}\left(\frac{1}{2}m\dot{\boldsymbol{q}}\cdot\dot{\boldsymbol{q}}\right)+\frac{\partial}{\partial\dot{\boldsymbol{q}}}\left(\frac{\mu m}{r}\right)-\frac{\partial}{\partial\dot{\boldsymbol{q}}}\left(\frac{\mu mJ_2R_E^2}{2r^5}\left(3z^2-r^2\right)\right) \\
+		&=\frac{1}{2}m\frac{\partial\dot{\boldsymbol{q}}}{\partial\dot{\boldsymbol{q}}}\cdot\dot{\boldsymbol{q}}+\frac{1}{2}m\dot{\boldsymbol{q}}\cdot\frac{\partial\dot{\boldsymbol{q}}}{\partial\dot{\boldsymbol{q}}}+0-0 \\
+		&=\frac{1}{2}m\frac{\partial\dot{\boldsymbol{q}}}{\partial\dot{\boldsymbol{q}}}\cdot\dot{\boldsymbol{q}}+\frac{1}{2}m\frac{\partial\dot{\boldsymbol{q}}}{\partial\dot{\boldsymbol{q}}}\cdot\dot{\boldsymbol{q}} \\
+		&=m\frac{\partial\dot{\boldsymbol{q}}}{\partial\dot{\boldsymbol{q}}}\cdot\dot{\boldsymbol{q}}=mI\dot{\boldsymbol{q}}=m\dot{\boldsymbol{q}}
+	\end{split}
+\end{equation}
+
+Then, because $\boldsymbol{r}=\boldsymbol{q}$ from the problem definition, $r=\|\boldsymbol{r}\|=\|\boldsymbol{q}\|$. \\
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	So, the Lagrangian and generalized momenta are:
+	\begin{equation}
+		\begin{split}
+			L(\boldsymbol{q},\dot{\boldsymbol{q}})&=\frac{1}{2}m\dot{\boldsymbol{q}}\cdot\dot{\boldsymbol{q}}+\frac{\mu m}{r}-\frac{\mu mJ_2R_E^2}{2r^5}\left(3z^2-r^2\right),\quad\boldsymbol{p}=m\dot{\boldsymbol{q}} \\
+			&\text{Where: }r=\|\boldsymbol{r}\|_2=\|\boldsymbol{q}\|_2
+		\end{split}
+	\end{equation}
+\end{mdframed}
+
+\subsection*{(b.2): Find}
+
+Form the Hamiltonian and express it as a function of $\boldsymbol{q}$, $\boldsymbol{p}$, i.e., $H(\boldsymbol{q},\boldsymbol{p})$. \\
+
+\textbf{Analysis/Conclusions:}\\
+
+From the Legendre transformation approach to the Hamiltonian, we can write the Hamiltonian using vector components as:
+\begin{equation}
+	H=\dot{\boldsymbol{q}}\cdot\boldsymbol{p}-L
+	\label{eq:vectorhamiltonian}
+\end{equation}
+
+We can rewrite the equation for $\boldsymbol{p}$ from (b.1) as a equation of $\dot{\boldsymbol{q}}$:
+\begin{equation}
+	\boldsymbol{p}=m\dot{\boldsymbol{q}}\quad\implies\quad\dot{\boldsymbol{q}}=\frac{\boldsymbol{p}}{m}=m^{-1}\boldsymbol{p}
+\end{equation} 
+
+And then substitute into Eq.~(\ref{eq:vectorhamiltonian}):
+\begin{equation}
+	\begin{split}
+		H&=\dot{\boldsymbol{q}}\cdot\boldsymbol{p}-L=\dot{\boldsymbol{q}}\cdot\boldsymbol{p}-\frac{1}{2}m\dot{\boldsymbol{q}}\cdot\dot{\boldsymbol{q}}-\frac{\mu m}{r}+\frac{\mu mJ_2R_E^2}{2r^5}\left(3z^2-r^2\right) \\
+		&=m^{-1}\boldsymbol{p}\cdot\boldsymbol{p}-\frac{1}{2}m\left(m^{-1}\boldsymbol{p}\right)\cdot\left(m^{-1}\boldsymbol{p}\right)-\frac{\mu m}{r}+\frac{\mu mJ_2R_E^2}{2r^5}\left(3z^2-r^2\right) \\
+		&=m^{-1}\boldsymbol{p}\cdot\boldsymbol{p}-\frac{1}{2}m^{-1}\boldsymbol{p}\cdot\boldsymbol{p}-\frac{\mu m}{r}+\frac{\mu mJ_2R_E^2}{2r^5}\left(3z^2-r^2\right) \\
+		&=\frac{1}{2m}\boldsymbol{p}\cdot\boldsymbol{p}-\frac{\mu m}{r}+\frac{\mu mJ_2R_E^2}{2r^5}\left(3z^2-r^2\right) \\
+	\end{split}
+\end{equation}
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	Which makes the Hamiltonian:
+	\begin{equation}
+		\begin{split}
+			H(\boldsymbol{q},\boldsymbol{p})&=\frac{1}{2m}\boldsymbol{p}\cdot\boldsymbol{p}-\frac{\mu m}{r}+\frac{\mu mJ_2R_E^2}{2r^5}\left(3z^2-r^2\right) \\
+			&\text{Where: }r=\|\boldsymbol{r}\|_2=\|\boldsymbol{q}\|_2
+		\end{split}
+	\end{equation}
+\end{mdframed}
+
+\newpage
+
+\subsection*{(b.3): Find}
+
+Recall from class that the process for constructing Hamiltonian becomes largely simplified if the kinetic energy takes the form: $T(\boldsymbol{q},\dot{\boldsymbol{q}},t)=T_0(\boldsymbol{q},t)+\boldsymbol{a}(\boldsymbol{q},t)^\top\dot{\boldsymbol{q}}+\frac{1}{2}\dot{\boldsymbol{q}}^\top[\boldsymbol{I}(\boldsymbol{q},t)]\dot{\boldsymbol{q}}$. Show that the system considered here meets this condition, construct the Hamiltonian exploiting this fact, and verify that the resulting Hamiltonian is equivalent to the one obtained in the previous question. \\
+
+\textbf{Analysis/Conclusions:}\\
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	From the kinetic energy equation used in (b.1) we can rewrite it as:
+	\begin{equation}
+		T=\frac{1}{2}m\dot{\boldsymbol{q}}\cdot\dot{\boldsymbol{q}}=\frac{1}{2}\dot{\boldsymbol{q}}^\top Im\dot{\boldsymbol{q}}
+		\label{eq:kineticrewrite}
+	\end{equation}
+	Where $I$ is the $3\times3$ identity matrix. \\
+	
+	This rewriting effectively just moves the mass term $m$ into a matrix in the middle of the inner product of $\dot{\boldsymbol{q}}$ with itself. This means from the simplified kinetic energy form given by the problem definition:
+	\begin{equation}
+		T(\boldsymbol{q},\dot{\boldsymbol{q}},t)=T_0(\boldsymbol{q},t)+\boldsymbol{a}(\boldsymbol{q},t)^\top\dot{\boldsymbol{q}}+\frac{1}{2}\dot{\boldsymbol{q}}^\top[\boldsymbol{I}(\boldsymbol{q},t)]\dot{\boldsymbol{q}}
+		\label{eq:kineticsimplified}
+	\end{equation}
+	
+	We can say that:
+	\begin{equation}
+		T_0=0,\quad\boldsymbol{a}=\boldsymbol{0},\quad[\boldsymbol{I}]=Im
+	\end{equation}
+	
+	Since the rewriting in Eq.~(\ref{eq:kineticrewrite}) is already in the exact form as the third term in Eq.~(\ref{eq:kineticsimplified}) and the first and second terms will just zero out \textbf{verifying that this system meets the condition for the simplified kinetic energy equation}.
+\end{mdframed}
+
+Using this simplified kinetic energy condition, we can construct the Hamiltonian as:
+\begin{equation}
+	H=\frac{1}{2}(\boldsymbol{p}-\boldsymbol{a})^\top[\boldsymbol{I}]^{-1}(\boldsymbol{p}-\boldsymbol{a})+V-T_0
+	\label{eq:hamiltoniansimplified}
+\end{equation}
+
+We can find the inverse $[\boldsymbol{I}]^{-1}$ as:
+\begin{equation}
+	[\boldsymbol{I}]^{-1}=m^{-1}I^{-1}=m^{-1}I
+\end{equation}
+
+\newpage
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	Then substituting the other terms which were determined already into Eq.~(\ref{eq:hamiltoniansimplified}) we get:
+	\begin{equation}
+		\begin{split}
+			H&=\frac{1}{2}(\boldsymbol{p}-\boldsymbol{a})^\top[\boldsymbol{I}]^{-1}(\boldsymbol{p}-\boldsymbol{a})+V-T_0 \\
+			&=\frac{1}{2}(\boldsymbol{p}-\boldsymbol{0})^\top m^{-1}I(\boldsymbol{p}-\boldsymbol{0})-\frac{\mu m}{r}+\frac{\mu mJ_2R_E^2}{2r^5}\left(3z^2-r^2\right)-0 \\
+			&=\frac{1}{2m}\boldsymbol{p}\cdot\boldsymbol{p}-\frac{\mu m}{r}+\frac{\mu mJ_2R_E^2}{2r^5}\left(3z^2-r^2\right) \\
+			&\text{Where: }r=\|\boldsymbol{r}\|_2=\|\boldsymbol{q}\|_2
+		\end{split}
+	\end{equation}
+	\textbf{Which is identical to the Hamiltonian found in (b.2)}.
+\end{mdframed}
+
+\subsection*{(b.4): Find}
+
+Derive the equations of motion from $H$ using the Hamilton's equations. \\
+
+\textbf{Analysis/Conclusions:}\\
+
+Hamilton's equations for this scenario can be written in the following vector form:
+\begin{equation}
+	\dot{\boldsymbol{q}}=\frac{\partial H}{\partial\boldsymbol{p}},\quad\dot{\boldsymbol{p}}=-\frac{\partial H}{\partial\boldsymbol{q}}+\boldsymbol{Q}_{nc}
+\end{equation}
+
+Before resolving the partial derivatives, we must first determine the non-conservative generalized force $\boldsymbol{Q}_{nc}$. Recall from virtual work, the generalized force $\boldsymbol{Q}$ has the following relationship:
+\begin{equation}
+	\delta w=\boldsymbol{F}^\top\frac{\partial\boldsymbol{r}}{\partial\boldsymbol{q}}\delta\boldsymbol{q}=\boldsymbol{Q}^\top\delta\boldsymbol{q}
+\end{equation}
+
+Since in this case the generalized coordinates are the Cartesian position, $\boldsymbol{q}=\boldsymbol{r}$, the Jacobian is the identity matrix, and the generalized force is simply the applied force:
+\begin{equation}
+	\delta w=\boldsymbol{F}^\top \frac{\partial\boldsymbol{r}}{\partial\boldsymbol{r}}\delta\boldsymbol{r}=\boldsymbol{F}^\top I\,\delta\boldsymbol{r}=\boldsymbol{F}^\top\delta\boldsymbol{r}\quad\Rightarrow\quad\boldsymbol{Q}=\boldsymbol{F}
+\end{equation}
+
+The gravitational forces, including $J_2$, are conservative and already accounted for in $H$ through $V$. So, the only non-conservative force is drag $\boldsymbol{F}_D$, which means the non-conservative generalized force associated with $\boldsymbol{q}$ is:
+\begin{equation}
+	\boldsymbol{Q}_{nc}=\boldsymbol{F}_D=-\frac{1}{2}C_dA\rho(r)\|\boldsymbol{v}\|_2\boldsymbol{v}=-\frac{1}{2}C_dA\rho(r)\|\dot{\boldsymbol{q}}\|_2\dot{\boldsymbol{q}}
+\end{equation}
+as established in earlier parts, $\boldsymbol{v}=\dot{\boldsymbol{q}}$ as $\boldsymbol{q}$ are purely inertial coordinates.
+
+Since Hamilton's equations are expressed in terms of $\boldsymbol{q}$ and $\boldsymbol{p}$, we use $\boldsymbol{v}=\dot{\boldsymbol{q}}=\frac{\boldsymbol{p}}{m}$ from (b.2) to rewrite $\boldsymbol{Q}_{nc}$ in terms of $\boldsymbol{p}$:
+\begin{equation}
+	\boldsymbol{Q}_{nc}=-\frac{1}{2}C_dA\rho(r)\left\|\frac{\boldsymbol{p}}{m}\right\|_2\frac{\boldsymbol{p}}{m}=-\frac{C_dA\rho(r)}{2m^2}\|\boldsymbol{p}\|_2\boldsymbol{p}
+	\label{eq:genforcemomentum}
+\end{equation}
+
+Then we evaluate $\frac{\partial H}{\partial\boldsymbol{p}}$:
+\begin{equation}
+	\begin{split}
+		\frac{\partial H}{\partial\boldsymbol{p}}&=\frac{\partial}{\partial\boldsymbol{p}}\left(\frac{1}{2m}\boldsymbol{p}\cdot\boldsymbol{p}-\frac{\mu m}{r}+\frac{\mu mJ_2R_E^2}{2r^5}\left(3z^2-r^2\right) \right) \\
+		&=\frac{\partial}{\partial\boldsymbol{p}}\left(\frac{1}{2m}\boldsymbol{p}\cdot\boldsymbol{p}\right)-\frac{\partial}{\partial\boldsymbol{p}}\left(\frac{\mu m}{r}\right)+\frac{\partial}{\partial\boldsymbol{p}}\left(\frac{\mu mJ_2R_E^2}{2r^5}\left(3z^2-r^2\right)\right) \\
+		&=\frac{1}{2m}\frac{\partial\boldsymbol{p}}{\partial\boldsymbol{p}}\cdot\boldsymbol{p}+\frac{1}{2m}\boldsymbol{p}\cdot\frac{\partial\boldsymbol{p}}{\partial\boldsymbol{p}}-0+0=m^{-1}\frac{\partial\boldsymbol{p}}{\partial\boldsymbol{p}}\cdot\boldsymbol{p}=m^{-1}\boldsymbol{p}
+	\end{split}
+	\label{eq:coordianterate}
+\end{equation}
+
+Which makes the equation for $\dot{\boldsymbol{q}}$:
+\begin{equation}
+	\dot{\boldsymbol{q}}=\frac{\partial H}{\partial\boldsymbol{p}}=m^{-1}\boldsymbol{p}
+\end{equation}
+
+Then we evaluate $\frac{\partial H}{\partial\boldsymbol{q}}$:
+\begin{equation}
+	\begin{split}
+		\frac{\partial H}{\partial\boldsymbol{q}}&=\frac{\partial}{\partial\boldsymbol{q}}\left(\frac{1}{2m}\boldsymbol{p}\cdot\boldsymbol{p}-\frac{\mu m}{r}+\frac{\mu mJ_2R_E^2}{2r^5}\left(3z^2-r^2\right)\right) \\
+		&=\frac{\partial}{\partial\boldsymbol{q}}\left(\frac{1}{2m}\boldsymbol{p}\cdot\boldsymbol{p}\right)-\frac{\partial}{\partial\boldsymbol{q}}\left(\frac{\mu m}{r}\right)+\frac{\partial}{\partial\boldsymbol{q}}\left(\frac{\mu mJ_2R_E^2}{2r^5}\left(3z^2-r^2\right)\right) \\
+		&=0-\frac{\partial}{\partial\boldsymbol{q}}\left(\frac{\mu m}{r}\right)+\frac{\partial}{\partial\boldsymbol{q}}\left(\frac{\mu mJ_2R_E^2}{2r^5}\left(3z^2-r^2\right)\right) \\
+	\end{split}
+	\label{eq:parteval}
+\end{equation}
+
+To save space, the second and third terms are evaluated individually:
+\begin{equation}
+	\frac{\partial}{\partial\boldsymbol{q}}\left(-\frac{\mu m}{r}\right)=-\mu m\frac{\partial r^{-1}}{\partial\boldsymbol{r}}=-\mu m\frac{\partial r^{-1}}{\partial r}\frac{\partial r}{\partial\boldsymbol{r}}=-\mu m\left(-r^{-2}\hat{\boldsymbol{r}}^\top\right)=\frac{\mu m}{r^3}\boldsymbol{r}^\top
+\end{equation}
+
+For the third term:
+\begin{equation}
+	\begin{split}
+		\frac{\partial}{\partial\boldsymbol{q}}&\left(\frac{\mu mJ_2R_E^2}{2r^5}\left(3z^2-r^2\right)\right)=\frac{\partial}{\partial\boldsymbol{r}}\left(\frac{3\mu mJ_2R_E^2z^2}{2r^5}\right)-\frac{\partial}{\partial\boldsymbol{r}}\left(\frac{\mu mJ_2R_E^2}{2r^3}\right) \\
+		&=\frac{\partial r^{-5}}{\partial\boldsymbol{r}}\left(\frac{3\mu mJ_2R_E^2z^2}{2}\right)+\frac{\partial z^{2}}{\partial\boldsymbol{r}}\left(\frac{3\mu mJ_2R_E^2}{2r^5}\right)-\frac{\partial r^{-3}}{\partial\boldsymbol{r}}\left(\frac{\mu mJ_2R_E^2}{2}\right)  \\
+		&=\frac{\mu mJ_2R_E^2}{2}\left(3z^2\frac{\partial r^{-5}}{\partial\boldsymbol{r}}+3r^{-5}\frac{\partial z^2}{\partial\boldsymbol{r}}-\frac{\partial r^{-3}}{\partial\boldsymbol{r}}\right) \\
+		&=\frac{\mu mJ_2R_E^2}{2}\left(3z^2\frac{\partial r^{-5}}{\partial r}\frac{\partial r}{\partial\boldsymbol{r}}+3r^{-5}\frac{\partial z^2}{\partial z}\frac{\partial z}{\partial\boldsymbol{r}}-\frac{\partial r^{-3}}{\partial r}\frac{\partial r}{\partial\boldsymbol{r}}\right) \\
+		&=\frac{\mu mJ_2R_E^2}{2}\left(3z^2\left(-5r^{-6}\right)\hat{\boldsymbol{r}}^\top+3r^{-5}\left(2z\right)\hat{\boldsymbol{e}}_z^\top-\left(-3r^{-4}\right)\hat{\boldsymbol{r}}^\top\right) \\
+		&=\frac{\mu mJ_2R_E^2}{2}\left(-15r^{-6}z^2\hat{\boldsymbol{r}}^\top+6r^{-5}z\hat{\boldsymbol{e}}_z^\top+3r^{-4}\hat{\boldsymbol{r}}^\top\right) \\
+		&=\frac{\mu mJ_2R_E^2}{2r^5}\left(\left(3r-\frac{15z^2}{r}\right)\hat{\boldsymbol{r}}^\top+6z\hat{\boldsymbol{e}}_z^\top\right)
+	\end{split}
+\end{equation}
+
+Then, we substitute the terms back into Eq.~(\ref{eq:parteval})
+\begin{equation}
+	\begin{split}
+		\frac{\partial H}{\partial\boldsymbol{q}}&=\frac{\mu m}{r^3}\boldsymbol{r}^\top+\frac{\mu mJ_2R_E^2}{2r^5}\left(\left(3r-\frac{15z^2}{r}\right)\hat{\boldsymbol{r}}^\top+6z\hat{\boldsymbol{e}}_z^\top\right)\\
+	\end{split}
+\end{equation}
+
+Then using the found terms for $\frac{\partial H}{\partial\boldsymbol{q}}$ and $\boldsymbol{Q}_{nc}$, we can find the equation for $\dot{\boldsymbol{p}}$:
+\begin{equation}
+	\begin{split}
+		\dot{\boldsymbol{p}}&=-\left(\frac{\partial H}{\partial\boldsymbol{q}}\right)+\boldsymbol{Q}_{nc} \\
+		\dot{\boldsymbol{p}}&=-\frac{\mu m}{r^3}\boldsymbol{r}-\frac{\mu mJ_2R_E^2}{2r^5}\left(\left(3r-\frac{15z^2}{r}\right)\hat{\boldsymbol{r}}+6z\hat{\boldsymbol{e}}_z\right)-\frac{C_dA\rho(r)}{2m^2}\|\boldsymbol{p}\|_2\boldsymbol{p}
+	\end{split}
+\end{equation}
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	So the equations of motion from Hamilton's equations are:
+	\begin{equation}
+		\begin{split}
+			\dot{\boldsymbol{r}}&=m^{-1}\boldsymbol{p} \\
+			\dot{\boldsymbol{p}}&=-\frac{\mu m}{r^3}\boldsymbol{r}-\frac{\mu mJ_2R_E^2}{2r^5}\left(\left(3r-\frac{15z^2}{r}\right)\hat{\boldsymbol{r}}+6z\hat{\boldsymbol{e}}_z\right)-\frac{C_dA\rho(r)}{2m^2}\|\boldsymbol{p}\|_2\boldsymbol{p} \\
+			&\text{Where: }r=\|\boldsymbol{r}\|_2=\|\boldsymbol{q}\|_2,\quad\boldsymbol{r}=\boldsymbol{q}
+		\end{split}
+	\end{equation}
+\end{mdframed}
+
+\subsection*{(b.5): Find}
+
+Derive the rate of change of the Hamiltonian for the system. Discuss what drives the Hamiltonian change in this system, and how it differs from the harmonic oscillator example above. \\
+
+\textbf{Analysis/Conclusions:}\\
+
+For the rate of change of the Hamiltonian we simply take the total derivative of the Hamiltonian. As shown in part (a), when we substitute in the canonical equations, the coordinate $\boldsymbol{q}$ term cancels out:
+\begin{equation}
+	\begin{split}
+		\frac{\mathrm{d}H}{\mathrm{d}t}&=\frac{\partial H}{\partial\boldsymbol{q}}\cdot\dot{\boldsymbol{q}}+\frac{\partial H}{\partial\boldsymbol{p}}\cdot\dot{\boldsymbol{p}}+\frac{\partial H}{\partial t} \\
+		&=\frac{\partial H}{\partial\boldsymbol{q}}\cdot\frac{\partial H}{\partial\boldsymbol{p}}+\frac{\partial H}{\partial\boldsymbol{p}}\cdot\left(-\frac{\partial H}{\partial\boldsymbol{q}}+\boldsymbol{Q}_{nc}\right)+\frac{\partial H}{\partial t} \\
+		&=\frac{\partial H}{\partial\boldsymbol{q}}\cdot\frac{\partial H}{\partial\boldsymbol{p}}-\frac{\partial H}{\partial\boldsymbol{p}}\cdot\frac{\partial H}{\partial\boldsymbol{q}}+\frac{\partial H}{\partial\boldsymbol{p}}\cdot\boldsymbol{Q}_{nc}+\frac{\partial H}{\partial t} \\
+		&=\frac{\partial H}{\partial\boldsymbol{p}}\cdot\boldsymbol{Q}_{nc}+\frac{\partial H}{\partial t}
+	\end{split}
+	\label{eq:hamiltonrate}
+\end{equation}
+
+And since $H$ has no explicit time term, the value of $\frac{\partial H}{\partial t}$ ends up being zero:
+\begin{equation}
+	\frac{\partial H}{\partial t}=\frac{\partial}{\partial t}\left(\frac{1}{2m}\boldsymbol{p}\cdot\boldsymbol{p}-\frac{\mu m}{r}+\frac{\mu mJ_2R_E^2}{2r^5}\left(3z^2-r^2\right)\right)=0
+\end{equation}
+
+And in (b.4) in Eq.~(\ref{eq:genforcemomentum}), we found the non-conservative force to be the drag force put in terms of momentum:
+\begin{equation}
+	\boldsymbol{Q}_{nc}=-\frac{C_dA\rho(r)}{2m^2}\|\boldsymbol{p}\|_2\boldsymbol{p}
+\end{equation}
+
+And the value of $\frac{\partial H}{\partial \boldsymbol{p}}$ was already found in (b.4) in Eq.~(\ref{eq:coordianterate}):
+\begin{equation}
+	\frac{\partial H}{\partial \boldsymbol{p}}=m^{-1}\boldsymbol{p}
+\end{equation}
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	Then we substitute the $\frac{\partial H}{\partial \boldsymbol{p}}$, $\boldsymbol{Q}_{nc}$ and $\frac{\partial H}{\partial t}$ terms back into Eq.~(\ref{eq:hamiltonrate}):
+	\begin{equation}
+		\frac{\mathrm{d}H}{\mathrm{d}t}=\frac{\partial H}{\partial\boldsymbol{p}}\cdot\boldsymbol{Q}_{nc}+\frac{\partial H}{\partial t}=\left(m^{-1}\boldsymbol{p}\right)\cdot\left(-\frac{C_dA\rho(r)}{2m^2}\|\boldsymbol{p}\|_2\boldsymbol{p}\right)+0=-\frac{C_dA\rho(r)}{2m^3}\|\boldsymbol{p}\|_2^3
+	\end{equation}
+	So, we see in this system that Hamiltonian rate of change is driven entirely by the $\frac{\partial H}{\partial\boldsymbol{p}}\cdot\boldsymbol{Q}_{nc}$ term which from the canonical equations is equivalent to:
+	\begin{equation}
+		\dot{\boldsymbol{q}}\cdot\boldsymbol{Q}_{nc}=\dot{\boldsymbol{r}}\cdot\boldsymbol{Q}_{nc}=\boldsymbol{v}\cdot\boldsymbol{Q}_{nc}
+	\end{equation}
+	And since we determined in this system that $\boldsymbol{Q}_{nc}$ is equivalent to drag force,\textbf{ the change in the Hamiltonian is driven entirely by velocity and drag.} \\
+	
+	In the same calculations done in (a.3), we saw that the rate of change of $H$ was driven entirely by time since there was an explicit time term and no non-conservative force term, versus the orbital system where the opposite is true due to the presence of a non-conservative force and the lack of an explicit time term. \\ 
+	
+	\textbf{So the difference is the harmonic oscillator had the change in $H$ driven entirely by time, and the orbital system had it driven by velocity and drag.}
+\end{mdframed}
+
+\subsection*{(b.6): Find}
+
+Discuss what quantities are conserved when drag is not present and why. Also discuss why drag changes that conservation property. \\
+
+\textbf{Analysis/Conclusions:}\\
+
+We can look at the definitions for the canonical equations and the simplified time derivative definition for $H$ shown in Eq.~(\ref{eq:hamiltonrate}) to show the system components dependence on drag (which was established to be equivalent to $\boldsymbol{Q}_{nc})$:
+\begin{equation}
+	\dot{\boldsymbol{q}}=\frac{\partial H}{\partial\boldsymbol{p}},\quad\dot{\boldsymbol{p}}=-\frac{\partial H}{\partial\boldsymbol{q}}+\boldsymbol{Q}_{nc}, \quad\frac{\mathrm{d}H}{\mathrm{d}t}=\frac{\partial H}{\partial\boldsymbol{p}}\cdot\boldsymbol{Q}_{nc}+\frac{\partial H}{\partial t}
+\end{equation}
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	We see in the above relationships that the rate of change of momentum $\boldsymbol{p}$ and Hamiltonian $H$ are directly dependent on drag $\boldsymbol{Q}_{nc}$, but only one of the two expressions becomes zero when drag is removed (remember that $\frac{\partial H}{\partial t}=0$ due to no explicit time dependence in $H$):
+	\begin{equation}
+		\begin{split}
+			\quad\dot{\boldsymbol{p}}&=-\frac{\partial H}{\partial\boldsymbol{q}}+\boldsymbol{Q}_{nc}=-\frac{\partial H}{\partial\boldsymbol{q}}+\boldsymbol{0}=-\frac{\partial H}{\partial\boldsymbol{q}} \\
+			\frac{\mathrm{d}H}{\mathrm{d}t}&=\frac{\partial H}{\partial\boldsymbol{p}}\cdot\boldsymbol{Q}_{nc}+\frac{\partial H}{\partial t}=\frac{\partial H}{\partial\boldsymbol{p}}\cdot\boldsymbol{0}+0=0
+		\end{split}
+	\end{equation}
+	which shows \textbf{that the Hamiltonian is conserved if drag is removed}.\\
+	
+	It is known that the Hamiltonian is considered equivalent to total energy if the kinetic energy takes the form of:
+	\begin{equation}
+		T(\boldsymbol{q},\dot{\boldsymbol{q}},t)=\frac{1}{2}\dot{\boldsymbol{q}}^\top[\boldsymbol{I}(\boldsymbol{q},t)]\dot{\boldsymbol{q}}
+	\end{equation}
+	
+	Which is equivalent to the $T_0$ and $\boldsymbol{a}$ terms being zeroed out in the simplified kinetic energy expression:
+	\begin{equation}
+		T(\boldsymbol{q},\dot{\boldsymbol{q}},t)=T_0(\boldsymbol{q},t)+\boldsymbol{a}(\boldsymbol{q},t)^\top\dot{\boldsymbol{q}}+\frac{1}{2}\dot{\boldsymbol{q}}^\top[\boldsymbol{I}(\boldsymbol{q},t)]\dot{\boldsymbol{q}}
+	\end{equation}
+	Which in (b.3), it was found that this was the case, which means the Hamiltonian equals total energy in this system and \textbf{total energy is conserved}
+\end{mdframed}
+
+In problem set 5, when analyzing this same system, it was found that angular momentum about the $\hat{\boldsymbol{e}}_z$ was conserved when there was no drag present. While $\boldsymbol{p}$ represents linear momentum, on the three axes, we can compute the angular momenta on the three axes to show this is still true.\\
+
+Angular momentum can be computed by:
+\begin{equation}
+	\boldsymbol{h}=\boldsymbol{r}\times\boldsymbol{p}\quad\implies\quad\boldsymbol{h}=\boldsymbol{q}\times\boldsymbol{p}
+\end{equation}
+
+And to prove its conservation, we look at its rate of change:
+\begin{equation}
+	\dot{\boldsymbol{h}}=\dot{\boldsymbol{q}}\times\boldsymbol{p}+\boldsymbol{q}\times\dot{\boldsymbol{p}}
+\end{equation}
+
+In (b.1), the relationship between $\dot{\boldsymbol{q}}$ and $\boldsymbol{p}$ was found as:
+\begin{equation}
+	\boldsymbol{p}=m\dot{\boldsymbol{q}}\quad\implies\quad\dot{\boldsymbol{q}}=m^{-1}\boldsymbol{p}
+\end{equation}
+
+Which allows us to cancel one of the terms in the angular momentum derivative:
+\begin{equation}
+	\dot{\boldsymbol{h}}=\dot{\boldsymbol{q}}\times\boldsymbol{p}+\boldsymbol{q}\times\dot{\boldsymbol{p}}=m^{-1}\boldsymbol{p}\times\boldsymbol{p}+\boldsymbol{q}\times\dot{\boldsymbol{p}}=\boldsymbol{0}+\boldsymbol{q}\times\dot{\boldsymbol{p}}=\boldsymbol{q}\times\dot{\boldsymbol{p}}
+\end{equation}
+
+And the rate of change of linear momentum (with drag included) was found in (b.4) as:
+\begin{equation}
+	\dot{\boldsymbol{p}}=-\frac{\mu m}{r^3}\boldsymbol{r}-\frac{\mu mJ_2R_E^2}{2r^5}\left(\left(3r-\frac{15z^2}{r}\right)\hat{\boldsymbol{r}}+6z\hat{\boldsymbol{e}}_z\right)-\frac{C_dA\rho(r)}{2m^2}\|\boldsymbol{p}\|_2\boldsymbol{p} \\
+\end{equation}
+
+Which to assist in this proof can be rewritten as (using $\boldsymbol{q}=\boldsymbol{r}$):
+\begin{equation}
+	\dot{\boldsymbol{p}}=-\frac{\mu m}{r^3}\boldsymbol{q}-\frac{\mu mJ_2R_E^2}{2r^5}\left(\left(3-\frac{15z^2}{r^2}\right)\boldsymbol{q}+6z\hat{\boldsymbol{e}}_z\right)-\frac{C_dA\rho(r)}{2m^2}\|\boldsymbol{p}\|_2\boldsymbol{p}
+\end{equation}
+
+And recall the drag term $\boldsymbol{F}_D=\boldsymbol{Q}_{nc}$ is equal to the following substitution as derived in (b.4) in Eq.~(\ref{eq:genforcemomentum}), and since there is zero drag, the last term in $\dot{\boldsymbol{p}}$ becomes zero:
+\begin{equation}
+	\boldsymbol{F}_D=\boldsymbol{Q}_{nc}=-\frac{1}{2}C_dA\rho(r)\|\boldsymbol{v}\|_2\boldsymbol{v}=-\frac{C_dA\rho(r)}{2m^2}\|\boldsymbol{p}\|_2\boldsymbol{p}=\boldsymbol{0}
+\end{equation}
+
+So this makes the $\dot{\boldsymbol{p}}$ under no drag:
+\begin{equation}
+	\begin{split}
+		\dot{\boldsymbol{p}}&=-\frac{\mu m}{r^3}\boldsymbol{q}-\frac{\mu mJ_2R_E^2}{2r^5}\left(\left(3-\frac{15z^2}{r^2}\right)\boldsymbol{q}+6z\hat{\boldsymbol{e}}_z\right) \\
+		&=-\left(\frac{\mu m}{r^3}+\frac{\mu mJ_2R_E^2}{2r^5}\left(3-\frac{15z^2}{r^2}\right)\right)\boldsymbol{q}-\frac{3\mu mJ_2R_E^2z}{r^5}\hat{\boldsymbol{e}}_z
+	\end{split}
+\end{equation}
+
+So when this is plugged back into the angular momentum rate equation:
+\begin{equation}
+	\begin{split}
+		\dot{\boldsymbol{h}}&=\boldsymbol{q}\times\dot{\boldsymbol{p}} \\
+		&=\boldsymbol{q}\times\left(-\left(\frac{\mu m}{r^3}+\frac{\mu mJ_2R_E^2}{2r^5}\left(3-\frac{15z^2}{r^2}\right)\right)\boldsymbol{q}-\frac{3\mu mJ_2R_E^2z}{r^5}\hat{\boldsymbol{e}}_z\right) \\
+		&=\boldsymbol{q}\times\left(-\left(\frac{\mu m}{r^3}+\frac{\mu mJ_2R_E^2}{2r^5}\left(3-\frac{15z^2}{r^2}\right)\right)\boldsymbol{q}\right)+\boldsymbol{q}\times\left(-\frac{3\mu mJ_2R_E^2z}{r^5}\hat{\boldsymbol{e}}_z\right) \\
+		&=\boldsymbol{0}+\boldsymbol{q}\times\left(-\frac{3\mu mJ_2R_E^2z}{r^5}\hat{\boldsymbol{e}}_z\right)=\boldsymbol{q}\times\left(-\frac{3\mu mJ_2R_E^2z}{r^5}\hat{\boldsymbol{e}}_z\right)
+	\end{split}
+\end{equation}
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	Which at this point its more convenient to compute the expression by vector component:
+	\begin{equation}
+		\begin{split}
+			\dot{\boldsymbol{h}}&=-\frac{3\mu mJ_2R_E^2z}{r^5}\left(\boldsymbol{q}\times\hat{\boldsymbol{e}}_z\right)=-\frac{3\mu mJ_2R_E^2z}{r^5}\left(\begin{bmatrix}x\\y\\z\end{bmatrix}\times\begin{bmatrix}0\\0\\1\end{bmatrix}\right)=\\
+			&=-\frac{3\mu mJ_2R_E^2z}{r^5}\begin{bmatrix}y\\-x\\0\end{bmatrix}=\begin{bmatrix}-\frac{3\mu mJ_2R_E^2}{r^5}yz\\\frac{3\mu mJ_2R_E^2}{r^5}xz\\0\end{bmatrix}=\begin{bmatrix}\dot{h}_x\\\dot{h}_y\\\dot{h}_z\end{bmatrix}
+		\end{split}
+	\end{equation}
+	\textbf{Which shows that the $z$-axis angular momentum $h_z$ is also conserved} alongside Hamiltonian/total energy. \\
+	
+	Drag changes the conservation property because it is a non-conservative force that cannot be written as part of the potential energy, so it enters through $\boldsymbol{Q}_{nc}$ rather than through $H$. Since drag always opposes the velocity, it does strictly negative work, which from (b.5) gives:
+	\begin{equation}
+		\frac{\mathrm{d}H}{\mathrm{d}t}=-\frac{C_dA\rho(r)}{2m^3}\|\boldsymbol{p}\|_2^3
+	\end{equation}
+	The problem definition states that all constants in Eqs.~(\ref{eq:gravpot}) and (\ref{eq:drag}) are positive, so $C_d,A,\rho_0>0$, and since the exponential is always positive, $\rho(r)>0$ as well. With $m>0$ and $\|\boldsymbol{p}\|_2\geq0$, this means:
+	\begin{equation}
+		\frac{\mathrm{d}H}{\mathrm{d}t}\leq0
+	\end{equation}
+	with equality only when the spacecraft is at rest, so the energy strictly decreases whenever the spacecraft is moving.
+\end{mdframed}
+	
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	Likewise, keeping the drag term in $\boldsymbol{q}\times\dot{\boldsymbol{p}}$ adds an extra term to $\dot{\boldsymbol{h}}$:
+	\begin{equation}
+		\begin{split}
+			\dot{\boldsymbol{h}}&=-\frac{3\mu mJ_2R_E^2z}{r^5}\left(\boldsymbol{q}\times\hat{\boldsymbol{e}}_z\right)+\boldsymbol{q}\times\left(-\frac{C_dA\rho(r)}{2m^2}\|\boldsymbol{p}\|_2\boldsymbol{p}\right) \\
+			&=-\frac{3\mu mJ_2R_E^2z}{r^5}\left(\boldsymbol{q}\times\hat{\boldsymbol{e}}_z\right)-\frac{C_dA\rho(r)}{2m^2}\|\boldsymbol{p}\|_2\left(\boldsymbol{q}\times\boldsymbol{p}\right) \\
+			&=-\frac{3\mu mJ_2R_E^2z}{r^5}\left(\boldsymbol{q}\times\hat{\boldsymbol{e}}_z\right)-\frac{C_dA\rho(r)}{2m^2}\|\boldsymbol{p}\|_2\boldsymbol{h}
+		\end{split}
+	\end{equation}
+	
+	So the $z$ component no longer vanishes:
+	\begin{equation}
+		\dot{h}_z=-\frac{C_dA\rho(r)}{2m^2}\|\boldsymbol{p}\|_2h_z\neq0
+	\end{equation}
+	
+	\textbf{Drag therefore continuously removes from both total energy and the angular momentum about $\hat{\boldsymbol{e}}_z$, so neither is conserved.}
+\end{mdframed}
+
+\end{document}

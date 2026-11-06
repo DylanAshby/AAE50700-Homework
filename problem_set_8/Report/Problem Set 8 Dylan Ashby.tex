@@ -1,0 +1,421 @@
+\documentclass[titlepage]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{algorithmicx}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{mdframed}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{mathtools}
+
+\newcommand{\diag}{\operatorname{diag}}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=single,
+	language=matlab,
+	aboveskip=3mm,
+	belowskip=3mm,
+	showstringspaces=false,
+	columns=flexible,
+	basicstyle={\small\ttfamily},
+	numbers=none,
+	numberstyle=\tiny\color{gray},
+	keywordstyle=\color{blue},
+	commentstyle=\color{dkgreen},
+	stringstyle=\color{mauve},
+	breaklines=true,
+	breakatwhitespace=true,
+	tabsize=3
+}
+
+\setlength{\parindent}{0pt}
+
+\title{AAE 50700: Principles of Dynamics\\ Problem Set 8 Report}
+\author{Dylan Ashby}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{(a): Given}
+
+Consider a system whose dynamics are described by the following Hamiltonian:
+\begin{equation}
+	H(q,p)=\frac{p^2}{2m}+\frac{1}{2}m\omega^2q^2,\quad\boldsymbol{x}=
+	\begin{bmatrix}
+		q \\
+		p
+	\end{bmatrix}
+\end{equation}
+
+\subsection*{(a.1): Find}
+
+Derive the equations of motion using Hamilton's equations and confirm that it represents a harmonic oscillator.\\
+
+\textbf{Analysis/Conclusions:}\\
+
+Hamilton's equations for a one dimensional system with no external forces are written as:
+\begin{equation}
+	\dot{q}=\frac{\partial H}{\partial p},\quad \dot{p}=-\frac{\partial H}{\partial q}
+\end{equation}
+
+So we solve the two partials to obtain the equations of motion:
+\begin{equation}
+	\begin{split}
+		\dot{q}&=\frac{\partial H}{\partial p}=\frac{\partial}{\partial p}\left(\frac{p^2}{2m}+\frac{1}{2}m\omega^2q^2\right)=\frac{\partial}{\partial p}\left(\frac{p^2}{2m}\right)+\frac{\partial}{\partial p}\left(\frac{1}{2}m\omega^2q^2\right)=\frac{p}{m}+0=\frac{p}{m} \\
+		\\
+		\dot{p}&=-\frac{\partial H}{\partial q}=-\frac{\partial}{\partial q}\left(\frac{p^2}{2m}+\frac{1}{2}m\omega^2q^2\right)=-\frac{\partial}{\partial q}\left(\frac{p^2}{2m}\right)-\frac{\partial}{\partial q}\left(\frac{1}{2}m\omega^2q^2\right)=-m\omega^2q
+	\end{split}
+\end{equation}
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	Thus the equations of motion are:
+	\begin{equation}
+		\dot{q}=\frac{p}{m},\quad\dot{p}=-m\omega^2q
+	\end{equation}
+\end{mdframed}
+
+To prove this is a harmonic oscillator, we look at the defining equation for one:
+\begin{equation}
+	\ddot{q}+\omega^2q=0
+\end{equation}
+where $q$ is the single coordinate, and $\omega$ is the natural frequency.\\
+
+To prove the EoM's are equivalent, we can rewrite $\dot{q}$ in a different form and take its time derivative:
+\begin{equation}
+	\begin{split}
+		\dot{q}&=\frac{p}{m}\quad\implies\quad\dot{q}-\frac{p}{m}=0 \\
+		\\
+		0=\frac{\mathrm{d}}{\mathrm{d}t}&\left(\dot{q}-\frac{p}{m}\right)=\frac{\mathrm{d}}{\mathrm{d}t}\left(\dot{q}\right)-\frac{\mathrm{d}}{\mathrm{d}t}\left(\frac{p}{m}\right)=\ddot{q}-\frac{\dot{p}}{m}
+	\end{split}
+\end{equation}
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	Then substitute in the found expression for $\dot{p}$:
+	\begin{equation}
+		0=\ddot{q}-\frac{\dot{p}}{m}=\ddot{q}-\frac{-m\omega^2q}{m}=\ddot{q}+\omega^2q
+	\end{equation}
+	\textbf{Which is the same form as the harmonic oscillator, proving that the equations of motion represent one.}
+\end{mdframed}
+
+\subsection*{(a.2): Find}
+
+For some constant $a\neq0$, consider the coordinate-momentum scaling
+\begin{equation}
+	q^*=aq,\quad p^*=\frac{p}{a}
+	\label{eq:transformed}
+\end{equation}
+Write the inverse transformation $\boldsymbol{x}=\boldsymbol{f}(\boldsymbol{y})$, where $\boldsymbol{y}=[q^*,p^*]^\top$. Discuss whether this transformation is canonical or not using the symplectic condition:
+\begin{equation}
+	F^\top JF=J,\quad F=\frac{\partial\boldsymbol{f}}{\partial\boldsymbol{y}},\quad J=
+	\begin{bmatrix}
+		0 & 1 \\
+		-1 & 0
+	\end{bmatrix}
+\end{equation}
+
+\textbf{Analysis/Conclusions:}\\
+
+To find the inverse transformation, we simply must invert the given equations for $q^*$ and $p^*$:
+\begin{equation}
+	q^*=aq\quad\implies\quad q=\frac{q^*}{a},\qquad p^*=\frac{p}{a}\quad\implies\quad p=ap^*
+\end{equation}
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	Thus we write the inverse transformation as:
+	\begin{equation}
+		\boldsymbol{x}=\boldsymbol{f}(\boldsymbol{y})=
+		\begin{bmatrix}
+			a^{-1}q^* \\
+			ap^* \\
+		\end{bmatrix}
+	\end{equation}
+\end{mdframed}
+
+Then to determine if the transformation is canonical, we solve the Jacobian $F$ from the symplectic condition:
+\begin{equation}
+	F=\frac{\partial\boldsymbol{f}}{\partial\boldsymbol{y}}=
+	\begin{bmatrix}
+		a^{-1}q^* \\
+		ap^* \\
+	\end{bmatrix}
+	\begin{bmatrix}
+		\frac{\partial}{\partial q^*} & \frac{\partial}{\partial p^*}
+	\end{bmatrix}=
+	\begin{bmatrix}
+		\frac{\partial}{\partial q^*}\left(a^{-1}q^*\right) & \frac{\partial}{\partial p^*}\left(a^{-1}q^*\right) \\
+		\frac{\partial}{\partial q^*}\left(ap^*\right) & \frac{\partial}{\partial p^*}\left(ap^*\right) \\
+	\end{bmatrix}=
+	\begin{bmatrix}
+		a^{-1} & 0 \\
+		0 & a \\
+	\end{bmatrix}
+\end{equation}
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	Then we verify the condition:
+	\begin{equation}
+		\begin{split}
+			F^\top JF&=
+			\begin{bmatrix}
+				a^{-1} & 0 \\
+				0 & a \\
+			\end{bmatrix}
+			\begin{bmatrix}
+				0 & 1 \\
+				-1 & 0 \\
+			\end{bmatrix}
+			\begin{bmatrix}
+				a^{-1} & 0 \\
+				0 & a \\
+			\end{bmatrix} \\
+			&=
+			\begin{bmatrix}
+				a^{-1}\cdot0+0\cdot-1 & a^{-1}\cdot1+0\cdot0 \\
+				0\cdot0+a\cdot-1 & 0\cdot1+a\cdot0 \\
+			\end{bmatrix}
+			\begin{bmatrix}
+				a^{-1} & 0 \\
+				0 & a \\
+			\end{bmatrix} \\
+			&=
+			\begin{bmatrix}
+				0 & a^{-1} \\
+				-a & 0 \\
+			\end{bmatrix}
+			\begin{bmatrix}
+				a^{-1} & 0 \\
+				0 & a \\
+			\end{bmatrix} \\
+			&=
+			\begin{bmatrix}
+				0\cdot a^{-1}+a^{-1}\cdot0 & 0\cdot0+a^{-1}\cdot a \\
+				-a\cdot a^{-1}+0\cdot0 & -a\cdot0+0\cdot a \\
+			\end{bmatrix} \\
+			&=
+			\begin{bmatrix}
+				0 & 1 \\
+				-1 & 0 \\
+			\end{bmatrix}=J
+		\end{split}
+	\end{equation}
+	Thus $F^\top JF=J$, so the symplectic condition is satisfied. Since this condition is both necessary and sufficient, \textbf{the transformation is canonical for any $a\neq0$}. We can see by observation that if $a=0$, then $F$ would be undefined because of the $a^{-1}$ term. Thus the condition is only satisfied when $a\neq0$.
+\end{mdframed}
+
+\subsection*{(a.3): Find}
+
+Repeat the test for $q^*=aq$, $p^*=ap$. Determine the values of $a$ for which this transformation is canonical (in the sense of the second condition covered in class). \\
+
+\textbf{Analysis/Conclusions:}\\
+
+Once again we invert the given equations for $q^*$ and $p^*$:
+\begin{equation}
+	q^*=aq\quad\implies\quad q=a^{-1}q^*,\qquad p^*=ap\quad\implies\quad p=a^{-1}p^*
+\end{equation}
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	Thus we write the inverse transformation as:
+	\begin{equation}
+		\boldsymbol{x}=\boldsymbol{f}(\boldsymbol{y})=
+		\begin{bmatrix}
+			a^{-1}q^* \\
+			a^{-1}p^* \\
+		\end{bmatrix}
+	\end{equation}
+\end{mdframed}
+
+Then for the symplectic condition, we derive the Jacobian $F$:
+\begin{equation}
+	F=\frac{\partial\boldsymbol{f}}{\partial\boldsymbol{y}}=
+	\begin{bmatrix}
+		a^{-1}q^* \\
+		a^{-1}p^* \\
+	\end{bmatrix}
+	\begin{bmatrix}
+		\frac{\partial}{\partial q^*} & \frac{\partial}{\partial p^*}
+	\end{bmatrix}=
+	\begin{bmatrix}
+		\frac{\partial}{\partial q^*}\left(a^{-1}q^*\right) & \frac{\partial}{\partial p^*}\left(a^{-1}q^*\right) \\
+		\frac{\partial}{\partial q^*}\left(a^{-1}p^*\right) & \frac{\partial}{\partial p^*}\left(a^{-1}p^*\right) \\
+	\end{bmatrix}=
+	\begin{bmatrix}
+		a^{-1} & 0 \\
+		0 & a^{-1} \\
+	\end{bmatrix}
+\end{equation}
+
+Then we verify the condition:
+\begin{equation}
+	\begin{split}
+		F^\top JF&=
+		\begin{bmatrix}
+			a^{-1} & 0 \\
+			0 & a^{-1} \\
+		\end{bmatrix}
+		\begin{bmatrix}
+			0 & 1 \\
+			-1 & 0 \\
+		\end{bmatrix}
+		\begin{bmatrix}
+			a^{-1} & 0 \\
+			0 & a^{-1} \\
+		\end{bmatrix} \\
+		&=
+		\begin{bmatrix}
+			a^{-1}\cdot0+0\cdot-1 & a^{-1}\cdot1+0\cdot0 \\
+			0\cdot0+a^{-1}\cdot-1 & 0\cdot1+a^{-1}\cdot0 \\
+		\end{bmatrix}
+		\begin{bmatrix}
+			a^{-1} & 0 \\
+			0 & a^{-1} \\
+		\end{bmatrix} \\
+		&=
+		\begin{bmatrix}
+			0 & a^{-1} \\
+			-a^{-1} & 0 \\
+		\end{bmatrix}
+		\begin{bmatrix}
+			a^{-1} & 0 \\
+			0 & a^{-1} \\
+		\end{bmatrix} \\
+		&=
+		\begin{bmatrix}
+			0\cdot a^{-1}+a^{-1}\cdot0 & 0\cdot0+a^{-1}\cdot a^{-1} \\
+			-a^{-1}\cdot a^{-1}+0\cdot0 & -a^{-1}\cdot0+0\cdot a^{-1} \\
+		\end{bmatrix} \\
+		&=
+		\begin{bmatrix}
+			0 & a^{-2} \\
+			-a^{-2} & 0 \\
+		\end{bmatrix}=a^{-2}
+		\begin{bmatrix}
+			0 & 1 \\
+			-1 & 0 \\
+		\end{bmatrix}=a^{-2}J
+	\end{split}
+\end{equation}
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	Thus with the relation:
+	\begin{equation}
+		F^\top JF=a^{-2}J
+	\end{equation}
+	
+	$F^\top JF=J$ only when $a^{-2}=1$. Solving for $a$:
+	\begin{equation}
+		\begin{split}
+			a^{-2}&=1 \\
+			\frac{1}{a^2}&=1 \\
+			a^2&=1 \\
+			a^2-1&=0 \\
+			(a-1)(a+1)&=0 \\
+			a&=\pm1
+		\end{split}
+	\end{equation}
+	
+	\textbf{Thus the transformation is canonical only when $a=\pm1$} since that is when the symplectic condition is met.
+\end{mdframed}
+
+\subsection*{(a.4): Find}
+
+Use the type-2 generating function
+\begin{equation}
+	W_2(q,p^*)=aqp^*
+\end{equation}
+to derive Eq.~(\ref{eq:transformed}). For $a=\sqrt{m\omega}$, construct the transformed Hamiltonian $K(q^*,p^*)$ and derive its canonical equations. Discuss an advantage of the transformed form. \\
+
+\textbf{Analysis/Conclusions:}\\
+
+To derive Eq.~(\ref{eq:transformed}) we can use the following relationship between the type 2 function $W_2$ and momentum $p$:
+\begin{equation}
+	p=[\nabla_qW_2]_{q,p^*}=\frac{\partial}{\partial q}\left(aqp^*\right)=ap^*\frac{\partial q}{\partial q}=ap^*
+\end{equation}
+
+Then we can invert $p$:
+\begin{equation}
+	p=ap^*\quad\implies\quad p^*=\frac{p}{a}
+	\label{eq:pstar}
+\end{equation}
+
+And then evaluate the relationship between the type 2 function $W_2$ and coordinate $q^*$:
+\begin{equation}
+	q^*	=[\nabla_{p^*}W_2]_{q,p^*}=\frac{\partial}{\partial p^*}\left(aqp^*\right)=aq\frac{\partial p^*}{\partial p^*}=aq
+	\label{eq:qstar}
+\end{equation}
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	So, between the results of Eq.~(\ref{eq:pstar}) and Eq.~(\ref{eq:qstar}) the equations in Eq.~(\ref{eq:transformed}) have been derived:
+	\begin{equation}
+		q^*=aq,\quad p^*=\frac{p}{a}
+	\end{equation}
+\end{mdframed}
+
+In part (a.2), it was already determined that the inverse transformation $\boldsymbol{f}(\boldsymbol{y})$ is canonical, which also implies it is invertable, and we can formulate the transformed Hamiltonian $K(q^*,p^*)$ by evaluating $H$ at $q^*$ and $p^*$. This requires the inverted equations for $q^*$ and $p^*$:
+\begin{equation}
+	q^*=aq\quad\implies\quad q=\frac{q^*}{a},\qquad p^*=\frac{p}{a}\quad\implies\quad p=ap^*
+\end{equation}
+
+Then we find $K$:
+\begin{equation}
+	\begin{split}
+		K(q^*,p^*)&=[H]_{q^*,p^*}=\left[\frac{p^2}{2m}+\frac{1}{2}m\omega^2q^2\right]_{q^*,p^*}=\frac{a^2p^{*2}}{2m}+\frac{1}{2}m\omega^2\frac{q^{*2}}{a^2}= \\
+		&=\frac{(\sqrt{m\omega})^2p^{*2}}{2m}+\frac{m\omega^2q^{*2}}{2(\sqrt{m\omega})^2}=\frac{m\omega p^{*2}}{2m}+\frac{m\omega^2q^{*2}}{2m\omega}= \\
+		&=\frac{\omega p^{*2}}{2}+\frac{\omega q^{*2}}{2}=\frac{\omega}{2}\left(p^{*2}+q^{*2}\right)
+	\end{split}
+\end{equation}
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	So the transformed Hamiltonian is:
+	\begin{equation}
+		K(q^*,p^*)=\frac{\omega}{2}\left(p^{*2}+q^{*2}\right)
+	\end{equation}
+\end{mdframed}
+
+Then we derive the canonical equations by the same process as (a.1):
+\begin{equation}
+	\dot{q}^*=\frac{\partial K}{\partial p^*},\quad \dot{p}^*=-\frac{\partial K}{\partial q^*}
+\end{equation}
+
+\newpage
+
+Solving the two partials:
+\begin{equation}
+	\begin{split}
+		\dot{q}^*&=\frac{\partial K}{\partial p^*}=\frac{\partial}{\partial p^*}\left(\frac{\omega}{2}\left(p^{*2}+q^{*2}\right)\right)=\frac{\omega}{2}\left(\frac{\partial p^{*2}}{\partial p^*}+\frac{\partial q^{*2}}{\partial p^*}\right)=\frac{\omega}{2}\left(2p^*+0\right)=\omega p^* \\
+		\\
+		\dot{p}^*&=-\frac{\partial K}{\partial q^*}=-\frac{\partial}{\partial q^*}\left(\frac{\omega}{2}\left(p^{*2}+q^{*2}\right)\right)=-\frac{\omega}{2}\left(\frac{\partial p^{*2}}{\partial q^*}+\frac{\partial q^{*2}}{\partial q^*}\right)=-\frac{\omega}{2}\left(0+2q^*\right)=-\omega q^*
+	\end{split}
+\end{equation}
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	Thus the equations of motion are:
+	\begin{equation}
+		\dot{q}^*=\omega p^*,\quad\dot{p}^*=-\omega q^*
+	\end{equation}
+	
+		A major advantage of the transformed form is that the equations of motion depend only on the natural frequency $\omega$, rather than on both $m$ and $\omega$ as in the original form. The mass is absorbed into the scaling $a=\sqrt{m\omega}$, so the same pair of equations describes every harmonic oscillator, with $m$ only needed when converting back to the physical coordinates. \\
+		
+		\textbf{ASK ABOUT THIS ONE}
+\end{mdframed}
+
+\newpage
+
+\section*{(b): Given}
+
+Let us consider a canonical transformation of the same space example as in PS7(b) to the spherical coordinates $(r,\phi,\theta)$, where $r,\phi,\theta$ are defined in class. Let the old canonical variables be $\boldsymbol{q}=[x,y,z]^\top$ and $\boldsymbol{p}=[p_x,p_y,p_z]^\top$. Define the new coordinates and corresponding momenta as follows:
+\begin{equation}
+	\boldsymbol{q}^*=[r,\phi,\theta]^\top,\quad\boldsymbol{p}^*=[p_r^*,p_\phi^*,p_\theta^*]^\top
+\end{equation}
+
+\subsection*{(b.1): Find}
+
+Express $\boldsymbol{q}$ as a function of $\boldsymbol{q}^*$ explicitly, and write it as $\boldsymbol{q}=\boldsymbol{f}(\boldsymbol{q}^*)$.
+
+\end{document}

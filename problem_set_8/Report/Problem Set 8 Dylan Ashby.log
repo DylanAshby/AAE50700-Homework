@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.10.3)  6 NOV 2026 06:43
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.10.3)  13 NOV 2026 11:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1008,36 +1008,313 @@ Underfull \hbox (badness 10000) in paragraph at lines 403--404
 
  []
 
-[6] [7] (./Problem Set 8 Dylan Ashby.aux)
+
+Underfull \hbox (badness 10000) in paragraph at lines 408--410
+
+ []
+
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 425--426
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 427--428
+
+ []
+
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 434.
+
+Underfull \hbox (badness 10000) in paragraph at lines 454--455
+
+ []
+
+[7]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 531.
+ [8]
+Underfull \hbox (badness 10000) in paragraph at lines 553--554
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 555--556
+
+ []
+
+[9]
+Overfull \hbox (25.10754pt too wide) detected at line 628
+[]
+ []
+
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 630.
+[10]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 639.
+
+Underfull \hbox (badness 10000) in paragraph at lines 650--651
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 652--653
+
+ []
+
+Package mdframed Info: Not enough space on this page on input line 655.
+[11]
+Underfull \hbox (badness 10000) in paragraph at lines 661--662
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 663--664
+
+ []
+
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 665.
+
+Underfull \hbox (badness 10000) in paragraph at lines 669--671
+
+ []
+
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 684.
+[12]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 703.
+Package mdframed Info: Not enough space on this page on input line 709.
+ [13]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 745.
+
+Underfull \hbox (badness 10000) in paragraph at lines 749--751
+
+ []
+
+[14]
+Underfull \hbox (badness 10000) in paragraph at lines 757--758
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 759--760
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 769--770
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 789--791
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 806--807
+
+ []
+
+[15] [16]
+Overfull \hbox (68.03479pt too wide) detected at line 872
+[]
+ []
+
+
+Overfull \hbox (34.88428pt too wide) detected at line 891
+[]
+ []
+
+
+Overfull \hbox (101.84727pt too wide) detected at line 913
+[]
+ []
+
+[17] [18]
+Overfull \hbox (11.23825pt too wide) detected at line 979
+[]
+ []
+
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 981.
+
+Overfull \hbox (3.06256pt too wide) detected at line 985
+[]\OML/cmm/m/it/10 K\OT1/cmr/m/n/10 ([][]\OML/cmm/m/it/10 ; [][]\OT1/cmr/m/n/10
+ ) = [] [] \OMS/cmsy/m/n/10 ^^@ [] \OT1/cmr/m/n/10 + [] []
+ []
+
+[19]
+Underfull \hbox (badness 10000) in paragraph at lines 992--993
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 994--995
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 999--1001
+
+ []
+
+
+Overfull \hbox (5.23546pt too wide) in paragraph at lines 1036--1037
+[]\OT1/cmr/m/n/10 So sub-sti-tut-ing back into $[]([])$ once again us-ing the r
+e-la-tion-ship $[][] = [][] []$
+ []
+
+[20]
+Overfull \hbox (53.00949pt too wide) detected at line 1094
+[]
+ []
+
+[21]
+Overfull \hbox (27.65665pt too wide) detected at line 1105
+[]
+ []
+
+
+Overfull \hbox (69.43796pt too wide) detected at line 1117
+[]
+ []
+
+
+Overfull \hbox (30.61002pt too wide) detected at line 1122
+[]\OMS/cmsy/m/n/10 ^^@[] \OT1/cmr/m/n/10 = \OMS/cmsy/m/n/10 ^^@[] [] \OT1/cmr/m
+/n/10 = 0
+ []
+
+[22]
+Overfull \hbox (71.95425pt too wide) detected at line 1137
+[]
+ []
+
+
+Overfull \hbox (10.09344pt too wide) detected at line 1149
+[]
+ []
+
+[23]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 1151.
+
+
+LaTeX Font Warning: Command \small invalid in math mode on input line 1154.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 1161
+.
+
+[24]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 1171.
+
+Underfull \hbox (badness 10000) in paragraph at lines 1188--1190
+
+ []
+
+Package mdframed Info: Not enough space on this page on input line 1192.
+
+Underfull \hbox (badness 10000) in paragraph at lines 1196--1197
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1198--1199
+
+ []
+
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 1200.
+
+Overfull \hbox (3.06256pt too wide) detected at line 1204
+[]\OML/cmm/m/it/10 K\OT1/cmr/m/n/10 ([][]\OML/cmm/m/it/10 ; [][]\OT1/cmr/m/n/10
+ ) = [] [] \OMS/cmsy/m/n/10 ^^@ [] \OT1/cmr/m/n/10 + [] []
+ []
+
+[25]
+Underfull \hbox (badness 10000) in paragraph at lines 1235--1236
+
+ []
+
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 1297.
+
+Package mdframed Warning: You got a bad break
+(mdframed)                because the last box will be empty
+(mdframed)                you have to change it manually
+(mdframed)                by changing the text, the space
+(mdframed)                or something else on input line 1303.
+
+Package mdframed Info: You first box width is to small
+ mdframed fixed it
+(mdframed)              on input line 1303.
+[26]
+
+Package mdframed Warning: You got a bad break
+(mdframed)                because the last split box is empty
+(mdframed)                You have to change the settings on input line 1303.
+
+[27] (./Problem Set 8 Dylan Ashby.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-03-20>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 8512 strings out of 469263
- 140642 string characters out of 5464811
- 767456 words of memory out of 6000000
- 37214 multiletter control sequences out of 15000+600000
- 638033 words of font info for 79 fonts, out of 8000000 for 9000
+ 8541 strings out of 469263
+ 140997 string characters out of 5464811
+ 776456 words of memory out of 6000000
+ 37233 multiletter control sequences out of 15000+600000
+ 641424 words of font info for 91 fonts, out of 8000000 for 9000
  56 hyphenation exceptions out of 8191
- 84i,22n,93p,487b,401s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,27n,93p,683b,439s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
-msy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.p
-fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on "Problem Set 8 Dylan Ashby.pdf" (8 pages, 166585 bytes).
+ive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
+s/cmextra/cmmib7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cmextra/cmmib9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr1
+2.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><
+/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmsy9.pfb>
+Output written on "Problem Set 8 Dylan Ashby.pdf" (28 pages, 328268 bytes).
 PDF statistics:
- 96 PDF objects out of 1000 (max. 8388607)
- 59 compressed objects within 1 object stream
+ 215 PDF objects out of 1000 (max. 8388607)
+ 135 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

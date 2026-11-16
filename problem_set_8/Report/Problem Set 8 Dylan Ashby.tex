@@ -400,11 +400,17 @@ Solving the two partials:
 		\dot{q}^*=\omega p^*,\quad\dot{p}^*=-\omega q^*
 	\end{equation}
 	
-		A major advantage of the transformed form is that the equations of motion depend only on the natural frequency $\omega$, rather than on both $m$ and $\omega$ as in the original form. The mass is absorbed into the scaling $a=\sqrt{m\omega}$, so the same pair of equations describes every harmonic oscillator, with $m$ only needed when converting back to the physical coordinates. \\
-		
-		\textbf{ASK ABOUT THIS ONE}
+	In both the equations of motion and the Kamiltonian $K$, we see this formulation is no longer a function of mass, meaning any analysis with it can be performed without having to know the mass of the oscillator which is a big advantage over the other formulation.\\
+	
+	However, the primary advantage of this formulation can be seen in the Kamiltonian:
+	\begin{equation}
+		K(q^*,p^*)=\frac{\omega}{2}\left(p^{*2}+q^{*2}\right)
+	\end{equation}
+	We see here that this function takes the form of a circle with the position on one axis and the conjugate momentum on the other. This means that position and momentum play geometrically identical roles in the shape of the trajectory the oscillator is taking, and we can determine the trajectory's shape by simply knowing its energy (which is equal to $K$). Since $K$ is conserved on account of no explicit time dependence or non-conservative forces, $p^{*2}+q^{*2}=\frac{2K}{\omega}$ is constant, so the oscillator traces a circle of radius $\sqrt{2K/\omega}$, traversed at the constant angular rate $\omega$ as shown by the equations of motion. \\
+	
+	\textbf{Thus the advantage of the transformed form is that the mass is removed from the dynamics, and the motion of any harmonic oscillator reduces to uniform rotation on a circle in phase space}.
 \end{mdframed}
-
+	
 \newpage
 
 \section*{(b): Given}
@@ -416,6 +422,884 @@ Let us consider a canonical transformation of the same space example as in PS7(b
 
 \subsection*{(b.1): Find}
 
-Express $\boldsymbol{q}$ as a function of $\boldsymbol{q}^*$ explicitly, and write it as $\boldsymbol{q}=\boldsymbol{f}(\boldsymbol{q}^*)$.
+Express $\boldsymbol{q}$ as a function of $\boldsymbol{q}^*$ explicitly, and write it as $\boldsymbol{q}=\boldsymbol{f}(\boldsymbol{q}^*)$. \\
+
+\textbf{Analysis/Conclusions:} \\
+
+From the class notes, we know that spherical coordinates map to Cartesian positions $[x,y,z]$ where $\{\hat{\boldsymbol{e}}_x,\hat{\boldsymbol{e}}_y,\hat{\boldsymbol{e}}_z\}$ are the basis vectors of a Cartesian coordinate system using the following:
+\begin{equation}
+	\boldsymbol{q}=r\cos(\theta)\cos(\phi)\hat{\boldsymbol{e}}_x+r\cos(\theta)\sin(\phi)\hat{\boldsymbol{e}}_y+r\sin(\theta)\hat{\boldsymbol{e}}_z
+\end{equation}
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	Which is already in the form of a $\boldsymbol{q}$ as a function of $\boldsymbol{q}^*$. This can also be represented like:
+	\begin{equation}
+		\boldsymbol{q}=\boldsymbol{f}(\boldsymbol{q}^*)=
+		\begin{bmatrix}
+			r\cos(\theta)\cos(\phi) \\
+			r\cos(\theta)\sin(\phi) \\
+			r\sin(\theta)
+		\end{bmatrix}
+		\label{eq:qrelation}
+	\end{equation}
+\end{mdframed}
+
+\subsection*{(b.2): Find}
+
+Derive the new momenta $\boldsymbol{p}^*$ using the type-3 generating function:
+\begin{equation}
+	W_3(\boldsymbol{q}^*,\boldsymbol{p})=-\boldsymbol{p}^\top\boldsymbol{f}(\boldsymbol{q}^*)
+\end{equation}
+
+\textbf{Analysis/Conclusions:} \\
+
+A type-3 generating function uses the following expression to derive new momenta $\boldsymbol{p}^*$:
+\begin{equation}
+	\boldsymbol{p}^*=-\left[\nabla_{\boldsymbol{q}^*}W_3\right]_{\boldsymbol{q}^*,\boldsymbol{p}}
+\end{equation}
+
+Which is evaluated as (since $\boldsymbol{p}$ and $\boldsymbol{q}^*$ are the independent variables of the type-3 generating function, $\boldsymbol{p}$ is held constant under $\partial/\partial\boldsymbol{q}^*$):
+\begin{equation}
+	\boldsymbol{p}^*=\left(-\frac{\partial W_3}{\partial\boldsymbol{q}^*}\right)^\top=\left(-\frac{\partial}{\partial\boldsymbol{q}^*}\left(-\boldsymbol{p}^\top\boldsymbol{f}(\boldsymbol{q}^*)\right)\right)^\top=\left(\boldsymbol{p}^\top\frac{\partial\boldsymbol{f}(\boldsymbol{q}^*)}{\partial\boldsymbol{q}^*}\right)^\top
+	\label{eq:prelationship}
+\end{equation}
+
+Then we evaluate the Jacobian and the dot product:
+\begin{equation}
+	\begin{split}
+		\boldsymbol{p}^*&=\left(\boldsymbol{p}^\top\frac{\partial\boldsymbol{f}(\boldsymbol{q}^*)}{\partial\boldsymbol{q}^*}\right)^\top \\
+		&=\left(\boldsymbol{p}^\top
+		\begin{bmatrix}
+			r\cos(\theta)\cos(\phi) \\
+			r\cos(\theta)\sin(\phi) \\
+			r\sin(\theta)
+		\end{bmatrix}
+		\begin{bmatrix}
+			\frac{\partial}{\partial r} & \frac{\partial}{\partial\phi} & \frac{\partial}{\partial\theta}
+		\end{bmatrix}\right)^\top \\
+		&=\left(\boldsymbol{p}^\top
+		\begin{bmatrix}
+			\frac{\partial}{\partial r}\left(r\cos(\theta)\cos(\phi)\right) & \frac{\partial}{\partial\phi}\left(r\cos(\theta)\cos(\phi)\right) & \frac{\partial}{\partial\theta}\left(r\cos(\theta)\cos(\phi)\right) \\
+			\frac{\partial}{\partial r}\left(r\cos(\theta)\sin(\phi)\right) & \frac{\partial}{\partial\phi}\left(r\cos(\theta)\sin(\phi)\right) & \frac{\partial}{\partial\theta}\left(r\cos(\theta)\sin(\phi)\right) \\
+			\frac{\partial}{\partial r}\left(r\sin(\theta)\right) & \frac{\partial}{\partial\phi}\left(r\sin(\theta)\right) & \frac{\partial}{\partial\theta}\left(r\sin(\theta)\right)
+		\end{bmatrix}\right)^\top \\
+		&=
+		\begin{bmatrix}
+			\frac{\partial}{\partial r}\left(r\cos(\theta)\cos(\phi)\right) & \frac{\partial}{\partial r}\left(r\cos(\theta)\sin(\phi)\right) & \frac{\partial}{\partial r}\left(r\sin(\theta)\right) \\
+			\frac{\partial}{\partial\phi}\left(r\cos(\theta)\cos(\phi)\right) & \frac{\partial}{\partial\phi}\left(r\cos(\theta)\sin(\phi)\right) & \frac{\partial}{\partial\phi}\left(r\sin(\theta)\right) \\
+			\frac{\partial}{\partial\theta}\left(r\cos(\theta)\cos(\phi)\right) & \frac{\partial}{\partial\theta}\left(r\cos(\theta)\sin(\phi)\right) & \frac{\partial}{\partial\theta}\left(r\sin(\theta)\right)
+		\end{bmatrix}\boldsymbol{p} \\
+		&=
+		\begin{bmatrix}
+			\cos(\theta)\cos(\phi)\frac{\partial}{\partial r}\left(r\right) & \cos(\theta)\sin(\phi)\frac{\partial}{\partial r}\left(r\right) & \sin(\theta)\frac{\partial}{\partial r}\left(r\right) \\
+			r\cos(\theta)\frac{\partial}{\partial\phi}\left(\cos(\phi)\right) & r\cos(\theta)\frac{\partial}{\partial\phi}\left(\sin(\phi)\right) & r\sin(\theta)\frac{\partial}{\partial\phi}\left(1\right) \\
+			r\cos(\phi)\frac{\partial}{\partial\theta}\left(\cos(\theta)\right) & r\sin(\phi)\frac{\partial}{\partial\theta}\left(\cos(\theta)\right) & r\frac{\partial}{\partial\theta}\left(\sin(\theta)\right)
+		\end{bmatrix}\boldsymbol{p} \\
+		&=
+		\begin{bmatrix}
+			\cos(\theta)\cos(\phi) & \cos(\theta)\sin(\phi) & \sin(\theta) \\
+			-r\cos(\theta)\sin(\phi) & r\cos(\theta)\cos(\phi) & 0 \\
+			-r\sin(\theta)\cos(\phi) & -r\sin(\theta)\sin(\phi) & r\cos(\theta)
+		\end{bmatrix}\boldsymbol{p} \\
+		&=
+		\begin{bmatrix}
+			\cos(\theta)\cos(\phi) & \cos(\theta)\sin(\phi) & \sin(\theta) \\
+			-r\cos(\theta)\sin(\phi) & r\cos(\theta)\cos(\phi) & 0 \\
+			-r\sin(\theta)\cos(\phi) & -r\sin(\theta)\sin(\phi) & r\cos(\theta)
+		\end{bmatrix}
+		\begin{bmatrix}
+			p_x \\
+			p_y \\
+			p_z
+		\end{bmatrix} \\
+		&=
+		\begin{bmatrix}
+			p_x\cos(\theta)\cos(\phi)+p_y\cos(\theta)\sin(\phi)+p_z\sin(\theta) \\
+			-p_xr\cos(\theta)\sin(\phi)+p_yr\cos(\theta)\cos(\phi)+0 \\
+			-p_xr\sin(\theta)\cos(\phi)-p_yr\sin(\theta)\sin(\phi)+p_zr\cos(\theta)
+		\end{bmatrix} \\
+		&=
+		\begin{bmatrix}
+			p_x\cos(\theta)\cos(\phi)+p_y\cos(\theta)\sin(\phi)+p_z\sin(\theta) \\
+			r\cos(\theta)\left(p_y\cos(\phi)-p_x\sin(\phi)\right) \\
+			r\left(p_z\cos(\theta)-\sin(\theta)\left(p_x\cos(\phi)+p_y\sin(\phi)\right)\right)
+		\end{bmatrix}
+	\end{split}
+	\label{eq:momentumevaluation}
+\end{equation}
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	Thus this makes the new momenta $\boldsymbol{p}^*$:
+	\begin{equation}
+		\boldsymbol{p}^*=
+		\begin{bmatrix}
+			p_x\cos(\theta)\cos(\phi)+p_y\cos(\theta)\sin(\phi)+p_z\sin(\theta) \\
+			r\cos(\theta)\left(p_y\cos(\phi)-p_x\sin(\phi)\right) \\
+			r\left(p_z\cos(\theta)-\sin(\theta)\left(p_x\cos(\phi)+p_y\sin(\phi)\right)\right)
+		\end{bmatrix}
+		\label{eq:newmomenta}
+	\end{equation}
+\end{mdframed}
+
+\newpage
+
+\subsection*{(b.3): Find}
+
+Show that
+\begin{equation}
+	\det\left(\frac{\partial^2W_3}{\partial\boldsymbol{q}^*\partial\boldsymbol{p}}\right)=-r^2\cos\theta
+\end{equation}
+
+Identify the configurations at which this generating-function construction is not locally invertible, and explain the geometric reason. \\
+
+\textbf{Analysis/Conclusions:} \\
+
+To evaluate the Hessian requested by the problem, we first evaluate one of the two embedded partials. $\boldsymbol{f}(\boldsymbol{q}^*)$ is not a function of $\boldsymbol{p}$ so it is treated as a constant:
+\begin{equation}
+	\frac{\partial W_3}{\partial\boldsymbol{p}}=\frac{\partial}{\partial\boldsymbol{p}}\left(-\boldsymbol{p}^\top\boldsymbol{f}(\boldsymbol{q}^*)\right)=-\frac{\partial\boldsymbol{p}^\top}{\partial\boldsymbol{p}}\boldsymbol{f}(\boldsymbol{q}^*)=-I\boldsymbol{f}(\boldsymbol{q}^*)=-\boldsymbol{f}(\boldsymbol{q}^*)
+\end{equation}
+
+Then we find the partial of $\frac{\partial W_3}{\partial\boldsymbol{p}}$ with respect to $\boldsymbol{q}^*$ to find the Hessian:
+\begin{equation}
+	\begin{split}
+		\frac{\partial^2W_3}{\partial\boldsymbol{q}^*\partial\boldsymbol{p}}&=\frac{\partial}{\partial\boldsymbol{q}^*}\left(\frac{\partial W_3}{\partial\boldsymbol{p}}\right)=\frac{\partial}{\partial\boldsymbol{q}^*}\left(-\boldsymbol{f}(\boldsymbol{q}^*)\right)=-\frac{\partial\boldsymbol{f}(\boldsymbol{q}^*)}{\partial\boldsymbol{q}^*}
+	\end{split}
+\end{equation}
+
+Recall that the Jacobian $\frac{\partial\boldsymbol{f}(\boldsymbol{q}^*)}{\partial\boldsymbol{q}^*}$ was already set up in (b.2) on the third line of Eq.~(\ref{eq:momentumevaluation}), before the transpose was applied. Thus we get the following Hessian:
+\begin{equation}
+	\begin{split}
+		\frac{\partial^2W_3}{\partial\boldsymbol{q}^*\partial\boldsymbol{p}}&=-\frac{\partial\boldsymbol{f}(\boldsymbol{q}^*)}{\partial\boldsymbol{q}^*} \\
+		&=-
+		\begin{bmatrix}
+			\frac{\partial}{\partial r}\left(r\cos(\theta)\cos(\phi)\right) & \frac{\partial}{\partial\phi}\left(r\cos(\theta)\cos(\phi)\right) & \frac{\partial}{\partial\theta}\left(r\cos(\theta)\cos(\phi)\right) \\
+			\frac{\partial}{\partial r}\left(r\cos(\theta)\sin(\phi)\right) & \frac{\partial}{\partial\phi}\left(r\cos(\theta)\sin(\phi)\right) & \frac{\partial}{\partial\theta}\left(r\cos(\theta)\sin(\phi)\right) \\
+			\frac{\partial}{\partial r}\left(r\sin(\theta)\right) & \frac{\partial}{\partial\phi}\left(r\sin(\theta)\right) & \frac{\partial}{\partial\theta}\left(r\sin(\theta)\right)
+		\end{bmatrix} \\
+		&=-
+		\begin{bmatrix}
+			\cos(\theta)\cos(\phi) & -r\cos(\theta)\sin(\phi) & -r\sin(\theta)\cos(\phi) \\
+			\cos(\theta)\sin(\phi) & r\cos(\theta)\cos(\phi) & -r\sin(\theta)\sin(\phi) \\
+			\sin(\theta) & 0 & r\cos(\theta)
+		\end{bmatrix}
+	\end{split}
+\end{equation}
+
+\newpage
+
+Then we find its determinant, using cofactor expansion along the third row since it contains a zero and can eliminate one of the three cofactor terms:
+\begin{equation}
+	\begin{split}
+		&=\det\left(\frac{\partial^2W_3}{\partial\boldsymbol{q}^*\partial\boldsymbol{p}}\right) \\
+		&=-\det
+		\begin{bmatrix}
+			\cos(\theta)\cos(\phi) & -r\cos(\theta)\sin(\phi) & -r\sin(\theta)\cos(\phi) \\
+			\cos(\theta)\sin(\phi) & r\cos(\theta)\cos(\phi) & -r\sin(\theta)\sin(\phi) \\
+			\sin(\theta) & 0 & r\cos(\theta)
+		\end{bmatrix} \\
+		&=-\left(\sin(\theta)
+		\begin{vmatrix}
+			-r\cos(\theta)\sin(\phi) & -r\sin(\theta)\cos(\phi) \\
+			r\cos(\theta)\cos(\phi) & -r\sin(\theta)\sin(\phi)
+		\end{vmatrix}
+		-0
+		\begin{vmatrix}
+			\cos(\theta)\cos(\phi) & -r\sin(\theta)\cos(\phi) \\
+			\cos(\theta)\sin(\phi) & -r\sin(\theta)\sin(\phi)
+		\end{vmatrix}\right. \\
+		&\qquad\left.+r\cos(\theta)
+		\begin{vmatrix}
+			\cos(\theta)\cos(\phi) & -r\cos(\theta)\sin(\phi) \\
+			\cos(\theta)\sin(\phi) & r\cos(\theta)\cos(\phi)
+		\end{vmatrix}\right) \\
+		&=-\left(\sin(\theta)\left((-r\cos(\theta)\sin(\phi))(-r\sin(\theta)\sin(\phi))-(-r\sin(\theta)\cos(\phi))(r\cos(\theta)\cos(\phi))\right)\right. \\
+		&\qquad\left.+r\cos(\theta)\left((\cos(\theta)\cos(\phi))(r\cos(\theta)\cos(\phi))-(-r\cos(\theta)\sin(\phi))(\cos(\theta)\sin(\phi))\right)\right) \\
+		&=-\left(\sin(\theta)\left(r^2\sin(\theta)\cos(\theta)\sin^2(\phi)+r^2\sin(\theta)\cos(\theta)\cos^2(\phi)\right)\right. \\
+		&\qquad\left.+r\cos(\theta)\left(r\cos^2(\theta)\cos^2(\phi)+r\cos^2(\theta)\sin^2(\phi)\right)\right) \\
+		&=-\left(r^2\sin^2(\theta)\cos(\theta)\sin^2(\phi)+r^2\sin^2(\theta)\cos(\theta)\cos^2(\phi)\right. \\
+		&\qquad\left.+r^2\cos^3(\theta)\cos^2(\phi)+r^2\cos^3(\theta)\sin^2(\phi)\right) \\
+		&=-\left(r^2\sin^2(\theta)\cos(\theta)\left(\sin^2(\phi)+\cos^2(\phi)\right)+r^2\cos^3(\theta)\left(\cos^2(\phi)+\sin^2(\phi)\right)\right) \\
+		&=-\left(r^2\sin^2(\theta)\cos(\theta)\left(1\right)+r^2\cos^3(\theta)\left(1\right)\right) \\
+		&=-\left(r^2\sin^2(\theta)\cos(\theta)+r^2\cos^3(\theta)\right) \\
+		&=-r^2\cos(\theta)\left(\sin^2(\theta)+\cos^2(\theta)\right) \\
+		&=-r^2\cos(\theta)(1) \\
+		&=-r^2\cos(\theta)
+	\end{split}
+\end{equation}
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	Which proves:
+	\begin{equation}
+		\det\left(\frac{\partial^2W_3}{\partial\boldsymbol{q}^*\partial\boldsymbol{p}}\right)=-r^2\cos\theta
+	\end{equation}
+\end{mdframed}
+
+\newpage
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	The type-3 generating function is not locally invertible when:
+	\begin{equation}
+		\det\left(\frac{\partial^2W_3}{\partial\boldsymbol{q}^*\partial\boldsymbol{p}}\right)=0
+	\end{equation}
+	
+	Thus we can say $W_3$ is not locally invertible when:
+	\begin{equation}
+		-r^2\cos\theta=0
+	\end{equation}
+	
+	\textbf{This means $W_3$ is not locally invertible when $r=0$ and/or when $\theta$ is an odd scalar multiple of $\frac{\pi}{2}$.} \\
+	
+	The former because $-r^2$ is a parabolic term that only becomes zero when $r=0$ as that's when the parabola touches the $x$-axis. This parabolic term scales $\cos\theta$ directly, so the latter is true because $\cos\theta$ is zero for odd multiples of $\theta=\frac{\pi}{2}$. \\
+	
+	Geometrically, these are coordinate singularities of spherical coordinates. At the origin ($r=0$), every choice of $\phi$ and $\theta$ maps to the same point, so the angles are undefined. At the poles ($\theta=\pm\frac{\pi}{2}$), every longitude $\phi$ maps to the same point on the $z$-axis, so $\phi$ is undefined. In both cases $\boldsymbol{q}^*$ and $\boldsymbol{p}^*$ cannot be uniquely recovered from $\boldsymbol{q}$ and $\boldsymbol{p}$ because of infinitely many spherical coordinates mapping to the same Cartesian coordinates.
+\end{mdframed}
+
+\newpage
+
+\subsection*{(b.4): Find}
+
+Out of the other three common types of generating functions covered in class, discuss if any other type(s) can provide the same $\boldsymbol{p}^*$, and if so, derive $\boldsymbol{p}^*$ using the other generating functions. \\
+
+\textbf{Analysis/Conclusions:} \\
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	Immediately we can rule out the Type-1 generating function $W_1(\boldsymbol{q},\boldsymbol{q}^*)$ as being able to produce the same $\boldsymbol{p}^*$ because our function $\boldsymbol{q}=\boldsymbol{f}(\boldsymbol{q}^*)$ makes $\boldsymbol{q}$ and $\boldsymbol{q}^*$ exactly dependent on each other, thus attempting to evaluate:
+	\begin{equation}
+		\boldsymbol{p}^*=-\left[\nabla_{\boldsymbol{q}^*}W_1\right]_{\boldsymbol{q},\boldsymbol{q}^*}
+	\end{equation}
+	is not possible, since it requires taking the derivative with respect to $\boldsymbol{q}^*$ while holding $\boldsymbol{q}$ constant, which cannot be done when $\boldsymbol{q}$ is exclusively a function of $\boldsymbol{q}^*$, as one can always be substituted for the other. \\
+	
+	Likewise, we see when we construct $W_1$ from $W_3$:
+	\begin{equation}
+		W_1=W_3+\boldsymbol{q}\cdot\boldsymbol{p}=-\boldsymbol{p}^\top\boldsymbol{f}(\boldsymbol{q}^*)+\boldsymbol{p}^\top\boldsymbol{q}=\boldsymbol{p}^\top\left(\boldsymbol{q}-\boldsymbol{f}(\boldsymbol{q}^*)\right)
+	\end{equation}
+	
+	That we can use the relationship $\boldsymbol{q}=\boldsymbol{f}(\boldsymbol{q}^*)$:
+	\begin{equation}
+		W_1=\boldsymbol{p}^\top\left(\boldsymbol{f}(\boldsymbol{q}^*)-\boldsymbol{f}(\boldsymbol{q}^*)\right)=\boldsymbol{p}^\top\boldsymbol{0}=0
+	\end{equation}
+	\textbf{Which means the Type-1 function equals zero, and a function of $\boldsymbol{p}^*$ cannot be derived from it.}
+\end{mdframed}
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	\textbf{Likewise, the Type-2 generating function $W_2(\boldsymbol{q},\boldsymbol{p}^*)$ can produce the same $\boldsymbol{p}^*$ as the Type-3}. The generating function contains two independent variables $\boldsymbol{q}$ and $\boldsymbol{p}^*$, so a unique function for $\boldsymbol{p}^*$ can be derived when evaluating the gradients:
+	\begin{equation}
+		\boldsymbol{p}=\left[\nabla_{\boldsymbol{q}}W_2\right]_{\boldsymbol{q},\boldsymbol{p}^*},\quad\boldsymbol{q}^*=\left[\nabla_{\boldsymbol{p}^*}W_2\right]_{\boldsymbol{q},\boldsymbol{p}^*}
+	\end{equation}
+\end{mdframed}
+
+We see when we construct $W_2$ from $W_3$ ($\boldsymbol{q}=\boldsymbol{f}(\boldsymbol{q}^*)$ is used to cancel terms):
+\begin{equation}
+	\begin{split}
+		W_2-\boldsymbol{q}^*\cdot\boldsymbol{p}^*&=W_3+\boldsymbol{q}\cdot\boldsymbol{p} \\
+		W_2&=W_3+\boldsymbol{q}\cdot\boldsymbol{p}+\boldsymbol{q}^*\cdot\boldsymbol{p}^* \\
+		&=-\boldsymbol{p}^\top\boldsymbol{f}(\boldsymbol{q}^*)+\boldsymbol{p}^\top\boldsymbol{q}+\boldsymbol{p}^{*\top}\boldsymbol{q}^* \\
+		&=\boldsymbol{p}^\top\left(\boldsymbol{q}-\boldsymbol{f}(\boldsymbol{q}^*)\right)+\boldsymbol{p}^{*\top}\boldsymbol{q}^* \\
+		&=\boldsymbol{p}^\top\left(\boldsymbol{f}(\boldsymbol{q}^*)-\boldsymbol{f}(\boldsymbol{q}^*)\right)+\boldsymbol{p}^{*\top}\boldsymbol{q}^* \\
+		&=\boldsymbol{p}^\top\boldsymbol{0}+\boldsymbol{p}^{*\top}\boldsymbol{q}^*=\boldsymbol{p}^{*\top}\boldsymbol{q}^*=\boldsymbol{p}^{*\top}\boldsymbol{f}^{-1}(\boldsymbol{q})
+	\end{split}
+\end{equation}
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	While the Type-4 generating function $W_4(\boldsymbol{p},\boldsymbol{p}^*)$ appears to have the same dependency issue as the Type-1 function (this time between $\boldsymbol{p}$ and $\boldsymbol{p}^*$ instead of $\boldsymbol{q}$ and $\boldsymbol{q}^*$), we see from Eq.~(\ref{eq:prelationship}) in (b.2) that the relationship between $\boldsymbol{p}$ and $\boldsymbol{p}^*$ is:
+	\begin{equation}
+		\boldsymbol{p}^*=\left(\frac{\partial\boldsymbol{f}(\boldsymbol{q}^*)}{\partial\boldsymbol{q}^*}\right)^\top\boldsymbol{p}
+	\end{equation}
+	This means that $\boldsymbol{p}^*$ and $\boldsymbol{p}$ are not uniquely determined by each other, and the same equation for $\boldsymbol{p}^*$ as the Type-3 function can still come from the Type-4 function under some unknown condition because the extra degree of freedom in the relationship form also including $\boldsymbol{p}^*$ means all the terms in the Type-3 derivation of $\boldsymbol{p}^*$ can enter the expression. \textbf{So, if this condition is met, and the Type-4 function will produce the same $\boldsymbol{p}^*$ as the Type-3 function}.
+\end{mdframed}d
+
+We see when we construct $W_4$ from $W_3$:
+\begin{equation}
+	\begin{split}
+		W_4+\boldsymbol{q}\cdot\boldsymbol{p}-\boldsymbol{q}^*\cdot\boldsymbol{p}^*&=W_3+\boldsymbol{q}\cdot\boldsymbol{p} \\
+		W_4&=W_3+\boldsymbol{q}^*\cdot\boldsymbol{p}^* \\
+		&=-\boldsymbol{p}^\top\boldsymbol{f}(\boldsymbol{q}^*)+\boldsymbol{p}^{*\top}\boldsymbol{q}^*
+	\end{split}
+\end{equation}
+
+Then we can evaluate the gradient, noting that since $W_4$ must be a function of $(\boldsymbol{p},\boldsymbol{p}^*)$, the $\boldsymbol{q}^*$ term is not held constant:
+\begin{equation}
+	\begin{split}
+		\boldsymbol{q}^*&=\left[\nabla_{\boldsymbol{p}^*}W_4\right]_{\boldsymbol{p},\boldsymbol{p}^*}=\left(\frac{\partial}{\partial\boldsymbol{p}^*}\left(-\boldsymbol{p}^\top\boldsymbol{f}(\boldsymbol{q}^*)+\boldsymbol{p}^{*\top}\boldsymbol{q}^*\right)\right)^\top \\
+		\boldsymbol{q}^*&=\left(-\frac{\partial}{\partial\boldsymbol{p}^*}\left(\boldsymbol{p}^\top\boldsymbol{f}(\boldsymbol{q}^*)\right)+\frac{\partial}{\partial\boldsymbol{p}^*}\left(\boldsymbol{p}^{*\top}\boldsymbol{q}^*\right)\right)^\top \\
+		\boldsymbol{q}^*&=\left(-\boldsymbol{p}^\top\frac{\partial\boldsymbol{f}(\boldsymbol{q}^*)}{\partial\boldsymbol{p}^*}+\boldsymbol{q}^{*\top}\frac{\partial\boldsymbol{p}^*}{\partial\boldsymbol{p}^*}+\boldsymbol{p}^{*\top}\frac{\partial\boldsymbol{q}^*}{\partial\boldsymbol{p}^*}\right)^\top \\
+		\boldsymbol{q}^*&=\left(-\boldsymbol{p}^\top\frac{\partial\boldsymbol{f}(\boldsymbol{q}^*)}{\partial\boldsymbol{q}^*}\frac{\partial\boldsymbol{q}^*}{\partial\boldsymbol{p}^*}+\boldsymbol{q}^{*\top}+\boldsymbol{p}^{*\top}\frac{\partial\boldsymbol{q}^*}{\partial\boldsymbol{p}^*}\right)^\top \\
+		\boldsymbol{q}^*&=\boldsymbol{q}^*+\left(\left(-\boldsymbol{p}^\top\frac{\partial\boldsymbol{f}(\boldsymbol{q}^*)}{\partial\boldsymbol{q}^*}+\boldsymbol{p}^{*\top}\right)\frac{\partial\boldsymbol{q}^*}{\partial\boldsymbol{p}^*}\right)^\top \\
+		\boldsymbol{q}^*&=\boldsymbol{q}^*+\left(\frac{\partial\boldsymbol{q}^*}{\partial\boldsymbol{p}^*}\right)^\top\left(\boldsymbol{p}^*-\left(\frac{\partial\boldsymbol{f}(\boldsymbol{q}^*)}{\partial\boldsymbol{q}^*}\right)^\top\boldsymbol{p}\right)
+	\end{split}
+\end{equation}
+
+Subtracting $\boldsymbol{q}^*$ from both sides:
+\begin{equation}
+	\boldsymbol{0}=\left(\frac{\partial\boldsymbol{q}^*}{\partial\boldsymbol{p}^*}\right)^\top\left(\boldsymbol{p}^*-\left(\frac{\partial\boldsymbol{f}(\boldsymbol{q}^*)}{\partial\boldsymbol{q}^*}\right)^\top\boldsymbol{p}\right)
+\end{equation}
+
+If $\frac{\partial\boldsymbol{q}^*}{\partial\boldsymbol{p}^*}$ is invertible. We can multiply both sides by its inverse:
+\begin{equation}
+	\begin{split}
+		\left(\left(\frac{\partial\boldsymbol{q}^*}{\partial\boldsymbol{p}^*}\right)^\top\right)^{-1}\boldsymbol{0}&=\left(\left(\frac{\partial\boldsymbol{q}^*}{\partial\boldsymbol{p}^*}\right)^\top\right)^{-1}\left(\frac{\partial\boldsymbol{q}^*}{\partial\boldsymbol{p}^*}\right)^\top\left(\boldsymbol{p}^*-\left(\frac{\partial\boldsymbol{f}(\boldsymbol{q}^*)}{\partial\boldsymbol{q}^*}\right)^\top\boldsymbol{p}\right) \\
+		\boldsymbol{0}&=\boldsymbol{p}^*-\left(\frac{\partial\boldsymbol{f}(\boldsymbol{q}^*)}{\partial\boldsymbol{q}^*}\right)^\top\boldsymbol{p}
+	\end{split}
+\end{equation}
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	Which rewrites to:
+	\begin{equation}
+		\boldsymbol{p}^*=\left(\frac{\partial\boldsymbol{f}(\boldsymbol{q}^*)}{\partial\boldsymbol{q}^*}\right)^\top\boldsymbol{p}
+	\end{equation}
+	\textbf{Which, as we saw in Eq.~(\ref{eq:prelationship}) in (b.2), is the same $\boldsymbol{p}^*$ equation from the Type-3, showing the Type-4 produces the same, if and only if $\frac{\partial\boldsymbol{q}^*}{\partial\boldsymbol{p}^*}$ is invertible}.\\
+\end{mdframed}
+
+\newpage
+
+\subsection*{(b.5): Find}
+
+Starting from the Cartesian Hamiltonian in PS7(b), construct its transformed Hamiltonian $K(\boldsymbol{q}^*,\boldsymbol{p}^*)$. \\
+
+\textbf{Analysis/Conclusions:} \\
+
+Recall form PS7, the Hamiltonian for the Cartesian orbital problem was:
+\begin{equation}
+	\begin{split}
+		H(\boldsymbol{q},\boldsymbol{p})&=\frac{1}{2m}\boldsymbol{p}\cdot\boldsymbol{p}-\frac{\mu m}{r}+\frac{\mu mJ_2R_E^2}{2r^5}\left(3z^2-r^2\right) \\
+		&\text{Where: }r=\|\boldsymbol{r}\|_2=\|\boldsymbol{q}\|_2
+	\end{split}
+\end{equation}
+
+Performing the transformation is simple as writing the new $K(\boldsymbol{q}^*,\boldsymbol{p}^*)$ inverting the defined relationships between $\boldsymbol{q}$ and $\boldsymbol{q}^*$ as well as $\boldsymbol{p}$ and $\boldsymbol{p}^*$. Note however that within $H$, $\boldsymbol{q}$ has its norm used for all portions where it is applied, and the $z$ component of the vector $\boldsymbol{q}$ is used directly as well. \\
+
+We can get the transformation of $z$ to its value in $\boldsymbol{q}^*$ directly from the $\boldsymbol{f}(\boldsymbol{q}^*)$ expression:
+\begin{equation}
+	\begin{bmatrix}
+		x \\
+		y \\
+		z \\
+	\end{bmatrix}=
+	\boldsymbol{q}=\boldsymbol{f}(\boldsymbol{q}^*)=
+	\begin{bmatrix}
+		r\cos(\theta)\cos(\phi) \\
+		r\cos(\theta)\sin(\phi) \\
+		r\sin(\theta)
+	\end{bmatrix}
+\end{equation}
+
+Thus we see:
+\begin{equation}
+	z=r\sin(\theta)
+\end{equation}
+This is allowed in this case because $\boldsymbol{q}$ is already given as an explicit function of $\boldsymbol{q}^*$ by construction, so no inversion is needed. \\
+
+Furthermore, we take the norm:
+\begin{equation}
+	\begin{split}
+		\|\boldsymbol{q}\|_2&=\|\boldsymbol{f}(\boldsymbol{q}^*)\|_2 \\
+		&=\sqrt{\left(r\cos(\theta)\cos(\phi)\right)^2+\left(r\cos(\theta)\sin(\phi)\right)^2+\left(r\sin(\theta)\right)^2} \\
+		&=\sqrt{r^2\cos^2(\theta)\cos^2(\phi)+r^2\cos^2(\theta)\sin^2(\phi)+r^2\sin^2(\theta)} \\
+		&=\sqrt{r^2\cos^2(\theta)\left(\cos^2(\phi)+\sin^2(\phi)\right)+r^2\sin^2(\theta)} \\
+		&=\sqrt{r^2\cos^2(\theta)\left(1\right)+r^2\sin^2(\theta)} \\
+		&=\sqrt{r^2\left(\cos^2(\theta)+\sin^2(\theta)\right)} \\
+		&=\sqrt{r^2\left(1\right)} \\
+		&=r
+	\end{split}
+\end{equation}
+
+Thus we see we can simply use the coordinate $r$ where our PS7 Hamiltonian also happened to use the variable $r$ which makes sense since both represent scalar distance from the attractive center.\\
+
+Recall the derived relationship between $\boldsymbol{p}$ and $\boldsymbol{p}^*$. It can be inverted to get $\boldsymbol{p}$ values in terms of $\boldsymbol{p}^*$ values, which is the form we need for substitution:
+\begin{equation}
+	\boldsymbol{p}^*=\left(\frac{\partial\boldsymbol{f}(\boldsymbol{q}^*)}{\partial\boldsymbol{q}^*}\right)^\top\boldsymbol{p}\quad\implies\quad\boldsymbol{p}=\left(\left(\frac{\partial\boldsymbol{f}(\boldsymbol{q}^*)}{\partial\boldsymbol{q}^*}\right)^\top\right)^{-1}\boldsymbol{p}^*
+\end{equation}
+
+Then we can substitute this relationship into the dot product $\boldsymbol{p}^\top\boldsymbol{p}$:
+\begin{equation}
+	\begin{split}
+		\boldsymbol{p}^\top\boldsymbol{p}&=\left(\left(\left(\frac{\partial\boldsymbol{f}(\boldsymbol{q}^*)}{\partial\boldsymbol{q}^*}\right)^\top\right)^{-1}\boldsymbol{p}^*\right)^\top\left(\left(\frac{\partial\boldsymbol{f}(\boldsymbol{q}^*)}{\partial\boldsymbol{q}^*}\right)^\top\right)^{-1}\boldsymbol{p}^* \\
+		&=\boldsymbol{p}^{*\top}\left(\left(\left(\frac{\partial\boldsymbol{f}(\boldsymbol{q}^*)}{\partial\boldsymbol{q}^*}\right)^\top\right)^{-1}\right)^\top\left(\left(\frac{\partial\boldsymbol{f}(\boldsymbol{q}^*)}{\partial\boldsymbol{q}^*}\right)^\top\right)^{-1}\boldsymbol{p}^* \\
+		&=\boldsymbol{p}^{*\top}\left(\frac{\partial\boldsymbol{f}(\boldsymbol{q}^*)}{\partial\boldsymbol{q}^*}\right)^{-1}\left(\left(\frac{\partial\boldsymbol{f}(\boldsymbol{q}^*)}{\partial\boldsymbol{q}^*}\right)^\top\right)^{-1}\boldsymbol{p}^* \\
+		&=\boldsymbol{p}^{*\top}\left(\left(\frac{\partial\boldsymbol{f}(\boldsymbol{q}^*)}{\partial\boldsymbol{q}^*}\right)^\top\frac{\partial\boldsymbol{f}(\boldsymbol{q}^*)}{\partial\boldsymbol{q}^*}\right)^{-1}\boldsymbol{p}^*
+	\end{split}
+\end{equation}
+
+Recall in (b.2) and (b.3) the Jacobian $\frac{\partial\boldsymbol{f}(\boldsymbol{q}^*)}{\partial\boldsymbol{q}^*}$ was found as:
+\begin{equation}
+	\frac{\partial\boldsymbol{f}(\boldsymbol{q}^*)}{\partial\boldsymbol{q}^*}=
+	\begin{bmatrix}
+		\cos(\theta)\cos(\phi) & -r\cos(\theta)\sin(\phi) & -r\sin(\theta)\cos(\phi) \\
+		\cos(\theta)\sin(\phi) & r\cos(\theta)\cos(\phi) & -r\sin(\theta)\sin(\phi) \\
+		\sin(\theta) & 0 & r\cos(\theta)
+	\end{bmatrix}
+\end{equation}
+
+So we evaluate the matrix product as:
+\begin{equation}
+	\begin{split}
+		\left(\frac{\partial\boldsymbol{f}(\boldsymbol{q}^*)}{\partial\boldsymbol{q}^*}\right)^\top\frac{\partial\boldsymbol{f}(\boldsymbol{q}^*)}{\partial\boldsymbol{q}^*}&=
+		\begin{bmatrix}
+			\cos(\theta)\cos(\phi) & \cos(\theta)\sin(\phi) & \sin(\theta) \\
+			-r\cos(\theta)\sin(\phi) & r\cos(\theta)\cos(\phi) & 0 \\
+			-r\sin(\theta)\cos(\phi) & -r\sin(\theta)\sin(\phi) & r\cos(\theta)
+		\end{bmatrix} \\
+		&\qquad
+		\begin{bmatrix}
+			\cos(\theta)\cos(\phi) & -r\cos(\theta)\sin(\phi) & -r\sin(\theta)\cos(\phi) \\
+			\cos(\theta)\sin(\phi) & r\cos(\theta)\cos(\phi) & -r\sin(\theta)\sin(\phi) \\
+			\sin(\theta) & 0 & r\cos(\theta)
+		\end{bmatrix}
+	\end{split}
+\end{equation}
+
+\newpage
+
+Then below are the nine evaluations of the matrix product, where $(i,j)$ denotes the entry in row $i$ and column $j$:
+\begin{equation}
+	\begin{split}
+		(1,1)&=\left(\cos(\theta)\cos(\phi)\right)\left(\cos(\theta)\cos(\phi)\right)+\left(\cos(\theta)\sin(\phi)\right)\left(\cos(\theta)\sin(\phi)\right)+\left(\sin(\theta)\right)\left(\sin(\theta)\right) \\
+		&=\cos^2(\theta)\cos^2(\phi)+\cos^2(\theta)\sin^2(\phi)+\sin^2(\theta) \\
+		&=\cos^2(\theta)\left(\cos^2(\phi)+\sin^2(\phi)\right)+\sin^2(\theta) \\
+		&=\cos^2(\theta)\left(1\right)+\sin^2(\theta) \\
+		&=1 \\
+		\\
+		(1,2)&=\left(\cos(\theta)\cos(\phi)\right)\left(-r\cos(\theta)\sin(\phi)\right)+\left(\cos(\theta)\sin(\phi)\right)\left(r\cos(\theta)\cos(\phi)\right)+\left(\sin(\theta)\right)(0) \\
+		&=-r\cos^2(\theta)\sin(\phi)\cos(\phi)+r\cos^2(\theta)\sin(\phi)\cos(\phi)+0 \\
+		&=0 \\
+		\\
+		(1,3)&=\left(\cos(\theta)\cos(\phi)\right)\left(-r\sin(\theta)\cos(\phi)\right)+\left(\cos(\theta)\sin(\phi)\right)\left(-r\sin(\theta)\sin(\phi)\right)+\left(\sin(\theta)\right)\left(r\cos(\theta)\right) \\
+		&=-r\sin(\theta)\cos(\theta)\cos^2(\phi)-r\sin(\theta)\cos(\theta)\sin^2(\phi)+r\sin(\theta)\cos(\theta) \\
+		&=-r\sin(\theta)\cos(\theta)\left(\cos^2(\phi)+\sin^2(\phi)\right)+r\sin(\theta)\cos(\theta) \\
+		&=-r\sin(\theta)\cos(\theta)\left(1\right)+r\sin(\theta)\cos(\theta) \\
+		&=0
+	\end{split}
+\end{equation}
+
+\begin{equation}
+	\begin{split}
+		(2,1)&=\left(-r\cos(\theta)\sin(\phi)\right)\left(\cos(\theta)\cos(\phi)\right)+\left(r\cos(\theta)\cos(\phi)\right)\left(\cos(\theta)\sin(\phi)\right)+(0)\left(\sin(\theta)\right) \\
+		&=-r\cos^2(\theta)\sin(\phi)\cos(\phi)+r\cos^2(\theta)\sin(\phi)\cos(\phi)+0 \\
+		&=0 \\
+		\\
+		(2,2)&=\left(-r\cos(\theta)\sin(\phi)\right)\left(-r\cos(\theta)\sin(\phi)\right)+\left(r\cos(\theta)\cos(\phi)\right)\left(r\cos(\theta)\cos(\phi)\right)+(0)(0) \\
+		&=r^2\cos^2(\theta)\sin^2(\phi)+r^2\cos^2(\theta)\cos^2(\phi)+0 \\
+		&=r^2\cos^2(\theta)\left(\sin^2(\phi)+\cos^2(\phi)\right) \\
+		&=r^2\cos^2(\theta)\left(1\right) \\
+		&=r^2\cos^2(\theta) \\
+		\\
+		(2,3)&=\left(-r\cos(\theta)\sin(\phi)\right)\left(-r\sin(\theta)\cos(\phi)\right)+\left(r\cos(\theta)\cos(\phi)\right)\left(-r\sin(\theta)\sin(\phi)\right) \\
+		&\qquad+(0)\left(r\cos(\theta)\right) \\
+		&=r^2\sin(\theta)\cos(\theta)\sin(\phi)\cos(\phi)-r^2\sin(\theta)\cos(\theta)\sin(\phi)\cos(\phi)+0 \\
+		&=0
+	\end{split}
+\end{equation}
+
+\begin{equation}
+	\begin{split}
+		(3,1)&=\left(-r\sin(\theta)\cos(\phi)\right)\left(\cos(\theta)\cos(\phi)\right)+\left(-r\sin(\theta)\sin(\phi)\right)\left(\cos(\theta)\sin(\phi)\right)+\left(r\cos(\theta)\right)\left(\sin(\theta)\right) \\
+		&=-r\sin(\theta)\cos(\theta)\cos^2(\phi)-r\sin(\theta)\cos(\theta)\sin^2(\phi)+r\sin(\theta)\cos(\theta) \\
+		&=-r\sin(\theta)\cos(\theta)\left(\cos^2(\phi)+\sin^2(\phi)\right)+r\sin(\theta)\cos(\theta) \\
+		&=-r\sin(\theta)\cos(\theta)\left(1\right)+r\sin(\theta)\cos(\theta) \\
+		&=0 \\
+		\\
+		(3,2)&=\left(-r\sin(\theta)\cos(\phi)\right)\left(-r\cos(\theta)\sin(\phi)\right)+\left(-r\sin(\theta)\sin(\phi)\right)\left(r\cos(\theta)\cos(\phi)\right)+\left(r\cos(\theta)\right)(0) \\
+		&=r^2\sin(\theta)\cos(\theta)\sin(\phi)\cos(\phi)-r^2\sin(\theta)\cos(\theta)\sin(\phi)\cos(\phi)+0 \\
+		&=0 \\
+		\\
+		(3,3)&=\left(-r\sin(\theta)\cos(\phi)\right)\left(-r\sin(\theta)\cos(\phi)\right)+\left(-r\sin(\theta)\sin(\phi)\right)\left(-r\sin(\theta)\sin(\phi)\right)+\left(r\cos(\theta)\right)\left(r\cos(\theta)\right) \\
+		&=r^2\sin^2(\theta)\cos^2(\phi)+r^2\sin^2(\theta)\sin^2(\phi)+r^2\cos^2(\theta) \\
+		&=r^2\sin^2(\theta)\left(\cos^2(\phi)+\sin^2(\phi)\right)+r^2\cos^2(\theta) \\
+		&=r^2\sin^2(\theta)\left(1\right)+r^2\cos^2(\theta) \\
+		&=r^2\left(\sin^2(\theta)+\cos^2(\theta)\right) \\
+		&=r^2(1) \\
+		&=r^2
+	\end{split}
+\end{equation}
+
+Thus the matrix product is:
+\begin{equation}
+	\left(\frac{\partial\boldsymbol{f}(\boldsymbol{q}^*)}{\partial\boldsymbol{q}^*}\right)^\top\frac{\partial\boldsymbol{f}(\boldsymbol{q}^*)}{\partial\boldsymbol{q}^*}=
+	\begin{bmatrix}
+		1 & 0 & 0 \\
+		0 & r^2\cos^2(\theta) & 0 \\
+		0 & 0 & r^2
+	\end{bmatrix}
+\end{equation}
+
+Then we can complete the $\boldsymbol{p}^\top\boldsymbol{p}$ evaluation:
+\begin{equation}
+	\begin{split}
+		\boldsymbol{p}^\top\boldsymbol{p}&=\boldsymbol{p}^{*\top}\left(\left(\frac{\partial\boldsymbol{f}(\boldsymbol{q}^*)}{\partial\boldsymbol{q}^*}\right)^\top\frac{\partial\boldsymbol{f}(\boldsymbol{q}^*)}{\partial\boldsymbol{q}^*}\right)^{-1}\boldsymbol{p}^* \\
+		&=
+		\begin{bmatrix}
+			p_r^* & p_\phi^* & p_\theta^*
+		\end{bmatrix}
+		\begin{bmatrix}
+			1 & 0 & 0 \\
+			0 & r^2\cos^2(\theta) & 0 \\
+			0 & 0 & r^2
+		\end{bmatrix}^{-1}
+		\begin{bmatrix}
+			p_r^* \\
+			p_\phi^* \\
+			p_\theta^*
+		\end{bmatrix} \\
+		&=
+		\begin{bmatrix}
+			p_r^* & p_\phi^* & p_\theta^*
+		\end{bmatrix}
+		\begin{bmatrix}
+			1 & 0 & 0 \\
+			0 & \frac{1}{r^2\cos^2(\theta)} & 0 \\
+			0 & 0 & \frac{1}{r^2}
+		\end{bmatrix}
+		\begin{bmatrix}
+			p_r^* \\
+			p_\phi^* \\
+			p_\theta^*
+		\end{bmatrix} \\
+		&=
+		\begin{bmatrix}
+			p_r^* & p_\phi^* & p_\theta^*
+		\end{bmatrix}
+		\begin{bmatrix}
+			p_r^* \\
+			\frac{p_\phi^*}{r^2\cos^2(\theta)} \\
+			\frac{p_\theta^*}{r^2}
+		\end{bmatrix} \\
+		&=p_r^{*2}+\frac{p_\phi^{*2}}{r^2\cos^2(\theta)}+\frac{p_\theta^{*2}}{r^2}
+	\end{split}
+	\label{eq:pdotprod}
+\end{equation}
+
+Thus with all the transformed variables derived, we can substitute into the Kamiltonian:
+\begin{equation}
+	\begin{split}
+		K(\boldsymbol{q}^*,\boldsymbol{p}^*)&=\frac{1}{2m}\left(p_r^{*2}+\frac{p_\phi^{*2}}{r^2\cos^2(\theta)}+\frac{p_\theta^{*2}}{r^2}\right)-\frac{\mu m}{r}+\frac{\mu mJ_2R_E^2}{2r^5}\left(3\left(r\sin(\theta)\right)^2-r^2\right) \\
+		&=\frac{1}{2m}\left(p_r^{*2}+\frac{p_\phi^{*2}}{r^2\cos^2(\theta)}+\frac{p_\theta^{*2}}{r^2}\right)-\frac{\mu m}{r}+\frac{\mu mJ_2R_E^2}{2r^5}\left(3r^2\sin^2(\theta)-r^2\right) \\
+		&=\frac{1}{2m}\left(p_r^{*2}+\frac{p_\phi^{*2}}{r^2\cos^2(\theta)}+\frac{p_\theta^{*2}}{r^2}\right)-\frac{\mu m}{r}+\frac{\mu mJ_2R_E^2}{2r^5}r^2\left(3\sin^2(\theta)-1\right) \\
+		&=\frac{1}{2m}\left(p_r^{*2}+\frac{p_\phi^{*2}}{r^2\cos^2(\theta)}+\frac{p_\theta^{*2}}{r^2}\right)-\frac{\mu m}{r}+\frac{\mu mJ_2R_E^2}{2r^3}\left(3\sin^2(\theta)-1\right)
+	\end{split}
+\end{equation}
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	Thus this makes the Kamiltonian:
+	\begin{equation}
+		K(\boldsymbol{q}^*,\boldsymbol{p}^*)=\frac{1}{2m}\left(p_r^{*2}+\frac{p_\phi^{*2}}{r^2\cos^2(\theta)}+\frac{p_\theta^{*2}}{r^2}\right)-\frac{\mu m}{r}+\frac{\mu mJ_2R_E^2}{2r^3}\left(3\sin^2(\theta)-1\right)
+	\end{equation}
+\end{mdframed}
+
+\newpage
+
+\subsection*{(b.6): Find}
+
+Derive the equations of motion in $(\boldsymbol{q}^*,\boldsymbol{p}^*)$ using Hamilton's equations, where be sure to transform the external force (drag) appropriately under canonical transformation. Discuss whether the drag term appears in the equations for $\dot{\boldsymbol{q}}^*$ and why. \\
+
+\textbf{Analysis/Conclusions:} \\
+
+Recall from PS7, this was a system that included drag force, thus this is a non-conservative system. The symplectic form of the Hamilton's canonical equations under a canonical transformation are:
+\begin{equation}
+	\dot{\boldsymbol{y}}=J\nabla_{\boldsymbol{y}}K(\boldsymbol{y})+\boldsymbol{g}(\boldsymbol{y})
+\end{equation}
+Where $\boldsymbol{y}=[\boldsymbol{q}^{*\top},\boldsymbol{p}^{*\top}]^\top$ is the transformed phase space coordinates, $K$ is the Kamiltonian, and $\boldsymbol{g}$ is the external force in the transformed phase space. \\
+
+The only piece missing to use these equations is the function $g$ which is given by the following equation as a function of $\boldsymbol{Q}_{nc}$ in the original phase space:
+\begin{equation}
+	\boldsymbol{g}(\boldsymbol{y})=
+	\begin{bmatrix}
+		\frac{\partial\boldsymbol{q}^*}{\partial\boldsymbol{p}}\boldsymbol{Q}_{nc} \\
+		\frac{\partial\boldsymbol{p}^*}{\partial\boldsymbol{p}}\boldsymbol{Q}_{nc} \\
+	\end{bmatrix}
+\end{equation}
+
+Recall from PS7 that the non-conservative force for drag was determined to be:
+\begin{equation}
+	\boldsymbol{Q}_{nc}=-\frac{C_dA\rho(r)}{2m^2}\|\boldsymbol{p}\|_2\boldsymbol{p}
+\end{equation}
+
+Then evaluate $\frac{\partial\boldsymbol{q}^*}{\partial\boldsymbol{p}}$ which is trivial because recall $\boldsymbol{q}$ and $\boldsymbol{q}^*$ are directly dependent on each other by formulation through the relationship:
+\begin{equation}
+	\boldsymbol{q}=\boldsymbol{f}(\boldsymbol{q}^*)\quad\implies\quad\boldsymbol{q}^*=\boldsymbol{f}^{-1}(\boldsymbol{q})
+\end{equation}
+
+Thus this means $\boldsymbol{q}^*$ is not a function of $\boldsymbol{p}$ and:
+\begin{equation}
+	\frac{\partial\boldsymbol{q}^*}{\partial\boldsymbol{p}}=\frac{\partial\boldsymbol{f}^{-1}(\boldsymbol{q})}{\partial\boldsymbol{p}}=\boldsymbol{0}
+\end{equation}
+
+Then evaluate $\frac{\partial\boldsymbol{p}^*}{\partial\boldsymbol{p}}$, we consider the derived relationship $\boldsymbol{p}^*$ from Eq.~(\ref{eq:prelationship}):
+\begin{equation}
+	\boldsymbol{p}^*=\left(\boldsymbol{p}^\top\frac{\partial\boldsymbol{f}(\boldsymbol{q}^*)}{\partial\boldsymbol{q}^*}\right)^\top=\left(\frac{\partial\boldsymbol{f}(\boldsymbol{q}^*)}{\partial\boldsymbol{q}^*}\right)^\top\boldsymbol{p}
+\end{equation}
+
+Thus we evaluate, once again noting that the Jacobian depends only on $\boldsymbol{q}^*$ and is therefore constant with respect to $\boldsymbol{p}$:
+\begin{equation}
+	\frac{\partial\boldsymbol{p}^*}{\partial\boldsymbol{p}}=\frac{\partial}{\partial\boldsymbol{p}}\left(\left(\frac{\partial\boldsymbol{f}(\boldsymbol{q}^*)}{\partial\boldsymbol{q}^*}\right)^\top\boldsymbol{p}\right)=\left(\frac{\partial\boldsymbol{f}(\boldsymbol{q}^*)}{\partial\boldsymbol{q}^*}\right)^\top\frac{\partial\boldsymbol{p}}{\partial\boldsymbol{p}}=\left(\frac{\partial\boldsymbol{f}(\boldsymbol{q}^*)}{\partial\boldsymbol{q}^*}\right)^\top
+\end{equation}
+
+So substituting back into $\boldsymbol{g}(\boldsymbol{y})$ once again using the relationship $\boldsymbol{p}^*=\left(\frac{\partial\boldsymbol{f}(\boldsymbol{q}^*)}{\partial\boldsymbol{q}^*}\right)^\top\boldsymbol{p}$ from Eq.~(\ref{eq:prelationship}) in (b.2):
+\begin{equation}
+	\begin{split}
+		\boldsymbol{g}(\boldsymbol{y})&=
+		\begin{bmatrix}
+			\frac{\partial\boldsymbol{q}^*}{\partial\boldsymbol{p}}\boldsymbol{Q}_{nc} \\
+			\frac{\partial\boldsymbol{p}^*}{\partial\boldsymbol{p}}\boldsymbol{Q}_{nc}
+		\end{bmatrix} \\
+		&=
+		\begin{bmatrix}
+			\boldsymbol{0}\,\boldsymbol{Q}_{nc} \\
+			\left(\frac{\partial\boldsymbol{f}(\boldsymbol{q}^*)}{\partial\boldsymbol{q}^*}\right)^\top\boldsymbol{Q}_{nc}
+		\end{bmatrix} \\
+		&=
+		\begin{bmatrix}
+			\boldsymbol{0} \\
+			\left(\frac{\partial\boldsymbol{f}(\boldsymbol{q}^*)}{\partial\boldsymbol{q}^*}\right)^\top\left(-\frac{C_dA\rho(r)}{2m^2}\|\boldsymbol{p}\|_2\boldsymbol{p}\right)
+		\end{bmatrix} \\
+		&=
+		\begin{bmatrix}
+			\boldsymbol{0} \\
+			-\frac{C_dA\rho(r)}{2m^2}\|\boldsymbol{p}\|_2\left(\frac{\partial\boldsymbol{f}(\boldsymbol{q}^*)}{\partial\boldsymbol{q}^*}\right)^\top\boldsymbol{p}
+		\end{bmatrix} \\
+		&=
+		\begin{bmatrix}
+			\boldsymbol{0} \\
+			-\frac{C_dA\rho(r)}{2m^2}\|\boldsymbol{p}\|_2\,\boldsymbol{p}^*
+		\end{bmatrix}
+	\end{split}
+\end{equation}
+
+For convenience, since the top half of the $\boldsymbol{g}(\boldsymbol{y})$ evaluation got zeroed out, I will refer to the bottom half as $\boldsymbol{Q}_{nc}^*$:
+\begin{equation}
+	\boldsymbol{Q}_{nc}^*=-\frac{C_dA\rho(r)}{2m^2}\|\boldsymbol{p}\|_2\,\boldsymbol{p}^*
+\end{equation}
+
+Recall conversion of the inner product of $\boldsymbol{p}^\top\boldsymbol{p}$ was already evaluated in Eq.~(\ref{eq:pdotprod}), which is the term within the square root of the norm $\|\boldsymbol{p}\|_2$. Likewise, we evaluate the term to be:
+\begin{equation}
+	\|\boldsymbol{p}\|_2=\sqrt{\boldsymbol{p}^\top\boldsymbol{p}}=\sqrt{p_r^{*2}+\frac{p_\phi^{*2}}{r^2\cos^2(\theta)}+\frac{p_\theta^{*2}}{r^2}}
+\end{equation}
+
+And then substitute it back to $\boldsymbol{Q}_{nc}^*$:
+\begin{equation}
+	\boldsymbol{Q}_{nc}^*=-\frac{C_dA\rho(r)}{2m^2}\sqrt{p_r^{*2}+\frac{p_\phi^{*2}}{r^2\cos^2(\theta)}+\frac{p_\theta^{*2}}{r^2}}\boldsymbol{p}^*
+\end{equation}
+
+Finally, we can consider the canonical equations in their component form for this non-conservative system:
+\begin{equation}
+	\dot{\boldsymbol{q}}^*=\frac{\partial K}{\partial\boldsymbol{p}^*},\quad\dot{\boldsymbol{p}}^*=-\frac{\partial K}{\partial\boldsymbol{q}^*}+\boldsymbol{Q}_{nc}^*
+\end{equation}
+
+Evaluate $\frac{\partial K}{\partial\boldsymbol{p}^*}$:
+\begin{equation}
+	\begin{split}
+		\frac{\partial K}{\partial\boldsymbol{p}^*}&=\frac{\partial}{\partial\boldsymbol{p}^*}\left(\frac{1}{2m}\left(p_r^{*2}+\frac{p_\phi^{*2}}{r^2\cos^2(\theta)}+\frac{p_\theta^{*2}}{r^2}\right)-\frac{\mu m}{r}+\frac{\mu mJ_2R_E^2}{2r^3}\left(3\sin^2(\theta)-1\right)\right) \\
+		&=\frac{1}{2m}\frac{\partial}{\partial\boldsymbol{p}^*}\left(p_r^{*2}+\frac{p_\phi^{*2}}{r^2\cos^2(\theta)}+\frac{p_\theta^{*2}}{r^2}\right)-\frac{\partial}{\partial\boldsymbol{p}^*}\left(\frac{\mu m}{r}\right)+\frac{\partial}{\partial\boldsymbol{p}^*}\left(\frac{\mu mJ_2R_E^2}{2r^3}\left(3\sin^2(\theta)-1\right)\right) \\
+		&=\frac{1}{2m}\frac{\partial}{\partial\boldsymbol{p}^*}\left(p_r^{*2}+\frac{p_\phi^{*2}}{r^2\cos^2(\theta)}+\frac{p_\theta^{*2}}{r^2}\right)-\boldsymbol{0}+\boldsymbol{0} 
+	\end{split}
+\end{equation}
+	
+Which from this point ends up being more convenient to do component-wise:
+\begin{equation}
+	\begin{split}
+		\frac{\partial K}{\partial p_r^*}&=\frac{1}{2m}\frac{\partial}{\partial p_r^*}\left(p_r^{*2}+\frac{p_\phi^{*2}}{r^2\cos^2(\theta)}+\frac{p_\theta^{*2}}{r^2}\right)=\frac{1}{2m}\left(2p_r^*+0+0\right)=\frac{p_r^*}{m} \\
+		\\
+		\frac{\partial K}{\partial p_\phi^*}&=\frac{1}{2m}\frac{\partial}{\partial p_\phi^*}\left(p_r^{*2}+\frac{p_\phi^{*2}}{r^2\cos^2(\theta)}+\frac{p_\theta^{*2}}{r^2}\right)=\frac{1}{2m}\left(0+\frac{2p_\phi^*}{r^2\cos^2(\theta)}+0\right)=\frac{p_\phi^*}{mr^2\cos^2(\theta)} \\
+		\\
+		\frac{\partial K}{\partial p_\theta^*}&=\frac{1}{2m}\frac{\partial}{\partial p_\theta^*}\left(p_r^{*2}+\frac{p_\phi^{*2}}{r^2\cos^2(\theta)}+\frac{p_\theta^{*2}}{r^2}\right)=\frac{1}{2m}\left(0+0+\frac{2p_\theta^*}{r^2}\right)=\frac{p_\theta^*}{mr^2}
+		\end{split}
+\end{equation}
+
+Evaluate $-\frac{\partial K}{\partial\boldsymbol{q}^*}$ which also ends up being more convenient component-wise. Starting with $r$:
+\begin{equation}
+	\begin{split}
+		-\frac{\partial K}{\partial r}&=-\frac{\partial}{\partial r}\left(\frac{1}{2m}\left(p_r^{*2}+\frac{p_\phi^{*2}}{r^2\cos^2(\theta)}+\frac{p_\theta^{*2}}{r^2}\right)-\frac{\mu m}{r}+\frac{\mu mJ_2R_E^2}{2r^3}\left(3\sin^2(\theta)-1\right)\right) \\
+		&=-\frac{1}{2m}\frac{\partial}{\partial r}\left(p_r^{*2}+\frac{p_\phi^{*2}}{r^2\cos^2(\theta)}+\frac{p_\theta^{*2}}{r^2}\right)+\frac{\partial}{\partial r}\left(\frac{\mu m}{r}\right)-\frac{\partial}{\partial r}\left(\frac{\mu mJ_2R_E^2}{2r^3}\left(3\sin^2(\theta)-1\right)\right) \\
+		&=-\frac{1}{2m}\frac{\partial}{\partial r}\left(p_r^{*2}+\frac{p_\phi^{*2}}{r^2\cos^2(\theta)}+\frac{p_\theta^{*2}}{r^2}\right)-\frac{\mu m}{r^2}+\frac{3\mu mJ_2R_E^2}{2r^4}\left(3\sin^2(\theta)-1\right) \\
+		&=-\frac{1}{2m}\left(\frac{\partial}{\partial r}\left(p_r^{*2}\right)+\frac{\partial}{\partial r}\left(\frac{p_\phi^{*2}}{r^2\cos^2(\theta)}\right)+\frac{\partial}{\partial r}\left(\frac{p_\theta^{*2}}{r^2}\right)\right)-\frac{\mu m}{r^2}+\frac{3\mu mJ_2R_E^2}{2r^4}\left(3\sin^2(\theta)-1\right) \\
+		&=-\frac{1}{2m}\left(0-\frac{2p_\phi^{*2}}{r^3\cos^2(\theta)}-\frac{2p_\theta^{*2}}{r^3}\right)-\frac{\mu m}{r^2}+\frac{3\mu mJ_2R_E^2}{2r^4}\left(3\sin^2(\theta)-1\right) \\
+		&=\frac{p_\phi^{*2}}{mr^3\cos^2(\theta)}+\frac{p_\theta^{*2}}{mr^3}-\frac{\mu m}{r^2}+\frac{3\mu mJ_2R_E^2}{2r^4}\left(3\sin^2(\theta)-1\right)
+	\end{split}
+\end{equation}
+
+Then $\phi$, which does not appear anywhere in $K$ and thus is cyclic:
+\begin{equation}
+	-\frac{\partial K}{\partial\phi}=-\frac{\partial}{\partial\phi}\left(\frac{1}{2m}\left(p_r^{*2}+\frac{p_\phi^{*2}}{r^2\cos^2(\theta)}+\frac{p_\theta^{*2}}{r^2}\right)-\frac{\mu m}{r}+\frac{\mu mJ_2R_E^2}{2r^3}\left(3\sin^2(\theta)-1\right)\right)=0
+\end{equation}
+
+And $\theta$:
+\begin{equation}
+	\begin{split}
+		-\frac{\partial K}{\partial\theta}&=-\frac{\partial}{\partial\theta}\left(\frac{1}{2m}\left(p_r^{*2}+\frac{p_\phi^{*2}}{r^2\cos^2(\theta)}+\frac{p_\theta^{*2}}{r^2}\right)-\frac{\mu m}{r}+\frac{\mu mJ_2R_E^2}{2r^3}\left(3\sin^2(\theta)-1\right)\right) \\
+		&=-\frac{1}{2m}\frac{\partial}{\partial\theta}\left(p_r^{*2}+\frac{p_\phi^{*2}}{r^2\cos^2(\theta)}+\frac{p_\theta^{*2}}{r^2}\right)+\frac{\partial}{\partial\theta}\left(\frac{\mu m}{r}\right)-\frac{\partial}{\partial\theta}\left(\frac{\mu mJ_2R_E^2}{2r^3}\left(3\sin^2(\theta)-1\right)\right) \\
+		&=-\frac{1}{2m}\frac{\partial}{\partial\theta}\left(p_r^{*2}+\frac{p_\phi^{*2}}{r^2\cos^2(\theta)}+\frac{p_\theta^{*2}}{r^2}\right)+0-\frac{\mu mJ_2R_E^2}{2r^3}\left(3\frac{\partial\left(\sin^2(\theta)\right)}{\partial\left(\sin(\theta)\right)}\frac{\partial\left(\sin(\theta)\right)}{\partial\theta}-\frac{\partial}{\partial\theta}\left(1\right)\right) \\
+		&=-\frac{1}{2m}\frac{\partial}{\partial\theta}\left(p_r^{*2}+\frac{p_\phi^{*2}}{r^2\cos^2(\theta)}+\frac{p_\theta^{*2}}{r^2}\right)-\frac{\mu mJ_2R_E^2}{2r^3}\left(3\left(2\sin(\theta)\right)\left(\cos(\theta)\right)-0\right) \\
+		&=-\frac{1}{2m}\frac{\partial}{\partial\theta}\left(p_r^{*2}+\frac{p_\phi^{*2}}{r^2\cos^2(\theta)}+\frac{p_\theta^{*2}}{r^2}\right)-\frac{3\mu mJ_2R_E^2\sin(\theta)\cos(\theta)}{r^3} \\
+		&=-\frac{1}{2m}\left(\frac{\partial}{\partial\theta}\left(p_r^{*2}\right)+\frac{p_\phi^{*2}}{r^2}\frac{\partial\left(\cos^{-2}(\theta)\right)}{\partial\left(\cos(\theta)\right)}\frac{\partial\left(\cos(\theta)\right)}{\partial\theta}+\frac{\partial}{\partial\theta}\left(\frac{p_\theta^{*2}}{r^2}\right)\right)-\frac{3\mu mJ_2R_E^2\sin(\theta)\cos(\theta)}{r^3} \\
+		&=-\frac{1}{2m}\left(0+\frac{p_\phi^{*2}}{r^2}\left(-2\cos^{-3}(\theta)\right)\left(-\sin(\theta)\right)+0\right)-\frac{3\mu mJ_2R_E^2\sin(\theta)\cos(\theta)}{r^3} \\
+		&=-\frac{1}{2m}\left(\frac{2p_\phi^{*2}\sin(\theta)}{r^2\cos^3(\theta)}\right)-\frac{3\mu mJ_2R_E^2\sin(\theta)\cos(\theta)}{r^3} \\
+		&=-\frac{p_\phi^{*2}\sin(\theta)}{mr^2\cos^3(\theta)}-\frac{3\mu mJ_2R_E^2\sin(\theta)\cos(\theta)}{r^3}
+	\end{split}
+\end{equation}
+
+Then substituting back into $\dot{\boldsymbol{p}}^*=-\frac{\partial K}{\partial\boldsymbol{q}^*}+\boldsymbol{Q}_{nc}^*$ component-wise:
+\begin{equation}
+	\begin{split}
+		\dot{p}_r^*&=-\frac{\partial K}{\partial r}+Q_{nc,r}^* \\
+		&=\frac{p_\phi^{*2}}{mr^3\cos^2(\theta)}+\frac{p_\theta^{*2}}{mr^3}-\frac{\mu m}{r^2}+\frac{3\mu mJ_2R_E^2}{2r^4}\left(3\sin^2(\theta)-1\right)-\frac{C_dA\rho(r)}{2m^2}\|\boldsymbol{p}\|_2\,p_r^* \\
+		\\
+		\dot{p}_\phi^*&=-\frac{\partial K}{\partial\phi}+Q_{nc,\phi}^*=0-\frac{C_dA\rho(r)}{2m^2}\|\boldsymbol{p}\|_2\,p_\phi^*=-\frac{C_dA\rho(r)}{2m^2}\|\boldsymbol{p}\|_2\,p_\phi^* \\
+		\\
+		\dot{p}_\theta^*&=-\frac{\partial K}{\partial\theta}+Q_{nc,\theta}^*=-\frac{p_\phi^{*2}\sin(\theta)}{mr^2\cos^3(\theta)}-\frac{3\mu mJ_2R_E^2\sin(\theta)\cos(\theta)}{r^3}-\frac{C_dA\rho(r)}{2m^2}\|\boldsymbol{p}\|_2\,p_\theta^*
+	\end{split}
+\end{equation}
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	So the equations of motion can be written as:
+	\begin{equation}
+		\small
+		\begin{split}
+			\dot{r}&=\frac{p_r^*}{m},\quad \dot{\phi}=\frac{p_\phi^*}{mr^2\cos^2(\theta)},\quad \dot{\theta}=\frac{p_\theta^*}{mr^2} \\
+			\dot{p}_r^*&=\frac{p_\phi^{*2}}{mr^3\cos^2(\theta)}+\frac{p_\theta^{*2}}{mr^3}-\frac{\mu m}{r^2}+\frac{3\mu mJ_2R_E^2}{2r^4}\left(3\sin^2(\theta)-1\right)-\frac{C_dA\rho(r)}{2m^2}\|\boldsymbol{p}\|_2\,p_r^* \\
+			\dot{p}_\phi^*&=-\frac{C_dA\rho(r)}{2m^2}\|\boldsymbol{p}\|_2\,p_\phi^* \\
+			\dot{p}_\theta^*&=-\frac{p_\phi^{*2}\sin(\theta)}{mr^2\cos^3(\theta)}-\frac{3\mu mJ_2R_E^2\sin(\theta)\cos(\theta)}{r^3}-\frac{C_dA\rho(r)}{2m^2}\|\boldsymbol{p}\|_2\,p_\theta^*
+		\end{split}
+		\normalsize
+	\end{equation}
+	Where:
+	\begin{equation}
+		\|\boldsymbol{p}\|_2=\sqrt{p_r^{*2}+\frac{p_\phi^{*2}}{r^2\cos^2(\theta)}+\frac{p_\theta^{*2}}{r^2}}
+	\end{equation}
+\end{mdframed}
+
+\newpage
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	The drag term does not appear in the $\dot{\boldsymbol{q}}^*$ equations. This is because when evaluating the symplectic form of the Hamilton's equations:
+	\begin{equation}
+		\dot{\boldsymbol{y}}=J\nabla_{\boldsymbol{y}}K(\boldsymbol{y})+\boldsymbol{g}(\boldsymbol{y})
+	\end{equation}
+	
+	We see that for $\boldsymbol{y}=[\boldsymbol{q}^*,\boldsymbol{p}^*]^\top$ when we consider the expression for the transformed force $\boldsymbol{g}=\begin{bmatrix}\frac{\partial\boldsymbol{q}^*}{\partial\boldsymbol{p}}\boldsymbol{Q}_{nc} &\frac{\partial\boldsymbol{p}^*}{\partial\boldsymbol{p}}\boldsymbol{Q}_{nc}\end{bmatrix}^\top$ and substitute back into the Hamilton's equations:
+	\begin{equation}
+		\begin{bmatrix}
+			\dot{\boldsymbol{q}}^* \\
+			\dot{\boldsymbol{p}}^* \\
+		\end{bmatrix}=
+		J\nabla_{\boldsymbol{y}}K(\boldsymbol{y})+
+		\begin{bmatrix}
+			\frac{\partial\boldsymbol{q}^*}{\partial\boldsymbol{p}}\boldsymbol{Q}_{nc} \\
+			\frac{\partial\boldsymbol{p}^*}{\partial\boldsymbol{p}}\boldsymbol{Q}_{nc}
+		\end{bmatrix} \\
+	\end{equation}
+	that the drag $\boldsymbol{Q}_{nc}$ component that lines up with $\dot{\boldsymbol{q}}^*$ is the one that got zeroed out by $\frac{\partial\boldsymbol{q}^*}{\partial\boldsymbol{p}}=0$ because $\boldsymbol{q}^*$ was not a function of $\boldsymbol{p}$. \\
+	
+	\textbf{In other words, drag does not appear in $\dot{\boldsymbol{q}}^*$ because its component got zeroed out by $\boldsymbol{q}^*$ having no direct relationship to $\boldsymbol{p}$.}
+\end{mdframed}
+
+\subsection*{(b.7): Find}
+
+Identify the cyclic coordinate and show that its conjugate momentum is the $z$-component of the inertial angular momentum. \\
+
+\textbf{Analysis/Conclusions:} \\
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	We know a coordinate is cyclic if it does not appear in the Hamiltonian. The Kamiltonian derived in (b.5) was:
+	\begin{equation}
+		K(\boldsymbol{q}^*,\boldsymbol{p}^*)=\frac{1}{2m}\left(p_r^{*2}+\frac{p_\phi^{*2}}{r^2\cos^2(\theta)}+\frac{p_\theta^{*2}}{r^2}\right)-\frac{\mu m}{r}+\frac{\mu mJ_2R_E^2}{2r^3}\left(3\sin^2(\theta)-1\right)
+	\end{equation}
+	We see by inspection that the only coordinate in:
+	\begin{equation}
+		\boldsymbol{q}^*=
+		\begin{bmatrix}
+			r & \phi & \theta \\
+		\end{bmatrix}^\top
+	\end{equation}
+	to not appear in $K$ is $\phi$. \textbf{Thus this means $\phi$ is the cyclic coordinate meaning it has continuous symmetry.}
+\end{mdframed}
+
+Recall in (b.2) in Eq.~(\ref{eq:newmomenta}), an expression relating the conjugate momenta $\boldsymbol{p}^*$ to the Cartesian momenta $\boldsymbol{p}$ and spherical coordinates $\boldsymbol{q}^*$ was derived:
+\begin{equation}
+	\boldsymbol{p}^*=
+	\begin{bmatrix}
+		p_r^* \\
+		p_\phi^* \\
+		p_\theta^* \\
+	\end{bmatrix}=
+	\begin{bmatrix}
+		p_x\cos(\theta)\cos(\phi)+p_y\cos(\theta)\sin(\phi)+p_z\sin(\theta) \\
+		r\cos(\theta)\left(p_y\cos(\phi)-p_x\sin(\phi)\right) \\
+		r\left(p_z\cos(\theta)-\sin(\theta)\left(p_x\cos(\phi)+p_y\sin(\phi)\right)\right)
+	\end{bmatrix}
+\end{equation}
+
+Likewise, this means the conjugate momentum of the cyclic coordinate $\phi$ is:
+\begin{equation}
+	p_\phi^*=r\cos(\theta)\left(p_y\cos(\phi)-p_x\sin(\phi)\right)
+\end{equation}
+
+To prove that $p_\phi^*$ is also the $z$-component of the inertial angular momentum, we simply need to derive the $z$-component of the inertial angular momentum $h_z$ directly from $\boldsymbol{q}$ and $\boldsymbol{p}$ and show it equals $p_\phi^*$.\\
+
+Then, angular momentum $\boldsymbol{h}$ can be computed by:
+\begin{equation}
+	\boldsymbol{h}=\boldsymbol{q}\times\boldsymbol{p}
+\end{equation}
+
+Which at this point is more convenient to compute by vector component:
+\begin{equation}
+	\boldsymbol{h}=\boldsymbol{q}\times\boldsymbol{p}=
+	\begin{bmatrix}
+		x \\
+		y \\
+		z
+	\end{bmatrix}\times
+	\begin{bmatrix}
+		p_x \\
+		p_y \\
+		p_z
+	\end{bmatrix}=
+	\begin{bmatrix}
+		yp_z-zp_y \\
+		zp_x-xp_z \\
+		xp_y-yp_x
+	\end{bmatrix}=
+	\begin{bmatrix}
+		h_x \\
+		h_y \\
+		h_z
+	\end{bmatrix}
+\end{equation}
+
+So the $z$-component of the inertial angular momentum is:
+\begin{equation}
+	h_z=xp_y-yp_x
+\end{equation}
+
+Recall the relationship in Eq.~(\ref{eq:qrelation}) for $\boldsymbol{q}=\boldsymbol{f}(\boldsymbol{q}^*)$ from (b.1):
+\begin{equation}
+	\begin{bmatrix}
+		x \\
+		y \\
+		z \\
+	\end{bmatrix}=
+	\boldsymbol{q}=\boldsymbol{f}(\boldsymbol{q}^*)=
+	\begin{bmatrix}
+		r\cos(\theta)\cos(\phi) \\
+		r\cos(\theta)\sin(\phi) \\
+		r\sin(\theta)
+	\end{bmatrix}
+\end{equation}
+
+Then substituting $x$ and $y$ from $\boldsymbol{q}=\boldsymbol{f}(\boldsymbol{q}^*)$ into $h_z$:
+\begin{equation}
+	\begin{split}
+		h_z&=xp_y-yp_x \\
+		&=\left(r\cos(\theta)\cos(\phi)\right)p_y-\left(r\cos(\theta)\sin(\phi)\right)p_x \\
+		&=r\cos(\theta)\cos(\phi)p_y-r\cos(\theta)\sin(\phi)p_x \\
+		&=r\cos(\theta)\left(p_y\cos(\phi)-p_x\sin(\phi)\right)
+	\end{split}
+\end{equation}
+
+\begin{mdframed}[linewidth=1pt, innertopmargin=10pt, innerbottommargin=10pt]
+	Which is identical to $p_\phi^*$:
+	\begin{equation}
+		p_\phi^*=r\cos(\theta)\left(p_y\cos(\phi)-p_x\sin(\phi)\right)=h_z
+	\end{equation}
+	\textbf{Thus the conjugate momentum to the cyclic coordinate $\phi$ is the $z$-component of the inertial angular momentum.}
+\end{mdframed}
 
 \end{document}
